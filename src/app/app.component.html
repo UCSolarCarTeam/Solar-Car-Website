@@ -28,7 +28,7 @@
     <mat-menu #menu="matMenu">
         <button mat-menu-item *ngFor="let routeLink of routeLinks; let i = index;" [routerLink]="routeLink.link"routerLinkActive
          #rla="routerLinkActive"
-         (click)="activeLinkIndex = i"
+         (click)="activeLinkIndex = i; toggle()"
          [routerLinkActiveOptions]="{exact: true}"
          [class]=getActiveClass(i)
          [disableRipple]="true" class="menu">

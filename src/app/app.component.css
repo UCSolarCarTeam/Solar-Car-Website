@@ -37,9 +37,14 @@ a {
 	  	display: none;
 	  }
 	  .hamburger-menu {
-	   	display: inline-block;
+	   	display: block;
 	   	margin-left: 100%;
 	  }
+
+	  .mat-tab-link {
+	  	display: flex;
+	  }
+
 	  .mat-menu-content {
 	  	margin-left: 100%;
 	  }

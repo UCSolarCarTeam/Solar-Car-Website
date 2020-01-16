@@ -8,6 +8,11 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SponsorComponent } from './components/support-us-page/sponsor/sponsor.component';
+import { DonateComponent } from './components/support-us-page/donate/donate.component';
+import { InKindDonationsComponent } from './components/support-us-page/in-kind-donations/in-kind-donations.component';
+import { SocialMediaComponent } from './components/common/social-media/social-media.component';
+import { SupportUsMainComponent } from './components/support-us-page/support-us-main/support-us-main.component';
 
 import { CarsComponent } from './cars/cars.component';
 import { SupportUsComponent } from './support-us/support-us.component';
@@ -25,6 +30,11 @@ import { TeamComponent } from './team/team.component';
     NewsComponent,
     ContactUsComponent,
     TeamComponent
+    SupportUsMainComponent,
+    SponsorComponent,
+    DonateComponent,
+    InKindDonationsComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,

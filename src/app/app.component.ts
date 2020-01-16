@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-// import {Animate } from '@angular/animations'
 
 @Component({
   selector: 'app-root',
@@ -66,8 +65,6 @@ export class AppComponent{
 
   toggle(): void {
     this.isOpen = !this.isOpen;
-    console.log("OPEN");
-    // x.classList.toggle("change");
   }
 }
 

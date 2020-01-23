@@ -8,7 +8,6 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { CarsComponent } from './cars/cars.component';
 import { SupportUsComponent } from './support-us/support-us.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';

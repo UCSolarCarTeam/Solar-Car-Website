@@ -6,7 +6,6 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
 import { NewsComponent } from './news/news.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TeamComponent } from './team/team.component';
-import { SupportUsMainComponent } from './components/support-us-page/support-us-main/support-us-main.component';
 
 const routes: Routes = [
     { path: 'cars', component: CarsComponent },

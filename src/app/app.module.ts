@@ -1,27 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SponsorComponent } from './components/support-us-page/sponsor/sponsor.component';
-import { DonateComponent } from './components/support-us-page/donate/donate.component';
-import { InKindDonationsComponent } from './components/support-us-page/in-kind-donations/in-kind-donations.component';
-import { SocialMediaComponent } from './components/common/social-media/social-media.component';
-import { SupportUsMainComponent } from './components/support-us-page/support-us-main/support-us-main.component';
+import { CarsComponent } from './cars/cars.component';
+import { SupportUsComponent } from './support-us/support-us.component';
+import { SponsorsComponent } from './sponsors/sponsors.component';
+import { NewsComponent } from './news/news.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { TeamComponent } from './team/team.component';
+import { SocialMediaComponent } from './common/social-media/social-media.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SupportUsMainComponent,
-    SponsorComponent,
-    DonateComponent,
-    InKindDonationsComponent,
+    CarsComponent,
+    SupportUsComponent,
+    SponsorsComponent,
+    NewsComponent,
+    ContactUsComponent,
+    TeamComponent,
     SocialMediaComponent,
-    SupportUsMainComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

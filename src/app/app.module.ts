@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { AgmCoreModule } from '@agm/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -30,6 +31,10 @@ import { SocialMediaComponent } from './common/social-media/social-media.compone
   ],
   imports: [
     BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCHcMfciASJU5gIbUuAa2lNCekB76fbPaE',
+      libraries: ["places", "geometry"]
+    }),
     BrowserAnimationsModule,
     AppRoutingModule,
     MatTabsModule,

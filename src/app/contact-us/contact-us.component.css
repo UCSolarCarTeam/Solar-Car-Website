@@ -1,0 +1,65 @@
+#title{
+  padding-top: 7em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+
+#ContactUsPage{
+  display: grid;
+  column-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+input, label {
+    display:block;
+}
+
+.MessageUs {
+  grid-column: 1;
+  padding-left: 1em;
+}
+
+.Info{
+  grid-column: 2;
+  padding-left: 1em;
+}
+
+.InputBox {
+  padding-top: 1em;
+}
+.ContactItem {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#input {
+  width:20em;
+}
+
+.button {
+  background-color: red; 
+  border: 2px solid red;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 2em;
+  transition-duration: 0.2s;
+}
+
+.button:hover {
+  background-color: white; 
+  color: black;
+}
+
+.center{
+  margin: auto;
+  text-align: center;
+}
+
+ agm-map {
+     height: 20em;
+     width: 30em;
+  }

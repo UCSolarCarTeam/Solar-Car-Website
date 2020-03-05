@@ -38,11 +38,11 @@
       [gestureHandling]="'cooperative'"
       [zoom]="zoom">
       <agm-marker 
-        (mouseOver)="openWindow()"
+        (mouseOver)="openWindow(id)"
         [latitude]="lat" 
         [longitude]="lng">
         <agm-info-window 
-          [isOpen]="isInfoWindowOpen()"
+          [isOpen]="isInfoWindowOpen(id)"
           [latitude]="lat" 
           [longitude]="lng">
             2500 University Dr NW, Calgary, AB T2N 1N4

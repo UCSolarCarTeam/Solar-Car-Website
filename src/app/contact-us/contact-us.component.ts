@@ -11,7 +11,7 @@ export class ContactUsComponent implements OnInit {
   lng: number = -114.131598;
   zoom: number = 13;
   
-  openedWindow : number = 0; // alternative: array of numbers
+  openedWindow: number = 0; // alternative: array of numbers
 
   openWindow(id) {
     this.openedWindow = id; // alternative: push to array of numbers
@@ -19,7 +19,10 @@ export class ContactUsComponent implements OnInit {
 
   isInfoWindowOpen(id) {
     return this.openedWindow == id; // alternative: check if id is in array
-  }   
+  }
+
+  onClick() {
+  }
 
   constructor() { }
 

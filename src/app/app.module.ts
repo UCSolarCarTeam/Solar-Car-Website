@@ -33,7 +33,7 @@ import { SocialMediaComponent } from './common/social-media/social-media.compone
     BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCHcMfciASJU5gIbUuAa2lNCekB76fbPaE',
-      libraries: ["places", "geometry"]
+      libraries: ['places', 'geometry']
     }),
     BrowserAnimationsModule,
     AppRoutingModule,

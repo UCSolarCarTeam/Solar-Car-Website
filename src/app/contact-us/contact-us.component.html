@@ -12,21 +12,21 @@
     <form>
       <div class="InputBox">
         <label for="name">Your Name (required)</label>
-        <input id="input" type="text" value="" name="name">
+        <input id="input" type="text" value="" name="name" #boxName (keyup)="updateName(boxName.value)">
         </div>
       <div class="InputBox">
         <label for="email">Your Email (required)</label>
-        <input id="input" type="text" value="" name="email">
+        <input id="input" type="text" value="" name="email"#boxEmail (keyup)="updateEmail(boxEmail.value)">
         </div>
       <div class="InputBox">
         <label for="subject">Subject</label>
-        <input id="input" type="text" value="" name="subject">
+        <input id="input" type="text" value="" #boxSubject (keyup)="updateSubject(boxSubject.value)">
         </div>
       <div class="InputBox">
         <label for="message">Message</label>
-        <textarea id = "input" rows="5" cols="50" placeholder=""></textarea>
+        <textarea id = "input" rows="5" cols="50" placeholder="" #boxMessage (keyup)="updateMessage(boxMessage.value)"></textarea>
         </div>
-       <button class="button" (click)="onClick()">SEND</button>
+       <button class="button" (click)="sendMessage()">SEND</button>
      </form>
      </div>
 
@@ -39,6 +39,7 @@
       [zoom]="zoom">
       <agm-marker 
         (mouseOver)="openWindow(1)"
+        (markerClick)="googleMapsLink()"
         [latitude]="lat" 
         [longitude]="lng">
         <agm-info-window 
@@ -63,7 +64,7 @@
         ENC 36, University of Calgary
         </p>
       </div>
-
+  
     <div class="contactItem">
       <h5>
         Email
@@ -74,7 +75,7 @@
           </h5>
           <br style="clear:both;" />
         </div>
-
+        
       </div>
 
   </div>

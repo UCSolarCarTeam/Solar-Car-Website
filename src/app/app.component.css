@@ -3,6 +3,11 @@
 	flex-direction: row;
 }
 
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
 img {
 	height: auto;
 	min-width: .5em;

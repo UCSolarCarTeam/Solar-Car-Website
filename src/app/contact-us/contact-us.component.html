@@ -1,33 +1,33 @@
 <div id="ContactUsPage">
-  <div id = title>
-    <h1>
-			Contact Us!
-		  </h1>
+  <div id=tempPadding>
     </div>
 
   <div class="MessageUs center">
     <h2>
       Get In Touch
-      </h2>
+    </h2>
+    <h6>
+      Got any questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+      </h6>
     <form>
       <div class="InputBox">
         <label for="name">Your Name (required)</label>
-        <input id="input" type="text" value="" name="name" #boxName (keyup)="updateName(boxName.value)">
+        <input id="input" type="text" [value]="" name="name" #name>
         </div>
       <div class="InputBox">
         <label for="email">Your Email (required)</label>
-        <input id="input" type="text" value="" name="email"#boxEmail (keyup)="updateEmail(boxEmail.value)">
+        <input id="input" type="text" [value]="" name="email" #email>
         </div>
       <div class="InputBox">
         <label for="subject">Subject</label>
-        <input id="input" type="text" value="" #boxSubject (keyup)="updateSubject(boxSubject.value)">
+        <input id="input" type="text" [value]="" #subject>
         </div>
       <div class="InputBox">
         <label for="message">Message</label>
-        <textarea id = "input" rows="5" cols="50" placeholder="" #boxMessage (keyup)="updateMessage(boxMessage.value)"></textarea>
+        <textarea id = "input" rows="5" cols="50" [value]="" #message></textarea>
         </div>
-       <button class="button" (click)="sendMessage()">SEND</button>
      </form>
+     <button class="button" (click)="sendMessage(name, email, subject, message)">SEND</button>
      </div>
 
   <div class="Info center">
@@ -37,14 +37,14 @@
       [scrollwheel]="null"
       [gestureHandling]="'cooperative'"
       [zoom]="zoom">
-      <agm-marker 
+      <agm-marker
         (mouseOver)="openWindow(1)"
         (markerClick)="googleMapsLink()"
-        [latitude]="lat" 
+        [latitude]="lat"
         [longitude]="lng">
-        <agm-info-window 
+        <agm-info-window
           [isOpen]="isInfoWindowOpen(1)"
-          [latitude]="lat" 
+          [latitude]="lat"
           [longitude]="lng">
             2500 University Dr NW, Calgary, AB T2N 1N4
             </agm-info-window>
@@ -64,7 +64,7 @@
         ENC 36, University of Calgary
         </p>
       </div>
-  
+
     <div class="contactItem">
       <h5>
         Email
@@ -75,7 +75,7 @@
           </h5>
           <br style="clear:both;" />
         </div>
-        
+
       </div>
 
   </div>

@@ -1,13 +1,14 @@
-#title{
+#tempPadding{
   padding-top: 7em;
   padding-left: 1em;
   padding-bottom: 1em;
 }
 
-#ContactUsPage{
+#ContactUsPage {
   display: grid;
-  column-gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+  grid-template-rows: 1fr;
 }
 
 input, label {
@@ -33,12 +34,14 @@ input, label {
 }
 
 #input {
-  width:20em;
+  width: 25em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .button {
-  background-color: red; 
-  border: 2px solid red;
+  background-color: rgb(255, 51, 0);
+  border: 2px solid rgb(255, 51, 0);
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -49,17 +52,23 @@ input, label {
   transition-duration: 0.2s;
 }
 
+textarea {
+  resize: none;
+}
+
 .button:hover {
-  background-color: white; 
+  background-color: white;
   color: black;
 }
 
-.center{
-  margin: auto;
+.center {
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
- agm-map {
-     height: 20em;
-     width: 30em;
-  }
+agm-map {
+  padding-top: 1em;
+  height: 25em;
+  width: 35em;
+}

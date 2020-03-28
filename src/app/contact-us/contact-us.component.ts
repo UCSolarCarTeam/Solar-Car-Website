@@ -20,22 +20,24 @@ export class ContactUsComponent implements OnInit {
     return this.openedWindow === id; // alternative: check if id is in array
   }
 
-  googleMapsLink(){
-    window.open("https://www.google.com/maps/place/University+of+Calgary/@51.0775908,-114.1428837,17z/data=!3m1!4b1!4m5!3m4!1s0x53717db7481cb3b1:0x36aff4a9e3c803fb!8m2!3d51.0775908!4d-114.140695");
+  googleMapsLink() {
+    window.open('https://www.google.com/maps/place/University+of+Calgary/' +
+                '@51.0775908,-114.1428837,17z/data=!3m1!4b1!4m5!3m4!1s0x53717' +
+                'db7481cb3b1:0x36aff4a9e3c803fb!8m2!3d51.0775908!4d-114.140695');
   }
 
   sendMessage(name: HTMLInputElement, email: HTMLInputElement, subject: HTMLInputElement, message: HTMLTextAreaElement) {
-    // This code is only a temporary place holder. The intention for this will be to automatically email this content to our communications email using node.js
-    window.location.href = "mailto:communications@calgarysolarcar.ca?&subject="+
-                            subject.value+"&body=A user has sent a message using the input from the SolarCar website. This is the following content:%0D%0A"+
-                            "%0D%0AName:%0D%0A"+
-                            name.value+"%0D%0A%0D%0AEmail:%0D%0A"+
-                            email.value+"%0D%0A%0D%0AMessage:%0D%0A"+
+    // Temp until node.js backend is implemented
+    window.location.href = 'mailto:communications@calgarysolarcar.ca?&subject=' +
+                            subject.value+'&body=A user has sent a message using the input from the SolarCar website. This is the following content:%0D%0A' +
+                            '%0D%0AName:%0D%0A' +
+                            name.value+'%0D%0A%0D%0AEmail:%0D%0A' +
+                            email.value+'%0D%0A%0D%0AMessage:%0D%0A' +
                             message.value;
-    name.value = "";
-    email.value = "";
-    subject.value = "";
-    message.value = "";
+    name.value = '';
+    email.value = '';
+    subject.value = '';
+    message.value = '';
   }
 
   constructor() {

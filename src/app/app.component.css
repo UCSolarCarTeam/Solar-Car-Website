@@ -8,29 +8,20 @@
 	width: 100%;
 }
 
-.border {
-	border: solid, 1px;
-}
-
-.min-width {
-	width: 100%;
-}
-
-.border2 {
-	border: dotted, 1px;
+.header > .nav-font {
+	font-size: 1em;
 }
 
 img {
 	height: auto;
 	min-width: .5em;
-	max-width: 20em;
+	max-width: 10em;
 }
 a {
 	color: black;
 }
 
 .header {
-	position: absolute;
  	background-color: rgba(255, 255, 255, 50);
 }
 .menu {

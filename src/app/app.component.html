@@ -1,9 +1,9 @@
-<div class="header block border2">
-  <div class="row border">
+<div class="column">
+  <div class="header block row">
     <div class="col-sm-4">
       <img src="./../assets/logo.png">
     </div>
-    <div class="col-sm-8 nav-bar min-width">
+    <div class="col-sm-8 nav-bar nav-font">
       <nav mat-tab-nav-bar class='sticky'>
         <a mat-tab-link
           *ngFor="let routeLink of routeLinks; let i = index;"
@@ -38,5 +38,5 @@
       </mat-menu>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>

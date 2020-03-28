@@ -30,10 +30,11 @@ export class ContactUsComponent implements OnInit {
     // Temp until node.js backend is implemented
     window.location.href = 'mailto:communications@calgarysolarcar.ca?&subject=' +
                             subject.value +
-                            '&body=A user has sent a message using the input from the SolarCar website. This is the following content:%0D%0A' +
+                            '&body=A user has sent a message using the input from the SolarCar website.' +
+                            'This is the following content:%0D%0A' +
                             '%0D%0AName:%0D%0A' +
-                            name.value +'%0D%0A%0D%0AEmail:%0D%0A' +
-                            email.value +'%0D%0A%0D%0AMessage:%0D%0A' +
+                            name.value + '%0D%0A%0D%0AEmail:%0D%0A' +
+                            email.value + '%0D%0A%0D%0AMessage:%0D%0A' +
                             message.value;
     name.value = '';
     email.value = '';

@@ -1,6 +1,23 @@
 .row {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+}
+.block {
+	display: block;
+	width: 100%;
+}
+
+.border {
+	border: solid, 1px;
+}
+
+.min-width {
+	width: 100%;
+}
+
+.border2 {
+	border: dotted, 1px;
 }
 
 img {
@@ -16,22 +33,22 @@ a {
 	position: absolute;
  	background-color: rgba(255, 255, 255, 50);
 }
-
-.nav-bar {
-	margin-left: 5em;
-	font-size: 2em;
-	align-items: center;
-}
-.hamburger-menu {
-	display: none;
-}
-
 .menu {
 	text-align: center;
 }
-
 @media screen
-  and (max-width: 1024px)
+  and (min-width: 1024px)
+ {
+ 	.nav-bar {
+		font-size: 2em;
+		align-items: center;
+	  }
+	  .hamburger-menu {
+	   	display: none;
+	  }
+ }
+@media screen
+  and (max-width: 1023px)
  {
 	  .nav-bar {
 	  	display: none;

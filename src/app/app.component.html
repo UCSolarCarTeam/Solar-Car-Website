@@ -1,31 +1,32 @@
-<div class="row header">
- <div class="col-sm-4">
-  <img src="./../assets/logo.png">
- </div>
- <div class="col-sm-8 nav-bar">
-   <nav mat-tab-nav-bar class='sticky'>
+<div class="header block border2">
+  <div class="row border">
+    <div class="col-sm-4">
+      <img src="./../assets/logo.png">
+    </div>
+    <div class="col-sm-8 nav-bar min-width">
+      <nav mat-tab-nav-bar class='sticky'>
         <a mat-tab-link
-         *ngFor="let routeLink of routeLinks; let i = index;"
-         [routerLink]="routeLink.link"
-         routerLinkActive
-         #rla="routerLinkActive"
-         [active]="activeLinkIndex === i"
-         (click)="activeLinkIndex = i"
-         [routerLinkActiveOptions]="{exact: true}"
-         [class]=getActiveClass(i)
-         [disableRipple]="true"
-        >
+          *ngFor="let routeLink of routeLinks; let i = index;"
+          [routerLink]="routeLink.link"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="activeLinkIndex === i"
+          (click)="activeLinkIndex = i"
+          [routerLinkActiveOptions]="{exact: true}"
+          [class]=getActiveClass(i)
+          [disableRipple]="true"
+          >
           {{routeLink.label}}
         </a>
       </nav>
-  </div>
-  <div class="hamburger-menu">
-    <button (click)="toggle()" mat-button [matMenuTriggerFor]="menu">
-      <div [ngClass]="{'change' : isOpen == true, '' : isOpen == false}" class="bar1"></div>
-      <div [ngClass]="{'change' : isOpen == true, '' : isOpen == false}" class="bar2"></div>
-      <div [ngClass]="{'change' : isOpen == true, '' : isOpen == false}" class="bar3"></div>
-    </button>
-    <mat-menu #menu="matMenu">
+    </div>
+    <div class="hamburger-menu">
+      <button (click)="toggle()" mat-button [matMenuTriggerFor]="menu">
+        <div [ngClass]="{'change' : isOpen == true, '' : isOpen == false}" class="bar1"></div>
+        <div [ngClass]="{'change' : isOpen == true, '' : isOpen == false}" class="bar2"></div>
+        <div [ngClass]="{'change' : isOpen == true, '' : isOpen == false}" class="bar3"></div>
+      </button>
+      <mat-menu #menu="matMenu">
         <button mat-menu-item *ngFor="let routeLink of routeLinks; let i = index;" [routerLink]="routeLink.link"routerLinkActive
          #rla="routerLinkActive"
          (click)="activeLinkIndex = i; toggle()"
@@ -34,7 +35,8 @@
          [disableRipple]="true" class="menu">
           {{routeLink.label}}
         </button>
-    </mat-menu>
+      </mat-menu>
+    </div>
   </div>
 </div>
 <router-outlet></router-outlet>

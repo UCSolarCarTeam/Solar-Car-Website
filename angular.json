@@ -114,6 +114,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Solar-Car-Website"
+    }
+  },
+  "defaultProject": "Solar-Car-Website",
+  "cli": {
+    "analytics": "08f03e6f-becb-4d86-be13-2f57806e39e1"
+  }
 }

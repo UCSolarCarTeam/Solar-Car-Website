@@ -12,6 +12,11 @@
 	font-size: 1em;
 }
 
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
 img {
 	height: auto;
 	min-width: .5em;

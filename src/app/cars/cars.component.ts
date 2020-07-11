@@ -13,11 +13,11 @@ export class CarsComponent implements OnInit {
   }
 
   toggleTable(name: string) {
-    var table = document.getElementById(name);
-    if (table.style.display === "none") {
-      table.style.display = "block";
+    const table = document.getElementById(name);
+    if (table.style.display === 'none') {
+      table.style.display = 'block';
     } else {
-      table.style.display = "none";
+      table.style.display = 'none';
     }
   }
 

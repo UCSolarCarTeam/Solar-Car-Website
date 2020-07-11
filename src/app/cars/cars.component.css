@@ -1,0 +1,39 @@
+#carsPage {
+  padding: 1em;
+}
+
+.car {
+  padding: 2em;
+}
+.description {
+  max-width: 80rem;
+  margin: auto;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  padding: 1rem;
+}
+
+img {
+  min-width: 50%;
+  max-width: 90%;
+}
+
+table {
+  margin: auto;
+  width: 40%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}

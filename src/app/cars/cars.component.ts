@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+  }
+
+  toggleTable(name: string) {
+    var table = document.getElementById(name);
+    if (table.style.display === "none") {
+      table.style.display = "block";
+    } else {
+      table.style.display = "none";
+    }
   }
 
 }

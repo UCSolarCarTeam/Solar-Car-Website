@@ -17,8 +17,8 @@
         touring at educational demonstrations.
         </p>
       </div>
-    <button (click)="toggleTable('gen4Table')">Specifications</button>
-    <div id="gen4Table" style="display: none">
+    <button (click)="show[0] = !show[0]">Specifications</button>
+    <div *ngIf="show[0]">
       <table>
         <tr>
           <td>Year Built</td>
@@ -143,8 +143,8 @@
         the race. The Axiom was retired in 2011 following the WSC.
         </p>
       </div>
-    <button (click)="toggleTable('gen3Table')">Specifications</button>
-    <div id="gen3Table" style="display: none">
+    <button (click)="show[1] = !show[1]">Specifications</button>
+    <div *ngIf="show[1]">
       <table>
         <tr>
           <td>Year Built</td>
@@ -243,8 +243,8 @@
         cells, a shift from the silicone cells used in the first vehicle.
         </p>
       </div>
-    <button (click)="toggleTable('gen2Table')">Specifications</button>
-    <div id="gen2Table" style="display: none">
+    <button (click)="show[2] = !show[2]">Specifications</button>
+    <div *ngIf="show[2]">
       <table>
         <tr>
           <td>Year Built</td>
@@ -336,8 +336,8 @@
         retired in 2006 when building of Schulich I began.
         </p>
       </div>
-    <button (click)="toggleTable('gen1Table')">Specifications</button>
-    <div id="gen1Table" style="display: none">
+    <button (click)="show[3] = !show[3]">Specifications</button>
+    <div *ngIf="show[3]">
       <table>
         <tr>
           <td>Year Built</td>

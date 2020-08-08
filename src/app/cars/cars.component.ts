@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarsComponent implements OnInit {
 
+  show: boolean[] = [false, false, false, false];
+
   constructor() {}
 
   ngOnInit() {

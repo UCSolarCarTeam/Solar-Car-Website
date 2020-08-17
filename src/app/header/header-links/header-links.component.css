@@ -1,0 +1,27 @@
+a {
+    color: black;
+    font-size: 0.55em;
+    min-width: 0px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+a:hover {
+    /* For larger gap in underline */
+    text-decoration: none;
+    border-bottom: 2px solid;
+}
+
+.nav-bar {
+    font-size: 2em;
+}
+
+.mat-tab-link {
+    padding: 0 20px;
+}
+
+.active-link {
+    /* For larger gap in underline */
+    text-decoration: none;
+    border-bottom: 2px solid;
+}

@@ -19,6 +19,8 @@ import { SocialMediaComponent } from './common/social-media/social-media.compone
 import { HeaderComponent } from './header/header.component';
 import { HeaderLinksComponent } from './header/header-links/header-links.component';
 import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/header-hambuger-menu.component';
+import { CaptainComponent } from './team/captain/captain.component';
+import { MembersComponent } from './team/members/members.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/heade
     HeaderComponent,
     HeaderLinksComponent,
     HeaderHambugerMenuComponent,
+    CaptainComponent,
+    MembersComponent,
   ],
   imports: [
     BrowserModule,

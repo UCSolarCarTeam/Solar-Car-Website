@@ -12,7 +12,7 @@ export class CaptainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.imagePath = '../../assets/team-members/' + this.captain.image;
+    this.imagePath = '../../assets/team-members/' + this.captain.imageName;
   }
 
 }

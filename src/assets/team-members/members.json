@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Alejandro A. Garza",
+      "position": "Team Captain",
+      "subteam": "N/A",
+      "major": "Electrical Engineering",
+      "year": 4,
+      "description": "I joined the team because I have always been passionate about clean energy and electric cars. Also I get to meet great people that share the same interests as me. Fun Fact: I love Mexican food.",
+      "imageName": "Alejandro-Garza.jpg"
+    },
+    {
+      "name": "Liam Stoddard",
+      "position": "Engineering Team Manager",
+      "subteam": "N/A",
+      "major": "Electrical Engineering",
+      "year": 5,
+      "description": "To apply my knowledge, learn new skills, and work with new technology. Fun Fact: I piloted a helicopter once. It was terrifying.",
+      "imageName": "Liam-Stoddard.jpg"
+    },
+    {
+      "name": "Joseph Stensland",
+      "position": "Business Team Manager",
+      "subteam": "N/A",
+      "major": "",
+      "year": 1,
+      "description": "?",
+      "imageName": "?"
+    },
+    {
+      "name": "Jayden Bischoff",
+      "position": "Member",
+      "subteam": "Software",
+      "major": "Software Engineering",
+      "year": 3,
+      "description": "The solar car team provided me with the opportunity to develop my understanding and knowledge of software engineering, while promoting innovation and sustainability.",
+      "imageName": "Jayden-Bischoff.jpg"
+    }
+  ]

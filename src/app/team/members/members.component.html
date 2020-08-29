@@ -1,1 +1,25 @@
-<p>members works!</p>
+<div class="members-body">
+    <div #topAnchor style="margin-top: -90px; padding-bottom: 90px"></div>
+    <div class="gallery-control">
+        <button
+        *ngFor="let section of sections"
+        mat-raised-button
+        disableRipple="true"
+        [ngClass]="{'button-active': section === activeSection}"
+        (click)="handleControlButtonClicked(section)">{{section}}</button>
+    </div>
+    <div class="gallery">
+        <app-gallery-item
+        *ngFor="let member of membersToDisplay"
+        [member]="member">
+        </app-gallery-item>
+    </div>
+    <div class="paginator-container">
+        <mat-paginator #paginator
+              [length]="currentMemberList.length"
+              [pageSize]="9"
+              [hidePageSize]="true"
+              (page)="handlePaginatorClicked($event)">
+        </mat-paginator>
+    </div>
+</div>

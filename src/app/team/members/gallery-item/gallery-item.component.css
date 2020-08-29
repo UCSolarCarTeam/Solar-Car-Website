@@ -1,0 +1,36 @@
+.gallery-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+}
+
+span {
+    text-align: left;
+}
+
+.name{
+    color: #BF1C1C;
+    font-size: 1.2em;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    background-color: #E1DFDF;
+    padding: 0.5em 0.7em 0em 0.7em;
+    overflow: hidden;
+
+    /* Expands div to fill remaining height */
+    flex-grow: 1; 
+}
+
+.description {
+    overflow: hidden;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

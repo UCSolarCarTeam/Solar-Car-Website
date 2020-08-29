@@ -1,0 +1,57 @@
+
+.gallery {
+    margin: auto;
+    width: 80%;
+    max-width: 1200px;
+    min-height: 1500px;
+    
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+}
+
+.gallery-control {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 850px;
+    margin: 2.5em auto 2.5em auto;
+}
+
+button:focus, .button-active {
+    background-color: #BF1C1C;
+    box-shadow: 0 0 0 2pt #8f1414;
+    outline: none;
+}
+
+.paginator-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: #414141;
+    color: white;
+    border-radius: 8px;
+    min-width: 128px;
+}
+
+button:hover {
+    background-color: #BF1C1C;
+    box-shadow: 0 0 0 2pt #BF1C1C;
+}
+
+@media screen
+    and (max-width: 1024px) {
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+@media screen
+    and (max-width: 480px) {
+        .gallery {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }

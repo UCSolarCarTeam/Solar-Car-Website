@@ -6,6 +6,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { HeaderLinksComponent } from './header/header-links/header-links.compone
 import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/header-hambuger-menu.component';
 import { CaptainComponent } from './team/captain/captain.component';
 import { MembersComponent } from './team/members/members.component';
+import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.component';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { MembersComponent } from './team/members/members.component';
     HeaderHambugerMenuComponent,
     CaptainComponent,
     MembersComponent,
+    GalleryItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { MembersComponent } from './team/members/members.component';
     MatButtonModule,
     MatButtonToggleModule,
     MatMenuModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

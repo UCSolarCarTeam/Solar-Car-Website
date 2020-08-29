@@ -11,7 +11,6 @@ export class TeamComponent implements OnInit {
   teamCaptain: Member;
   enggManager: Member;
   businessManager: Member;
-  members: Member[];
 
   constructor(private m: MembersService) { }
 
@@ -19,7 +18,5 @@ export class TeamComponent implements OnInit {
     this.teamCaptain = this.m.TeamCaptain();
     this.enggManager = this.m.EngineeringManager();
     this.businessManager = this.m.BusinessManager();
-    this.members = this.m.AllMembers();
   }
-
 }

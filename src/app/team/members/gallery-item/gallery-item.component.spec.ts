@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderLinksComponent } from './header-links.component';
+import { GalleryItemComponent } from './gallery-item.component';
 
-describe('HeaderNavbarComponent', () => {
-  let component: HeaderLinksComponent;
-  let fixture: ComponentFixture<HeaderLinksComponent>;
+describe('GalleryItemComponent', () => {
+  let component: GalleryItemComponent;
+  let fixture: ComponentFixture<GalleryItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderLinksComponent ]
+      declarations: [ GalleryItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderLinksComponent);
+    fixture = TestBed.createComponent(GalleryItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

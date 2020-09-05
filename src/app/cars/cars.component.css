@@ -1,10 +1,9 @@
 #carsPage {
-  padding: 1em;
+  padding-top: 1em;
+  background-color: black;
+  color: white;
 }
 
-.car {
-  padding: 2em;
-}
 .description {
   max-width: 80rem;
   margin: auto;

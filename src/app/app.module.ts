@@ -16,6 +16,7 @@ import { NewsComponent } from './news/news.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TeamComponent } from './team/team.component';
 import { SocialMediaComponent } from './common/social-media/social-media.component';
+import { CarsInfoComponent } from './cars/cars-info/cars-info.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SocialMediaComponent } from './common/social-media/social-media.compone
     ContactUsComponent,
     TeamComponent,
     SocialMediaComponent,
+    CarsInfoComponent,
   ],
   imports: [
     BrowserModule,

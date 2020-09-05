@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CarsInfoComponent} from './cars-info/cars-info.component';
 
 @Component({
   selector: 'app-cars',

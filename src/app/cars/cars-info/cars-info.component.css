@@ -1,0 +1,35 @@
+.car {
+  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+  grid-template-rows: 1fr;
+}
+
+.body {
+  display: grid;
+  background-color: gray;
+}
+
+.element {
+  display: inline-block;
+}
+
+.image {
+  grid-column: 1;
+}
+
+.description {
+  grid-column: 2;
+  padding: 5em;
+  max-width: 40rem;
+  margin: auto;
+}
+
+table {
+  margin: auto;
+  width: 40%;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}

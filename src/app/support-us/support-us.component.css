@@ -24,5 +24,10 @@ a {
 .column {
 	margin: auto;
 	margin-top: 150px;
-	width: 60%;
+	width: 50%;
+	text-align: center;
+}
+
+.buttons {
+	background-color: #BF1C1C;
 }

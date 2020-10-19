@@ -1,278 +1,136 @@
 <div id="carsPage">
+
   <app-cars-info
-    car="Schulich Delta"
+    car='Schulich Elysia'
+    gen='5'
+    flip=true
+    image='assets/Gen5.jpg'
+    [description]="desc[0]"
+  >
+  </app-cars-info>
+  <div id="button">
+    <button>Learn More</button>
+  </div>
+
+  <app-cars-info
+    car='Schulich Delta'
+    gen='4'
+    image='assets/Gen4.jpg'
+    [description]="desc[1]"
+    showSpecs=true
+    [specs]="[['Year Built','2012, 2013'],
+              ['Body Style', 'Two-door coupe with large rear hatch'],
+              ['Seating', 'Two front'],
+              ['Seating', 'Two-door coupe with large rear hatch'],
+              ['Motor', 'Two rear in-wheel direct drive motors'],
+              ['Brakes', 'Four wheel hydraulic disc brakes, two wheel electronic regenerative'],
+              ['Storage Capacity', '0.56 cubic metres (20 cubic ft)'],
+              ['Time to Design', '8 months'],
+              ['Mold Construction', '3 months'],
+              ['Car Construction', '3 months'],
+              ['Weight', '320 kg (700 lbs)'],
+              ['Length', '4.5 metres (15 ft)'],
+              ['Height', '1.2 metres (4 ft)'],
+              ['Width', '1.8 metres (6 ft)'],
+              ['Track', '1.4 metres (4.6 ft)'],
+              ['Base', '2.7 metres (8.9 ft)'],
+              ['Array Power', '1000-1200 Watts'],
+              ['Solar Cells', '370 Mono-Crystalline Silicon Cells'],
+              ['MPPT (Maximum Power Point Tracker)', '10 Custom UC Solar MPPTs'],
+              ['Batteries', '1353 Li-Ion 18650 cells (61.6 kg)'],
+              ['Battery Box', 'Kevlar'],
+              ['Instrumentation and Communications', 'Driver display in steering wheel, tablet interface in dash, wifi link to chase vehicle'],
+              ['Suspension', 'Double A-Arm, aluminum and steel'],
+              ['Top Shell', 'Carbon Fibre Reinforced EPS'],
+              ['Bottom Shell', 'Carbon Fibre Reinforced Corecell, EPS Mix'],
+              ['Chassis', 'Carbon Fibre and Kevlar Reinforced Corecell Monocoque']
+              ]"
   >
   </app-cars-info>
 
-  <div class="car">
-    <h3>
-      Schulich Axiom - Generation 3
-      </h3>
-    <img src="assets/Gen3.jpg" class="center">
-    <div class="description">
-      <p>
-        The Schulich Axiom was the final Challenger class car built by the University of Calgary Solar Car Team.
-        Axiom completed in the 2010 Formula Sun Grand Prix, finishing 6th and covering 418.2 miles, the best-ever
-        finish by a University of Calgary car. The FSGP was the qualifier for the 2010 American Solar Challenge,
-        with that year's course from Broken Arrow, OK to Naperville, IL. The Axiom again finished 6th, completing
-        the course in 33:35.26, 5 hours behind the winning team. This equaled the previous best Solar Challenge
-        finish from a UC Solar Team Car. In both races, the Schulich Axiom was the top Canadian team.
-        <br>
-        The following year the Axiom competed in the 2011 World Solar Challenge, finishing 18th in the race from
-        Darwin, Northern Territory to Adelaide, South Australia. The vehicle covered 1840 km over the course of
-        the race. The Axiom was retired in 2011 following the WSC.
-        </p>
-      </div>
-    <button (click)="show[1] = !show[1]">Specifications</button>
-    <div *ngIf="show[1]">
-      <table>
-        <tr>
-          <td>Year Built</td>
-          <td>2009/2010</td>
-        </tr>
-        <tr>
-          <td>Budget</td>
-          <td>$650,000</td>
-        </tr>
-        <tr>
-          <td>Time to Design</td>
-          <td>6 months</td>
-        </tr>
-        <tr>
-          <td>Time to Build</td>
-          <td>6 months</td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td>160 kg (353 lbs)</td>
-        </tr>
-        <tr>
-          <td>Length</td>
-          <td>5 metres</td>
-        </tr>
-        <tr>
-          <td>Height</td>
-          <td>1.2 metres</td>
-        </tr>
-        <tr>
-          <td>Width</td>
-          <td>1.8 metres</td>
-        </tr>
-        <tr>
-          <td>Top Speed</td>
-          <td>130 km/h</td>
-        </tr>
-        <tr>
-          <td>Speed at Cruise</td>
-          <td>85 km/h</td>
-        </tr>
-        <tr>
-          <td>Array Power</td>
-          <td>1200 Watts</td>
-        </tr>
-        <tr>
-          <td>Solar Cells</td>
-          <td>250 Bosch Silicon Mono-Crystalline</td>
-        </tr>
-        <tr>
-          <td>MPPT (Maximum Power Point Tracker)</td>
-          <td>10 Custom UC Solar MPPTs</td>
-        </tr>
-        <tr>
-          <td>Batteries</td>
-          <td>476 Li-Ion 18650 cells (21 kg)</td>
-        </tr>
-        <tr>
-          <td>Battery Box</td>
-          <td>Kevlar</td>
-        </tr>
-        <tr>
-          <td>Communications</td>
-          <td>Computer-automated wifi diagnostics and UHF radio</td>
-        </tr>
-        <tr>
-          <td>Suspension</td>
-          <td>Double A-Arm, aluminum and steel</td>
-        </tr>
-        <tr>
-          <td>Roll Bar</td>
-          <td>Titanium</td>
-        </tr>
-        <tr>
-          <td>Chassis, Top and Bottom Shells</td>
-          <td>Carbon Fibre Reinforced Corecell, EPS Mix</td>
-        </tr>
-      </table>
-      </div>
-    </div>
+  <app-cars-info
+    car='Schulich Axiom'
+    gen='3'
+    flip=true
+    image='assets/Gen3.jpg'
+    [description]="desc[2]"
+    showSpecs=true
+    [specs]="[['Year Built','2009/2010'],
+              ['Budget', '$650,000'],
+              ['Time to Design', '6 months'],
+              ['Time to Build', '6 months'],
+              ['Weight', '160 kg (353 lbs)'],
+              ['Length', '5 metres'],
+              ['Height', '1.2 metres'],
+              ['Width', '1.8 metres'],
+              ['Top Speed', '130 km/h'],
+              ['Speed at Cruise', '85 km/h'],
+              ['Array Power', '1200 Watts'],
+              ['Solar Cells', '250 Bosch Silicon Mono-Crystalline'],
+              ['MPPT (Maximum Power Point Tracker)', '10 Custom UC Solar MPPTs'],
+              ['Batteries', '476 Li-Ion 18650 cells (21 kg)'],
+              ['Battery Box', 'Kevlar'],
+              ['Communications', 'Computer-automated wifi diagnostics and UHF radio'],
+              ['Suspension', 'Double A-arm, aluminum'],
+              ['Roll Bar', 'Titanium'],
+              ['Chassis, Top and Bottom Shells', 'Carbon Fibre']
+              ]"
+  >
+  </app-cars-info>
 
-  <div class="car">
-    <h3>
-      Schulich I - Generation 2
-    </h3>
-    <img src="assets/Gen2.jpg" class="center">
-    <div class="description">
-      <p>
-        The Schulich I made its race debut at the 2007 Panasonic World Solar Challenge held in Australia. The
-        Schulich I finished in the Challenge race 8th, completing the 2999 km course in 51 hr, 43 min and arriving
-        as the top Canadian team. The next year the vehicle raced the 2008 North American Solar Challenge from Plano,
-        TX to Calgary, AB. Schulich I finished 6th, then the top ever Calgary finish, now tied with the 2010 race for
-        best finish. The driving time for the 2008 NASC was 75:42.53.
-        <br>
-        This vehicle was the second car built by the University of Calgary Team and featured new gallium arsenide solar
-        cells, a shift from the silicone cells used in the first vehicle.
-        </p>
-      </div>
-    <button (click)="show[2] = !show[2]">Specifications</button>
-    <div *ngIf="show[2]">
-      <table>
-        <tr>
-          <td>Year Built</td>
-          <td>2007</td>
-        </tr>
-        <tr>
-          <td>Budget</td>
-          <td>$750,000</td>
-        </tr>
-        <tr>
-          <td>Time to Build</td>
-          <td>9 months</td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td>220 kg (484 lbs)</td>
-        </tr>
-        <tr>
-          <td>Length</td>
-          <td>5 metres</td>
-        </tr>
-        <tr>
-          <td>Height</td>
-          <td>1.15 metres</td>
-        </tr>
-        <tr>
-          <td>Width</td>
-          <td>1.76 metres</td>
-        </tr>
-        <tr>
-          <td>Top Speed</td>
-          <td>110 km/h</td>
-        </tr>
-        <tr>
-          <td>Speed at Cruise</td>
-          <td>70-80 km/h</td>
-        </tr>
-        <tr>
-          <td>Array Power</td>
-          <td>2,300 Watts</td>
-        </tr>
-        <tr>
-          <td>Solar Cells</td>
-          <td>2,208 Triple Junction Gallium Arsenide Cells</td>
-        </tr>
-        <tr>
-          <td>Batteries</td>
-          <td>364 Lithium Polymer Batteries (30 kg)</td>
-        </tr>
-        <tr>
-          <td>Battery Box</td>
-          <td>Kevlar</td>
-        </tr>
-        <tr>
-          <td>Communications</td>
-          <td>Computer-automated wifi diagnostics and UHF radio</td>
-        </tr>
-        <tr>
-          <td>Chassis</td>
-          <td>Chromium-Molybdenum Steel</td>
-        </tr>
-        <tr>
-          <td>Top Shell</td>
-          <td>Kevlar</td>
-        </tr>
-        <tr>
-          <td>Bottom Shell</td>
-          <td>Carbon Fibre Reinforced Corecell, EPS Mix</td>
-        </tr>
-      </table>
-      </div>
-    </div>
+  <app-cars-info
+    car='Schulich I'
+    gen='2'
+    image='assets/Gen2.jpg'
+    [description]="desc[3]"
+    showSpecs=true
+    [specs]="[['Year Built','2007'],
+              ['Budget','$750,000'],
+              ['Time to Build','9 months'],
+              ['Weight','220 kg (484 lbs)'],
+              ['Length','5 metres'],
+              ['Height','1.15 metres'],
+              ['Width','1.76 metres'],
+              ['Top Speed','110 km/h'],
+              ['Speed at Cruise','70-80 km/h'],
+              ['Array Power','2,300 Watts'],
+              ['Solar Cells','2,208 Triple Junction Gallium Arsenide Cells'],
+              ['Batteries','364 Lithium Polymer Batteries (30 kg)'],
+              ['Battery Box','Kevlar'],
+              ['Communications','Computer-automated wifi diagnostics and UHF radio'],
+              ['Chassis','Chromium-Molybdenum Steel'],
+              ['Top Shell','Kevlar'],
+              ['Bottom Shell','Carbon Fibre']
+              ]"
+  >
+  </app-cars-info>
 
-  <div class="car">
-    <h3>
-      Soleon - Generation 1
-    </h3>
-    <img src="assets/Gen1.jpg" class="center">
-    <div class="description">
-      <p>
-        Production of the Soleon vehicle began when it was announced that the American Solar Challenge would become the
-        North American Solar Challenge and would run from Austin, TX to Calgary, AB. Beginning in 2004, the Soleon was
-        built in 9 months and was the first project of the University of Calgary Solar Car Team.
-        <br>
-        Soleon was completed in time for the inaugural NASC (2005) where it became the first University of Calgary
-        car to compete, finishing 13th, an incredible finish for a first-time team, with total driving time of
-        73:55.13. The car was then transported to Australia where it raced the 2005 World Solar Challenge,
-        completing the 2998.3 km course and finishing 10th against many more experienced teams. The Soleon was
-        retired in 2006 when building of Schulich I began.
-        </p>
-      </div>
-    <button (click)="show[3] = !show[3]">Specifications</button>
-    <div *ngIf="show[3]">
-      <table>
-        <tr>
-          <td>Year Built</td>
-          <td>2004/2005</td>
-        </tr>
-        <tr>
-          <td>Budget</td>
-          <td>$300,000</td>
-        </tr>
-        <tr>
-          <td>Time to Build</td>
-          <td>9 months</td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td>220 kg (484 lbs)</td>
-        </tr>
-        <tr>
-          <td>Top Speed</td>
-          <td>100 km/h</td>
-        </tr>
-        <tr>
-          <td>Speed at Cruise</td>
-          <td>70-80 km/h</td>
-        </tr>
-        <tr>
-          <td>Array Power</td>
-          <td>1,800 Watts</td>
-        </tr>
-        <tr>
-          <td>Solar Cells</td>
-          <td>468 Silicon Cells</td>
-        </tr>
-        <tr>
-          <td>Batteries</td>
-          <td>Lithium Polymer Batteries</td>
-        </tr>
-        <tr>
-          <td>Battery Box</td>
-          <td>Kevlar</td>
-        </tr>
-        <tr>
-          <td>Chassis</td>
-          <td>Aluminium</td>
-        </tr>
-        <tr>
-          <td>Top Shell</td>
-          <td>Kevlar</td>
-        </tr>
-        <tr>
-          <td>Bottom Shell</td>
-          <td>Carbon Fibre</td>
-        </tr>
-      </table>
-      </div>
-    </div>
+  <app-cars-info
+    car='Solean'
+    gen='1'
+    flip=true
+    image='assets/Gen1.jpg'
+    [description]="desc[4]"
+    showSpecs=true
+    [specs]="[['Year Built','2007'],
+              ['Budget','$750,000'],
+              ['Time to Build','9 months'],
+              ['Weight','220 kg (484 lbs)'],
+              ['Length','5 metres'],
+              ['Height','1.15 metres'],
+              ['Width','1.76 metres'],
+              ['Top Speed','110 km/h'],
+              ['Speed at Cruise','70-80 km/h'],
+              ['Array Power','2,300 Watts'],
+              ['Solar Cells','2,208 Triple Junction Gallium Arsenide Cells'],
+              ['Batteries','364 Lithium Polymer Batteries (30 kg)'],
+              ['Battery Box','Kevlar'],
+              ['Communications','Computer-automated wifi diagnostics and UHF radio'],
+              ['Chassis','Chromium-Molybdenum Steel'],
+              ['Top Shell','Kevlar'],
+              ['Bottom Shell','Carbon Fibre']
+              ]"
+  >
+  </app-cars-info>
 
   </div>

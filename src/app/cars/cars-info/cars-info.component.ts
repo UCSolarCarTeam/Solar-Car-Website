@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { stringify } from 'querystring';
 import {CarData} from './car-data';
 
 @Component({
@@ -9,10 +10,27 @@ import {CarData} from './car-data';
 export class CarsInfoComponent implements OnInit {
 
   @Input() car: string;
+  @Input() gen: string;
+  @Input() flip: boolean = false;
+  @Input() image: string;
+  @Input() description: string[];
+  @Input() showSpecs: boolean = false;
+  @Input() specs: string[][];
 
-  constructor() { }
+  specs1: string[][];
+  specs2: string[][];
+
+  show: boolean = false;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    if(this.specs)
+    {
+      this.specs1 = this.specs.slice(0, this.specs.length/2);
+      this.specs2 = this.specs.slice(this.specs.length/2, this.specs.length);
+    }
   }
 
 }

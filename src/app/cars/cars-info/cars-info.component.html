@@ -1,132 +1,59 @@
 <div class="car">
-  <div class="body">
-    <div class="element">
-      <img src="assets/Gen4.jpg" class="image">
-    </div>
+  <div class="grid-container">
+    <div *ngIf="!flip">
+      <img src={{image}} class="image">
+      </div>
+
     <div class="description">
       <h6>
-        Generation 4
+        GENERATION {{gen}}
         </h6>
-      <h1>
+      <h1 class="underline">
         {{car}}
         </h1>
-      <p>
-        The Schulich Delta became the first cruiser-class car to compete in the Formula Sun Grand Prix in 2015.
-        The Delta was also Canada's first cruiser class car. Construction on this generation began in 2012 and,
-        as the first car of this type built by the University of Calgary Solar Car team, construction presented
-        some new challenges and learning experiences for the team.
-        <br>
-        The Delta raced in the 2013 Bridgestone World Solar Challenge, finishing 8th in the Cruiser class. The
-        car was then improved before racing the 2015 American Solar Challenge where it finished 9th, completing
-        84 laps with a fastest lap of 5:33.886. The Delta was officially retired in 2015 but has continued
-        touring at educational demonstrations.
+      <p *ngFor="let paragraph of description">
+        {{paragraph}}
         </p>
-      </div>
-  </div>
+        </div>
 
-  <button>Specifications</button>
-  <div>
-    <table>
-      <tr>
-        <td>Year Built</td>
-        <td>2012/2013</td>
-      </tr>
-      <tr>
-        <td>Body Style</td>
-        <td>Two-door coupe with large rear hatch</td>
-      </tr>
-      <tr>
-        <td>Seating</td>
-        <td>Two front</td>
-      </tr>
-      <tr>
-        <td>Motor</td>
-        <td>Two rear in-wheel direct drive motors</td>
-      </tr>
-      <tr>
-        <td>Brakes</td>
-        <td>Four wheel hydraulic disc brakes, two wheel electronic regenerative</td>
-      </tr>
-      <tr>
-        <td>Storage Capacity</td>
-        <td>0.56 cubic metres (20 cubic ft)</td>
-      </tr>
-      <tr>
-        <td>Time to Design</td>
-        <td>8 months</td>
-      </tr>
-      <tr>
-        <td>Mold Construction</td>
-        <td>3 months</td>
-      </tr>
-      <tr>
-        <td>Car Construction</td>
-        <td>3 months</td>
-      </tr>
-      <tr>
-        <td>Weight</td>
-        <td>320 kg (700 lbs)</td>
-      </tr>
-      <tr>
-        <td>Length</td>
-        <td>4.5 metres (15 ft)</td>
-      </tr>
-      <tr>
-        <td>Height</td>
-        <td>1.2 metres (4 ft)</td>
-      </tr>
-      <tr>
-        <td>Width</td>
-        <td>1.8 metres (6 ft)</td>
-      </tr>
-      <tr>
-        <td>Track</td>
-        <td>1.4 metres (4.6 ft)</td>
-      </tr>
-      <tr>
-        <td>Base</td>
-        <td>2.7 metres (8.9 ft)</td>
-      </tr>
-      <tr>
-        <td>Array Power</td>
-        <td>1000-1200 Watts</td>
-      </tr>
-      <tr>
-        <td>Solar Cells</td>
-        <td>370 Mono-Crystalline Silicon Cells</td>
-      </tr>
-      <tr>
-        <td>MPPT (Maximum Power Point Tracker)</td>
-        <td>10 Custom UC Solar MPPTs</td>
-      </tr>
-      <tr>
-        <td>Batteries</td>
-        <td>1353 Li-Ion 18650 cells (61.6 kg)</td>
-      </tr>
-      <tr>
-        <td>Battery Box</td>
-        <td>Kevlar</td>
-      </tr>
-      <tr>
-        <td>Instrumentation and Communications</td>
-        <td>Driver display in steering wheel, tablet interface in dash, wifi link to chase vehicle</td>
-      </tr>
-      <tr>
-        <td>Suspension</td>
-        <td>Double A-Arm, aluminum and steel</td>
-      </tr>
-      <tr>
-        <td>Top Shell</td>
-        <td>Carbon Fibre Reinforced EPS</td>
-      </tr>
-      <tr>
-        <td>Bottom Shell</td>
-        <td>Carbon Fibre Reinforced Corecell, EPS Mix</td>
-      </tr>
-      <tr>
-        <td>Chassis</td>
-        <td>Carbon Fibre and Kevlar Reinforced Corecell Monocoque</td>
-      </tr>
-    </table>
+      <div *ngIf="flip">
+        <img src={{image}} class="image">
+        </div>
     </div>
+
+  <button *ngIf="showSpecs" (click)="show = !show">
+    <div *ngIf="show">
+      <svg width="100" height="100">
+        <circle r="30" cx="50" cy="40" fill="none" stroke="white" stroke-width="7"/>
+        <rect x="35" y="36" height="7" width="30" fill="white"/>
+        </svg>
+      </div>
+    <div *ngIf="!show">
+      <svg width="100" height="100">
+        <circle r="30" cx="50" cy="40" fill="none" stroke="white" stroke-width="7"/>
+        <rect x="46" y="25" height="30" width="7" fill="white"/>
+        <rect x="35" y="36" height="7" width="30" fill="white"/>
+        </svg>
+      </div>
+    </button>
+
+  <h1 *ngIf="showSpecs" id="Specifications">
+    Specifications
+    </h1>
+
+  <div *ngIf="show" class="grid-container-specs">
+    <div class="specs1">
+      <div *ngFor="let spec of specs1">
+        <h5>{{spec[0]}}</h5>
+        <p>{{spec[1]}}</p>
+        </div>
+      </div>
+    <div class="specs2">
+      <div *ngFor="let spec of specs2">
+        <h5>{{spec[0]}}</h5>
+        <p>{{spec[1]}}</p>
+        </div>
+      </div>
+    </div>
+
   </div>

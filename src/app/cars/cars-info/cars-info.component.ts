@@ -26,9 +26,9 @@ export class CarsInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.specs) {
-      this.specs1 = this.specs.slice(0, this.specs.length/2);
-      this.specs2 = this.specs.slice(this.specs.length/2, this.specs.length);
+    if( this.specs ) {
+      this.specs1 = this.specs.slice( 0, this.specs.length/2 );
+      this.specs2 = this.specs.slice( this.specs.length/2, this.specs.length );
     }
   }
 

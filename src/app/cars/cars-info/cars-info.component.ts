@@ -11,23 +11,22 @@ export class CarsInfoComponent implements OnInit {
 
   @Input() car: string;
   @Input() gen: string;
-  @Input() flip: boolean = false;
+  @Input() flip = false;
   @Input() image: string;
   @Input() description: string[];
-  @Input() showSpecs: boolean = false;
+  @Input() showSpecs = false;
   @Input() specs: string[][];
 
   specs1: string[][];
   specs2: string[][];
 
-  show: boolean = false;
+  show = false;
 
   constructor() {
   }
 
   ngOnInit() {
-    if(this.specs)
-    {
+    if(this.specs) {
       this.specs1 = this.specs.slice(0, this.specs.length/2);
       this.specs2 = this.specs.slice(this.specs.length/2, this.specs.length);
     }

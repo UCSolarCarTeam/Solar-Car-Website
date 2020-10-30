@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Alejandro A. Garza",
+    "subteam": "N/A",
+    "position": "Team Captain",
+    "major": "Electrical Engineering",
+    "year": 4,
+    "description": "I joined the team because I have always been passionate about clean energy and electric cars. Also I get to meet great people that share the same interests as me. Fun Fact: I love Mexican food.",
+    "imageName": "Alejandro-Garza.jpg"
+  },
+  {
+    "name": "Liam Stoddard",
+    "subteam": "N/A",
+    "position": "Engineering Team Manager",
+    "major": "Electrical Engineering",
+    "year": 5,
+    "description": "To apply my knowledge, learn new skills, and work with new technology. Fun Fact: I piloted a helicopter once. It was terrifying.",
+    "imageName": "Liam-Stoddard.jpg"
+  },
+  {
+    "name": "Joseph Stensland",
+    "subteam": "N/A",
+    "position": "Business Team Manager",
+    "major": "",
+    "year": 4,
+    "description": "",
+    "imageName": ""
+  },
+  {
+    "name": "Jayden Bischoff",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 3,
+    "description": "The solar car team provided me with the opportunity to develop my understanding and knowledge of software engineering, while promoting innovation and sustainability.",
+    "imageName": "Jayden-Bischoff.jpg"
+  },
+  {
+    "name": "Sami Abdelhalem",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 3,
+    "description": "To help make sustainable technology more efficient. Fun Fact: I was born in the arctic.",
+    "imageName": "Sami-Abdelhalem.jpg"
+  },
+  {
+    "name": "Brandon Liao",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 3,
+    "description": "I was always super curious about solar powered cars and how they work. Fun Fact: I used to do 100m sprints in the track team back in highschool.",
+    "imageName": "Brandon-Liao.jpg"
+  },
+  {
+    "name": "Kayla Brehon",
+    "subteam": "Sponsorship",
+    "position": "Member",
+    "major": "Political Science",
+    "year": 4,
+    "description": "I joined the team because I wanted to become learn more about and become more involved within the sustainable energy sector! Fun Fact: I am a foil fencer!",
+    "imageName": "Kayla-Brehon.jpg"
+  },
+  {
+    "name": "Christopher Chou",
+    "subteam": "Accounting",
+    "position": "Manager",
+    "major": "Accounting",
+    "year": 3,
+    "description": "Fun Fact: I have a hard time remembering lyrics, however I do like to rap! I also played the tuba for 4 years.",
+    "imageName": "Kayla-Brehon.jpg"
+  },
+  {
+    "name": "Brandon Tran",
+    "subteam": "Mechanical",
+    "position": "Manager",
+    "major": "Mechanical Engineering",
+    "year": 3,
+    "description": "I liked the idea of designing and creating an electric car. Fun Fact: I like creating costumes that have mechanisms. I am also left handed.",
+    "imageName": "Kayla-Brehon.jpg"
+  },
+  {
+    "name": "Navjot Brar",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 3,
+    "description": "I joined the team to develop the skills to work in a group to build a large project together. I wanted to work with hardworking students to accomplish the common goal of pushing the boundaries in the field of Solar Cars.",
+    "imageName": "Kayla-Brehon.jpg"
+  },
+  {
+    "name": "Ismail Majed",
+    "subteam": "Electrical",
+    "position": "Manager",
+    "major": "Electrical Engineering",
+    "year": 3,
+    "description": "To gain some design experience and apply everything I've learned on something tangible. Fun Fact: I love pineapple on pizza.",
+    "imageName": "Kayla-Brehon.jpg"
+  },
+  {
+    "name": "Andy Smit",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 1,
+    "description": "To learn more and gain experience in engineering. Fun Fact: I was part of the technical theatre program at my high school.",
+    "imageName": "Kayla-Brehon.jpg"
+  },
+  {
+    "name": "Andy Smit2",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 1,
+    "description": "To learn more and gain experience in engineering. Fun Fact: I was part of the technical theatre program at my high school.",
+    "imageName": "Kayla-Brehon.jpg"
+  }
+]

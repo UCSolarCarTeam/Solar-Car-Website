@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Member } from './member.model';
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'app-team',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
+  teamCaptain: Member;
+  enggManager: Member;
+  businessManager: Member;
 
-  constructor() { }
+  constructor(private m: MembersService) { }
 
   ngOnInit() {
+    this.teamCaptain = this.m.TeamCaptain();
+    this.enggManager = this.m.EngineeringManager();
+    this.businessManager = this.m.BusinessManager();
   }
-
 }

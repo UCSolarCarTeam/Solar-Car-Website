@@ -6,6 +6,7 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
 import { NewsComponent } from './news/news.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TeamComponent } from './team/team.component';
+import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
     { path: 'cars', component: CarsComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'team', component: TeamComponent },
     { path: 'contact-us', component: ContactUsComponent },
-    { path: '**', redirectTo: '/', pathMatch: 'full' }
+    { path: '', component: MainComponent },
+    { path: '**', redirectTo: 'main', pathMatch: 'full' }
     ];
 
 @NgModule({

@@ -23,7 +23,7 @@ import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/heade
 import { CaptainComponent } from './team/captain/captain.component';
 import { MembersComponent } from './team/members/members.component';
 import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.component';
-
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.c
     CaptainComponent,
     MembersComponent,
     GalleryItemComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

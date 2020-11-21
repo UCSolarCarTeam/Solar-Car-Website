@@ -17,6 +17,7 @@ import { NewsComponent } from './news/news.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TeamComponent } from './team/team.component';
 import { SocialMediaComponent } from './common/social-media/social-media.component';
+import { CarsInfoComponent } from './cars/cars-info/cars-info.component';
 import { HeaderComponent } from './header/header.component';
 import { HeaderLinksComponent } from './header/header-links/header-links.component';
 import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/header-hambuger-menu.component';
@@ -35,6 +36,7 @@ import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.c
     ContactUsComponent,
     TeamComponent,
     SocialMediaComponent,
+    CarsInfoComponent,
     HeaderComponent,
     HeaderLinksComponent,
     HeaderHambugerMenuComponent,

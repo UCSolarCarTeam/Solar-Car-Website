@@ -26,13 +26,13 @@ export class FooterComponent {
       { label: 'Instagram', icon: faInstagram, link: 'https://www.instagram.com/uofc_solarcar/', },
       { label: 'Facebook',  icon: faFacebook,  link: 'https://www.facebook.com/UofCSolarTeam',   },
       { label: 'Twitter',   icon: faTwitter,   link: 'https://twitter.com/uofcsolarcar',         }
-    ]
+    ];
 
     this.contact = {
       email:    'communications@calgarysolarcar.ca',
       building: 'ENC 36, Schulich School of Engineering',
       address:  '2500 University Dr NW',
       postal:   'Calgary, AB T2N 1N4'
-    }
+    };
   }
 }

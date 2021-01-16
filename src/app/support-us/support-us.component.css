@@ -1,10 +1,16 @@
 .border-box {
 	border-style: solid;
-	border-width: 1px;
+	border-width: 3px;
 	border-color: black;
 	padding: 2em;
 	margin: 2em;
 	justify-content: space-between;
+}
+
+.title {
+	margin: auto;
+	width: 87%;
+	justify-content: center;
 }
 
 button {
@@ -16,5 +22,12 @@ a {
 }
 
 .column {
-	margin-top: 90px;
+	margin: auto;
+	margin-top: 150px;
+	width: 50%;
+	text-align: center;
+}
+
+.buttons {
+	background-color: #BF1C1C;
 }

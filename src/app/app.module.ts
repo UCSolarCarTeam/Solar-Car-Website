@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -24,6 +25,7 @@ import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/heade
 import { CaptainComponent } from './team/captain/captain.component';
 import { MembersComponent } from './team/members/members.component';
 import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -43,6 +45,7 @@ import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.c
     CaptainComponent,
     MembersComponent,
     GalleryItemComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.c
     }),
     BrowserAnimationsModule,
     AppRoutingModule,
+    FontAwesomeModule,
     MatTabsModule,
     MatButtonModule,
     MatButtonToggleModule,

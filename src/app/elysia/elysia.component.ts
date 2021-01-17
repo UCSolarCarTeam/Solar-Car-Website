@@ -28,7 +28,7 @@ export class ElysiaComponent implements OnInit {
                         'assets/elysia/gallery/img8.jpg'
                        ];
 
-    this.specs = [['Year Built','2016/2019'],
+    this.specs = [['Year Built', '2016/2019'],
                   ['Body Style', 'Two-door coupe with large rear hatch'],
                   ['Seating', 'Two front'],
                   ['Motor', 'Two rear in-wheel direct drive motors'],
@@ -47,7 +47,9 @@ export class ElysiaComponent implements OnInit {
                   ['MPPT (Maximum Power Point Tracker)', '2 Two-Channel MPPTs by Dilithium Power Systems'],
                   ['Batteries', '1353 Li-Ion 1440 cells (244.4 lbs)'],
                   ['Battery Box', 'Innegra/ Basalt Composite'],
-                  ['Instrumentation and Communications', 'Driver display in steering wheel, tablet interface in dash, wifi link to chase vehicle'],
+                  ['Instrumentation and Communications',
+                   'Driver display in steering wheel, tablet interface in dash, wifi link to chase vehicle'
+                  ],
                   ['Suspension', 'Double A-Arm, aluminum and steel'],
                   ['Top Shell', 'Carbon Fibre Reinforced EPS'],
                   ['Bottom Shell', 'Carbon Fibre Reinforced Corecell, EPS Mix'],

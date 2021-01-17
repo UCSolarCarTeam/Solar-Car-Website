@@ -1,3 +1,69 @@
 #elysiaPage {
     margin-top: 90px;
+    text-align: center;
+}
+
+#MainImg {
+    width: 100%;
+    min-height: 50vw;
+    display: block;
+    background: white;
+}
+
+#TeamImg {
+    width: 100%;
+    min-height: 15vw;
+    display: block;
+    background: white;
+}
+
+.grid-container-specs {
+    padding: 3em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: large;
+}
+
+#description {
+    padding: 2em;
+    margin: auto;
+    max-width: 1200px;
+    font-size: x-large;
+}
+
+#specifications {
+    background-color: #414141;
+    color: white;
+    padding: 2em;
+    padding-top: 5em;
+}
+
+#galleryTitle {
+    padding: 1em;
+}
+
+#gallery {
+    padding: 2em;
+    background-color: #CBCBCB;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.gallery {
+    margin: 25px;
+    border: 1px solid #ccc;
+}
+.gallery img {
+    width: 300px;
+    height: 300px;
+}
+
+#specs1 {
+    display: inline-block;
+    border-right: 3px solid red;
+}
+  
+#specs2 {
+    display: inline-block;
 }

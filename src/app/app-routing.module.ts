@@ -6,6 +6,7 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
 import { NewsComponent } from './news/news.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TeamComponent } from './team/team.component';
+import { ArticleComponent } from './news/article/article.component';
 
 const routes: Routes = [
     { path: 'cars', component: CarsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'team', component: TeamComponent },
     { path: 'contact-us', component: ContactUsComponent },
+    { path: 'news/:link', component: ArticleComponent},
     { path: '**', redirectTo: '/', pathMatch: 'full' }
     ];
 

@@ -1,1 +1,17 @@
-<p>news works!</p>
+<div class="newsPage">
+    <h1>News</h1>
+    <br>
+    <div class="container">
+        <div *ngFor="let i of postData">
+            <div class="item">
+                <a [routerLink]="['/news', i.link]">
+                    <app-post 
+                    title={{i.title}}
+                    date={{i.date}}
+                    coverPhoto={{i.coverPhoto}}
+                    ></app-post>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

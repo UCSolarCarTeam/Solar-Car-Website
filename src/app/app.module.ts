@@ -25,6 +25,7 @@ import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/heade
 import { CaptainComponent } from './team/captain/captain.component';
 import { MembersComponent } from './team/members/members.component';
 import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.component';
+import { ElysiaComponent } from './elysia/elysia.component';
 import { FooterComponent } from './footer/footer.component';
 
 
@@ -45,6 +46,7 @@ import { FooterComponent } from './footer/footer.component';
     CaptainComponent,
     MembersComponent,
     GalleryItemComponent,
+    ElysiaComponent,
     FooterComponent,
   ],
   imports: [

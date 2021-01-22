@@ -1,0 +1,46 @@
+<div id="elysiaPage">
+    <img src='assets/elysia/ElysiaMain.png' alt='Elysia car' id="MainImg">
+
+    <p id="description">
+        The University of Calgary Solar Car team has continued our innovative legacy as designers of Canada’s
+        first cruiser class car with our new car The Schulich Elysia. The Schulich Elysia started it’s design
+        phase in 2016 and this catamaran style cruise car was completed in 2019. This design was implemented
+        to improve battery cooling as well as increase aerodynamics. The Elysia raced in the 2019 American Solar
+        Challenge where it took first place in the Multi Occupant Vehicle Class.
+    </p>
+
+    <img src='assets/elysia/ElysiaTeam.png' alt='Elysia Team Picture' id="TeamImg">
+
+    <div id="specifications">
+        <h2>
+            Specifications
+        </h2>
+        <div class="grid-container-specs">
+            <div id="specs1">
+                <div *ngFor="let spec of specs1">
+                  <h5>{{spec[0]}}</h5>
+                  <p>{{spec[1]}}</p>
+                  </div>
+                </div>
+              <div id="specs2">
+                <div *ngFor="let spec of specs2">
+                  <h5>{{spec[0]}}</h5>
+                  <p>{{spec[1]}}</p>
+                  </div>
+                </div>
+        </div>
+    </div>
+
+    <h2 id="galleryTitle">
+        Gallery
+    </h2>
+
+    <div id="gallery">
+        <div class="gallery" *ngFor="let pic of galleryPics">
+            <a target="_blank" href={{pic}}>
+                <img src={{pic}} alt="Elysia Picture" width="300" height="300">
+            </a>
+        </div>
+    </div>
+</div>
+

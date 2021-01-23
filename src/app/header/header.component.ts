@@ -10,6 +10,10 @@ export class HeaderComponent {
   constructor() {
     this.routeLinks = [
       {
+        label: 'Elysia',
+        link: './elysia',
+      },
+      {
         label: 'Cars',
         link: './cars',
       },

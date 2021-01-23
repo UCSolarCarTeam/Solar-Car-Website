@@ -29,6 +29,7 @@ import { MembersComponent } from './team/members/members.component';
 import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.component';
 import { PostComponent } from './news/post/post.component';
 import { ArticleComponent } from './news/article/article.component';
+import { ElysiaComponent } from './elysia/elysia.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { FooterComponent } from './footer/footer.component';
     GalleryItemComponent,
     PostComponent,
     ArticleComponent,
+    ElysiaComponent,
     FooterComponent,
   ],
   imports: [

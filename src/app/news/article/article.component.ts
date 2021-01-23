@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsComponent } from '../news.component'; 
+import { NewsComponent } from '../news.component';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 
@@ -15,7 +15,9 @@ export class ArticleComponent implements OnInit {
   constructor(private route: ActivatedRoute) {   }
 
   ngOnInit(): void {
-    this.articleFile = './assets/articleFiles/' + this.route.snapshot.paramMap.get('link') + '/' + this.route.snapshot.paramMap.get('link') + '.md';
+    this.articleFile = './assets/articleFiles/' +
+                       this.route.snapshot.paramMap.get('link') + '/' +
+                       this.route.snapshot.paramMap.get('link') + '.md';
     }
 
 }

@@ -4,13 +4,24 @@
     <div class="container">
         <div *ngFor="let i of postData">
             <div class="item">
-                <a [routerLink]="['/news', i.link]">
-                    <app-post 
-                    title={{i.title}}
-                    date={{i.date}}
-                    coverPhoto={{i.coverPhoto}}
-                    ></app-post>
-                </a>
+                <div *ngIf="i.author == 'University of Calgary Solar Team'; else newsPageRedirect">
+                    <a [routerLink]="['/news', i.link]">
+                        <app-post 
+                        title={{i.title}}
+                        date={{i.date}}
+                        coverPhoto={{i.coverPhoto}}
+                        ></app-post>
+                    </a>
+                </div>
+                <ng-template #newsPageRedirect>
+                    <a href="{{i.link}}">
+                        <app-post 
+                        title={{i.title}}
+                        date={{i.date}}
+                        coverPhoto={{i.coverPhoto}}
+                        ></app-post>
+                    </a>
+                </ng-template>
             </div>
         </div>
     </div>

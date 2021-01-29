@@ -69,7 +69,7 @@ export class ContactUsComponent implements OnInit {
         handle: '@UofCSolarCar',
         link: 'https://twitter.com/uofcsolarcar'
       }
-    ]
+    ];
   }
 
   ngOnInit() {

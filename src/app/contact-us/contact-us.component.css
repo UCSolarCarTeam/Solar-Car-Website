@@ -1,24 +1,82 @@
-#tempPadding{
-  padding-top: 7em;
-  padding-left: 1em;
-  padding-bottom: 1em;
+#ContactUsPage {
+  margin-top: 131px;
+  background-color: #E5E5E5;
+  text-align: center;
 }
 
-#ContactUsPage {
+.contactDetails {
+  padding-top: 85px;
+  padding-bottom: 65px;
+  padding-right: 65px;
+  padding-left: 65px;
+  background-color: #414141;
+  color: white;
+}
+
+.contactDetailsGrid {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
-  grid-template-rows: 1fr;
-  margin-top: 90px;
+  grid-template-columns: 34% 22% 22% 22%;
+}
+
+.contactDetailsGridItem {
+  background-color: #414141;
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1.0rem;
+}
+
+p {
+  font-size: 1.0rem;
+}
+
+img {
+  width: 100%;
 }
 
 input, label {
     display:block;
 }
 
+.infoGridContainer {
+  background-color: #BF1C1C;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.shopLocationContainer {
+  color: white;
+  text-align: left;
+  padding-left: 20px;
+  padding-right:20px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .MessageUs {
-  grid-column: 1;
-  padding-left: 1em;
+  background-color: #E5E5E5;
+  padding-top: 65px;
+  padding-bottom: 65px;
+  justify-content: center;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: white;
+  text-decoration: none;
 }
 
 .Info{
@@ -28,6 +86,7 @@ input, label {
 
 .InputBox {
   padding-top: 1em;
+  font-size: 1.2rem;
 }
 .ContactItem {
   padding-top: 1em;
@@ -41,16 +100,17 @@ input, label {
 }
 
 .button {
-  background-color: rgb(255, 51, 0);
-  border: 2px solid rgb(255, 51, 0);
+  background-color: #BF1C1C;
+  border: 2px solid #BF1C1C;
   color: white;
-  padding: 15px 32px;
+  padding: 5px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 2em;
+  font-size: 1.2rem;
+  border-radius: 0.7em;
   transition-duration: 0.2s;
+  margin-top: 3.5rem;
 }
 
 textarea {
@@ -62,14 +122,57 @@ textarea {
   color: black;
 }
 
-.center {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+@media (min-width: 0px) {
+  .contactDetailsGrid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 0.1em;
+  }
+
+  .infoGridContainer {
+    background-color: #BF1C1C;
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  .shopLocationContainer {
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+    padding-right:20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
-agm-map {
-  padding-top: 1em;
-  height: 25em;
-  width: 35em;
+@media (min-width: 770px) {
+  .contactDetailsGrid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 0.1em;
+  }
+}
+
+@media (min-width: 900px) {
+  .contactDetailsGrid {
+    display: grid;
+    grid-template-columns: 34% 22% 22% 22%;
+  }
+
+  .infoGridContainer {
+    background-color: #BF1C1C;
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+
+  .shopLocationContainer {
+    color: white;
+    text-align: left;
+    padding-left: 20px;
+    padding-right:20px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 }

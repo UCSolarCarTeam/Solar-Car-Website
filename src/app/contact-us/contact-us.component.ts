@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-contact-us',
@@ -11,6 +12,7 @@ export class ContactUsComponent implements OnInit {
   lng = -114.131598;
   zoom = 13;
   openedWindow = 0; // alternative: array of numbers
+  socialMediaList: any[];
 
   openWindow(id: number) {
     this.openedWindow = id; // alternative: push to array of numbers
@@ -43,6 +45,31 @@ export class ContactUsComponent implements OnInit {
   }
 
   constructor() {
+    this.socialMediaList = [
+      {
+        platform: 'Email',
+        icon: './assets/emailLogo.png',
+        handle: 'communications@calgarysolarcar.ca'
+      },
+      {
+        platform: 'Instagram',
+        icon: faInstagram,
+        handle: '@uofc_solarcar',
+        link: 'https://www.instagram.com/uofc_solarcar/'
+      },
+      {
+        platform: 'Facebook',
+        icon: faFacebook,
+        handle: '@UofCSolarTeam',
+        link: 'https://www.facebook.com/UofCSolarTeam'
+      },
+      {
+        platform: 'Twitter',
+        icon: faTwitter,
+        handle: '@UofCSolarCar',
+        link: 'https://twitter.com/uofcsolarcar'
+      }
+    ];
   }
 
   ngOnInit() {

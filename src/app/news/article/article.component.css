@@ -1,0 +1,20 @@
+.articlePage {
+    background-color: #E5E5E5;
+    padding-bottom: 31.17px;
+    padding-left: 95px;
+    padding-right: 95px;
+    padding-top: 162px;
+}
+
+h1 {
+    width: 114px;
+    height: 58px;
+    padding-bottom: 31.17px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height:58px;
+
+    color: black;
+}

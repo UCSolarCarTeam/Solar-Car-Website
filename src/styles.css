@@ -16,3 +16,8 @@
     font-family: "OpenSans";
     src: url("assets/fonts/OpenSans-Light.ttf");
 }
+
+@font-face{
+    font-family: "Actor";
+    src: url("assets/fonts/Actor-Regular.ttf");
+}

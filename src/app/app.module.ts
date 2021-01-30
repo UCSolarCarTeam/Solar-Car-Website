@@ -27,10 +27,12 @@ import { HeaderHambugerMenuComponent } from './header/header-hambuger-menu/heade
 import { CaptainComponent } from './team/captain/captain.component';
 import { MembersComponent } from './team/members/members.component';
 import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.component';
+import { MainComponent } from './main/main.component';
 import { PostComponent } from './news/post/post.component';
 import { ArticleComponent } from './news/article/article.component';
 import { ElysiaComponent } from './elysia/elysia.component';
 import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { FooterComponent } from './footer/footer.component';
     CaptainComponent,
     MembersComponent,
     GalleryItemComponent,
+    MainComponent,
     PostComponent,
     ArticleComponent,
     ElysiaComponent,

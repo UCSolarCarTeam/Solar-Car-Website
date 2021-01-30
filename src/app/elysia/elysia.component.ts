@@ -18,14 +18,24 @@ export class ElysiaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.galleryPics = ['assets/elysia/gallery/img1.jpg',
-                        'assets/elysia/gallery/img2.jpg',
-                        'assets/elysia/gallery/img3.jpg',
-                        'assets/elysia/gallery/img4.jpg',
-                        'assets/elysia/gallery/img5.jpg',
-                        'assets/elysia/gallery/img6.jpg',
-                        'assets/elysia/gallery/img7.jpg',
-                        'assets/elysia/gallery/img8.jpg'
+    this.galleryPics = ['assets/elysia/gallery/Photo 1.JPG',
+                        'assets/elysia/gallery/Photo 2.JPG',
+                        'assets/elysia/gallery/Photo 3.jpg',
+                        'assets/elysia/gallery/Photo 4.JPG',
+                        'assets/elysia/gallery/Photo 5.jpg',
+                        'assets/elysia/gallery/Photo 6.jpg',
+                        'assets/elysia/gallery/Photo 7.jpg',
+                        'assets/elysia/gallery/Photo 8.JPG',
+                        'assets/elysia/gallery/Photo 9.JPG',
+                        'assets/elysia/gallery/Photo 10.jpg',
+                        'assets/elysia/gallery/Photo 11.JPG',
+                        'assets/elysia/gallery/Photo 12.jpg',
+                        'assets/elysia/gallery/Photo 13.jpg',
+                        'assets/elysia/gallery/Photo 14.jpg',
+                        'assets/elysia/gallery/Photo 15.jpg',
+                        'assets/elysia/gallery/Photo 16.JPG',
+                        'assets/elysia/gallery/Photo 17.jpg',
+                        'assets/elysia/gallery/Photo 18.jpg'
                        ];
 
     this.specs = [['Year Built', '2016/2019'],

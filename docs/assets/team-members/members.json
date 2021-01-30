@@ -1,0 +1,443 @@
+[
+  {
+    "name": "AD Mohammad",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: I wanted to learn more about vehicle dynamics and get experience with engineering software. Fun Fact: I like to collect my tickets!",
+    "imageName": "AD-Mohammad.png"
+  },
+  {
+    "name": "Adrian Keung",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering with a Minor in Digital Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: Being able to implement sustainable innovations. Fun Fact: I love seeing how things work with tear downs.",
+    "imageName": "Adrian-Keung.jpg"
+  },
+  {
+    "name": "Ahmed Abdullah",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: To broaden my knowledge in the software field by working on real-world solutions and develop my teamwork skills by being part of a large, diverse team. Fun Fact: I love learning new things!",
+    "imageName": "Ahmed-Abdullah.jpeg"
+  },
+  {
+    "name": "Aidan Grogan",
+    "subteam": "Business",
+    "position": "Member",
+    "major": "Bachelor's of Buisness",
+    "year": 3,
+    "description": "Reason for joining the team: I am interested in sustainable energy. Fun Fact: I make a mean grill cheese sandwich!",
+    "imageName": "Aidan-Grogan.jpg"
+  },
+  {
+    "name": "Alejandro Garza Moreno",
+    "subteam": "N/A",
+    "position": "Team Captain",
+    "major": "Electrical Engineering",
+    "year": 4,
+    "description": "Reason for joining the team: I wanted to learn more about vehicle dynamics and get experience with engineering software. Fun Fact: I love Mexican food.",
+    "imageName": "Alejandro-Garza.jpg"
+  },
+  {
+    "name": "Amy Miller",
+    "subteam": "Electrical",
+    "position": "Manager",
+    "major": "Electrical Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: I wanted to gain practical experience outside of the classroom and work with others who are passionate about sustainable energy, while positively impacting my community. Fun Fact:  once snorkelled with sharks, and while I enjoyed it.... I wouldn’t do it again.",
+    "imageName": "Amy-Miller.jpg"
+  },
+  {
+    "name": "Andreas Smit",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: To learn and be a part of something big.",
+    "imageName": "Andy-Smit.jpg"
+  },
+  {
+    "name": "Anirudh Sumod",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 4,
+    "description": "Reason for joining the team: I have a passion for automotive and environmental engineering, so joining the Solar Car Team was a no-brainer. I hope that our work here will further develop renewable technologies, as renewable industries are vital to the preservation our planet. Fun Fact: I enjoy mixed martial arts.",
+    "imageName": "Anirudh-Sumod.jpg"
+  },
+  {
+    "name": "Anshdeep Singh",
+    "subteam": "Multiteam",
+    "position": "Member",
+    "major": "Bachelor's of Engineering",
+    "year": 1,
+    "description": "Reason for joining the team: To get practical hand experience of engineering.",
+    "imageName": "Anshdeep-Singh.jpg"
+  },
+  {
+    "name": "Billy Sadowski",
+    "subteam": "Business",
+    "position": "Member",
+    "major": "Mechanical Engineering and Business Dual Degree",
+    "year": 3,
+    "description": "Reason for joining the team: I joined Solar Car to meet new people, learn about solar powered vehicles, and broaden my university experience. Fun Fact: I love sour candy.",
+    "imageName": "Billy-Sadowski.jpeg"
+  },
+  {
+    "name": "Billy Sidharta",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: I joined the team in order to learn and gain first hand experience in working with an engineering team. Specifically in an industry centered around technological innovation. ",
+    "imageName": "Billy-Sidharta.jpg"
+  },
+  {
+    "name": "Brandon Liao",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: I wanted to get hands on experience in working on something unique and exciting. Fun Fact: I was on the track team during high school.",
+    "imageName": "Brandon-Liao.jpg"
+  },
+  {
+    "name": "Brandon Tran",
+    "subteam": "Mechanical",
+    "position": "Manager",
+    "major": "Mechanical Engineering",
+    "year": 5,
+    "description": "Reason for joining the team: Working on a project with alternative energy.",
+    "imageName": "Brandon-Tran.jpg"
+  },
+  {
+    "name": "Brian Wolkowski",
+    "subteam": "Electrical Integration",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: I want to learn about renewable technology.",
+    "imageName": "Brian-Wolkowski.jpg"
+  },
+  {
+    "name": "Bryce Cayanan",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: I have a passion for cars, so I wanted to gain experience with one and its development. However, the Solar Car team also provides me with insight to how we can create a more environmentally viable option for automotives, which is awesome! Fun Fact: I can predict the past.",
+    "imageName": "Bryce-Cayanan.jpg"
+  },
+  {
+    "name": "Chihin Antonio Cheung",
+    "subteam": "Business - Accounting",
+    "position": "Manager",
+    "major": "Finance",
+    "year": 2,
+    "description": "Reason for joining the team: I joined the Solar Car Team in hopes of expanding my network as well as my interest in renewable energy and cars. Fun Fact: I have a black belt :) ",
+    "imageName": "Chihin-Cheung.jpg"
+  },
+  {
+    "name": "Colton Giesbrecht",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: To learn practical engineering skills. Fun Fact: I ski and snowboard.",
+    "imageName": "Colton-Giesbrecht.jpg"
+  },
+  {
+    "name": "Dat Lam",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: To improve my skill in a team work environment. Fun Fact: I know how to do a few yoyo tricks.",
+    "imageName": "Dat-Lam.jpg"
+  },
+  {
+    "name": "Etta Liu",
+    "subteam": "Business - Accounting",
+    "position": "Manager",
+    "major": "Bachelor of Commerce - Accounting",
+    "year": 2,
+    "description": "I've always thought cars were cool and I'm also a big advocate for sustainability as I think it can transform the world and our future. In addition I think it would be a good way to gain some work experience and get a better understanding of what I can do in my field of study. Fun Fact: I started dance when I was 4 years old and continued until I was 16. I also have a small sticker business called MiniiJoy as a side hobby to fuel my artistic skills.",
+    "imageName": "Etta-Liu.jpg"
+  },
+  {
+    "name": "Haden Scheirman",
+    "subteam": "Multiteam",
+    "position": "Member",
+    "major": "Engineering - Common core",
+    "year": 1,
+    "description": "Reason for joining the team: I was interested in joining the Solar Car Team because I felt as though it would be a great opportunity to expand my knowledge and critical thinking skills within engineering through a more hands-on and applicative method. Fun Fact: I thought I was going to be a hairdresser after high school!",
+    "imageName": "Haden-Scheirman.jpg"
+  },
+  {
+    "name": "Hesham Elkaliouby",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: My main draw to any engineering team was the opportunity to apply what I've been learning in class in a practical application and go further beyond class concepts. What drew me to the Solar Car Team specifically, was the idea of being able to have an impact on our future by being involved in sustainable energy and influencing the future design of cars. Of course, there is the really cool aspect of being able to race the car too!",
+    "imageName": "Hesham-Elkaliouby.jpg"
+  },
+  {
+    "name": "Hiten Mahalwar",
+    "subteam": "Multiteam",
+    "position": "Member",
+    "major": "Engineering - Common core",
+    "year": 1,
+    "description": "Reason for joining the team: I joined the team to gain hands on experience on an interesting and exciting team. Also, what's cooler than a solar powered car. Fun Fact: I love listening to music and being a DJ.",
+    "imageName": "Hiten-Mahalwar.jpg"
+  },
+  {
+    "name": "Ian Babcock",
+    "subteam": "Business",
+    "position": "Business Team Manager",
+    "major": "Finance",
+    "year": 4,
+    "description": "Reason for joining the team: I joined the team to become more involved in the student community and to engage with a diverse and passionate group of students. Fun Fact: I love playing sports and watching hockey and MMA during my spare time.",
+    "imageName": "Ian-Babcock.jpg"
+  },
+  {
+    "name": "Jayden Bischoff",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: The solar car team provided me with the opportunity to develop my understanding and knowledge of software engineering, while promoting innovation and sustainability.",
+    "imageName": "Jayden-Bischoff.jpg"
+  },
+  {
+    "name": "Jens Varughese",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: I wanted to innovate with renewables and motorsport while gaining valuable experience in teamwork. Fun Fact: I can snap my fingers using my pinky.",
+    "imageName": "Jens-Varughese.jpg"
+  },
+  {
+    "name": "Jessie Guo",
+    "subteam": "Software",
+    "position": "Manager",
+    "major": "Computer Science and Finance",
+    "year": 3,
+    "description": "Reason for joining the team: I joined Solar Car because I wanted to experience what software development is like in a team. Also since I was amazed that group of undergraduates built a functioning solar car from scratch! Fun Fact: I play a Chinese string instrument called the Guzheng.",
+    "imageName": "Jessie-Guo.jpg"
+  },
+  {
+    "name": "Julien Lagacé",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering with a minor in Digital Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: The biggest reasons were to gain some hands on experience where I could apply what I learned in class in the field and to join a community of like-minded individuals who are all driven by their communal goal to innovate the industry of solar cars and create long-lasting friends. Fun Fact: I have a god-complex when it comes to colours since I am colour blind (don't fight me on this) and am bilingual but I bet you'll never guess what my second language is.",
+    "imageName": "Julien-Lagace.jpg"
+  },
+  {
+    "name": "Juyong Lee",
+    "subteam": "Business",
+    "position": "Member",
+    "major": "Finance",
+    "year": 4,
+    "description": "Reason for joining the team: Wanted to network and work with different teams.",
+    "imageName": "Juyong-Lee.jpg"
+  },
+  {
+    "name": "Kaitlyn Jenkins",
+    "subteam": "Electrical with a Biomedical Minor",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 3,
+    "description": "To meet new like-minded people, and gain practical experience. Fun Fact: I enjoy horseback riding and spending time outdoors with friends and family.",
+    "imageName": "Kaitlyn-Jenkins.jpg"
+  },
+  {
+    "name": "Kale Fordham",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: I wanted to join the solar car because it gave me a chance to learn hands on technical skills on such an interesting project, and work with a knowledgeable team to learn from.",
+    "imageName": "Kale-Fordham.jpg"
+  },
+  {
+    "name": "Kali Sayers",
+    "subteam": "Business - Sponsorship",
+    "position": "Manager",
+    "major": "Chemical Engineering and Political Science",
+    "year": 6,
+    "description": "Reason for joining the team: To get involved on campus and in sustainability! Fun Fact: I was born in Australia and am a fencer. ",
+    "imageName": "Kali-Sayers.jpg"
+  },
+  {
+    "name": "Klaas Peters",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: Apply my knowledge to help develop a solar car.",
+    "imageName": "Klaas-Peters.jpg"
+  },
+  {
+    "name": "Liam Stoddard",
+    "subteam": "N/A",
+    "position": "Engineering Team Manager",
+    "major": "Electrical Engineering",
+    "year": 5,
+    "description": "Reason for joining the team: Explore solar energy and electric vehicles. Fun Fact: I have one of the slowest F1 track fastest laps.",
+    "imageName": "Liam-Stoddard.jpg"
+  },
+  {
+    "name": "Maarya Ahmed",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Engineering",
+    "year": 2,
+    "description": "I always loved cars but to program and build a car by hand and to learn from  skilled upper years valuable knowledge is what excited me to join solar car. ",
+    "imageName": "Maarya-Ahmed.jpg"
+  },
+  {
+    "name": "Marcelo Li Gonzales",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: I wanted to build something cool while developing my technical skills! Fun Fact: I used to do theater back in school.",
+    "imageName": "Marcelo-Li-Gonzales.jpg"
+  },
+  {
+    "name": "Maria Baclig",
+    "subteam": "Business",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: I'm passionate about innovation in sustainable energy and want to help educate and inspire my community. Fun Fact: I love skiing.",
+    "imageName": "Maria-Baclig.jpg"
+  },
+  {
+    "name": "Marwa Safa",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 3,
+    "description": "To gain experience and apply the concepts I learn.",
+    "imageName": "Marwa-Safa.jpg"
+  },
+  {
+    "name": "Mirza T Rahman",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: I joined to learn hands-on skills and apply what I learn in class. Fun Fact: I can cook minute rice in 58 seconds.",
+    "imageName": "Mirza-Rahman.jpg"
+  },
+  {
+    "name": "Muhammad Shafi",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 5,
+    "description": "Reason for joining the team: Due to an interest in EVs and automotive design. Fun Fact: I box in a southpaw stance.",
+    "imageName": "Muhammad-Shafi.jpg"
+  },
+  {
+    "name": "Noel Thomas",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: The overarching reason for joining the Solar Car Team was to gain a technical know-how behind what I believe is the future. And, I didn’t mind the positive atmosphere created either! Fun Fact: The color orange is named after the fruit.",
+    "imageName": "Noel-Thomas.png"
+  },
+  {
+    "name": "Rahat Islam",
+    "subteam": "Software",
+    "position": "Member",
+    "major": "Software Engineering",
+    "year": 2,
+    "description": "Reason for joining the team: I joined the team to learn about the awesome applications of software in the automotive industry! Fun Fact: I like to play a lot of different sports even though I'm not that good at any :(",
+    "imageName": "Rahat-Islam.jpg"
+  },
+  {
+    "name": "Reyvileen Soriano",
+    "subteam": "Business",
+    "position": "Member",
+    "major": "Civil Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: I joined the team to gain experience in the financial aspect of projects, and to meet new people with a common interest. Fun Fact: I like eating the dessert before the main course",
+    "imageName": "Reyvileen-Soriano.jpg"
+  },
+  {
+    "name": "Ryan Bruno",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 4,
+    "description": "Reason for joining the team: I have been able to work on a meaningful project, enhance my engineering prowess, and meet and work with like-minded peers.",
+    "imageName": "Ryan-Bruno.jpg"
+  },
+  {
+    "name": "Sami Abdelhalem",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 4,
+    "description": "To develop skills as an electrical engineer. Fun Fact: I was born in the Arctic.",
+    "imageName": "Sami-Abdelhalem.jpg"
+  },
+  {
+    "name": "Samuel Hannon",
+    "subteam": "Electrical",
+    "position": "Member",
+    "major": "Electrical Engineering",
+    "year": 4,
+    "description": "Reason for joining the team: To gain unique skills that class doesn’t teach.",
+    "imageName": "Samuel-Hannon.jpg"
+  },
+  {
+    "name": "Shaakira Gadiwan",
+    "subteam": "Multiteam",
+    "position": "Member",
+    "major": "Engineering - Common core",
+    "year": 1,
+    "description": "Reason for joining the team: I joined the team because I want to pursue a cleaner future and love working with people from different disciplines! Fun Fact: My ideal vacation destination would be Spain.",
+    "imageName": "Shaakira-Gadiwan.jpg"
+  },
+  {
+    "name": "Sohil Agrawal",
+    "subteam": "Business",
+    "position": "Member",
+    "major": "Bachelor of Commerce",
+    "year": 1,
+    "description": "Reason for joining the team: My passion for renewable energy! Fun Fact: My family owns an electric car.",
+    "imageName": "Sohil-Agrawal.jpg"
+  },
+  {
+    "name": "Valeria Marino",
+    "subteam": "Business - Sponsorship",
+    "position": "Manager",
+    "major": "Bachelor of Commerce - Finance (Honours)",
+    "year": 4,
+    "description": "Reason for joining the team: I decided to join not only because this opportunity seemed like a great way to work on my business and sustainability interests, but also because the team is conformed by an accomplished group of students. During my time here, I have been able to confirm these initial thoughts, and discover even more about solar powered vehicles. I look forward to what we will be doing in the upcoming terms! Fun Fact: I have worked as a Research Assistant for a project on Hydrogen Vehicles in the past so it is very interesting to work and explore new renewable energies.",
+    "imageName": "Valeria-Marino.jpg"
+  },
+  {
+    "name": "Yousaf Munir",
+    "subteam": "Mechanical",
+    "position": "Member",
+    "major": "Mechanical Engineering",
+    "year": 3,
+    "description": "Reason for joining the team: Hands-on experience, it is one thing to study theoretical engineering concepts and another to practice it in real life. Fun Fact: Brown belt in Karate.",
+    "imageName": "Yousaf-Munir.jpeg"
+  }
+]

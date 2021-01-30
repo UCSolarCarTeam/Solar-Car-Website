@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 .body {
     margin-top: 90px;
-    font-family: 'Actor';
     overflow-x: scroll;
     min-width: 480px;
     overflow-y: hidden;
+}
+
+html * {
+    font-family: 'Actor';
 }
 
 @font-face{
@@ -15,4 +18,9 @@
 @font-face{
     font-family: "OpenSans";
     src: url("assets/fonts/OpenSans-Light.ttf");
+}
+
+@font-face{
+    font-family: "Actor";
+    src: url("assets/fonts/Actor-Regular.ttf");
 }

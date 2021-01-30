@@ -1,81 +1,60 @@
 <div id="ContactUsPage">
-  <div id=tempPadding>
-    </div>
-
-  <div class="MessageUs center">
-    <h2>
-      Get In Touch
+  <div class="contactDetails">
+    <h1>
+      Contact Details
+    </h1>
+    <h2 style="padding-bottom: 1.0em;">
+      Please send us an email to set up a shop tour!
     </h2>
-    <h6>
-      Got any questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-      </h6>
+    <div class="contactDetailsGrid">
+      <div *ngFor="let i of socialMediaList">
+        <div *ngIf="i.platform != 'Email'; else elseBlock">
+          <div class="contactDetailsGridItem">
+            <a href="{{i.link}}">
+                <fa-icon class="icon" [icon]=i.icon></fa-icon>
+                <h3>{{i.platform}}</h3>
+                <h4>{{i.handle}}</h4>
+            </a>
+          </div>
+        </div>
+        <ng-template #elseBlock>
+          <div class="contactDetailsGridItem">
+            <img src='../assets/contact-us/emailLogo.png' style="width: 15px; height: 15px;">
+            <h3 style="padding-top: 2px;">{{i.platform}}</h3>
+            <p>{{i.handle}}</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="MessageUs">
+    <h1>
+      Get In Touch
+    </h1>
     <form>
       <div class="InputBox">
-        <label for="name">Your Name (required)</label>
-        <input id="input" type="text" [value]="" name="name" #name>
+        <input id="input" type="text" [value]="" name="name" placeholder="Name" #name>
         </div>
       <div class="InputBox">
-        <label for="email">Your Email (required)</label>
-        <input id="input" type="text" [value]="" name="email" #email>
+        <input id="input" type="text" [value]="" name="email" placeholder="Email" #email>
         </div>
       <div class="InputBox">
-        <label for="subject">Subject</label>
-        <input id="input" type="text" [value]="" #subject>
+        <input id="input" type="text" [value]="" placeholder="Subject" #subject>
         </div>
       <div class="InputBox">
-        <label for="message">Message</label>
-        <textarea id = "input" rows="5" cols="50" [value]="" #message></textarea>
+        <textarea id = "input" rows="5" cols="50" [value]="" placeholder="Message" #message></textarea>
         </div>
      </form>
-     <button class="button" (click)="sendMessage(name, email, subject, message)">SEND</button>
-     </div>
-
-  <div class="Info center">
-    <agm-map
-      [latitude]="lat"
-      [longitude]="lng"
-      [scrollwheel]="null"
-      [gestureHandling]="'cooperative'"
-      [zoom]="zoom">
-      <agm-marker
-        (mouseOver)="openWindow(1)"
-        (markerClick)="googleMapsLink()"
-        [latitude]="lat"
-        [longitude]="lng">
-        <agm-info-window
-          [isOpen]="isInfoWindowOpen(1)"
-          [latitude]="lat"
-          [longitude]="lng">
-            2500 University Dr NW, Calgary, AB T2N 1N4
-            </agm-info-window>
-          </agm-marker>
-      </agm-map>
-    <h2>
-      Contact Details
-      </h2>
-    <p>
-		  Please send us an email to set up a shop tour!
-		  </p>
-    <div class="ContactItem">
-      <h5>
-        SHOP LOCATION
-        </h5>
-      <p>
-        ENC 36, University of Calgary
-        </p>
-      </div>
-
-    <div class="contactItem">
-      <h5>
-        Email
-        <br />
-          <a href=mailto:communications@calgarysolarcar.ca>
-            communications@calgarysolarcar.ca
-            </a>
-          </h5>
-          <br style="clear:both;" />
-        </div>
-
-      </div>
-
+     <button class="button" (click)="sendMessage(name, email, subject, message)">Send</button>
   </div>
+  <div class="infoGridContainer">
+    <div class="shopLocationContainer">
+      <h2>Shop Location</h2>
+      <h3>ENC 36, Schulich School of Engineering</h3>
+      <h3>2500 University Dr NW</h3>
+      <h3>Calgary, AB T2N 1N4</h3>
+    </div>
+    <img src="../assets/contact-us/ElysiaSpring2019_50th-1-1024x681.jpg">
+  </div>
+  
+</div>

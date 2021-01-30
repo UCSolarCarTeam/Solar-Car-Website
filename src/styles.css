@@ -6,10 +6,6 @@
     overflow-y: hidden;
 }
 
-html * {
-    font-family: 'Actor';
-}
-
 @font-face{
     font-family: "PTSansNarrow";
     src: url("assets/fonts/PTSansNarrow-Regular.ttf");

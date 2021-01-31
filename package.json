@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:ci": "ng build --prod --source-map false --output-path docs --base-href /"
+    "build:ci": "ng build --prod --source-map false --base-href /"
   },
   "private": true,
   "dependencies": {

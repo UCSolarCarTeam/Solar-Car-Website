@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {CarsInfoComponent} from './cars-info/cars-info.component';
-import {Router, NavigationEnd} from '@angular/router';
 
 @Component({
   selector: 'app-cars',

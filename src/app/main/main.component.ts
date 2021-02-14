@@ -12,10 +12,10 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
-      if(!(evt instanceof NavigationEnd)){
+      if (!(evt instanceof NavigationEnd) ){
         return;
       }
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     })
   }
 

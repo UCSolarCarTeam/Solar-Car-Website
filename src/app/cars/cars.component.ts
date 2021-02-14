@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CarsInfoComponent} from './cars-info/cars-info.component';
+import {Router, NavigationEnd} from '@angular/router';
 
 @Component({
   selector: 'app-cars',
@@ -10,7 +11,7 @@ export class CarsComponent implements OnInit {
 
   desc: string[][];
 
-  constructor() {
+  constructor(private router: Router) {
     this.desc =
      [[`The University of Calgary Solar Car team has continued our innovative legacy as designers of Canada’s
         first cruiser class car with our new car The Schulich Elysia. The Schulich Elysia started it’s design
@@ -59,5 +60,11 @@ export class CarsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if(!(evt instanceof NavigationEnd)){
+        return;
+      }
+      window.scrollTo(0,0);
+    })
   }
 }

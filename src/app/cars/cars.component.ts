@@ -11,7 +11,7 @@ export class CarsComponent implements OnInit {
 
   desc: string[][];
 
-  constructor(private router: Router) {
+  constructor() {
     this.desc =
      [[`The University of Calgary Solar Car team has continued our innovative legacy as designers of Canada’s
         first cruiser class car with our new car The Schulich Elysia. The Schulich Elysia started it’s design

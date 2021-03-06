@@ -19,7 +19,11 @@ export class SponsorsComponent implements OnInit {
                    ['assets/sponsors/Solidworks.png',
                     'https://www.solidworks.com/'],
                    ['assets/sponsors/Altium.png',
-                    'https://www.altium.com/']
+                    'https://www.altium.com/'],
+                   ['assets/sponsors/Kaizen.png',
+                    'https://www.kaizen.com/'],
+                   ['assets/sponsors/Percepio.jpg',
+                    'https://percepio.com/'],
                   ];
     this.friends = [['assets/sponsors/PasonLogo.jpg',
                      'https://www.pason.com/'],

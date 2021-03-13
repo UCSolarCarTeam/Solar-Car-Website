@@ -82,7 +82,7 @@
   },
   {
     "name": "Billy Sadowski",
-    "subteam": "Business",
+    "subteam": "Sponsorship",
     "position": "Member",
     "major": "Mechanical Engineering and Business Dual Degree",
     "year": 3,
@@ -101,7 +101,7 @@
   {
     "name": "Brandon Liao",
     "subteam": "Mechanical",
-    "position": "Member",
+    "position": "Manager",
     "major": "Mechanical Engineering",
     "year": 3,
     "description": "Reason for joining the team: I wanted to get hands on experience in working on something unique and exciting. Fun Fact: I was on the track team during high school.",
@@ -118,7 +118,7 @@
   },
   {
     "name": "Brian Wolkowski",
-    "subteam": "Electrical Integration",
+    "subteam": "Electrical",
     "position": "Member",
     "major": "Electrical Engineering",
     "year": 2,
@@ -136,7 +136,7 @@
   },
   {
     "name": "Chihin Antonio Cheung",
-    "subteam": "Business - Accounting",
+    "subteam": "Accounting",
     "position": "Manager",
     "major": "Finance",
     "year": 2,
@@ -163,7 +163,7 @@
   },
   {
     "name": "Etta Liu",
-    "subteam": "Business - Accounting",
+    "subteam": "Accounting",
     "position": "Manager",
     "major": "Bachelor of Commerce - Accounting",
     "year": 2,
@@ -244,7 +244,7 @@
   },
   {
     "name": "Juyong Lee",
-    "subteam": "Business",
+    "subteam": "Sponsorship",
     "position": "Member",
     "major": "Finance",
     "year": 4,
@@ -253,9 +253,9 @@
   },
   {
     "name": "Kaitlyn Jenkins",
-    "subteam": "Electrical with a Biomedical Minor",
+    "subteam": "Electrical",
     "position": "Member",
-    "major": "Electrical Engineering",
+    "major": "Electrical Engineering with a Biomedical Minor",
     "year": 3,
     "description": "To meet new like-minded people, and gain practical experience. Fun Fact: I enjoy horseback riding and spending time outdoors with friends and family.",
     "imageName": "Kaitlyn-Jenkins.jpg"
@@ -271,7 +271,7 @@
   },
   {
     "name": "Kali Sayers",
-    "subteam": "Business - Sponsorship",
+    "subteam": "Sponsorship",
     "position": "Manager",
     "major": "Chemical Engineering and Political Science",
     "year": 6,
@@ -316,7 +316,7 @@
   },
   {
     "name": "Maria Baclig",
-    "subteam": "Business",
+    "subteam": "Communications",
     "position": "Member",
     "major": "Electrical Engineering",
     "year": 3,
@@ -370,7 +370,7 @@
   },
   {
     "name": "Reyvileen Soriano",
-    "subteam": "Business",
+    "subteam": "Accounting",
     "position": "Member",
     "major": "Civil Engineering",
     "year": 3,
@@ -415,7 +415,7 @@
   },
   {
     "name": "Sohil Agrawal",
-    "subteam": "Business",
+    "subteam": "Sponsorship",
     "position": "Member",
     "major": "Bachelor of Commerce",
     "year": 1,
@@ -424,7 +424,7 @@
   },
   {
     "name": "Valeria Marino",
-    "subteam": "Business - Sponsorship",
+    "subteam": "Sponsorship",
     "position": "Manager",
     "major": "Bachelor of Commerce - Finance (Honours)",
     "year": 4,

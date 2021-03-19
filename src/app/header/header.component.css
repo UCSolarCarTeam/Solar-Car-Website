@@ -4,34 +4,12 @@ img {
     min-height: 58px;
 }
 
-.header {
-    background-color: rgba(255, 255, 255, 50);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    max-height: 90px;
-    padding: 2em;
-    position: relative;
-    z-index: 1;
-    margin-bottom: 90px;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-@media screen
-    and (min-width: 1024px) {
-        app-header-hambuger-menu {
-            display: none;
-        }
-}
-
-@media screen
-    and (max-width: 1023px)	{
-        app-header-links {
-            display: none;
-        }
+.navbar {
+    background-color: #E5E5E5;
+    color: black;
+    font-size: 120%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top:20px;
+    padding-bottom: 20px;
 }

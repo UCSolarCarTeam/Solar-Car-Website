@@ -1,7 +1,7 @@
 img {
     height: auto;
     max-width: 348px;
-    min-height: 58px;
+    max-height: 58px;
 }
 
 .navbar {

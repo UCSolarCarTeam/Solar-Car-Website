@@ -1,11 +1,10 @@
 .sponsorsPage {
-    margin-top: 180px;
     text-align: center;
 }
 
 .sponsorTier{
-    margin: 100px;
-    margin-bottom: 250px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 .flex {
@@ -17,5 +16,5 @@
 
 img {
     margin: 30px;
-    max-width: 100%;
+    max-width: 80%;
 }

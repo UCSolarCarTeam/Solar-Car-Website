@@ -13,3 +13,8 @@ img {
     padding-top:20px;
     padding-bottom: 20px;
 }
+
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+}

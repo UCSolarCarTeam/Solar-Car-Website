@@ -31,3 +31,12 @@ a {
 .buttons {
 	background-color: #BF1C1C;
 }
+
+@media screen and (max-width:1024px) {
+	.column {
+		margin: auto;
+		margin-top: 40px;
+		width: 80%;
+		text-align: center;
+	}
+}

@@ -65,8 +65,8 @@ export class ElysiaComponent implements OnInit {
                   ['Bottom Shell', 'Carbon Fibre Reinforced Corecell, EPS Mix'],
                  ];
     // split the array into 2
-    this.specs1 = this.specs.slice( 0, this.specs.length / 2 );
-    this.specs2 = this.specs.slice( this.specs.length / 2, this.specs.length );
+    this.specs1 = this.specs.slice( 0, this.specs.length / 2 + 1);
+    this.specs2 = this.specs.slice( this.specs.length / 2 + 1, this.specs.length );
   }
 
 }

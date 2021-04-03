@@ -175,3 +175,25 @@ textarea {
     margin-bottom: auto;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .contactDetailsGrid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 0.1em;
+    justify-items: center;
+  }
+
+  #input {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .contactDetailsGrid {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 0.1em;
+    justify-items: center;
+  }
+}

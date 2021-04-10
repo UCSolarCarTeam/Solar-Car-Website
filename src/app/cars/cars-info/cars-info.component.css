@@ -67,6 +67,7 @@ button:focus {
   .grid-container {
     display: grid;
     grid-template-columns: 100%;
+    grid-template-rows: auto auto;
     background-color: #595959;
   }
 
@@ -93,5 +94,10 @@ button:focus {
     grid-template-columns: repeat(2, 1fr);
     font-size: small;
   }
+
+  .carImage {
+    height: 100px;
+  }
+  
 }
 

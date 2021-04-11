@@ -14,12 +14,8 @@ export class SponsorsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.silver = [['assets/sponsors/Ansys.png',
-                    'https://www.ansys.com/'],
-                   ['assets/sponsors/Solidworks.png',
+    this.silver = [['assets/sponsors/Solidworks.png',
                     'https://www.solidworks.com/'],
-                   ['assets/sponsors/Altium.png',
-                    'https://www.altium.com/'],
                    ['assets/sponsors/Kaizen.png',
                     'https://www.kaizen.com/'],
                    ['assets/sponsors/Percepio.jpg',

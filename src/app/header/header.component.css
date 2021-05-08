@@ -1,7 +1,7 @@
 img {
     height: auto;
     max-width: 348px;
-    min-height: 58px;
+    max-height: 58px;
 }
 
 .navbar {
@@ -12,4 +12,9 @@ img {
     padding-right: 30px;
     padding-top:20px;
     padding-bottom: 20px;
+}
+
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
 }

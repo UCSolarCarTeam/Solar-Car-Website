@@ -9,6 +9,7 @@
   padding: 3em;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  width: 100%;
 }
 
 .specs1 {
@@ -61,3 +62,42 @@ button {
 button:focus {
   outline: none !important;
 }
+
+@media screen and (max-width: 1024px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    background-color: #595959;
+  }
+
+  .description {
+    display: inline-block;
+    max-width: 80%;
+    padding-top: 1em;
+  }
+
+  #specs1 {
+    display: inline-block;
+    padding-right: 2em;
+    border-right: 2px solid red;
+  }
+
+  #specs2 {
+    display: inline-block;
+    padding-left: 1em;
+  }
+
+  .grid-container-specs {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: small;
+  }
+
+  .carImage {
+    height: 100px;
+  }
+  
+}
+

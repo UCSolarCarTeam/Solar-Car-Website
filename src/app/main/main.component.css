@@ -1,45 +1,69 @@
 .mainPage {
-    padding-top: 2rem;
     min-width: 100%;
+    min-height: 100vh; 
     background-position: 50%;
     background-size: cover;
-    position: sticky;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 1;
 }
 
-.container {
-    padding: 2.5rem 0;
-    height: 90vh;
+.background {
+    min-width: 100%;
+    min-height: 100vh; 
+    background: linear-gradient(0deg, #00000088 10%, #ffffff44 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.container{
+    padding-top: 5rem;
+    padding-bottom: 23rem;
 }
 
 .row {
-    background-color: aquamarine;
+    letter-spacing: 0.8em;
+    /* background-color: aquamarine; */
 }
 
 .col {
-    background-color: beige;
+    /* background-color: beige; */
+}
+
+h1 {
+    font-size: 10vh;
 }
 
 .values {
     font-family: 'PTSansNarrow';
+    color: white;
+    padding-top: 0.5rem;
 }
 
 .button {
     font-family: "OpenSans";
+    color: white;
+    padding-top: 2rem;
 }
 
 /* phones */
 @media screen and (max-width: 540px) {
     .container {
-        padding: 2.5rem 0;
-        height: 35vh; 
+        min-height: 35vh; 
+        padding-top: 5rem;
     }
 }
 
 /* tablets */
-@media screen and (min-width: 540px) and (max-width: 1024px) {
+@media screen and (min-width: 540px) and (max-width: 1500px) {
     .container {
-        padding: 2.5rem 0;
-        height: 50vh; 
+        padding-top: 5rem;
+        min-height: 50vh; 
     }
 }
 

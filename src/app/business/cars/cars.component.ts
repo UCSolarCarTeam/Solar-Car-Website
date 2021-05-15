@@ -43,7 +43,7 @@ export class CarsComponent implements OnInit {
                       TX to Calgary, AB. Schulich I finished 6th, then the top ever Calgary finish, now tied with the 2010 race for
                       best finish. The driving time for the 2008 NASC was 75:42.53.`,
                      `This vehicle was the second car built by the University of Calgary Team and featured new gallium arsenide solar
-                      cells, a shift from the silicone cells used in the first vehicle.`]
+                      cells, a shift from the silicone cells used in the first vehicle.`];
     this.descGen1 = [`Production of the Soleon vehicle began when it was announced that the American Solar Challenge would become the
                       North American Solar Challenge and would run from Austin, TX to Calgary, AB. Beginning in 2004, the Soleon was
                       built in 9 months and was the first project of the University of Calgary Solar Car Team.`,

@@ -1,0 +1,23 @@
+<div class="body">
+    <div class="teamInfo">
+        <div class="ourTeam">
+            <h3 class="title">Our Team</h3>
+            <p>
+                The University of Calgary Solar Car Team was established in 2004 and has evolved to become an experienced solar racing team that also works to educate the community on renewable energy. 
+                The team is composed of students from various departments, working in collaboration with faculty to develop sustainable energy solutions. 
+                We are currently working on our fifth car and have completed 7 races with previous vehicles.
+            </p>
+            <a 
+                mat-raised-button
+                href="mailto:communications@calgarysolarcar.ca">
+                    Join Us
+            </a>
+        </div>
+        <div class="captains-container">
+            <business-captain [captain]="teamCaptain" class="captain"></business-captain>
+            <business-captain [captain]="enggManager" class="enggManager"></business-captain>
+            <business-captain [captain]="businessManager" class="businessManager"></business-captain>
+        </div>
+    </div>
+    <business-members></business-members>
+</div>

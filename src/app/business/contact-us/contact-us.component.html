@@ -8,22 +8,20 @@
     </h2>
     <div class="contactDetailsGrid">
       <div *ngFor="let i of socialMediaList">
-        <div *ngIf="i.platform != 'Email'; else elseBlock">
-          <div class="contactDetailsGridItem">
-            <a href="{{i.link}}">
-                <fa-icon class="icon" [icon]=i.icon></fa-icon>
-                <h3>{{i.platform}}</h3>
-                <h4>{{i.handle}}</h4>
-            </a>
-          </div>
+        <div class="contactDetailsGridItem">
+          <a href="{{i.link}}">
+            <fa-icon class="icon" [icon]=i.icon></fa-icon>
+            <h3>{{i.platform}}</h3>
+            <h4>{{i.handle}}</h4>
+          </a>
         </div>
-        <ng-template #elseBlock>
-          <div class="contactDetailsGridItem">
-            <img src='../assets/contact-us/emailLogo.png' style="width: 15px; height: 15px;">
-            <h3 style="padding-top: 2px;">{{i.platform}}</h3>
-            <p>{{i.handle}}</p>
-          </div>
-        </ng-template>
+      </div>
+      <div class="emailDetailsGridItem">
+        <a href="mailto:communications@calgarysolarcar.ca">
+          <img src='../assets/contact-us/emailLogo.png' style="width: 15px; height: 15px;">
+          <h3>Email</h3>
+          <p>communications@calgarysolarcar.ca</p>
+        </a>
       </div>
     </div>
   </div>

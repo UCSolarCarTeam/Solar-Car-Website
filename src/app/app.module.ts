@@ -5,6 +5,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AgmCoreModule } from '@agm/core';
+
+import { environment } from './../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +17,9 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.apiKey
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

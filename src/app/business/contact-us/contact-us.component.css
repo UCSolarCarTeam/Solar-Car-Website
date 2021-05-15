@@ -121,6 +121,10 @@ textarea {
   color: black;
 }
 
+agm-map {
+  height: 40vh;
+}
+
 @media (min-width: 0px) {
   .contactDetailsGrid {
     display: grid;

@@ -50,11 +50,14 @@
   <div class="infoGridContainer">
     <div class="shopLocationContainer">
       <h2>Shop Location</h2>
+
       <h3>ENC 36, Schulich School of Engineering</h3>
       <h3>2500 University Dr NW</h3>
       <h3>Calgary, AB T2N 1N4</h3>
     </div>
-    <img src="../assets/contact-us/ElysiaSpring2019_50th-1-1024x681.jpg">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
   </div>
   
 </div>

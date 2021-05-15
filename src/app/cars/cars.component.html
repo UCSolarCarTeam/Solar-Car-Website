@@ -1,14 +1,21 @@
 <div id="carsPage">
+  <div id="Gen6">
+    <img src="assets/placeholder.jpg" class="center">
+    <div class="button">
+      <button onclick="window.open('https://www.youtube.com/watch?v=V9Sd9ePbvzQ&ab_channel=UniversityofCalgarySolarCarTeam')">Coming Soon...</button>
+    </div>
+  </div>
 
   <app-cars-info
     car='Schulich Elysia'
     gen='5'
     flip=true
     image='assets/Gen5.jpg'
-    [description]="desc[0]"
+    [description]="descGen5"
   >
   </app-cars-info>
-  <div id="button">
+
+  <div class="button">
     <button routerLink='/elysia'>Learn More</button>
   </div>
 
@@ -16,7 +23,7 @@
     car='Schulich Delta'
     gen='4'
     image='assets/Gen4.jpg'
-    [description]="desc[1]"
+    [description]="descGen4"
     showSpecs=true
     [specs]="[['Year Built','2012, 2013'],
               ['Body Style', 'Two-door coupe with large rear hatch'],
@@ -53,7 +60,7 @@
     gen='3'
     flip=true
     image='assets/Gen3.jpg'
-    [description]="desc[2]"
+    [description]="descGen3"
     showSpecs=true
     [specs]="[['Year Built','2009/2010'],
               ['Budget', '$650,000'],
@@ -82,7 +89,7 @@
     car='Schulich I'
     gen='2'
     image='assets/Gen2.jpg'
-    [description]="desc[3]"
+    [description]="descGen2"
     showSpecs=true
     [specs]="[['Year Built','2007'],
               ['Budget','$750,000'],
@@ -106,11 +113,11 @@
   </app-cars-info>
 
   <app-cars-info
-    car='Solean'
+    car='Soleon'
     gen='1'
     flip=true
     image='assets/Gen1.jpg'
-    [description]="desc[4]"
+    [description]="descGen1"
     showSpecs=true
     [specs]="[['Year Built','2007'],
               ['Budget','$750,000'],

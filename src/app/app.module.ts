@@ -26,7 +26,7 @@ import { HeaderLinksComponent } from './header/header-links/header-links.compone
 import { CaptainComponent } from './team/captain/captain.component';
 import { MembersComponent } from './team/members/members.component';
 import { GalleryItemComponent } from './team/members/gallery-item/gallery-item.component';
-import { MainComponent } from './main/main.component';
+import { MainComponent } from './business/main/main.component';
 import { PostComponent } from './news/post/post.component';
 import { ArticleComponent } from './news/article/article.component';
 import { ElysiaComponent } from './elysia/elysia.component';

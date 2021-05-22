@@ -1,15 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MarkdownModule } from 'ngx-markdown';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,45 +23,14 @@ import { ArticleComponent } from './news/article/article.component';
 import { ElysiaComponent } from './elysia/elysia.component';
 import { FooterComponent } from './footer/footer.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    CarsComponent,
-    SupportUsComponent,
-    SponsorsComponent,
-    NewsComponent,
-    ContactUsComponent,
-    TeamComponent,
-    SocialMediaComponent,
-    CarsInfoComponent,
-    HeaderComponent,
-    HeaderLinksComponent,
-    CaptainComponent,
-    MembersComponent,
-    GalleryItemComponent,
-    MainComponent,
-    PostComponent,
-    ArticleComponent,
-    ElysiaComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCHcMfciASJU5gIbUuAa2lNCekB76fbPaE',
-      libraries: ['places', 'geometry']
-    }),
     BrowserAnimationsModule,
     AppRoutingModule,
-    FontAwesomeModule,
-    MatTabsModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatMenuModule,
-    MatPaginatorModule,
-    HttpClientModule,
-    MarkdownModule.forRoot({ loader: HttpClient }),
   ],
   providers: [],
   bootstrap: [AppComponent]

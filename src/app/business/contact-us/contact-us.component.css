@@ -116,6 +116,14 @@ textarea {
   color: black;
 }
 
+.mobile-view {
+  display: none;
+}
+
+.desktop-view {
+  display: grid
+}
+
 @media (min-width: 0px) {
   .contactDetailsGrid {
     display: grid;
@@ -144,7 +152,7 @@ textarea {
 @media (min-width: 900px) {
   .contactDetailsGrid {
     display: grid;
-    grid-template-columns: 22% 22% 22% 22%;
+    grid-template-columns: 18% 18% 18% 18% 18%;
     grid-row-gap: 2em;
     padding-left: 10%
   }
@@ -177,6 +185,14 @@ textarea {
     height: 100%;
     width: 100%;
   }
+
+  .desktop-view {
+    display: grid;
+  }
+
+  .mobile-view {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -198,6 +214,14 @@ textarea {
   #input {
     width: 80%;
   }
+
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: grid;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -214,5 +238,13 @@ textarea {
     height: 100%;
     width: 100%;
     grid-column-start: 1;
+  }
+
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: grid;
   }
 }

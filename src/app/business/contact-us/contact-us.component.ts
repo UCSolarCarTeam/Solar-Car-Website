@@ -65,6 +65,12 @@ export class ContactUsComponent implements OnInit {
         icon: faTwitter,
         handle: '@UofCSolarCar',
         link: 'https://twitter.com/uofcsolarcar'
+      },
+      {
+        platform: 'Email',
+        icon: '../assets/contact-us/emailLogo.png',
+        handle: 'communications@calgarysolarcar.ca',
+        link: 'mailto:communications@calgarysolarcar.ca'
       }
     ];
   }

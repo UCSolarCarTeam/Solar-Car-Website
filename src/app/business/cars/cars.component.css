@@ -7,6 +7,10 @@
   margin-top: 50px;
 }
 
+#gen6Logo {
+  max-width: 60%;
+}
+
 .button {
   text-align: center;
   padding: 30px;

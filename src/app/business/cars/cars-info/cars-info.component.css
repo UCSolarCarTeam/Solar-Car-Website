@@ -77,17 +77,6 @@ button:focus {
     padding-top: 1em;
   }
 
-  #specs1 {
-    display: inline-block;
-    padding-right: 2em;
-    border-right: 2px solid red;
-  }
-
-  #specs2 {
-    display: inline-block;
-    padding-left: 1em;
-  }
-
   .grid-container-specs {
     padding: 1em;
     display: grid;
@@ -101,3 +90,25 @@ button:focus {
   
 }
 
+@media screen and (max-width: 400px) {
+  .grid-container-specs {
+    display: block;
+  }
+  
+  .specs1 {
+    width: 100%;
+    text-align: center;
+    border-right: none;
+  }
+  
+  .specs2 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  #Specifications {
+    font-size: x-large;
+  }
+}

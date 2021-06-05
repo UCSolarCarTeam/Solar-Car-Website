@@ -12,11 +12,6 @@
   color: white;
 }
 
-.contactDetailsGrid {
-  display: grid;
-  grid-template-columns: 34% 22% 22% 22%;
-}
-
 .contactDetailsGridItem {
   background-color: #414141;
   height: 100%;
@@ -121,6 +116,14 @@ textarea {
   color: black;
 }
 
+.mobile-view {
+  display: none;
+}
+
+.desktop-view {
+  display: grid
+}
+
 @media (min-width: 0px) {
   .contactDetailsGrid {
     display: grid;
@@ -146,24 +149,19 @@ textarea {
   }
 }
 
-@media (min-width: 770px) {
-  .contactDetailsGrid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    row-gap: 0.1em;
-  }
-}
-
 @media (min-width: 900px) {
   .contactDetailsGrid {
     display: grid;
-    grid-template-columns: 34% 22% 22% 22%;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    grid-row-gap: 2em;
+    padding-left: 10%
   }
 
   .infoGridContainer {
     background-color: #BF1C1C;
     display: grid;
     grid-template-columns: 40% 60%;
+    grid-template-rows: auto auto;
   }
 
   .shopLocationContainer {
@@ -174,18 +172,55 @@ textarea {
     margin-top: auto;
     margin-bottom: auto;
   }
+
+  .emailDetailsGridItem {
+    background-color: #414141;
+    height: 100%;
+    width: 100%;
+    grid-column-start: span 4;
+  }
+
+  .contactDetailsGridItem {
+    background-color: #414141;
+    height: 100%;
+    width: 100%;
+  }
+
+  .desktop-view {
+    display: grid;
+  }
+
+  .mobile-view {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .contactDetailsGrid {
     display: grid;
     grid-template-columns: 50% 50%;
+    padding-left: 0;
     row-gap: 0.1em;
     justify-items: center;
   }
 
+  .emailDetailsGridItem {
+    background-color: #414141;
+    height: 100%;
+    width: 100%;
+    grid-column-start: span 2;
+  }
+
   #input {
     width: 80%;
+  }
+
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: grid;
   }
 }
 
@@ -193,7 +228,23 @@ textarea {
   .contactDetailsGrid {
     display: grid;
     grid-template-columns: 100%;
+    padding-left: 0;
     row-gap: 0.1em;
     justify-items: center;
+  }
+
+  .emailDetailsGridItem {
+    background-color: #414141;
+    height: 100%;
+    width: 100%;
+    grid-column-start: 1;
+  }
+
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: grid;
   }
 }

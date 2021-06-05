@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'business-contact-us',
@@ -43,9 +43,10 @@ export class ContactUsComponent implements OnInit {
   constructor() {
     this.socialMediaList = [
       {
-        platform: 'Email',
-        icon: './assets/emailLogo.png',
-        handle: 'communications@calgarysolarcar.ca'
+        platform: 'LinkedIn',
+        icon: faLinkedin,
+        handle: 'University of Calgary Solar Car Team',
+        link: 'https://www.linkedin.com/company/university-of-calgary-solar-car-team'
       },
       {
         platform: 'Instagram',
@@ -64,6 +65,12 @@ export class ContactUsComponent implements OnInit {
         icon: faTwitter,
         handle: '@UofCSolarCar',
         link: 'https://twitter.com/uofcsolarcar'
+      },
+      {
+        platform: 'Email',
+        icon: '../assets/contact-us/emailLogo.png',
+        handle: 'communications@calgarysolarcar.ca',
+        link: 'mailto:communications@calgarysolarcar.ca'
       }
     ];
   }

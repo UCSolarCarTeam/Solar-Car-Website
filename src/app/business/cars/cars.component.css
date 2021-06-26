@@ -3,7 +3,15 @@
   color: white;
 }
 
-#button {
+#gen6 {
+  margin-top: 50px;
+}
+
+#gen6Logo {
+  max-width: 60%;
+}
+
+.button {
   text-align: center;
   padding: 30px;
 }
@@ -20,5 +28,18 @@ button {
   display: inline-block;
   font-size: 20px;
   cursor: pointer;
+  outline: none;
+  max-width: 80%;
+  transition: 0.3s;
+}
+button:hover {
+  opacity: 0.6;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
 }
 

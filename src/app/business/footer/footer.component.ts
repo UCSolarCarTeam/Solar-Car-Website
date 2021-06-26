@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'business-footer',
@@ -24,9 +24,10 @@ export class FooterComponent {
     ];
 
     this.socialMedia = [
-      { label: 'Instagram', icon: faInstagram, link: 'https://www.instagram.com/uofc_solarcar/', },
-      { label: 'Facebook',  icon: faFacebook,  link: 'https://www.facebook.com/UofCSolarTeam',   },
-      { label: 'Twitter',   icon: faTwitter,   link: 'https://twitter.com/uofcsolarcar',         }
+      { label: 'Instagram', icon: faInstagram, link: 'https://www.instagram.com/uofc_solarcar/',                                },
+      { label: 'Facebook',  icon: faFacebook,  link: 'https://www.facebook.com/UofCSolarTeam',                                  },
+      { label: 'Twitter',   icon: faTwitter,   link: 'https://twitter.com/uofcsolarcar',                                        },
+      { label: 'LinkedIn',  icon: faLinkedin,  link: 'https://www.linkedin.com/company/university-of-calgary-solar-car-team',   },
     ];
 
     this.contact = {

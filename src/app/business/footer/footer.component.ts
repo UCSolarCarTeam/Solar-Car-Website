@@ -13,7 +13,7 @@ export class FooterComponent {
 
   constructor() {
     this.menu = [
-      { label: 'Elysia', link: '/elysia',             }, // TODO: Enter link when Elysia page is created
+      { label: 'Elysia', link: '/elysia',             },
       { label: 'Cars', link: '/cars',          },
       { label: 'Team', link: '/team',          },
       { label: 'Support', link: '/support-us', },

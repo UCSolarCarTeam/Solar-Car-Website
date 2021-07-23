@@ -1,1 +1,36 @@
-<p>Manage sponsors page works!</p>
+<form [formGroup]="form">
+    <input placeholder="Sponsor Name" 
+           formControlName="name" 
+           type="text" 
+           class="input-field col s12">
+    <input placeholder="Sponsor Link" 
+           formControlName="link" 
+           type="text" 
+           class="input-field col s12">
+    <input placeholder="Sponsor Logo" 
+           formControlName="logo" 
+           type="text" 
+           class="input-field col s12">
+    <input placeholder="Sponsor Tier" 
+           formControlName="tier" 
+           type="text" 
+           class="input-field col s12">
+</form>
+<table class="ui celled table">
+    <thead>
+      <tr>
+        <th><i class="fas fa-map-marker-alt"></i> Sponsor Name</th>
+        <th>Link</th>
+        <th>Logo</th>
+        <th>Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of sponsors">
+        <td>{{ s.name }}</td>
+        <td>{{ s.link }}</td>
+        <td>{{ s.logo }}</td>
+        <td>{{ s.tier }}</td>
+      </tr>
+    </tbody>
+  </table>

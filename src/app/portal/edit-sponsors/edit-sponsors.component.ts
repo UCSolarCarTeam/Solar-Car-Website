@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { SponsorService } from 'src/app/services/sponsor.service';
+import { Sponsor } from 'src/app/models/sponsor';
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-edit-sponsors',
@@ -6,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-sponsors.component.css']
 })
 export class EditSponsorsComponent implements OnInit {
+  form: FormGroup;
+  @Input() sponsors: Sponsor[];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private sponsorService: SponsorService) {
+    this.form = new FormGroup({
+      name: new FormControl(''),
+      link: new FormControl(''),
+      logo: new FormControl(''),
+      tier: new FormControl('')
+    })
   }
+
+  ngOnInit(): void { }
 
 }

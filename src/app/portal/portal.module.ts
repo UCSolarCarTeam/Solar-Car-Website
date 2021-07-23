@@ -9,6 +9,11 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
 import { EditSponsorsComponent } from './edit-sponsors/edit-sponsors.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 
+import { ReactiveFormsModule } from '@angular/forms'; 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { SETTINGS as FIRESTORE_SETTINGS } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [
     PortalComponent,
@@ -21,8 +26,14 @@ import { EditNewsComponent } from './edit-news/edit-news.component';
   imports: [
     CommonModule,
     PortalRoutingModule,
+    AngularFirestoreModule,  
+    ReactiveFormsModule  
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FIRESTORE_SETTINGS, useValue: environment.useEmulators ? { host: 'localhost:8080', ssl: false } : {}
+    }
+  ],
   bootstrap: [PortalComponent]
 })
 export class PortalModule { }

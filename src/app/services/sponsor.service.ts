@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Sponsor } from '../models/sponsor';
-import { FileUploadService } from './file-upload.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SponsorService {
-  constructor(private firestore: AngularFirestore, private fileUpload: FileUploadService) {}
+  constructor(private firestore: AngularFirestore) {}
 
   addSponsor(sponsor: Sponsor) {
 

@@ -1,14 +1,5 @@
 {
   "projects": {
     "default": "solarcardatabase"
-  },
-  "targets": {
-    "solarcardatabase": {
-      "hosting": {
-        "Solar-Car-Website": [
-          "solarcardatabase"
-        ]
-      }
-    }
   }
 }

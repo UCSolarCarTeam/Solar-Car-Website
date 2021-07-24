@@ -1,4 +1,11 @@
 {
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
   "emulators": {
     "auth": {
       "port": 9099
@@ -12,29 +19,5 @@
     "ui": {
       "enabled": true
     }
-  },
-  "hosting": {
-    "target": "Solar-Car-Website",
-    "public": "dist/Solar-Car-Website",
-    "ignore": [
-      "**/.*"
-    ],
-    "headers": [
-      {
-        "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public,max-age=31536000,immutable"
-          }
-        ]
-      }
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
   }
 }

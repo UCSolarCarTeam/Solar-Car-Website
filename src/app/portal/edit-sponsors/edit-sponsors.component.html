@@ -8,15 +8,15 @@
     <label>Link</label>
     <input type="text" formControlName="link" class="form-control" required>
   </div>
-
-  <div class="mb-3">
-    <label>Logo</label>
-    <input type="text" formControlName="logo" class="form-control" required>
-  </div>
   
   <div class="mb-3">
     <label>Tier</label>
     <input type="text" formControlName="tier" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Logo</label>
+    <input type="file" formControlName="logo" class="form-control" (change)="uploadLogo($event)" value="" required>
   </div>
 
   <div class="mb-3">

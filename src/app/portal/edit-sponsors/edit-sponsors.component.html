@@ -1,36 +1,49 @@
-<form [formGroup]="form">
-    <input placeholder="Sponsor Name" 
-           formControlName="name" 
-           type="text" 
-           class="input-field col s12">
-    <input placeholder="Sponsor Link" 
-           formControlName="link" 
-           type="text" 
-           class="input-field col s12">
-    <input placeholder="Sponsor Logo" 
-           formControlName="logo" 
-           type="text" 
-           class="input-field col s12">
-    <input placeholder="Sponsor Tier" 
-           formControlName="tier" 
-           type="text" 
-           class="input-field col s12">
+<form [formGroup]="addSponsorForm" (ngSubmit)="addSponsor()" novalidate>
+  <div class="mb-3">
+    <label>Name</label>
+    <input type="text" formControlName="name" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Link</label>
+    <input type="text" formControlName="link" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Logo</label>
+    <input type="text" formControlName="logo" class="form-control" required>
+  </div>
+  
+  <div class="mb-3">
+    <label>Tier</label>
+    <input type="text" formControlName="tier" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary" [disabled]="!addSponsorForm.valid">Add Sponsor</button>
+  </div>
 </form>
-<table class="ui celled table">
-    <thead>
-      <tr>
-        <th><i class="fas fa-map-marker-alt"></i> Sponsor Name</th>
-        <th>Link</th>
-        <th>Logo</th>
-        <th>Tier</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let s of sponsors">
-        <td>{{ s.name }}</td>
-        <td>{{ s.link }}</td>
-        <td>{{ s.logo }}</td>
-        <td>{{ s.tier }}</td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Link</th>
+      <th scope="col">Logo</th>
+      <th scope="col">Tier</th>
+      <th scope="col">Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sponsor of sponsors; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ sponsor.name }}</td>
+      <td>{{ sponsor.link }}</td>
+      <td>{{ sponsor.logo }}</td>
+      <td>{{ sponsor.tier }}</td>
+      <td>
+        <button (click)="deleteSponsor(sponsor.id)" class="btn btn-primary">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

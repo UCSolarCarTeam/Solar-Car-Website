@@ -11,23 +11,27 @@ export class SponsorService {
   constructor(private firestore: AngularFirestore, private fileUpload: FileUploadService) {}
 
   addSponsor(sponsor: Sponsor) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01cee6a (Fix linting errors)
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection("sponsors-collection")
+        .collection('sponsors-collection')
         .add(sponsor)
-        .then(response => { console.log(response) }, error => reject(error));
+        .then(response => { console.log(response); }, error => reject(error));
     });
   }
 
   getSponsors() {
     return this.firestore
-      .collection("sponsors-collection")
+      .collection('sponsors-collection')
       .snapshotChanges();
   }
 
   deleteSponsor(id) {
     return this.firestore
-      .collection("sponsor-collection")
+      .collection('sponsor-collection')
       .doc(id)
       .delete();
   }

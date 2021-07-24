@@ -2,8 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { SponsorService } from 'src/app/services/sponsor.service';
 import { Sponsor } from 'src/app/models/sponsor';
+<<<<<<< HEAD
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { FileUploadService } from 'src/app/services/file-upload.service';
+=======
+import { FormBuilder, FormGroup } from '@angular/forms';
+>>>>>>> 01cee6a (Fix linting errors)
 
 @Component({
   selector: 'app-edit-sponsors',
@@ -21,7 +25,7 @@ export class EditSponsorsComponent implements OnInit {
       link: [''],
       logo: [''],
       tier: ['']
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -29,10 +33,10 @@ export class EditSponsorsComponent implements OnInit {
       this.sponsors = res.map( e => {
         return {
           id: e.payload.doc.id,
-          ...(e.payload.doc.data() as Object)
+          ...(e.payload.doc.data() as object)
         } as Sponsor;
-      })
-    })
+      });
+    });
   }
 
   async uploadLogo(event) {

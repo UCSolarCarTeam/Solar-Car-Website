@@ -9,7 +9,7 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
 import { EditSponsorsComponent } from './edit-sponsors/edit-sponsors.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     CommonModule,
     PortalRoutingModule,
-    ReactiveFormsModule  
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [PortalComponent]

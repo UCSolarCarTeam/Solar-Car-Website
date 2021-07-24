@@ -11,10 +11,7 @@ export class SponsorService {
   constructor(private firestore: AngularFirestore, private fileUpload: FileUploadService) {}
 
   addSponsor(sponsor: Sponsor) {
-<<<<<<< HEAD
-=======
 
->>>>>>> 01cee6a (Fix linting errors)
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('sponsors-collection')

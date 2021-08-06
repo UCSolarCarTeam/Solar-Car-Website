@@ -1,8 +1,9 @@
 export interface Sponsor {
-    id: string;
+    id?: string;
     name: string;
     link: string;
-    logo: any;
+    logo?: File;
+    logoUrl: string;
     tier: string;
 }
 

@@ -39,7 +39,7 @@
       <th scope="row">{{ i + 1 }}</th>
       <td>{{ sponsor.name }}</td>
       <td>{{ sponsor.link }}</td>
-      <td>{{ sponsor.logoUrl }}</td>
+      <td><img src="{{ sponsor.logoUrl }}" /></td>
       <td>{{ sponsor.tier }}</td>
       <td>
         <button (click)="deleteSponsor(sponsor.id)" class="btn btn-primary">Delete</button>

@@ -7,7 +7,7 @@ import { Sponsor } from '../models/sponsor';
 })
 
 export class SponsorService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   addSponsor(sponsor: Sponsor) {
 
@@ -23,6 +23,17 @@ export class SponsorService {
     return this.firestore
       .collection('sponsors-collection')
       .snapshotChanges();
+  }
+
+  updateSponsor(sponsor: Sponsor) {
+    const sponsorRef = this.firestore.collection('sponsors-collection').doc(sponsor.id);
+    return sponsorRef.update({
+      name: sponsor.name,
+      link: sponsor.link,
+      logo: sponsor.logo,
+      logoUrl: sponsor.logoUrl,
+      tier: sponsor.tier
+    });
   }
 
   deleteSponsor(id) {

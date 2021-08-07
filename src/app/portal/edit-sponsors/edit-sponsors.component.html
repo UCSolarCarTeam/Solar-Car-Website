@@ -1,4 +1,4 @@
-<form [formGroup]="addSponsorForm" (ngSubmit)="addSponsor()" novalidate>
+<form [formGroup]="addSponsorForm" (ngSubmit)="manageSponsor()" novalidate>
   <div class="mb-3">
     <label>Name</label>
     <input type="text" formControlName="name" class="form-control" required>
@@ -16,11 +16,14 @@
 
   <div class="mb-3">
     <label>Logo</label>
-    <input type="file" formControlName="logo" class="form-control" (change)="setLogo($event.target.files)" required>
+    <input type="file" formControlName="logo" class="form-control" (change)="setLogo($event.target.files)">
+    <label>Logo Preview</label>
+    <br>
+    <img src="{{ previewLogoUrl }}" />
   </div>
 
   <div class="mb-3">
-    <button type="submit" class="btn btn-primary" [disabled]="!addSponsorForm.valid">Add Sponsor</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!addSponsorForm.valid">{{ mainButtonText }}</button>
   </div>
 </form>
 <table class="table">
@@ -43,6 +46,7 @@
       <td>{{ sponsor.tier }}</td>
       <td>
         <button (click)="deleteSponsor(sponsor.id)" class="btn btn-primary">Delete</button>
+        <button (click)="setupSponsorUpdate(sponsor)" class="btn btn-primary">Update</button>
       </td>
     </tr>
   </tbody>

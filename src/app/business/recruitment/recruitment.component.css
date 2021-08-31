@@ -11,6 +11,13 @@
     padding-top: 5em;
 }
 
+.subTeamApplicationsGridFiveRow {
+    display: grid;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    padding-left: 5%;
+    padding-top: 5em;
+}
+
 .applicationTitle {
     padding-top: 1em;
     padding-bottom: 1em;
@@ -28,4 +35,49 @@
     border-radius: 1.5em;
     padding: 0.5em 1.5em 0.5em 1.5em;
     border: none;
+}
+
+@media (min-width: 900px) {
+    .desktop-view {
+        display: grid;
+    }
+
+    .mobile-view {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .desktop-view {
+        display: none;
+    }
+
+    .mobile-view {
+        display: grid;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .desktop-view {
+        display: none;
+    }
+
+    .subTeamApplicationsGridThreeRow {
+        display: grid;
+        grid-template-columns: 90%;
+        padding-left: 5%;
+        row-gap: 3em;
+    }
+    
+    .subTeamApplicationsGridTwoRow {
+        display: grid;
+        grid-template-columns: 90%;
+        padding-left: 5%;
+        padding-top: 3em;
+        row-gap: 3em;
+    }
+
+    .mobile-view {
+        display: grid;
+    }
 }

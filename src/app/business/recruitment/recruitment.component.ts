@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SubTeam } from 'src/app/models/subteam';
 
 @Component({
   selector: 'app-recruitment',
@@ -7,13 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruitmentComponent implements OnInit {
 
-  formLink: string;
+  subTeams: SubTeam[];
 
   constructor() {
-    this.formLink = '';
+    this.subTeams = [
+      { name: 'Software', description: 'Description', applicationForm: '' },
+      { name: 'Mechanical', description: 'Description', applicationForm: '' },
+      { name: 'Electrical', description: 'Description', applicationForm: '' },
+      { name: 'Business', description: 'Description', applicationForm: '' },
+      { name: 'Multi-team', description: 'Description', applicationForm: '' }
+    ]
   }
 
   ngOnInit(): void {
+  }
+
+  goToApplication(subteam: SubTeam) {
+    console.log(subteam.applicationForm);
+    window.location.href = subteam.applicationForm;
   }
 
 }

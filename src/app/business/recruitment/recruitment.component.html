@@ -1,4 +1,38 @@
-<div>
-    <h1>JOIN OUR TEAM</h1>
-    <img src='../../../assets/cars/Gen6Logo.png' />
+<div class="applications">
+    <h1 class="applicationTitle">
+        Applications Opening Soon
+    </h1>
+    <div class="subTeamApplicationsGridThreeRow">
+        <div *ngFor="let subteam of subTeams; let i = index" [attr.data-index]="i">
+            <div *ngIf="i < 3">
+                <h3> {{subteam.name}} </h3>
+                <br>
+                <p> {{subteam.description}} </p>
+                <br>
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subteam)">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="subTeamApplicationsGridTwoRow">
+        <div>
+            <h3> {{subTeams[3].name}} </h3>
+            <br>
+            <p> {{subTeams[3].description}} </p>
+            <br>
+            <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[3])">
+                Apply Now
+            </button>
+        </div>
+        <div>
+            <h3> {{subTeams[4].name}} </h3>
+            <br>
+            <p> {{subTeams[4].description}} </p>
+            <br>
+            <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[4])">
+                Apply Now
+            </button>
+        </div>
+    </div>
 </div>

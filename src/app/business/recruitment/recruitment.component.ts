@@ -14,23 +14,31 @@ export class RecruitmentComponent implements OnInit {
     this.subTeams = [
       {
         name: 'Software', description: 'Description',
-        applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform'
+        applicationForm: 'https://forms.gle/AMbysu6xwrVZr7BR7'
       },
       {
         name: 'Mechanical', description: 'Description',
-        applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform'
+        applicationForm: 'https://forms.gle/xVVQ7J5zCkigwkTr8'
       },
       {
         name: 'Electrical', description: 'Description',
-        applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform'
+        applicationForm: 'https://forms.gle/FN8txxf7wYA4qVgAA'
       },
       {
-        name: 'Business', description: 'Description',
-        applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform'
+        name: 'Sponsorship', description: 'Description',
+        applicationForm: 'https://forms.gle/MpAwwUie5tCwsfUs7'
+      },
+      {
+        name: 'Accounting', description: 'Description',
+        applicationForm: 'https://forms.gle/rhAgaNkForfMoV7DA'
+      },
+      {
+        name: 'Communications', description: 'Description',
+        applicationForm: 'https://forms.gle/w6YJ4akBfVYJ8oGs9'
       },
       {
         name: 'Multi-team', description: 'Description',
-        applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform'
+        applicationForm: 'https://forms.gle/zwn3Tk7Pgf89648a6'
       }
     ];
   }

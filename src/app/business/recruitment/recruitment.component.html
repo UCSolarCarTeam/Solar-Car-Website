@@ -5,12 +5,12 @@
         </h1>
     </div>
     <div class="headerImage">
-        <img class="headerImage" src='../../../assets/elysia/ElysiaMain.png' />
+        <img class="headerImage" src="../../../assets/recruitment/Schulich_Elysia_11.jpg" />
     </div>
 </div>
 <div class="infoGrid">
     <div class="infoImage">
-        <img class="infoImage" src="../../../assets/elysia/ElysiaMain.png" />
+        <img class="infoImage" src="../../../assets/recruitment/join_our_team.png" />
     </div>
     <div class="infoContainer">
         <div>
@@ -30,6 +30,78 @@
 </div>
 <div class="applications">
     <div class="mobile-view">
+        <h1 class="applicationTitle">Applications Opening Soon</h1>
+        <div class="subTeamApplicationsGridTwoRow">
+            <div>
+                <h3>{{ subTeams[0].name }}</h3>
+                <br />
+                <p>{{ subTeams[0].description }}</p>
+                <br />
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[0])">
+                    Apply Now
+                </button>
+            </div>
+            <div>
+                <h3>{{ subTeams[1].name }}</h3>
+                <br />
+                <p>{{ subTeams[1].description }}</p>
+                <br />
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[1])">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+        <div class="subTeamApplicationsGridTwoRow">
+            <div>
+                <h3>{{ subTeams[2].name }}</h3>
+                <br />
+                <p>{{ subTeams[2].description }}</p>
+                <br />
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[2])">
+                    Apply Now
+                </button>
+            </div>
+            <div>
+                <h3>{{ subTeams[3].name }}</h3>
+                <br />
+                <p>{{ subTeams[3].description }}</p>
+                <br />
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[3])">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+        <div class="subTeamApplicationsGridThreeRow">
+            <div>
+                <h3>{{ subTeams[4].name }}</h3>
+                <br />
+                <p>{{ subTeams[4].description }}</p>
+                <br />
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[4])">
+                    Apply Now
+                </button>
+            </div>
+            <div>
+                <h3>{{ subTeams[5].name }}</h3>
+                <br />
+                <p>{{ subTeams[5].description }}</p>
+                <br />
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[5])">
+                    Apply Now
+                </button>
+            </div>
+            <div>
+                <h3>{{ subTeams[6].name }}</h3>
+                <br />
+                <p>{{ subTeams[6].description }}</p>
+                <br />
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[6])">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="desktop-view">
         <h1 class="applicationTitle">Applications Opening Soon</h1>
         <div class="subTeamApplicationsGridThreeRow">
             <div>
@@ -60,7 +132,7 @@
                 </button>
             </div>
         </div>
-        <div class="subTeamApplicationsGridTwoRow">
+        <div class="subTeamApplicationsGridFourRow">
             <div>
                 <h3>{{ subTeams[3].name }}</h3>
                 <br />
@@ -79,53 +151,21 @@
                     Apply Now
                 </button>
             </div>
-        </div>
-    </div>
-    <div class="desktop-view">
-        <h1 class="applicationTitle">Applications Opening Soon</h1>
-        <div class="subTeamApplicationsGridFiveRow">
             <div>
-                <h3>{{ subTeams[0].name }}</h3>
+                <h3>{{ subTeams[5].name }}</h3>
                 <br />
-                <p>{{ subTeams[0].description }}</p>
+                <p>{{ subTeams[5].description }}</p>
                 <br />
-                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[0])">
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[5])">
                     Apply Now
                 </button>
             </div>
             <div>
-                <h3>{{ subTeams[1].name }}</h3>
+                <h3>{{ subTeams[6].name }}</h3>
                 <br />
-                <p>{{ subTeams[1].description }}</p>
+                <p>{{ subTeams[6].description }}</p>
                 <br />
-                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[1])">
-                    Apply Now
-                </button>
-            </div>
-            <div>
-                <h3>{{ subTeams[2].name }}</h3>
-                <br />
-                <p>{{ subTeams[2].description }}</p>
-                <br />
-                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[2])">
-                    Apply Now
-                </button>
-            </div>
-            <div>
-                <h3>{{ subTeams[3].name }}</h3>
-                <br />
-                <p>{{ subTeams[3].description }}</p>
-                <br />
-                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[3])">
-                    Apply Now
-                </button>
-            </div>
-            <div>
-                <h3>{{ subTeams[4].name }}</h3>
-                <br />
-                <p>{{ subTeams[4].description }}</p>
-                <br />
-                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[4])">
+                <button class="applicationFormButton" type="button" (click)="goToApplication(subTeams[6])">
                     Apply Now
                 </button>
             </div>

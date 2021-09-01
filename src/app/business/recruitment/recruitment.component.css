@@ -1,158 +1,192 @@
+.container-fluid {
+  border-bottom-style: solid;
+}
+
+.img-container {
+  position: relative;
+  padding-top: 66.59%;
+}
+
+.imgCar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.joinText {
+  margin-top: 3em;
+  margin-right: 7em;
+  color: #bf1c1c;
+}
+
+.joinHeader {
+  font-size: 8em;
+}
+
+.ourHeader {
+  font-size: 8em;
+}
+
+.teamHeader {
+  font-size: 8em;
+}
+
 .infoGrid {
-    display: grid;
-    grid-template-columns: 60% 40%;
+  display: grid;
+  grid-template-columns: 60% 40%;
 }
 
 .infoImageContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .infoImage {
-    flex-shrink: 0;
-    min-width: 100%;
-    max-width: 100%;
+  flex-shrink: 0;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 .infoContainer {
-    background-color: #BF1C1C;
-    color: white;
-    text-align: right;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #bf1c1c;
+  color: white;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .infoText {
-    font-size: xx-large;
+  font-size: xx-large;
 }
 
 .infoTitle {
-    font-size: 5em;
-    padding-bottom: 0.5em;
+  font-size: 5em;
+  padding-bottom: 0.5em;
 }
 
 .subTeamApplicationsGridThreeRow {
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    padding-left: 5%;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  padding-left: 5%;
 }
 
 .subTeamApplicationsGridTwoRow {
-    display: grid;
-    grid-template-columns: 45% 45%;
-    padding-left: 5%;
-    padding-top: 5em;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  padding-left: 5%;
+  padding-top: 5em;
 }
 
 .subTeamApplicationsGridFiveRow {
-    display: grid;
-    grid-template-columns: 18% 18% 18% 18% 18%;
-    padding-left: 5%;
-    padding-top: 5em;
+  display: grid;
+  grid-template-columns: 18% 18% 18% 18% 18%;
+  padding-left: 5%;
+  padding-top: 5em;
 }
 
 .applicationTitle {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    color: #BF1C1C;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: #bf1c1c;
 }
 
 .applications {
-    text-align: center;
-    padding-bottom: 5em;
+  text-align: center;
+  padding-bottom: 5em;
 }
 
 .applicationFormButton {
-    background-color: #BF1C1C;
-    color: white;
-    border-radius: 1.5em;
-    padding: 0.5em 1.5em 0.5em 1.5em;
-    border: none;
+  background-color: #bf1c1c;
+  color: white;
+  border-radius: 1.5em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  border: none;
 }
 
 @media (min-width: 900px) {
-    .desktop-view {
-        display: grid;
-    }
+  .desktop-view {
+    display: grid;
+  }
 
-    .mobile-view {
-        display: none;
-    }
+  .mobile-view {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-    .desktop-view {
-        display: none;
-    }
+  .desktop-view {
+    display: none;
+  }
 
-    .mobile-view {
-        display: grid;
-    }
+  .mobile-view {
+    display: grid;
+  }
 
-    .infoText {
-        font-size: medium;
-        padding-top: 0em;
-    }
-    
-    .infoTitle {
-        font-size: 2em;
-        padding-bottom: 0em;
-    }
+  .infoText {
+    font-size: medium;
+    padding-top: 0em;
+  }
+
+  .infoTitle {
+    font-size: 2em;
+    padding-bottom: 0em;
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .desktop-view {
-        display: none;
-    }
-    
-    .infoText {
-        font-size: medium;
-        padding-top: 0em;
-    }
-    
-    .infoTitle {
-        font-size: 2em;
-        padding-bottom: 0em;
-    }
+  .desktop-view {
+    display: none;
+  }
 
-    .infoGrid {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 50% 50%;
-    }
-    .infoContainer {
-        text-align: left;
-        padding-top: 1em;
-        padding-bottom: 1em;
-    }
+  .infoText {
+    font-size: medium;
+    padding-top: 0em;
+  }
 
-    .infoImage {
-        flex-shrink: 0;
-        min-height: 100%;
-        max-height: 100%;
-        min-width: none;
-        max-width: 100%;
-    }
+  .infoTitle {
+    font-size: 2em;
+    padding-bottom: 0em;
+  }
 
-    .subTeamApplicationsGridThreeRow {
-        display: grid;
-        grid-template-columns: 90%;
-        padding-left: 5%;
-        row-gap: 3em;
-    }
-    
-    .subTeamApplicationsGridTwoRow {
-        display: grid;
-        grid-template-columns: 90%;
-        padding-left: 5%;
-        padding-top: 3em;
-        row-gap: 3em;
-    }
+  .infoGrid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+  }
+  .infoContainer {
+    text-align: left;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
 
-    .mobile-view {
-        display: grid;
-    }
+  .infoImage {
+    flex-shrink: 0;
+    min-height: 100%;
+    max-height: 100%;
+    min-width: none;
+    max-width: 100%;
+  }
+
+  .subTeamApplicationsGridThreeRow {
+    display: grid;
+    grid-template-columns: 90%;
+    padding-left: 5%;
+    row-gap: 3em;
+  }
+
+  .subTeamApplicationsGridTwoRow {
+    display: grid;
+    grid-template-columns: 90%;
+    padding-left: 5%;
+    padding-top: 3em;
+    row-gap: 3em;
+  }
+
+  .mobile-view {
+    display: grid;
+  }
 }

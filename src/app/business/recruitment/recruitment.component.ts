@@ -17,7 +17,7 @@ export class RecruitmentComponent implements OnInit {
       { name: 'Electrical', description: 'Description', applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform' },
       { name: 'Business', description: 'Description', applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform' },
       { name: 'Multi-team', description: 'Description', applicationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe0-eVTUrhGfKwe8vHU7-RgMgztw8N1LXcxgrMvfSSFsjBRuQ/closedform' }
-    ]
+    ];
   }
 
   ngOnInit(): void {

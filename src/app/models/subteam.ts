@@ -1,5 +1,5 @@
 export interface SubTeam {
-    name: string,
-    description: string,
-    applicationForm?: string
+    name: string;
+    description: string;
+    applicationForm?: string;
 }

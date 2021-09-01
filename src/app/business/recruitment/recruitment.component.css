@@ -1,3 +1,39 @@
+.infoGrid {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.infoImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.infoImage {
+    flex-shrink: 0;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.infoContainer {
+    background-color: #BF1C1C;
+    color: white;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infoText {
+    font-size: xx-large;
+}
+
+.infoTitle {
+    font-size: 5em;
+    padding-bottom: 0.5em;
+}
+
 .subTeamApplicationsGridThreeRow {
     display: grid;
     grid-template-columns: 30% 30% 30%;
@@ -55,11 +91,50 @@
     .mobile-view {
         display: grid;
     }
+
+    .infoText {
+        font-size: medium;
+        padding-top: 0em;
+    }
+    
+    .infoTitle {
+        font-size: 2em;
+        padding-bottom: 0em;
+    }
 }
 
 @media screen and (max-width: 500px) {
     .desktop-view {
         display: none;
+    }
+    
+    .infoText {
+        font-size: medium;
+        padding-top: 0em;
+    }
+    
+    .infoTitle {
+        font-size: 2em;
+        padding-bottom: 0em;
+    }
+
+    .infoGrid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+    }
+    .infoContainer {
+        text-align: left;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .infoImage {
+        flex-shrink: 0;
+        min-height: 100%;
+        max-height: 100%;
+        min-width: none;
+        max-width: 100%;
     }
 
     .subTeamApplicationsGridThreeRow {

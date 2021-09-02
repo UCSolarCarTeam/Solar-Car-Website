@@ -13,18 +13,21 @@
 
 .headerText {
     font-size: 15em;
-    padding-left: 0.5em;
+    padding-left: 0.7em;
     padding-top: 0.1em;
     padding-bottom: 0.1em;
 }
 
-.headerImage {
+.headerImageContainer {
     display: flex;
-    flex-shrink: 0;
-    min-width: 80%;
-    max-width: 80%;
     align-items: center;
     justify-content: center;
+}
+
+.headerImage {
+    flex-shrink: 0;
+    min-width: 70%;
+    max-width: 70%;
 }
 
 .infoGrid {

@@ -12,7 +12,7 @@
 }
 
 .headerText {
-    font-size: 15em;
+    font-size: 10em;
     padding-left: 0.7em;
     padding-top: 0.1em;
     padding-bottom: 0.1em;
@@ -26,8 +26,8 @@
 
 .headerImage {
     flex-shrink: 0;
-    min-width: 70%;
-    max-width: 70%;
+    min-width: 80%;
+    max-width: 80%;
 }
 
 .infoGrid {
@@ -136,7 +136,7 @@
     }
 
     .headerText {
-        font-size: 6em;
+        font-size: 4em;
         padding-left: 0.5em;
         padding-top: 0.1em;
         padding-bottom: 0.1em;
@@ -144,8 +144,8 @@
     
     .headerImage {
         flex-shrink: 0;
-        min-width: 100%;
-        max-width: 100%;
+        min-width: 80%;
+        max-width: 80%;
     }
 
     .subTeamApplicationsGridThreeRow {
@@ -169,6 +169,7 @@
 
     .headerText {
         padding: 0;
+        font-size: 3.5em;
     }
 
     .headerContainer {

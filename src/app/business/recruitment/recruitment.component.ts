@@ -33,8 +33,8 @@ export class RecruitmentComponent implements OnInit {
         applicationForm: 'https://forms.gle/MpAwwUie5tCwsfUs7'
       },
       {
-        name: 'Accounting', description: "Our accounting team keeps track of our organization's finances by managing financial assets, \
-        creating budget projections, and maintaining the team's accounting books.",
+        name: 'Accounting', description: 'Our accounting team keeps track of our organization\'s finances by managing financial assets, \
+        creating budget projections, and maintaining the team\'s accounting books.',
         applicationForm: 'https://forms.gle/rhAgaNkForfMoV7DA'
       },
       {

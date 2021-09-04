@@ -12,7 +12,7 @@
 }
 
 .headerText {
-    font-size: 10em;
+    font-size: 8em;
     padding-left: 0.7em;
     padding-top: 0.1em;
     padding-bottom: 0.1em;
@@ -104,6 +104,20 @@
     border-radius: 1.5em;
     padding: 0.5em 1.5em 0.5em 1.5em;
     border: none;
+}
+
+@media (min-width: 2000px) {
+    .headerText {
+        font-size: 10em;
+    }
+
+    .desktop-view {
+        display: grid;
+    }
+
+    .mobile-view {
+        display: none;
+    }
 }
 
 @media (min-width: 900px) {

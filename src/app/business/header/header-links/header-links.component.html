@@ -1,0 +1,13 @@
+<div class="nav-bar">
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link
+        *ngFor="let routeLink of routeLinks;"
+        [routerLink]="routeLink.link"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}"
+        [disableRipple]="true"
+        >
+            {{routeLink.label}}
+      </a>
+    </nav>
+  </div>

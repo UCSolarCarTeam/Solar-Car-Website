@@ -15,7 +15,7 @@ export class NewsService {
       .collection('news-collection')
       .add(news)
       .then(response => { console.log(response); }, error => reject(error));
-    })
+    });
   }
 
   getNewsArticles() {
@@ -24,7 +24,7 @@ export class NewsService {
       .snapshotChanges();
   }
 
-  getNews(id: string){
+  getNews(id: string) {
     return this.firestore
       .collection('news-collection')
       .doc(id)

@@ -12,7 +12,7 @@
 }
 
 .headerText {
-    font-size: 8em;
+    font-size: 7vw;
     padding-left: 0.7em;
     padding-top: 0.1em;
     padding-bottom: 0.1em;
@@ -108,7 +108,7 @@
 
 @media (min-width: 2000px) {
     .headerText {
-        font-size: 10em;
+        font-size: 7vw;
     }
 
     .desktop-view {
@@ -150,7 +150,7 @@
     }
 
     .headerText {
-        font-size: 4em;
+        font-size: 7vw;
         padding-left: 0.5em;
         padding-top: 0.1em;
         padding-bottom: 0.1em;

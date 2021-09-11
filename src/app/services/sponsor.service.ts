@@ -36,10 +36,12 @@ export class SponsorService {
     });
   }
 
-  deleteSponsor(id) {
-    return this.firestore
-      .collection('sponsor-collection')
-      .doc(id)
+  async deleteSponsor(sponsor: Sponsor) {
+    const res = await this.firestore
+      .collection('sponsors-collection')
+      .doc(sponsor.id)
       .delete();
+      console.log(sponsor.id);
+    return res;
   }
 }

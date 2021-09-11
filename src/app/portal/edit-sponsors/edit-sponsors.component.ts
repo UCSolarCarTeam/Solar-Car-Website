@@ -115,8 +115,8 @@ export class EditSponsorsComponent implements OnInit {
     this.resetForm();
   }
 
-  deleteSponsor(id: string) {
-    this.sponsorService.deleteSponsor(id);
+  deleteSponsor(sponsor: Sponsor) {
+    this.sponsorService.deleteSponsor(sponsor);
   }
 
   setupSponsorUpdate(sponsor: Sponsor) {

@@ -28,27 +28,27 @@ export class SponsorsComponent implements OnInit {
     this.friends = [];
     this.sponsorService.getSponsors().subscribe(res => {
       res.forEach(e => {
-        var sponsor = {
+        const sponsor = {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as object)
         } as Sponsor;
-        switch(sponsor.tier) {
-          case "Lead":
+        switch (sponsor.tier) {
+          case 'Lead':
             this.lead.push(sponsor);
             break;
-          case "Platinum":
+          case 'Platinum':
             this.platinum.push(sponsor);
             break;
-          case "Gold":
+          case 'Gold':
             this.gold.push(sponsor);
             break;
-          case "Silver":
+          case 'Silver':
             this.silver.push(sponsor);
             break;
-          case "Bronze":
+          case 'Bronze':
             this.bronze.push(sponsor);
             break;
-          case "Friend":
+          case 'Friend':
             this.friends.push(sponsor);
             break;
         }

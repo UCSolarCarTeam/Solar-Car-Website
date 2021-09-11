@@ -1,1 +1,60 @@
-<p>Manage sponsors page works!</p>
+<div class="formContainer">
+  <form [formGroup]="addSponsorForm" (ngSubmit)="manageSponsor()" novalidate>
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" formControlName="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Link</label>
+      <input type="text" formControlName="link" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Tier</label>
+      <select formControlName="tier" class="form-control">
+        <option *ngFor="let tier of tiers">{{ tier }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Logo</label>
+      <input type="file" formControlName="logo" class="form-control" (change)="setLogo($event.target.files)">
+    </div>
+    <label>Logo Preview</label>
+    <br>
+    <img class="logoPreview" src="{{ previewLogoUrl }}" />
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary" [disabled]="!addSponsorForm.valid">{{ mainButtonText }}</button>
+    </div>
+  </form>
+</div>
+<div class="resultsTable">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Logo</th>
+        <th scope="col">Tier</th>
+        <th scope="col">Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sponsor of sponsors; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ sponsor.name }}</td>
+        <td>
+            <a target="_blank" href="{{ sponsor.link }}"><img class="logoResultsPreview" src="{{ sponsor.logoUrl }}" /></a>
+        </td>
+        <td>{{ sponsor.tier }}</td>
+        <td>
+          <button (click)="deleteSponsor(sponsor)" class="btn btn-primary actionButton">Delete</button>
+          <br>
+          <button (click)="setupSponsorUpdate(sponsor)" class="btn btn-primary actionButton">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

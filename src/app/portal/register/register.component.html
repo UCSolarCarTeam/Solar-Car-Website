@@ -1,0 +1,9 @@
+<div class="signUpForm">
+    <form [formGroup]="signUpForm" (ngSubmit)="SignUp">
+        <input type="text" placeholder="Email" formControlName="email" class="form-control" required>
+        <input type="password" placeholder="Password" formControlName="password" class="form-control" required>
+        <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Sign up</button>
+        <br>
+        <a routerLink="/portal/login" class="create-account-txt">Have an account? <strong>Login here</strong></a>
+    </form>
+</div>

@@ -5,6 +5,8 @@ import { MainComponent } from './main/main.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 import { EditSponsorsComponent } from './edit-sponsors/edit-sponsors.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -14,8 +16,10 @@ const routes: Routes = [
       {path: 'manage-news', component: EditNewsComponent},
       {path: 'manage-sponsors', component: EditSponsorsComponent},
       {path: 'manage-team', component: EditTeamComponent},
-      { path: '', component: MainComponent },
-      {path: '**', redirectTo: '', pathMatch: 'full' },
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
+      {path: '', component: MainComponent},
+      {path: '**', redirectTo: 'login', pathMatch: 'full' },
     ]
   }
 ];

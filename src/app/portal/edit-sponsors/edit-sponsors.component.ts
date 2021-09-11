@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { SponsorService } from 'src/app/services/sponsor.service';
 import { Sponsor } from 'src/app/models/sponsor';
@@ -17,6 +17,14 @@ export class EditSponsorsComponent implements OnInit {
   mainButtonText: string;
   logo: File;
   updateSponsorId: string;
+  tiers = [
+    'Lead',
+    'Platinum',
+    'Gold',
+    'Silver',
+    'Bronze',
+    'Friend'
+  ];
 
   constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: FormBuilder) {
     this.addSponsorForm = this.formBuilder.group({
@@ -72,7 +80,7 @@ export class EditSponsorsComponent implements OnInit {
         const sponsorName = this.addSponsorForm.get('name').value;
         const sponsorLink = this.addSponsorForm.get('link').value;
         const sponsorTier = this.addSponsorForm.get('tier').value;
-        this.uploadService.uploadFile(this.logo).then((snapshot) => {
+        this.uploadService.uploadFile(this.logo, 'assets/logos/').then((snapshot) => {
           snapshot.ref.getDownloadURL().then((downloadUrl) => {
             const newSponsor = {
               id: sponsorId,
@@ -92,7 +100,7 @@ export class EditSponsorsComponent implements OnInit {
     const sponsorName = this.addSponsorForm.get('name').value;
     const sponsorLink = this.addSponsorForm.get('link').value;
     const sponsorTier = this.addSponsorForm.get('tier').value;
-    this.uploadService.uploadFile(this.logo).then((snapshot) => {
+    this.uploadService.uploadFile(this.logo, 'assets/logos/').then((snapshot) => {
       snapshot.ref.getDownloadURL().then((downloadUrl) => {
         const newSponsor = {
           name: sponsorName,

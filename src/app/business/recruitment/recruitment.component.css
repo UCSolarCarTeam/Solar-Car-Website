@@ -68,7 +68,6 @@
   font-size: xx-large;
   padding-right: 1em;
   position: relative;
-  top: 1em;
   left: 1em;
 }
 
@@ -207,6 +206,11 @@
   .infoText {
     font-size: medium;
     padding-top: 0em;
+  }
+
+  .infoLink {
+    font-size: medium;
+    left: 0em;
   }
 
   .infoTitle {

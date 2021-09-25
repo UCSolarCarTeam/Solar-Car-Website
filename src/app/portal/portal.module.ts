@@ -10,7 +10,6 @@ import { EditSponsorsComponent } from './edit-sponsors/edit-sponsors.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 

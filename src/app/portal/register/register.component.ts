@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,11 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   signUpForm: FormGroup;
+  passwordsDoNotMatch: boolean;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.signUpForm = this.formBuilder.group({
-      email: [''],
-      password: ['']
+      email: ['', Validators.pattern('.+@.+\.com')],
+      password: ['', Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
+      passwordConfirm: [''],
     })
   }
 
@@ -21,6 +23,11 @@ export class RegisterComponent implements OnInit {
   }
 
   SignUp() {
+    if(this.signUpForm.get('password').value != this.signUpForm.get('passwordConfirm')) {
+      this.passwordsDoNotMatch = true;
+      return;
+    }
+    this.passwordsDoNotMatch = false;
     this.authService.SignUp(this.signUpForm.get('email').value,
                             this.signUpForm.get('password').value);
   }

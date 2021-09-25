@@ -12,8 +12,11 @@
         <div class="navbar-nav ml-auto">
           <div *ngFor="let i of routeLinks">
             <li class="nav-item">
-              <a class="nav-link" href="{{i.link}}">{{ i.label }}</a>
+              <a class="nav-link" routerLink="{{i.link}}">{{ i.label }}</a>
             </li>
+          </div>
+          <div *ngIf="LoggedIn()">
+            <button class="btn btn-primary" (click)="LogOut()">Log Out</button>
           </div>
         </div>
       </div>

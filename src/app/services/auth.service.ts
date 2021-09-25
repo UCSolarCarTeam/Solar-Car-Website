@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   isLoggedIn: boolean;
+  static id = 1;
 
   constructor(
     public auth: AngularFireAuth,
     public router: Router,
   ) {
     this.isLoggedIn = false;
+    AuthService.id++;
   }
 
   Login(email, password) {

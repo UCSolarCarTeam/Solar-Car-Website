@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   SignUp() {
-    if(this.signUpForm.get('password').value != this.signUpForm.get('passwordConfirm')) {
+    if (this.signUpForm.get('password').value !== this.signUpForm.get('passwordConfirm').value) {
       this.passwordsDoNotMatch = true;
       return;
     }

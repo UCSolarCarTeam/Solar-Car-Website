@@ -8,15 +8,20 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  isLoggedIn: boolean;
+
   constructor(
     public auth: AngularFireAuth,
     public router: Router,
-  ) { }
+  ) {
+    this.isLoggedIn = false;
+  }
 
   Login(email, password) {
     this.auth.signInWithEmailAndPassword(email, password)
       .then(res => {
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('portal');
+        this.isLoggedIn = true;
       }).catch(err => {
         window.alert(err.message);
       })
@@ -25,7 +30,8 @@ export class AuthService {
   SignUp(email, password) {
     this.auth.createUserWithEmailAndPassword(email, password)
       .then(res => {
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('portal');
+        this.isLoggedIn = true;
       }).catch(err => {
         window.alert(err.message);
       })
@@ -33,7 +39,8 @@ export class AuthService {
 
   LogOut() {
     this.auth.signOut().then(() => {
-      this.router.navigateByUrl('login');
+      this.router.navigateByUrl('portal/login');
+      this.isLoggedIn = false;
     });
   }
 }

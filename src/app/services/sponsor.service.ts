@@ -10,7 +10,6 @@ export class SponsorService {
   constructor(private firestore: AngularFirestore) { }
 
   addSponsor(sponsor: Sponsor) {
-
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('sponsors-collection')

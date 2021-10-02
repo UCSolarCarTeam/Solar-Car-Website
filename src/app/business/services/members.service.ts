@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Member } from '../team/member.model';
+import { Member } from '../../models/member.model';
 import members from 'src/assets/team-members/members.json';
 
 @Injectable({

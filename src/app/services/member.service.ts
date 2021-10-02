@@ -48,6 +48,26 @@ export class MemberService {
 
   TeamCaptain() {
     return this.firestore.collection('members-collection',
-      ref => ref.where('position', '==', 'captain')).get();
+      ref => ref.where('position', '==', 'Team Captain')).get();
+  }
+
+  EngineeringManager() {
+    return this.firestore.collection('members-collection',
+      ref => ref.where('position', '==', 'Engineering Team Manager')).get();
+  }
+
+  BusinessManager() {
+    return this.firestore.collection('members-collection',
+      ref => ref.where('position', '==', 'Business Team Manager')).get();
+  }
+
+  AllMembers() {
+    return this.firestore.collection('members-collection',
+      ref => ref.where('position', '==', 'Member')).get();
+  }
+
+  AllManagers() {
+    return this.firestore.collection('members-collection',
+      ref => ref.where('position', '==', 'Manager')).get();
   }
 }

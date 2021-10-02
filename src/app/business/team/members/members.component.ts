@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MemberService } from 'src/app/services/member.service';
 import { Member } from '../../../models/member.model';
 import { MembersService } from '../../services/members.service';
 
@@ -18,10 +19,20 @@ export class MembersComponent implements OnInit {
   sections: string[];
   activeSection: string;
 
-  constructor(private m: MembersService) { }
+  constructor(private m: MembersService, private memberService: MemberService) { }
 
   ngOnInit(): void {
-    this.members = this.m.AllMembers();
+    this.members = [];
+    this.memberService.AllMembers().subscribe(res => {
+      res.docs.forEach(doc => {
+        this.members.push(doc.data() as Member);
+      });
+    });
+    this.memberService.AllManagers().subscribe(res => {
+      res.docs.forEach(doc => {
+        this.members.push(doc.data() as Member);
+      });
+    });
     this.currentMemberList = this.members;
     this.setMembersToDisplay(0);
     this.sections =
@@ -66,7 +77,7 @@ export class MembersComponent implements OnInit {
   }
 
   setDisplayToAllMembers(): void {
-    this.currentMemberList = this.m.AllMembers();
+    this.currentMemberList = this.members;
     this.gotoFirstPage();
   }
 
@@ -91,7 +102,12 @@ export class MembersComponent implements OnInit {
   }
 
   setDisplayToManagers(): void {
-    this.currentMemberList = this.m.AllManagers();
+    this.currentMemberList = [];
+    this.memberService.AllManagers().subscribe(res => {
+      res.docs.forEach(doc => {
+        this.members.push(doc.data() as Member);
+      });
+    });
     this.gotoFirstPage();
   }
 

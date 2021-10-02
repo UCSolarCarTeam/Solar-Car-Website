@@ -80,7 +80,7 @@ export class EditTeamComponent implements OnInit {
         const newMember = {
           id: this.updateMemberId,
           name: this.addMemberForm.get('name').value,
-          position: this.addMemberForm.get('link').value,
+          position: this.addMemberForm.get('position').value,
           subteam: this.addMemberForm.get('subteam').value,
           major: this.addMemberForm.get('major').value,
           description: this.addMemberForm.get('description').value,

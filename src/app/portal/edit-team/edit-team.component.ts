@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Member } from 'src/app/models/member.model';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { MemberService } from 'src/app/services/member.service';
@@ -16,6 +16,8 @@ export class EditTeamComponent implements OnInit {
   mainButtonText: string;
   image: File;
   updateMemberId: string;
+  positions: string[];
+  subteams: string[];
 
   constructor(private memberService: MemberService, private formBuilder: FormBuilder, private uploadService: FileUploadService) {
     this.addMemberForm = this.formBuilder.group({
@@ -24,10 +26,12 @@ export class EditTeamComponent implements OnInit {
       subteam: [''],
       major: [''],
       description: [''],
-      year: [''],
+      year: ['', Validators.pattern('20[0-9][0-9]')],
       image: ['']
     });
     this.mainButtonText = 'Add Member';
+    this.positions = ['Member', 'Manager', 'Team Captain', 'Engineering Team Manager', 'Business Team Manager'];
+    this.subteams = ['Mechanical', 'Electrical', 'Software', 'Business'];
   }
 
   ngOnInit(): void {

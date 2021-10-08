@@ -12,9 +12,7 @@ export class TeamComponent implements OnInit {
   enggManager: Member;
   businessManager: Member;
 
-  constructor(private m: MemberService) { }
-
-  ngOnInit() {
+  constructor(private m: MemberService) {
     this.m.TeamCaptain().subscribe(res => {
       this.teamCaptain = res.docs[0].data() as Member;
     });
@@ -24,5 +22,8 @@ export class TeamComponent implements OnInit {
     this.m.BusinessManager().subscribe(res => {
       this.businessManager = res.docs[0].data() as Member;
     });
+  }
+
+  ngOnInit() {
   }
 }

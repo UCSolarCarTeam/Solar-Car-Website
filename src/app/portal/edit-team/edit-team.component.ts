@@ -26,7 +26,7 @@ export class EditTeamComponent implements OnInit {
       subteam: [''],
       major: [''],
       description: [''],
-      year: ['', Validators.pattern('20[0-9][0-9]')],
+      year: [''],
       image: ['']
     });
     this.mainButtonText = 'Add Member';

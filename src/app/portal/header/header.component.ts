@@ -27,7 +27,7 @@ export class HeaderComponent {
   }
 
   public LoggedIn(): boolean {
-    return this.auth.isLoggedIn;
+    return this.auth.user !== null;
   }
 
   public LogOut() {

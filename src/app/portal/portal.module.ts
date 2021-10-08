@@ -12,6 +12,7 @@ import { EditNewsComponent } from './edit-news/edit-news.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
     EditSponsorsComponent,
     EditNewsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,

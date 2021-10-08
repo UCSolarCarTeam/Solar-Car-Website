@@ -8,6 +8,7 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from '../auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path: 'manage-team', component: EditTeamComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
+      {path: 'user', component: UserProfileComponent, canActivate: [AuthGuard]},
       {path: '', component: MainComponent, canActivate: [AuthGuard]},
       {path: '**', redirectTo: 'login', pathMatch: 'full' },
     ]

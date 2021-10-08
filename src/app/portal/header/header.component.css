@@ -16,3 +16,8 @@ img {
     position: -webkit-sticky;
     position: sticky;
 }
+
+.user-btn {
+    background: none;
+    border: none;
+}

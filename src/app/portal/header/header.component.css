@@ -21,3 +21,7 @@ img {
     background: none;
     border: none;
 }
+
+.user-icon {
+    max-width: 40px;
+}

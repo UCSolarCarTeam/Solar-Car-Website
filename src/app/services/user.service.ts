@@ -25,7 +25,7 @@ export class UserService {
     const userRef = this.firestore.collection('users-collection').doc(user.id);
     return userRef.update({
       email: user.email,
-      loggedIn: user.loggedIn,
+      verified: user.verified,
       displayName: user.displayName
     });
   }

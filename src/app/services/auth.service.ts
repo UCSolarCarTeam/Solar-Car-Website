@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from './user.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +18,21 @@ export class AuthService {
     public router: Router,
     private userService: UserService
   ) {
-    this.user = {id: "test", email: "test", displayName: "test", loggedIn: true};
+    this.user = null;
+    // This is for testing so we don't have to keep signing in. Remove if developing or testing
+    // the user authentication functionality, or run in production mode (NOT RECOMMENDED)
+    if (!environment.production) {
+      this.user = {id: "testID", email: "testEmail", displayName: "testName", verified: true};
+    }
   }
 
   Login(email, password) {
     this.auth.signInWithEmailAndPassword(email, password)
       .then(res => {
         this.userService.getUser(res.user.uid).subscribe(usr => {
+          const user = usr.data() as User;
           this.userService.login(res.user.uid);
-          this.user = usr.data() as User;
+          this.user = user;
           this.router.navigateByUrl('portal');
         });
       }).catch(err => {
@@ -33,18 +40,16 @@ export class AuthService {
       })
   }
 
-  SignUp(email, password) {
+  SignUp(displayName, email, password) {
     this.auth.createUserWithEmailAndPassword(email, password)
       .then(res => {
         this.user = {
           id: res.user.uid,
-          displayName: "temp",
+          displayName: displayName,
           email: email,
-          loggedIn: true
+          verified: false
         };
         this.userService.addUser(this.user);
-        this.Login(email, password);
-        
       }).catch(err => {
         window.alert(err.message);
       })

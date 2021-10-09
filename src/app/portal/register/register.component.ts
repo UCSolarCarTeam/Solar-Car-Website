@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.signUpForm = this.formBuilder.group({
+      displayName: [''],
       email: ['', Validators.pattern('.+@.+\.com')],
       password: ['', Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
       passwordConfirm: [''],
@@ -28,8 +29,12 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.passwordsDoNotMatch = false;
-    this.authService.SignUp(this.signUpForm.get('email').value,
+    this.authService.SignUp(this.signUpForm.get('displayName').value,
+                            this.signUpForm.get('email').value,
                             this.signUpForm.get('password').value);
   }
 
+  SignUpSuccess() {
+    return this.authService.user !== null && !this.authService.user.verified;
+  }
 }

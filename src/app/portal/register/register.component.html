@@ -1,5 +1,6 @@
 <div class="signUpFormDiv">
     <form class="signUpForm" [formGroup]="signUpForm" (ngSubmit)="SignUp()">
+        <input type="text" placeholder="Display Name" formControlName="displayName" class="form-control" required>
         <input type="text" placeholder="Email" formControlName="email" class="form-control" required>
         <div *ngIf="signUpForm.get('email').invalid &&
                     signUpForm.get('email').errors &&
@@ -25,6 +26,9 @@
         <br>
         <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Sign up</button>
         <br>
+        <div *ngIf="SignUpSuccess()">
+            <small class="error">Sign up successfull. Please wait to be verified</small>
+        </div>
         <a routerLink="/portal/login" class="create-account-txt">Have an account? <strong>Login here</strong></a>
     </form>
 </div>

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './portal.component';
@@ -11,6 +13,7 @@ import { EditNewsComponent } from './edit-news/edit-news.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { environment } from 'src/environments/environment';
   imports: [
     CommonModule,
     PortalRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
   ],
   providers: [],
   bootstrap: [PortalComponent]

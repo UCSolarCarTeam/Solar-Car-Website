@@ -1,1 +1,18 @@
-<p>Manage news page works!</p>
+<div class="container">
+<br>
+  <form>
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" formControlName="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Article</label>
+      <input type="file" class="form-control" (change)="setArticle($event.target.files)">
+    </div>
+    <label>Article Preview</label>
+    <markdown [src]="previewArticleUrl"></markdown>
+    <br>
+  </form>
+</div>
+

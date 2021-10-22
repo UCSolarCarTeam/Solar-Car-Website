@@ -22,10 +22,6 @@ export class HeaderComponent {
         link: './team',
       },
       {
-        label: 'Recruitment',
-        link: './recruitment',
-      },
-      {
         label: 'Support Us',
         link: './support-us',
       },

@@ -6,8 +6,27 @@
     overflow-y: hidden;
 }
 
-p{
+p, span {
     font-family: "Actor";
+}
+
+h1 {
+    font-family: "SairaMedium";
+    font-size: 3em;
+}
+
+h2, h3 {
+    font-family: "SairaLight";
+    font-size: 2em;
+}
+
+a {
+    font-family: "SairaMedium";
+}
+
+button {
+    font-family: "SairaLight";
+    color: #fff;
 }
 
 @font-face{
@@ -23,4 +42,14 @@ p{
 @font-face{
     font-family: "Actor";
     src: url("assets/fonts/Actor-Regular.ttf");
+}
+
+@font-face {
+    font-family: "SairaMedium";
+    src: url("assets/fonts/Saira-Medium.ttf");
+}
+
+@font-face {
+    font-family: "SairaLight";
+    src: url("assets/fonts/Saira-Light.ttf");
 }

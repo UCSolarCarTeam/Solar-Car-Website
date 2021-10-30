@@ -3,4 +3,5 @@ export interface User {
     email: string;
     verified: boolean;
     displayName: string;
+    admin: boolean;
 }

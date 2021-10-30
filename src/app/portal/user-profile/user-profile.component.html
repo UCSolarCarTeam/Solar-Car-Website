@@ -1,1 +1,8 @@
-<p>This is a work in progress</p>
+<div class="profileContainer">
+    <div>
+        <h2>Profile</h2>
+    </div>
+    <div *ngIf="getUser().admin">
+        <h2>Admin Panel</h2>
+    </div>
+</div>

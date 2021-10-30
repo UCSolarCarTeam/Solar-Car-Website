@@ -12,7 +12,13 @@
     </div>
     <label>Article Preview</label>
     <markdown [src]="previewArticleUrl"></markdown>
-    <br>
+
+
   </form>
+
+  <br>
+    <textarea class="variable-textarea" [(ngModel)]="markdown"></textarea>
+    <markdown class="variable-binding" [data]="markdown"></markdown>
+    <br>
 </div>
 

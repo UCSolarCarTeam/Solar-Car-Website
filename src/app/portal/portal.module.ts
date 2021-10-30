@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './portal.component';
@@ -13,6 +14,11 @@ import { EditNewsComponent } from './edit-news/edit-news.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+
+import 'prismjs';
+import 'prismjs/components/prism-typescript.min.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
 
 
 @NgModule({
@@ -28,8 +34,9 @@ import { environment } from 'src/environments/environment';
     CommonModule,
     PortalRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
-    MarkdownModule.forRoot({ loader: HttpClient }),
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [PortalComponent]

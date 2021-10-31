@@ -4,6 +4,7 @@ import { SponsorService } from 'src/app/services/sponsor.service';
 import { Sponsor } from 'src/app/models/sponsor';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from 'src/app/services/file-upload.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-edit-sponsors',
@@ -26,7 +27,7 @@ export class EditSponsorsComponent implements OnInit {
     'Friend'
   ];
 
-  constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: FormBuilder) {
+  constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: FormBuilder, private authService: AuthService) {
     this.addSponsorForm = this.formBuilder.group({
       name: [''],
       link: [''],
@@ -74,7 +75,7 @@ export class EditSponsorsComponent implements OnInit {
           tier: this.addSponsorForm.get('tier').value,
           logo: null
         };
-        this.sponsorService.updateSponsor(newSponsor);
+        this.sponsorService.updateSponsor(newSponsor, this.authService.user);
       } else {
         const sponsorId = this.updateSponsorId;
         const sponsorName = this.addSponsorForm.get('name').value;
@@ -90,7 +91,7 @@ export class EditSponsorsComponent implements OnInit {
               tier: sponsorTier,
               logo: null
             };
-            this.sponsorService.updateSponsor(newSponsor);
+            this.sponsorService.updateSponsor(newSponsor, this.authService.user);
           });
         });
       }
@@ -109,14 +110,14 @@ export class EditSponsorsComponent implements OnInit {
           tier: sponsorTier,
           logo: null
         };
-        this.sponsorService.addSponsor(newSponsor);
+        this.sponsorService.addSponsor(newSponsor, this.authService.user);
       });
     });
     this.resetForm();
   }
 
   deleteSponsor(sponsor: Sponsor) {
-    this.sponsorService.deleteSponsor(sponsor);
+    this.sponsorService.deleteSponsor(sponsor, this.authService.user);
   }
 
   setupSponsorUpdate(sponsor: Sponsor) {

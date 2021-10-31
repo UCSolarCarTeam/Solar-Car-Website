@@ -21,6 +21,12 @@ export class UserService {
       .get();
   }
 
+  getUsers() {
+    return this.firestore
+      .collection('users-collection')
+      .snapshotChanges();
+  }
+
   updateUser(user: User) {
     const userRef = this.firestore.collection('users-collection').doc(user.id);
     return userRef.update({
@@ -37,17 +43,10 @@ export class UserService {
       .delete();
   }
 
-  login(uid: string) {
-    this.firestore
-      .collection('users-collection')
-      .doc(uid)
-      .update({loggedIn: true});
-  }
-
-  logout(uid: string) {
-    this.firestore
-      .collection('users-collection')
-      .doc(uid)
-      .update({loggedIn: false});
+  verifyUser(userId) {
+    const userRef = this.firestore.collection('users-collection').doc(userId);
+    return userRef.update({
+      verified: true
+    });
   }
 }

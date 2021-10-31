@@ -30,8 +30,7 @@ export class HeaderComponent {
     return this.auth.user !== null && this.auth.user.verified;
   }
 
-  public LogOut() {
-    this.auth.LogOut();
+  public getAuth() {
+    return this.auth;
   }
-
 }

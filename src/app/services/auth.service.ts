@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { UserService } from './user.service';
 import { environment } from 'src/environments/environment';
+import { UserPrivilege } from '../models/user-privilege';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class AuthService {
     // This is for testing so we don't have to keep signing in. Remove if developing or testing
     // the user authentication functionality, or run in production mode (NOT RECOMMENDED)
     if (!environment.production) {
-      this.user = {id: 'testID', email: 'testEmail', displayName: 'testName', verified: true, admin: true};
+      this.user = { id: 'testID', email: 'testEmail', displayName: 'testName', verified: true,
+                    userPrivileges: [UserPrivilege.ADMIN], userActions: []};
     }
   }
 
@@ -45,10 +47,11 @@ export class AuthService {
       .then(res => {
         this.user = {
           id: res.user.uid,
-          displayName: displayName,
-          email: email,
+          displayName,
+          email,
           verified: false,
-          admin: false
+          userPrivileges: [UserPrivilege.NONE],
+          userActions: []
         };
         this.userService.addUser(this.user);
       }).catch(err => {
@@ -62,5 +65,14 @@ export class AuthService {
       this.user = null;
       this.router.navigateByUrl('portal/login');
     });
+  }
+
+  isAdmin() {
+    return this.user && this.user.userPrivileges.includes(UserPrivilege.ADMIN);
+  }
+
+  hasBusinessPrivileges() {
+    return this.user && (this.user.userPrivileges.includes(UserPrivilege.ADMIN)
+      || this.user.userPrivileges.includes(UserPrivilege.BUSINESS));
   }
 }

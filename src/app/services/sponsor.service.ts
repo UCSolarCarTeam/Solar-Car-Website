@@ -29,6 +29,13 @@ export class SponsorService {
     });
   }
 
+  getSponsor(id: string) {
+    return this.firestore
+      .collection('sponsors-collection')
+      .doc(id)
+      .get();
+  }
+
   getSponsors() {
     return this.firestore
       .collection('sponsors-collection')

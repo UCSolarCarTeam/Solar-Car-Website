@@ -149,7 +149,11 @@ export class EditSponsorsComponent implements OnInit {
         this.userService.getUser(action.uid).subscribe(doc => {
           const user = doc.data() as User;
           action.uid = user.displayName;
-          this.actionHistory.push(action);
+          this.sponsorService.getSponsor(action.eid).subscribe(doc => {
+            const sponsor = doc.data() as Sponsor;
+            action.eid = sponsor.name;
+            this.actionHistory.push(action);
+          });
         });
         console.log(this.actionHistory);
       });

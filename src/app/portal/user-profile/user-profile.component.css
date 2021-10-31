@@ -7,3 +7,8 @@
     padding-left: 0.5em;
     padding-top: 0.5em;
 }
+
+.userForm {
+    max-width: 80%;
+    padding-left: 1em
+}

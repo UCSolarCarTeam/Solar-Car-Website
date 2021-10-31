@@ -22,7 +22,7 @@ export class SponsorService {
             uid: user.id,
             eid: response.id,
             action: Action.ADDED,
-            dateTime: new Date().toISOString(),
+            dateTime: new Date().toLocaleString(),
           });
           resolve(response);
          }, error => reject(error));
@@ -48,7 +48,7 @@ export class SponsorService {
       uid: user.id,
       eid: sponsor.id,
       action: Action.UPDATED,
-      dateTime: new Date().toISOString(),
+      dateTime: new Date().toLocaleString(),
     });
     return sponsorRef.update({
       name: sponsor.name,
@@ -68,7 +68,7 @@ export class SponsorService {
       uid: user.id,
       eid: sponsor.id,
       action: Action.DELETED,
-      dateTime: new Date().toISOString(),
+      dateTime: new Date().toLocaleString(),
     });
   }
 }

@@ -60,6 +60,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Logo</th>
         <th scope="col">Tier</th>
@@ -69,6 +70,7 @@
     <tbody>
       <tr *ngFor="let sponsor of sponsors; let i = index">
         <th scope="row">{{ i + 1 }}</th>
+        <td>{{ sponsor.id }}</td>
         <td>{{ sponsor.name }}</td>
         <td>
             <a target="_blank" href="{{ sponsor.link }}"><img class="logoResultsPreview" src="{{ sponsor.logoUrl }}" /></a>

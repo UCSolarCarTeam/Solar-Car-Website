@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminPanelComponent } from './user-profile/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     EditNewsComponent,
     LoginComponent,
     RegisterComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AdminPanelComponent
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,8 @@ import { UserService } from 'src/app/services/user.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 import { UserAction } from 'src/app/models/user-action';
 import { UserPrivilege } from 'src/app/models/user-privilege';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,26 +15,19 @@ import { UserPrivilege } from 'src/app/models/user-privilege';
 })
 export class UserProfileComponent implements OnInit {
 
-  users: User[];
+  userForm: FormGroup;
   userActions: UserAction[];
-  userActionHistory: UserAction[];
 
-  constructor(private authService: AuthService, private userService: UserService, private userActionService: UserActionService) {
-    this.userActionHistory = [];
+  constructor(private authService: AuthService, private userService: UserService, private userActionService: UserActionService,
+      private formBuilder: FormBuilder) {
+    this.userForm = this.formBuilder.group({
+      displayName: '',
+      email: ''
+    });
     this.userActions = [];
   }
 
   ngOnInit(): void {
-    if(this.authService.isAdmin()){
-      this.userService.getUsers().subscribe(users => {
-        this.users = users.map(u => {
-          return {
-            id: u.payload.doc.id,
-            ...u.payload.doc.data() as object
-          } as User;
-        });
-      });
-    }
     this.userActionService.getUserActions(this.authService.user.id).then(userActions => {
       userActions.forEach((doc) => {
         this.userActions.push({
@@ -41,41 +36,15 @@ export class UserProfileComponent implements OnInit {
         } as UserAction);
       });
     });
-  }
-
-  getPrivilegeString(privileges: UserPrivilege[]): string {
-    if(privileges.length == 1) {
-      return privileges[0];
-    }
-    let privilegeString = "";
-    privileges.forEach(p => {
-      privilegeString += p + ", ";
-    });
-    return privilegeString;
+    this.userForm.get('displayName').setValue(this.authService.user.displayName);
+    this.userForm.get('email').setValue(this.authService.user.email);
   }
 
   getAuth() {
     return this.authService;
   }
 
-  verifyUser(userId) {
-    this.userService.verifyUser(userId);
-  }
-
-  getUserActions(uid) {
-    this.userActionService.getUserActions(uid).then(userActions => {
-      userActions.forEach((doc) => {
-        this.userActionHistory.push({
-          id: doc.id,
-          ...doc.data() as object
-        } as UserAction);
-        let action = this.userActionHistory.pop();
-        this.userService.getUser(action.uid).subscribe(doc => {
-          const user = doc.data() as User;
-          action.uid = user.displayName;
-          this.userActionHistory.push(action);
-        });
-      });
-    });
+  manageUser() {
+    return;
   }
 }

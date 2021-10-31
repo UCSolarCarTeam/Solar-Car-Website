@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 import { UserAction } from 'src/app/models/user-action';
+import { UserPrivilege } from 'src/app/models/user-privilege';
 
 @Component({
   selector: 'app-user-profile',
@@ -37,6 +38,17 @@ export class UserProfileComponent implements OnInit {
         } as UserAction);
       });
     });
+  }
+
+  getPrivilegeString(privileges: UserPrivilege[]): string {
+    if(privileges.length == 1) {
+      return privileges[0];
+    }
+    let privilegeString = "";
+    privileges.forEach(p => {
+      privilegeString += p + ", ";
+    });
+    return privilegeString;
   }
 
   getAuth() {

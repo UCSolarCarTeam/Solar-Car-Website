@@ -43,7 +43,7 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.displayName }}</td>
                     <td>{{ user.verified }}</td>
-                    <td>Admin</td>
+                    <td>{{ getPrivilegeString(user.userPrivileges) }}</td>
                     <td *ngIf="!user.verified">
                         <button class="btn btn-primary" (click)="verifyUser(user.id)">Verify</button>
                     </td>

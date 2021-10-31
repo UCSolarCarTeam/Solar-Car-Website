@@ -15,8 +15,12 @@ export class UserProfileComponent implements OnInit {
 
   users: User[];
   userActions: UserAction[];
+  userActionHistory: UserAction[];
 
-  constructor(private authService: AuthService, private userService: UserService, private userActionService: UserActionService) { }
+  constructor(private authService: AuthService, private userService: UserService, private userActionService: UserActionService) {
+    this.userActionHistory = [];
+    this.userActions = [];
+  }
 
   ngOnInit(): void {
     if(this.authService.isAdmin()){
@@ -29,7 +33,6 @@ export class UserProfileComponent implements OnInit {
         });
       });
     }
-    this.userActions = [];
     this.userActionService.getUserActions(this.authService.user.id).then(userActions => {
       userActions.forEach((doc) => {
         this.userActions.push({
@@ -59,4 +62,20 @@ export class UserProfileComponent implements OnInit {
     this.userService.verifyUser(userId);
   }
 
+  getUserActions(uid) {
+    this.userActionService.getUserActions(uid).then(userActions => {
+      userActions.forEach((doc) => {
+        this.userActionHistory.push({
+          id: doc.id,
+          ...doc.data() as object
+        } as UserAction);
+        let action = this.userActionHistory.pop();
+        this.userService.getUser(action.uid).subscribe(doc => {
+          const user = doc.data() as User;
+          action.uid = user.displayName;
+          this.userActionHistory.push(action);
+        });
+      });
+    });
+  }
 }

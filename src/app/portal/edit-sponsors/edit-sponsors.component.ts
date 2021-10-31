@@ -155,7 +155,6 @@ export class EditSponsorsComponent implements OnInit {
             this.actionHistory.push(action);
           });
         });
-        console.log(this.actionHistory);
       });
     });
     document.documentElement.scrollTop = 0;

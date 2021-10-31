@@ -23,6 +23,13 @@ export class UserActionService {
       .ref.where('uid', '==', uid).get();
   }
 
+  getEntityActions(eid: string) {
+    console.log('eid is' + eid);
+    return this.firestore
+      .collection('user-actions-collection')
+      .ref.where('eid', '==', eid).get();
+  }
+
   updateUserAction(userAction: UserAction) {
     const userActionRef = this.firestore.collection('user-actions-collection').doc(userAction.id);
     return userActionRef.update({

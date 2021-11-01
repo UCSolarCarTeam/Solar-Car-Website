@@ -43,7 +43,7 @@
       <img class="imagePreview" src="{{ previewImgUrl }}" />
   
       <div class="mb-3">
-        <button type="submit" class="btn btn-primary" [disabled]="!addMemberForm.valid">{{ mainButtonText }}</button>
+        <button type="submit" class="btn btn-danger" [disabled]="!addMemberForm.valid">{{ mainButtonText }}</button>
       </div>
     </form>
   </div>
@@ -75,9 +75,9 @@
           <td>{{ member.description }}</td>
           <td>{{ member.year }}</td>
           <td>
-            <button (click)="deleteMember(member)" class="btn btn-primary actionButton">Delete</button>
+            <button (click)="deleteMember(member)" class="btn btn-danger actionButton">Delete</button>
             <br>
-            <button (click)="setupMemberUpdate(member)" class="btn btn-primary actionButton">Update</button>
+            <button (click)="setupMemberUpdate(member)" class="btn btn-danger actionButton">Update</button>
           </td>
         </tr>
       </tbody>

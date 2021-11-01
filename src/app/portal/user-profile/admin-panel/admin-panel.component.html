@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">User</th>
+                <th scope="col">Entity</th>
                 <th scope="col">Entity ID</th>
                 <th scope="col">Action</th>
                 <th scope="col">Date</th>
@@ -27,7 +27,6 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">User ID</th>
             <th scope="col">Email</th>
             <th scope="col">Display Name</th>
             <th scope="col">Verified</th>
@@ -38,7 +37,6 @@
     <tbody>
         <tr *ngFor="let user of users; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ user.id }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.displayName }}</td>
             <td>{{ user.verified }}</td>

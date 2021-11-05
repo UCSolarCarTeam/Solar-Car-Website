@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../models/user';
+import { UserPrivilege } from '../models/user-privilege';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,8 @@ export class UserService {
   verifyUser(userId) {
     const userRef = this.firestore.collection('users-collection').doc(userId);
     return userRef.update({
-      verified: true
+      verified: true,
+      userPrivileges: [ UserPrivilege.BUSINESS ]
     });
   }
 }

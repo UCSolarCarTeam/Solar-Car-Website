@@ -20,7 +20,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User ID</th>
+                        <th scope="col">Entity</th>
                         <th scope="col">Entity ID</th>
                         <th scope="col">Action</th>
                         <th scope="col">Date</th>
@@ -29,7 +29,7 @@
                 <tbody>
                     <tr *ngFor="let action of userActions; let i = index">
                         <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ action.uid }}</td>
+                        <td>{{ action.eName }}</td>
                         <td>{{ action.eid }}</td>
                         <td>{{ action.action }}</td>
                         <td>{{ action.dateTime }}</td>
@@ -44,7 +44,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">User ID</th>
+                    <th scope="col">Entity</th>
                     <th scope="col">Entity ID</th>
                     <th scope="col">Action</th>
                     <th scope="col">Date</th>
@@ -53,7 +53,7 @@
             <tbody>
                 <tr *ngFor="let action of userActions; let i = index">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ action.uid }}</td>
+                    <td>{{ action.eName }}</td>
                     <td>{{ action.eid }}</td>
                     <td>{{ action.action }}</td>
                     <td>{{ action.dateTime }}</td>

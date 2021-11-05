@@ -36,6 +36,7 @@
       <thead>
           <tr>
               <th scope="col">#</th>
+              <th scope="col">User ID</th>
               <th scope="col">User</th>
               <th scope="col">Entity</th>
               <th scope="col">Action</th>
@@ -46,7 +47,8 @@
           <tr *ngFor="let action of actionHistory; let i = index">
               <th scope="row">{{ i + 1 }}</th>
               <td>{{ action.uid }}</td>
-              <td>{{ action.eid }}</td>
+              <td>{{ action.uName }}</td>
+              <td>{{ action.eName }}</td>
               <td>{{ action.action }}</td>
               <td>{{ action.dateTime }}</td>
           </tr>

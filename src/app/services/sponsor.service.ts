@@ -20,7 +20,9 @@ export class SponsorService {
         .then(response => { 
           this.userActionService.addUserAction({
             uid: user.id,
+            uName: user.displayName,
             eid: response.id,
+            eName: 'Sponsor: ' + sponsor.name,
             action: Action.ADDED,
             dateTime: new Date().toLocaleString(),
           });
@@ -46,7 +48,9 @@ export class SponsorService {
     const sponsorRef = this.firestore.collection('sponsors-collection').doc(sponsor.id);
     this.userActionService.addUserAction({
       uid: user.id,
+      uName: user.displayName,
       eid: sponsor.id,
+      eName: 'Sponsor: ' + sponsor.name,
       action: Action.UPDATED,
       dateTime: new Date().toLocaleString(),
     });
@@ -66,7 +70,9 @@ export class SponsorService {
       .delete();
     this.userActionService.addUserAction({
       uid: user.id,
+      uName: user.displayName,
       eid: sponsor.id,
+      eName: 'Sponsor: ' + sponsor.name,
       action: Action.DELETED,
       dateTime: new Date().toLocaleString(),
     });

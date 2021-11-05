@@ -135,6 +135,7 @@ export class EditSponsorsComponent implements OnInit {
     this.previewLogoUrl = sponsor.logoUrl;
     this.logo = null;
     this.mainButtonText = 'Update Sponsor';
+    document.documentElement.scrollTop = 0;
   }
 
   showActionHistory(sponsor: Sponsor) {
@@ -145,16 +146,6 @@ export class EditSponsorsComponent implements OnInit {
           id: doc.id,
           ...doc.data() as object
         } as UserAction);
-        let action = this.actionHistory.pop();
-        this.userService.getUser(action.uid).subscribe(doc => {
-          const user = doc.data() as User;
-          action.uid = user.displayName;
-          this.sponsorService.getSponsor(action.eid).subscribe(doc => {
-            const sponsor = doc.data() as Sponsor;
-            action.eid = sponsor.name;
-            this.actionHistory.push(action);
-          });
-        });
       });
     });
     document.documentElement.scrollTop = 0;

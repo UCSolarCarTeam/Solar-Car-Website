@@ -40,12 +40,20 @@
             <td>{{ user.email }}</td>
             <td>{{ user.displayName }}</td>
             <td>{{ user.verified }}</td>
-            <td>{{ getPrivilegeString(user.userPrivileges) }}</td>
+            <td>
+                <div *ngFor="let privilege of privileges; let i = index">
+                    <input name="i" type="checkbox" value="{{privilege}}" [checked]="userHasPrivilege(user.id, privilege)"
+                        (change)="updateUserPrivileges(user.id, privilege, $event)">{{privilege}}
+                </div>
+            </td>
             <td *ngIf="!user.verified">
                 <button class="btn btn-primary" (click)="verifyUser(user.id)">Verify</button>
             </td>
             <td>
                 <button class="btn btn-primary" (click)="getUserActions(user.id)">History</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
             </td>
         </tr>
     </tbody>

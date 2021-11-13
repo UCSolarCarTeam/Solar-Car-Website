@@ -15,25 +15,31 @@ export class AdminPanelComponent implements OnInit {
 
   userActionHistory: UserAction[];
   users: User[];
+  privileges: UserPrivilege[] = Object.keys(UserPrivilege).map(key => UserPrivilege[key]);
+  userPrivileges: any;
 
   constructor(private userActionService: UserActionService, private userService: UserService, private authService: AuthService) {
     this.userActionHistory = [];
+    this.userPrivileges = new Map<string, UserPrivilege[]>();
   }
 
   ngOnInit(): void {
     if(this.authService.isAdmin()){
       this.userService.getUsers().subscribe(users => {
         this.users = users.map(u => {
-          return {
+          const user = {
             id: u.payload.doc.id,
             ...u.payload.doc.data() as object
           } as User;
+          const uid = user.id;
+          this.userPrivileges.set(uid, user.userPrivileges);
+          return user;
         });
       });
     }
   }
 
-  getUserActions(uid) {
+  getUserActions(uid: string) {
     this.userActionService.getUserActions(uid).then(userActions => {
       userActions.forEach((doc) => {
         this.userActionHistory.push({
@@ -61,7 +67,23 @@ export class AdminPanelComponent implements OnInit {
     return privilegeString;
   }
 
-  verifyUser(userId) {
+  verifyUser(userId: string) {
     this.userService.verifyUser(userId);
+  }
+
+  updateUserPrivileges(uid: string, privilege: UserPrivilege, event: any) {
+    if (event.target.checked) {
+      this.userService.addUserPrivilege(uid, privilege);
+    } else {
+      this.userService.removeUserPrivilege(uid, privilege);
+    }
+  }
+
+  deleteUser(userId: string) {
+    this.userService.deleteUser(userId);
+  }
+
+  userHasPrivilege(uid: string, privilege: UserPrivilege) {
+    return this.userPrivileges.get(uid).includes(privilege);
   }
 }

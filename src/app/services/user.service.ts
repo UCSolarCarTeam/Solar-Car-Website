@@ -33,14 +33,16 @@ export class UserService {
     return userRef.update({
       email: user.email,
       verified: user.verified,
-      displayName: user.displayName
+      displayName: user.displayName,
+      userPrivileges: user.userPrivileges,
+      userActions: user.userActions
     });
   }
 
-  deleteUser(user: User) {
+  deleteUser(uid: string) {
     this.firestore
       .collection('users-collection')
-      .doc(user.id)
+      .doc(uid)
       .delete();
   }
 
@@ -48,7 +50,23 @@ export class UserService {
     const userRef = this.firestore.collection('users-collection').doc(userId);
     return userRef.update({
       verified: true,
-      userPrivileges: [ UserPrivilege.BUSINESS ]
+      userPrivileges: [ UserPrivilege.NONE ]
+    });
+  }
+
+  addUserPrivilege(userId, privilege) {
+    this.firestore.collection('users-collection').doc(userId).get().subscribe(usr => {
+      const user = usr.data() as User;
+      user.userPrivileges.push(privilege);
+      this.updateUser(user);
+    });
+  }
+
+  removeUserPrivilege(userId, privilege) {
+    this.firestore.collection('users-collection').doc(userId).get().subscribe(usr => {
+      const user = usr.data() as User;
+      user.userPrivileges = user.userPrivileges.filter(p => p !== privilege);
+      this.updateUser(user);
     });
   }
 }

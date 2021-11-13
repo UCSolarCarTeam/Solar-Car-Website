@@ -27,7 +27,7 @@ export class SponsorService {
             dateTime: new Date().toLocaleString(),
           });
           resolve(response);
-         }, error => reject(error));
+        }, error => reject(error));
     });
   }
 

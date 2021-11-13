@@ -47,6 +47,32 @@
       </div>
     </form>
   </div>
+  <div *ngIf="actionHistory.length !== 0" class="historyTable">
+    <h1 class="tableHeading">Action History</h1>
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User ID</th>
+                <th scope="col">User</th>
+                <th scope="col">Entity</th>
+                <th scope="col">Action</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let action of actionHistory; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ action.uid }}</td>
+                <td>{{ action.uName }}</td>
+                <td>{{ action.eName }}</td>
+                <td>{{ action.action }}</td>
+                <td>{{ action.dateTime }}</td>
+            </tr>
+        </tbody>
+      </table>
+    <br>
+  </div>
   <div class="resultsTable">
     <table class="table">
       <thead>
@@ -78,6 +104,8 @@
             <button (click)="deleteMember(member)" class="btn btn-danger actionButton">Delete</button>
             <br>
             <button (click)="setupMemberUpdate(member)" class="btn btn-danger actionButton">Update</button>
+            <br>
+            <button (click)="showActionHistory(member)" class="btn btn-danger actionButton">History</button>
           </td>
         </tr>
       </tbody>

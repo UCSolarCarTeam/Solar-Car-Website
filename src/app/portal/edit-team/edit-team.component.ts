@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Member } from 'src/app/models/member.model';
+import { UserAction } from 'src/app/models/user-action';
+import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { MemberService } from 'src/app/services/member.service';
+import { UserActionService } from 'src/app/services/user-action.service';
 
 @Component({
   selector: 'app-edit-team',
@@ -18,8 +21,10 @@ export class EditTeamComponent implements OnInit {
   updateMemberId: string;
   positions: string[];
   subteams: string[];
+  actionHistory: UserAction[];
 
-  constructor(private memberService: MemberService, private formBuilder: FormBuilder, private uploadService: FileUploadService) {
+  constructor(private memberService: MemberService, private formBuilder: FormBuilder, private uploadService: FileUploadService,
+              private userActionService: UserActionService, private authService: AuthService) {
     this.addMemberForm = this.formBuilder.group({
       name: [''],
       position: [''],
@@ -32,6 +37,7 @@ export class EditTeamComponent implements OnInit {
     this.mainButtonText = 'Add Member';
     this.positions = ['Member', 'Manager', 'Team Captain', 'Engineering Team Manager', 'Business Team Manager'];
     this.subteams = ['Mechanical', 'Electrical', 'Software', 'Business'];
+    this.actionHistory = [];
   }
 
   ngOnInit(): void {
@@ -62,7 +68,7 @@ export class EditTeamComponent implements OnInit {
   }
 
   deleteMember(member: Member) {
-    this.memberService.deleteMember(member);
+    this.memberService.deleteMember(member, this.authService.user);
   }
 
   setupMemberUpdate(member: Member) {
@@ -76,6 +82,7 @@ export class EditTeamComponent implements OnInit {
     this.previewImgUrl = member.imageName;
     this.image = null;
     this.mainButtonText = 'Update Member';
+    document.documentElement.scrollTop = 0;
   }
 
   manageMember() {
@@ -92,7 +99,7 @@ export class EditTeamComponent implements OnInit {
           imageName: this.previewImgUrl,
           image: null
         };
-        this.memberService.updateMember(newMember);
+        this.memberService.updateMember(newMember, this.authService.user);
       } else {
         const memberId = this.updateMemberId;
         const memberName = this.addMemberForm.get('name').value;
@@ -114,7 +121,7 @@ export class EditTeamComponent implements OnInit {
               year: memberYear,
               image: null
             };
-            this.memberService.updateMember(newMember);
+            this.memberService.updateMember(newMember, this.authService.user);
           });
         });
       }
@@ -139,9 +146,22 @@ export class EditTeamComponent implements OnInit {
           year: memberYear,
           image: null
         };
-        this.memberService.addMember(newMember);
+        this.memberService.addMember(newMember, this.authService.user);
       });
     });
     this.resetForm();
+  }
+
+  showActionHistory(member: Member) {
+    this.actionHistory = [];
+    this.userActionService.getEntityActions(member.id).then(userActions => {
+      userActions.forEach((doc) => {
+        this.actionHistory.push({
+          id: doc.id,
+          ...doc.data() as object
+        } as UserAction);
+      });
+    });
+    document.documentElement.scrollTop = 0;
   }
 }

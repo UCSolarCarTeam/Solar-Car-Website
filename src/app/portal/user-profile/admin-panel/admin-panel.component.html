@@ -43,7 +43,7 @@
             <td>
                 <div *ngFor="let privilege of privileges; let i = index">
                     <input name="i" type="checkbox" value="{{privilege}}" [checked]="userHasPrivilege(user.id, privilege)"
-                        (change)="updateUserPrivileges(user.id, privilege, $event)">{{privilege}}
+                        (change)="updateUserPrivileges(user.id, privilege, $event)"> {{privilege}}
                 </div>
             </td>
             <td *ngIf="!user.verified">

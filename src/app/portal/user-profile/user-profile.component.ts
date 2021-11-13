@@ -22,7 +22,8 @@ export class UserProfileComponent implements OnInit {
       private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
       displayName: '',
-      email: ''
+      email: '',
+      password: '',
     });
     this.userActions = [];
   }
@@ -45,6 +46,15 @@ export class UserProfileComponent implements OnInit {
   }
 
   manageUser() {
-    return;
+    if (this.userForm.get('displayName').value !== this.authService.user.displayName) {
+      this.authService.user.displayName = this.userForm.get('displayName').value;
+      this.userService.updateUser(this.authService.user);
+    }
+    if (this.userForm.get('email').value !== this.authService.user.email) {
+      this.authService.ChangeEmail(this.userForm.get('email').value);
+    }
+    if (this.userForm.get('password').value !== '') {
+      this.authService.ChangePassword(this.userForm.get('password').value);
+    }
   }
 }

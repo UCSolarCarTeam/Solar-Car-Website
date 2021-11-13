@@ -67,6 +67,23 @@ export class AuthService {
     });
   }
 
+  ChangeEmail(email) {
+    this.auth.currentUser.then(user => {
+      user.updateEmail(email).then(() => {
+        this.user.email = email;
+        this.userService.updateUser(this.user);
+      });
+    });
+  }
+
+  ChangePassword(password) {
+    this.auth.currentUser.then(user => {
+      user.updatePassword(password).then(() => {
+        this.userService.updateUser(this.user);
+      });
+    });
+  }
+
   isAdmin() {
     return this.user && this.user.userPrivileges.includes(UserPrivilege.ADMIN);
   }

@@ -12,6 +12,13 @@
                     <label>Email</label>
                     <input type="text" placeholder="{{ getAuth().user.email }}" formControlName="email" class="form-control" required>
                 </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" required>
+                </div>
+                <div class="mb-3" *ngIf="userForm.get('displayName').dirty || userForm.get('email').dirty || userForm.get('password').dirty">
+                    <button type="submit" class="btn btn-danger">Update</button>
+                </div>
             </form>
             </div>
         <div *ngIf="getAuth().isAdmin()">

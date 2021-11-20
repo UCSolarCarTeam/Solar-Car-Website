@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from '../auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       {path: 'manage-team', component: EditTeamComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
+      {path: 'reset-password', component: ResetPasswordComponent},
       {path: 'user', component: UserProfileComponent, canActivate: [AuthGuard]},
       {path: '', component: MainComponent, canActivate: [AuthGuard]},
       {path: '**', redirectTo: 'login', pathMatch: 'full' },

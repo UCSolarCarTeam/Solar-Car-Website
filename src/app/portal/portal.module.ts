@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminPanelComponent } from './user-profile/admin-panel/admin-panel.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminPanelComponent } from './user-profile/admin-panel/admin-panel.comp
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

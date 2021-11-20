@@ -1,4 +1,4 @@
-import { HostListener, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
@@ -31,9 +31,16 @@ export class AuthService {
   Login(email, password) {
     this.auth.signInWithEmailAndPassword(email, password)
       .then(res => {
+        if(!res.user.emailVerified) {
+          window.alert('Please verify your email address before logging in.');
+          this.auth.signOut();
+        }
         this.userService.getUser(res.user.uid).subscribe(usr => {
           const user = usr.data() as User;
-          this.userService.login(res.user.uid);
+          if(!user.verified) {
+            window.alert('Please ask your manager to verify you before logging in.');
+            this.auth.signOut();
+          }
           this.user = user;
           this.router.navigateByUrl('portal');
         });
@@ -53,6 +60,9 @@ export class AuthService {
           userPrivileges: [UserPrivilege.NONE],
           userActions: []
         };
+        this.auth.currentUser.then(user => {
+          user.sendEmailVerification()
+        });
         this.userService.addUser(this.user);
       }).catch(err => {
         window.alert(err.message);
@@ -74,6 +84,10 @@ export class AuthService {
         this.userService.updateUser(this.user);
       });
     });
+  }
+
+  ResetPassword(email) {
+    this.auth.sendPasswordResetEmail(email);
   }
 
   ChangePassword(password) {

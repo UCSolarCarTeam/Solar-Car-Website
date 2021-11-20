@@ -12,6 +12,8 @@
         <input type="password" placeholder="Password" formControlName="password" class="form-control" required><br>
         <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
         <br>
-        <a routerLink="/portal/register" class="create-account-txt">No account? <strong>Create one here</strong></a>
+        <a routerLink="/portal/register" class="createAccountText">No account? <strong>Create one here</strong></a>
+        <br>
+        <a routerLink="/portal/reset-password" class="createAccountText">Forgot Password</a>
     </form>
 </div>

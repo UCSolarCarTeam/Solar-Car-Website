@@ -42,7 +42,7 @@ export class AuthService {
             this.auth.signOut();
           }
           this.user = user;
-          this.router.navigateByUrl('portal');
+          this.router.navigateByUrl('portal/user');
         });
       }).catch(err => {
         window.alert(err.message);

@@ -21,13 +21,13 @@ export class AuthService {
   Login(email, password) {
     this.auth.signInWithEmailAndPassword(email, password)
       .then(res => {
-        if(!res.user.emailVerified) {
+        if (!res.user.emailVerified) {
           window.alert('Please verify your email address before logging in.');
           this.auth.signOut();
         }
         this.userService.getUser(res.user.uid).subscribe(usr => {
           const user = usr.data() as User;
-          if(!user.verified) {
+          if (!user.verified) {
             window.alert('Please ask your manager to verify you before logging in.');
             this.auth.signOut();
           }
@@ -51,7 +51,7 @@ export class AuthService {
           userActions: []
         };
         this.auth.currentUser.then(user => {
-          user.sendEmailVerification()
+          user.sendEmailVerification();
         });
         this.userService.addUser(user);
       }).catch(err => {

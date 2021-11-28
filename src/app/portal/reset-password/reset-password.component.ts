@@ -11,7 +11,7 @@ export class ResetPasswordComponent implements OnInit {
 
   resetForm: FormGroup;
 
-  constructor(private authService:AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
     this.resetForm =  this.formBuilder.group({
       email: ['', Validators.pattern('.+@.+\.com')]
     });

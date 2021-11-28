@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   user: User;
 
   constructor(private authService: AuthService, private userService: UserService, private userActionService: UserActionService,
-      private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder) {
     this.userForm = this.formBuilder.group({
       displayName: '',
       email: '',

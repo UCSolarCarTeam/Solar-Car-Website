@@ -1,5 +1,5 @@
 export enum UserPrivilege {
-    ADMIN = "Admin",
-    BUSINESS = "Business",
-    NONE = "None"
+    ADMIN = 'Admin',
+    BUSINESS = 'Business',
+    NONE = 'None'
 }

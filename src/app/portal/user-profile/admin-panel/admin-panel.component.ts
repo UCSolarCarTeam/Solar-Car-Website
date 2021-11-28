@@ -24,7 +24,7 @@ export class AdminPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.authService.isAdmin()){
+    if (this.authService.isAdmin()) {
       this.userService.getUsers().subscribe(users => {
         this.users = users.map(u => {
           const user = {
@@ -47,7 +47,7 @@ export class AdminPanelComponent implements OnInit {
           id: doc.id,
           ...doc.data() as object
         } as UserAction);
-        let action = this.userActionHistory.pop();
+        const action = this.userActionHistory.pop();
         this.userService.getUser(action.uid).subscribe(doc => {
           const user = doc.data() as User;
           action.uid = user.displayName;
@@ -58,12 +58,12 @@ export class AdminPanelComponent implements OnInit {
   }
 
   getPrivilegeString(privileges: UserPrivilege[]): string {
-    if(privileges.length == 1) {
+    if (privileges.length === 1) {
       return privileges[0];
     }
-    let privilegeString = "";
+    let privilegeString = '';
     privileges.forEach(p => {
-      privilegeString += p + ", ";
+      privilegeString += p + ', ';
     });
     return privilegeString;
   }

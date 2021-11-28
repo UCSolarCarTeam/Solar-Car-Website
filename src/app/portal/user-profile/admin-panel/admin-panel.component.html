@@ -47,10 +47,10 @@
                 </div>
             </td>
             <td *ngIf="!user.verified">
-                <button class="btn btn-primary" (click)="verifyUser(user.id)">Verify</button>
+                <button class="btn btn-danger" (click)="verifyUser(user.id)">Verify</button>
             </td>
             <td>
-                <button class="btn btn-primary" (click)="getUserActions(user.id)">History</button>
+                <button class="btn btn-danger" (click)="getUserActions(user.id)">History</button>
             </td>
             <td>
                 <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>

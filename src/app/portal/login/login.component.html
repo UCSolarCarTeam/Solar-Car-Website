@@ -10,10 +10,10 @@
             </small>
         </div>
         <input type="password" placeholder="Password" formControlName="password" class="form-control" required><br>
-        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+        <button type="submit" class="btn btn-danger" [disabled]="!loginForm.valid">Login</button>
         <br>
-        <a routerLink="/portal/register" class="createAccountText">No account? <strong>Create one here</strong></a>
+        <a routerLink="/portal/register" class="error">No account? <strong>Create one here</strong></a>
         <br>
-        <a routerLink="/portal/reset-password" class="createAccountText">Forgot Password</a>
+        <a routerLink="/portal/reset-password" class="error">Forgot Password</a>
     </form>
 </div>

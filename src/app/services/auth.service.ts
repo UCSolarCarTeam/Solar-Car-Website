@@ -31,6 +31,7 @@ export class AuthService {
             window.alert('Please ask your manager to verify you before logging in.');
             this.auth.signOut();
           }
+          window.sessionStorage.setItem('User', JSON.stringify(user));
           this.router.navigateByUrl('portal/user');
         });
       }).catch(err => {

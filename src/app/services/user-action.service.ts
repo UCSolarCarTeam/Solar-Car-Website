@@ -24,7 +24,6 @@ export class UserActionService {
   }
 
   getEntityActions(eid: string) {
-    console.log('eid is' + eid);
     return this.firestore
       .collection('user-actions-collection')
       .ref.where('eid', '==', eid).get();

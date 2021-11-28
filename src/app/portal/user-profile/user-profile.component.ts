@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 import { UserAction } from 'src/app/models/user-action';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,6 +15,7 @@ export class UserProfileComponent implements OnInit {
 
   userForm: FormGroup;
   userActions: UserAction[];
+  user: User;
 
   constructor(private authService: AuthService, private userService: UserService, private userActionService: UserActionService,
       private formBuilder: FormBuilder) {
@@ -23,11 +25,11 @@ export class UserProfileComponent implements OnInit {
       password: '',
     });
     this.userActions = [];
+    this.user = JSON.parse(window.sessionStorage.getItem('User'));
   }
 
   ngOnInit(): void {
-    const user = JSON.parse(window.localStorage.getItem('User'));
-    this.userActionService.getUserActions(user.id).then(userActions => {
+    this.userActionService.getUserActions(this.user.id).then(userActions => {
       userActions.forEach((doc) => {
         this.userActions.push({
           id: doc.id,
@@ -35,8 +37,8 @@ export class UserProfileComponent implements OnInit {
         } as UserAction);
       });
     });
-    this.userForm.get('displayName').setValue(user.displayName);
-    this.userForm.get('email').setValue(user.email);
+    this.userForm.get('displayName').setValue(this.user.displayName);
+    this.userForm.get('email').setValue(this.user.email);
   }
 
   getAuth() {

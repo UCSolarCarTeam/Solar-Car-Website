@@ -24,11 +24,11 @@
             <small class="error">The passwords do not match</small>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Sign up</button>
+        <button type="submit" class="btn btn-danger" [disabled]="!signUpForm.valid">Sign up</button>
         <br>
         <div *ngIf="SignUpSuccess()">
             <small class="error">Sign up successfull. Please wait to be verified</small>
         </div>
-        <a routerLink="/portal/login" class="create-account-txt">Have an account? <strong>Login here</strong></a>
+        <a routerLink="/portal/login" class="error">Have an account? <strong>Login here</strong></a>
     </form>
 </div>

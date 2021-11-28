@@ -22,7 +22,7 @@ export class AuthService {
     // This is for testing so we don't have to keep signing in. Remove if developing or testing
     // the user authentication functionality, or run in production mode (NOT RECOMMENDED)
     if (!environment.production) {
-      this.user = {id: "testID", email: "testEmail", displayName: "testName", verified: true};
+      this.user = {id: 'testID', email: 'testEmail', displayName: 'testName', verified: true};
     }
   }
 
@@ -37,7 +37,7 @@ export class AuthService {
         });
       }).catch(err => {
         window.alert(err.message);
-      })
+      });
   }
 
   SignUp(displayName, email, password) {
@@ -45,14 +45,14 @@ export class AuthService {
       .then(res => {
         this.user = {
           id: res.user.uid,
-          displayName: displayName,
-          email: email,
+          displayName,
+          email,
           verified: false
         };
         this.userService.addUser(this.user);
       }).catch(err => {
         window.alert(err.message);
-      })
+      });
   }
 
   LogOut() {

@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.pattern('.+@.+\.com')],
       password: ['', Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
       passwordConfirm: [''],
-    })
+    });
   }
 
   ngOnInit(): void {

@@ -22,7 +22,7 @@ const routes: Routes = [
       {path: 'register', component: RegisterComponent},
       {path: 'reset-password', component: ResetPasswordComponent},
       {path: 'user', component: UserProfileComponent, canActivate: [AuthGuard]},
-      {path: '**', redirectTo: 'login', pathMatch: 'full' },
+      {path: '**', redirectTo: 'user', pathMatch: 'full' },
     ]
   }
 ];

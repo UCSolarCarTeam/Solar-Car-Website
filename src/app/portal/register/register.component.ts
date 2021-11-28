@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
   }
 
   SignUpSuccess() {
-    return this.authService.user !== null && !this.authService.user.verified;
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    return user !== null && !user.verified;
   }
 }

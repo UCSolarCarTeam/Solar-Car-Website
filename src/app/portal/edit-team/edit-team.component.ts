@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Member } from 'src/app/models/member.model';
 import { UserAction } from 'src/app/models/user-action';
 import { AuthService } from 'src/app/services/auth.service';
@@ -68,7 +68,7 @@ export class EditTeamComponent implements OnInit {
   }
 
   deleteMember(member: Member) {
-    this.memberService.deleteMember(member, this.authService.user);
+    this.memberService.deleteMember(member);
   }
 
   setupMemberUpdate(member: Member) {
@@ -99,7 +99,7 @@ export class EditTeamComponent implements OnInit {
           imageName: this.previewImgUrl,
           image: null
         };
-        this.memberService.updateMember(newMember, this.authService.user);
+        this.memberService.updateMember(newMember);
       } else {
         const memberId = this.updateMemberId;
         const memberName = this.addMemberForm.get('name').value;
@@ -121,7 +121,7 @@ export class EditTeamComponent implements OnInit {
               year: memberYear,
               image: null
             };
-            this.memberService.updateMember(newMember, this.authService.user);
+            this.memberService.updateMember(newMember);
           });
         });
       }
@@ -146,7 +146,7 @@ export class EditTeamComponent implements OnInit {
           year: memberYear,
           image: null
         };
-        this.memberService.addMember(newMember, this.authService.user);
+        this.memberService.addMember(newMember);
       });
     });
     this.resetForm();

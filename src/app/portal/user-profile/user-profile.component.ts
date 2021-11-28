@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 import { UserAction } from 'src/app/models/user-action';
-import { UserPrivilege } from 'src/app/models/user-privilege';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -29,7 +26,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userActionService.getUserActions(this.authService.user.id).then(userActions => {
+    const user = JSON.parse(window.localStorage.getItem('User'));
+    this.userActionService.getUserActions(user.id).then(userActions => {
       userActions.forEach((doc) => {
         this.userActions.push({
           id: doc.id,
@@ -37,20 +35,26 @@ export class UserProfileComponent implements OnInit {
         } as UserAction);
       });
     });
-    this.userForm.get('displayName').setValue(this.authService.user.displayName);
-    this.userForm.get('email').setValue(this.authService.user.email);
+    this.userForm.get('displayName').setValue(user.displayName);
+    this.userForm.get('email').setValue(user.email);
   }
 
   getAuth() {
     return this.authService;
   }
 
+  getUser() {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    return user;
+  }
+
   manageUser() {
-    if (this.userForm.get('displayName').value !== this.authService.user.displayName) {
-      this.authService.user.displayName = this.userForm.get('displayName').value;
-      this.userService.updateUser(this.authService.user);
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    if (this.userForm.get('displayName').value !== user.displayName) {
+      user.displayName = this.userForm.get('displayName').value;
+      this.userService.updateUser(user);
     }
-    if (this.userForm.get('email').value !== this.authService.user.email) {
+    if (this.userForm.get('email').value !== user.email) {
       this.authService.ChangeEmail(this.userForm.get('email').value);
     }
     if (this.userForm.get('password').value !== '') {

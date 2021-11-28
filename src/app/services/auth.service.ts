@@ -12,21 +12,11 @@ import { UserPrivilege } from '../models/user-privilege';
 })
 export class AuthService {
 
-  user: User;
-
   constructor(
     public auth: AngularFireAuth,
     public router: Router,
     private userService: UserService
-  ) {
-    this.user = null;
-    // This is for testing so we don't have to keep signing in. Remove if developing or testing
-    // the user authentication functionality, or run in production mode (NOT RECOMMENDED)
-    if (!environment.production) {
-      this.user = { id: 'testID', email: 'testEmail', displayName: 'testName', verified: true,
-                    userPrivileges: [UserPrivilege.ADMIN], userActions: []};
-    }
-  }
+  ) {}
 
   Login(email, password) {
     this.auth.signInWithEmailAndPassword(email, password)
@@ -41,7 +31,6 @@ export class AuthService {
             window.alert('Please ask your manager to verify you before logging in.');
             this.auth.signOut();
           }
-          this.user = user;
           this.router.navigateByUrl('portal/user');
         });
       }).catch(err => {
@@ -52,7 +41,7 @@ export class AuthService {
   SignUp(displayName, email, password) {
     this.auth.createUserWithEmailAndPassword(email, password)
       .then(res => {
-        this.user = {
+        const user = {
           id: res.user.uid,
           displayName,
           email,
@@ -63,7 +52,7 @@ export class AuthService {
         this.auth.currentUser.then(user => {
           user.sendEmailVerification()
         });
-        this.userService.addUser(this.user);
+        this.userService.addUser(user);
       }).catch(err => {
         window.alert(err.message);
       });
@@ -71,17 +60,17 @@ export class AuthService {
 
   LogOut() {
     this.auth.signOut().then(() => {
-      this.userService.logout(this.user.id);
-      this.user = null;
       this.router.navigateByUrl('portal/login');
+      window.sessionStorage.removeItem('User');
     });
   }
 
   ChangeEmail(email) {
     this.auth.currentUser.then(user => {
       user.updateEmail(email).then(() => {
-        this.user.email = email;
-        this.userService.updateUser(this.user);
+        const user = JSON.parse(window.sessionStorage.getItem('User'));
+        user.email = email;
+        this.userService.updateUser(user);
       });
     });
   }
@@ -92,18 +81,18 @@ export class AuthService {
 
   ChangePassword(password) {
     this.auth.currentUser.then(user => {
-      user.updatePassword(password).then(() => {
-        this.userService.updateUser(this.user);
-      });
+      user.updatePassword(password);
     });
   }
 
   isAdmin() {
-    return this.user && this.user.userPrivileges.includes(UserPrivilege.ADMIN);
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    return user && user.userPrivileges.includes(UserPrivilege.ADMIN);
   }
 
   hasBusinessPrivileges() {
-    return this.user && (this.user.userPrivileges.includes(UserPrivilege.ADMIN)
-      || this.user.userPrivileges.includes(UserPrivilege.BUSINESS));
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    return user && (user.userPrivileges.includes(UserPrivilege.ADMIN)
+      || user.userPrivileges.includes(UserPrivilege.BUSINESS));
   }
 }

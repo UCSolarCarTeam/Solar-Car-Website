@@ -40,6 +40,7 @@ export class AdminPanelComponent implements OnInit {
   }
 
   getUserActions(uid: string) {
+    this.userActionHistory = [];
     this.userActionService.getUserActions(uid).then(userActions => {
       userActions.forEach((doc) => {
         this.userActionHistory.push({

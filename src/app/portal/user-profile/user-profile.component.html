@@ -6,11 +6,11 @@
             <form [formGroup]="userForm" (ngSubmit)="manageUser()">
                 <div class="mb-3">
                     <label>Display Name</label>
-                    <input type="text" placeholder="{{ getAuth().user.displayName }}" formControlName="displayName" class="form-control" required>
+                    <input type="text" placeholder="{{ getUser().displayName }}" formControlName="displayName" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Email</label>
-                    <input type="text" placeholder="{{ getAuth().user.email }}" formControlName="email" class="form-control" required>
+                    <input type="text" placeholder="{{ getUser().email }}" formControlName="email" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Password</label>

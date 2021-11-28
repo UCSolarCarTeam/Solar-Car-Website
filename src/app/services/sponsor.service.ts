@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Action } from '../models/action';
 import { Sponsor } from '../models/sponsor';
-import { User } from '../models/user';
 import { UserActionService } from './user-action.service';
 
 @Injectable({
@@ -10,14 +9,16 @@ import { UserActionService } from './user-action.service';
 })
 
 export class SponsorService {
+
   constructor(private firestore: AngularFirestore, private userActionService: UserActionService) { }
 
-  addSponsor(sponsor: Sponsor, user: User) {
+  addSponsor(sponsor: Sponsor) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('sponsors-collection')
         .add(sponsor)
-        .then(response => { 
+        .then(response => {
           this.userActionService.addUserAction({
             uid: user.id,
             uName: user.displayName,
@@ -44,7 +45,8 @@ export class SponsorService {
       .snapshotChanges();
   }
 
-  updateSponsor(sponsor: Sponsor, user: User) {
+  updateSponsor(sponsor: Sponsor) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     const sponsorRef = this.firestore.collection('sponsors-collection').doc(sponsor.id);
     this.userActionService.addUserAction({
       uid: user.id,
@@ -63,7 +65,8 @@ export class SponsorService {
     });
   }
 
-  deleteSponsor(sponsor: Sponsor, user: User) {
+  deleteSponsor(sponsor: Sponsor) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     this.firestore
       .collection('sponsors-collection')
       .doc(sponsor.id)

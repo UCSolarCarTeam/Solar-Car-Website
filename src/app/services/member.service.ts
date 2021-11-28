@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Action } from '../models/action';
 import { Member } from '../models/member.model';
-import { User } from '../models/user';
 import { UserActionService } from './user-action.service';
 
 @Injectable({
@@ -12,8 +11,8 @@ export class MemberService {
 
   constructor(private firestore: AngularFirestore, private userActionService: UserActionService) {}
 
-  addMember(member: Member, user: User) {
-    console.log(member);
+  addMember(member: Member) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('members-collection')
@@ -38,7 +37,8 @@ export class MemberService {
       .snapshotChanges();
   }
 
-  updateMember(member: Member, user: User) {
+  updateMember(member: Member) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     const memberRef = this.firestore.collection('members-collection').doc(member.id);
     this.userActionService.addUserAction({
       uid: user.id,
@@ -60,7 +60,8 @@ export class MemberService {
     });
   }
 
-  deleteMember(member: Member, user: User) {
+  deleteMember(member: Member) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     this.firestore
       .collection('members-collection')
       .doc(member.id)

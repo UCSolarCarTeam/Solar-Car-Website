@@ -27,11 +27,11 @@ export class HeaderComponent {
   }
 
   public LoggedIn(): boolean {
-    return this.auth.user !== null && this.auth.user.verified;
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    return user !== null && user.verified;
   }
 
-  public LogOut() {
-    this.auth.LogOut();
+  public getAuth() {
+    return this.auth;
   }
-
 }

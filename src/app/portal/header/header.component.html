@@ -8,12 +8,20 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-          <div *ngFor="let i of routeLinks">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="{{i.link}}">{{ i.label }}</a>
-            </li>
+      <ng-container *ngIf="LoggedIn()">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+              <ng-container *ngIf="getAuth().hasBusinessPrivileges()">
+                <div *ngFor="let i of routeLinks">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="{{i.link}}">{{ i.label }}</a>
+                  </li>
+                </div>
+              </ng-container>
+            <div>
+              <button class="nav-link user-btn" (click)="getAuth().LogOut()">Log Out</button>
+            </div>
+              <a class="nav-link" routerLink="user"><img class="user-icon" src="../../../assets/portal/user-icon.png"></a>
           </div>
           <div *ngIf="LoggedIn()">
             <button class="nav-link user-btn" (click)="LogOut()">Log Out</button>
@@ -22,6 +30,6 @@
             <a class="nav-link" routerLink="user"><img class="user-icon" src="../../../assets/portal/user-icon.png"></a>
           </div>
         </div>
-      </div>
+      </ng-container>
     </nav>
   </div>

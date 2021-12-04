@@ -4,6 +4,8 @@ import { SponsorService } from 'src/app/services/sponsor.service';
 import { Sponsor } from 'src/app/models/sponsor';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from 'src/app/services/file-upload.service';
+import { UserActionService } from 'src/app/services/user-action.service';
+import { UserAction } from 'src/app/models/user-action';
 
 @Component({
   selector: 'app-edit-sponsors',
@@ -25,8 +27,10 @@ export class EditSponsorsComponent implements OnInit {
     'Bronze',
     'Friend'
   ];
+  actionHistory: UserAction[];
 
-  constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: FormBuilder) {
+  constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: FormBuilder,
+              private userActionService: UserActionService) {
     this.addSponsorForm = this.formBuilder.group({
       name: [''],
       link: [''],
@@ -34,6 +38,7 @@ export class EditSponsorsComponent implements OnInit {
       tier: ['']
     });
     this.mainButtonText = 'Add Sponsor';
+    this.actionHistory = [];
   }
 
   ngOnInit(): void {
@@ -127,5 +132,19 @@ export class EditSponsorsComponent implements OnInit {
     this.previewLogoUrl = sponsor.logoUrl;
     this.logo = null;
     this.mainButtonText = 'Update Sponsor';
+    document.documentElement.scrollTop = 0;
+  }
+
+  showActionHistory(sponsor: Sponsor) {
+    this.actionHistory = [];
+    this.userActionService.getEntityActions(sponsor.id).then(userActions => {
+      userActions.forEach((doc) => {
+        this.actionHistory.push({
+          id: doc.id,
+          ...doc.data() as object
+        } as UserAction);
+      });
+    });
+    document.documentElement.scrollTop = 0;
   }
 }

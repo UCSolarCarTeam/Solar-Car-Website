@@ -1,21 +1,33 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Action } from '../models/action';
 import { Member } from '../models/member.model';
+import { UserActionService } from './user-action.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberService {
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private userActionService: UserActionService) {}
 
   addMember(member: Member) {
-    console.log(member);
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('members-collection')
         .add(member)
-        .then(response => { console.log(response); }, error => reject(error));
+        .then(response => {
+          this.userActionService.addUserAction({
+            uid: user.id,
+            uName: user.displayName,
+            eid: response.id,
+            eName: 'Member: ' + member.name,
+            action: Action.ADDED,
+            dateTime: new Date().toLocaleString(),
+          });
+          resolve(response);
+        }, error => reject(error));
     });
   }
 
@@ -26,7 +38,16 @@ export class MemberService {
   }
 
   updateMember(member: Member) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     const memberRef = this.firestore.collection('members-collection').doc(member.id);
+    this.userActionService.addUserAction({
+      uid: user.id,
+      uName: user.displayName,
+      eid: member.id,
+      eName: 'Member: ' + member.name,
+      action: Action.UPDATED,
+      dateTime: new Date().toLocaleString(),
+    });
     return memberRef.update({
       name: member.name,
       position: member.position,
@@ -40,10 +61,19 @@ export class MemberService {
   }
 
   deleteMember(member: Member) {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
     this.firestore
       .collection('members-collection')
       .doc(member.id)
       .delete();
+    this.userActionService.addUserAction({
+      uid: user.id,
+      uName: user.displayName,
+      eid: member.id,
+      eName: 'Member: ' + member.name,
+      action: Action.DELETED,
+      dateTime: new Date().toLocaleString(),
+    });
   }
 
   TeamCaptain() {

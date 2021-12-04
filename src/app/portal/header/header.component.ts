@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'portal-header',
@@ -8,21 +9,29 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent {
   routeLinks: any[];
 
-  constructor() {
+  constructor(private auth: AuthService) {
     this.routeLinks = [
       {
         label: 'Team',
-        link: './portal/manage-team',
+        link: 'manage-team',
       },
       {
         label: 'Sponsors',
-        link: './portal/manage-sponsors',
+        link: 'manage-sponsors',
       },
       {
         label: 'News',
-        link: './portal/manage-news',
+        link: 'manage-news',
       }
     ];
+  }
+
+  public LoggedIn(): boolean {
+    return this.auth.user !== null && this.auth.user.verified;
+  }
+
+  public LogOut() {
+    this.auth.LogOut();
   }
 
 }

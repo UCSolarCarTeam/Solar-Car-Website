@@ -1,0 +1,34 @@
+<div class="signUpFormDiv">
+    <form class="signUpForm" [formGroup]="signUpForm" (ngSubmit)="SignUp()">
+        <input type="text" placeholder="Display Name" formControlName="displayName" class="form-control" required>
+        <input type="text" placeholder="Email" formControlName="email" class="form-control" required>
+        <div *ngIf="signUpForm.get('email').invalid &&
+                    signUpForm.get('email').errors &&
+                    (signUpForm.get('email').dirty ||
+                    signUpForm.get('email').touched)">
+            <small class="error">
+                Please enter a valid email
+            </small>
+        </div>
+        <input type="password" placeholder="Password" formControlName="password" class="form-control" required>
+        <div *ngIf="signUpForm.get('password').invalid &&
+                    signUpForm.get('password').errors &&
+                    (signUpForm.get('password').dirty ||
+                    signUpForm.get('password').touched)">
+            <small class="error">
+                Password must have at least 8 characters, uppercase letters, digits, and special characters
+            </small>
+        </div>
+        <input type="password" placeholder="Confirm Password" formControlName="passwordConfirm" class="form-control" required>
+        <div *ngIf="passwordsDoNotMatch">
+            <small class="error">The passwords do not match</small>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Sign up</button>
+        <br>
+        <div *ngIf="SignUpSuccess()">
+            <small class="error">Sign up successfull. Please wait to be verified</small>
+        </div>
+        <a routerLink="/portal/login" class="create-account-txt">Have an account? <strong>Login here</strong></a>
+    </form>
+</div>

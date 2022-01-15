@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.signUpForm = this.formBuilder.group({
       displayName: [''],
-      email: ['', Validators.pattern('.+@.+\.com')],
+      email: ['', Validators.pattern('.+@.+\..+')],
       password: ['', Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
       passwordConfirm: [''],
     });

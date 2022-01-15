@@ -1,0 +1,24 @@
+.inventoryContainer{
+    width: 100%;
+    display: inline-block;
+}
+.inventoryControls{
+    position: fixed;
+    height: 95%;
+    width: 15%;
+    border: 1px solid black;
+    padding: 1em;
+}
+.defaultActions *{
+    margin-bottom: 5px;
+    max-width: 90%;
+}
+.inventoryList{
+    position: relative;
+    left: 15%;
+    height: 95%;
+    width: 85%;
+    min-width: 500px;
+    border: 1px solid black;
+    padding: 2em;
+}

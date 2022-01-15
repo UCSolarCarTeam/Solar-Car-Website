@@ -4,8 +4,11 @@ export interface Member {
     internalPartNumber: string;
     manufacturerPartNumber: string;
     location: string;
-    amount: string;
-    inputedByUser: number;
-    borrowedByUser: number;
+    amount: number;
+    isBorrowable: string;
+    isBorrowed: string,
+    inputedByUser: string;
+    borrowedByUser: string;
     image?: File;
+    imageUrl: string;
 }

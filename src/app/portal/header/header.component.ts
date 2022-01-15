@@ -22,6 +22,10 @@ export class HeaderComponent {
       {
         label: 'News',
         link: 'manage-news',
+      },
+      {
+        label: 'Inventory',
+        link: 'manage-inventory',
       }
     ];
   }

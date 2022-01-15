@@ -1,5 +1,9 @@
 export interface News {
   id?: string;
   name: string;
-  article: File;
+  date: string;
+  markdown: string;
+  link?: string;
+  thumbnail?: File;
+  thumbnailUrl: string
 }

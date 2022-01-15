@@ -31,6 +31,17 @@ export class NewsService {
       .get();
   }
 
+  updateNews(news: News) {
+    const newsRef = this.firestore.collection('news-collection').doc(news.id);
+    return newsRef.update({
+      name: news.name,
+      date: news.date,
+      markdown: news.markdown,
+      thumbnail: news.thumbnail,
+      thumbnailUrl: news.thumbnailUrl
+    });
+  }
+
   deleteNews(news: News) {
     this.firestore
       .collection('news-collection')

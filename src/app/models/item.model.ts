@@ -1,4 +1,4 @@
-export interface Member {
+export interface Item{
     id?: string;
     name: string;
     internalPartNumber: string;
@@ -6,9 +6,9 @@ export interface Member {
     location: string;
     amount: number;
     isBorrowable: string;
-    isBorrowed: string,
-    inputedByUser: string;
-    borrowedByUser: string;
+    //isBorrowed: string,
+    //inputedByUser: string;
+    //borrowedByUser: string;
     image?: File;
     imageUrl: string;
 }

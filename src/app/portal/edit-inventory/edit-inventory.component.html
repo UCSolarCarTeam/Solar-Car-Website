@@ -1,8 +1,9 @@
 <div class="inventoryContainer">
+
     <div class= "inventoryControls">
         <div class="defaultActions">
             <input placeholder="Search # or name"><br>
-            <button  class="btn btn-success actionButton">Add Item</button><br>
+            <button (click)="renderAddItem()" class="btn btn-success actionButton" >Add Item</button><br>
             <button  class="btn btn-success actionButton">Check In Items</button>
         </div>
     </div>
@@ -12,6 +13,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">Row</th>
                         <th scope="col">Name</th>
                         <th scope="col">SC Part#</th>
                         <th scope="col">Man. Part#</th>
@@ -21,17 +23,63 @@
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
-                <!--<tbody>
-                    <tr *ngFor="let action of actionHistory; let i = index">
+                <tbody>
+                    <tr *ngFor="let item of items; let i = index">
                         <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ action.uid }}</td>
-                        <td>{{ action.uName }}</td>
-                        <td>{{ action.eName }}</td>
-                        <td>{{ action.action }}</td>
-                        <td>{{ action.dateTime }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.internalPartNumber }}</td>
+                        <td>{{ item.manufacturerPartNumber }}</td>
+                        <td>{{ item.location }}</td>
+                        <td>{{ item.amount }}</td>
+                        <td><img class="imageResultsPreview" src="{{ item.imageUrl }}" /></td>
+                        <td><button (click)="renderEditItem(item)" class="btn btn-info actionButton">Edit</button></td>
                     </tr>
-                </tbody>-->
+                </tbody>
             </table>
 
     </div>
+
+    <div class="itemControlModal">
+        <form [formGroup]="addItemForm" (ngSubmit)="manageItemForm()" novalidate>
+            <h3>{{ submitButtonText }}</h3>
+            <div class="mb-3">
+              <label>Name</label>
+              <input type="text" formControlName="name" class="form-control" required>
+            </div>
+        
+            <div class="mb-3">
+              <label>Internal Part #</label>
+              <input formControlName="internalPartNumber" class="form-control" required>    
+            </div>
+
+            <div class="mb-3">
+                <label>Man. Part #</label>
+                <input formControlName="manufacturerPartNumber" class="form-control" required>  
+            </div>
+
+            <div class="mb-3">
+                <label>Amount</label>
+                <input formControlName="amount" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Borrowable</label>
+                <input type="checkbox" formControlName="isBorrowable" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label>Image</label>
+              <input type="file" formControlName="image" class="form-control" (change)="setImage($event.target.files)">
+            </div>
+            <label>Image Preview</label>
+            <br>
+            <img class="imagePreview" src="{{ previewImgUrl }}" />
+        
+            <div class="mb-3">
+              <button type="submit" class="btn btn-danger" [disabled]="!addItemForm.valid">{{ submitButtonText }}</button>
+              <button class="btn btn-secondary" (click)="cancelItemForm()">Cancel</button>
+            </div>
+            
+          </form>
+    </div>
+
 </div>

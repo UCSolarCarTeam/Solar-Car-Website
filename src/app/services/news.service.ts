@@ -26,9 +26,9 @@ export class NewsService {
 
   getNews(id: string) {
     return this.firestore
-      .collection('news-collection')
-      .doc(id)
-      .get();
+    .collection('news-collection')
+    .doc(id)
+    .get();
   }
 
   updateNews(news: News) {

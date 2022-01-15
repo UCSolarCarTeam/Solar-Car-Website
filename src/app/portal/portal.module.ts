@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminPanelComponent } from './user-profile/admin-panel/admin-panel.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
 
 import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
@@ -35,7 +36,9 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
     RegisterComponent,
     UserProfileComponent,
     AdminPanelComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+
+    EditInventoryComponent
   ],
   imports: [
     CommonModule,

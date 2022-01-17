@@ -5,5 +5,5 @@ export interface News {
   markdown: string;
   link?: string;
   thumbnail?: File;
-  thumbnailUrl: string
+  thumbnailUrl: string;
 }

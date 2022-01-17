@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { News } from 'src/app/models/news';
-;
 
 @Component({
   selector: 'business-news',
@@ -24,7 +23,7 @@ export class NewsComponent implements OnInit {
         } as News;
       });
     });
-    console.log(this.newsArticles)
+    console.log(this.newsArticles);
   }
 
 }

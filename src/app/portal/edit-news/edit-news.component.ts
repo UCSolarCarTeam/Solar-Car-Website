@@ -14,7 +14,7 @@ export class EditNewsComponent implements OnInit {
   newsArticles: News[];
   thumbnail: File;
   previewThumbnailUrl: string;
-  markdown : string;
+  markdown: string;
   link: string;
   updateNewsId: string;
   mainButtonText: string;
@@ -53,7 +53,6 @@ Something...
     this.thumbnail = files[0];
     const reader = new FileReader();
     reader.onload = (event: any) => {
-      //console.log(reader.result);
       this.previewThumbnailUrl = event.target.result;
     };
     reader.readAsDataURL(this.thumbnail);
@@ -68,20 +67,19 @@ Something...
   }
 
   manageNews() {
-    var readMarkdown;
-    var readLink;
-    if(!this.isLinkOnlyFormat){
+    let readMarkdown;
+    let readLink;
+    if (!this.isLinkOnlyFormat) {
       readMarkdown = this.markdown;
       readLink = null;
-    }
-    else {
-      readMarkdown = "";
+    } else {
+      readMarkdown = '';
       readLink = this.link;
     }
 
     // Update
-    if(this.mainButtonText.startsWith('Update')) {
-      if(this.thumbnail == null) {
+    if (this.mainButtonText.startsWith('Update')) {
+      if (this.thumbnail == null) {
         const newNewsArticle = {
           id: this.updateNewsId,
           name: this.addNewsForm.get('name').value,
@@ -115,7 +113,7 @@ Something...
     }
 
     // Add
-    if(this.thumbnail == null) {
+    if (this.thumbnail == null) {
       const newsName = this.addNewsForm.get('name').value;
       const newNewsArticle = {
         name: newsName,
@@ -123,13 +121,12 @@ Something...
         markdown: readMarkdown,
         link: readLink,
         thumbnail: null,
-        thumbnailUrl: ""
+        thumbnailUrl: ''
       };
       console.log(newNewsArticle);
       this.newsService.addNews(newNewsArticle);
       this.resetForm();
-    }
-    else {
+    } else {
       const newsName = this.addNewsForm.get('name').value;
       this.uploadService.uploadFile(this.thumbnail, 'assets/thumnails/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
@@ -163,9 +160,10 @@ Something...
     this.thumbnail = null;
     this.mainButtonText = 'Update News Article';
 
-    if(this.link != null)
+    if (this.link != null ) {
       this.isLinkOnlyFormat = true;
-    else
+    } else {
       this.isLinkOnlyFormat = false;
+    }
   }
 }

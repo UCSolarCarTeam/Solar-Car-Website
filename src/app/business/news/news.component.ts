@@ -14,6 +14,13 @@ export class NewsComponent implements OnInit {
   constructor() {
     this.postData = [
       {
+        title: 'SkipTheDepot Fundraiser',
+        date: 'January 20, 2022',
+        link: 'SkipTheDepot-Fundraiser',
+        coverPhoto: './assets/articleFiles/SkipTheDepot-Fundraiser/skipTheDepotCover.jpg',
+        author: 'University of Calgary Solar Team'
+      },
+      {
         title: 'An Inside Look at Schulich 1: Lessons on Leading - Shawn Zwierzchowski',
         date: 'January 11, 2021',
         link: 'An-Inside-Look-at-Schulich-1',

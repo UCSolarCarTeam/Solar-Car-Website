@@ -1,0 +1,113 @@
+<div class="formContainer">
+    <form [formGroup]="addMemberForm" (ngSubmit)="manageMember()" novalidate>
+      <div class="mb-3">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" required>
+      </div>
+  
+      <div class="mb-3">
+        <label>Position</label>
+        <select formControlName="position" class="form-control" required>
+          <option *ngFor="let position of positions">{{ position }}</option>
+        </select>
+      </div>
+  
+      <div class="mb-3">
+        <label>Subteam</label>
+        <select formControlName="subteam" class="form-control" required>
+          <option *ngFor="let subteam of subteams">{{ subteam }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label>Major</label>
+        <input type="text" formControlName="major" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Description</label>
+        <input type="text" formControlName="description" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Year</label>
+        <input type="text" formControlName="year" class="form-control" required>
+      </div>
+  
+      <div class="mb-3">
+        <label>Image</label>
+        <input type="file" formControlName="image" class="form-control" (change)="setImage($event.target.files)">
+      </div>
+      <label>Image Preview</label>
+      <br>
+      <img class="imagePreview" src="{{ previewImgUrl }}" />
+  
+      <div class="mb-3">
+        <button type="submit" class="btn btn-danger" [disabled]="!addMemberForm.valid">{{ mainButtonText }}</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="actionHistory.length !== 0" class="historyTable">
+    <h1 class="tableHeading">Action History</h1>
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User ID</th>
+                <th scope="col">User</th>
+                <th scope="col">Entity</th>
+                <th scope="col">Action</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let action of actionHistory; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ action.uid }}</td>
+                <td>{{ action.uName }}</td>
+                <td>{{ action.eName }}</td>
+                <td>{{ action.action }}</td>
+                <td>{{ action.dateTime }}</td>
+            </tr>
+        </tbody>
+      </table>
+    <br>
+  </div>
+  <div class="resultsTable">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Position</th>
+          <th scope="col">Subteam</th>
+          <th scope="col">Major</th>
+          <th scope="col">Description</th>
+          <th scope="col">Year</th>
+          <th scope="col">Action </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ member.name }}</td>
+          <td>
+              <img class="imageResultsPreview" src="{{ member.imageName }}" />
+          </td>
+          <td>{{ member.position }}</td>
+          <td>{{ member.subteam }}</td>
+          <td>{{ member.major }}</td>
+          <td>{{ member.description }}</td>
+          <td>{{ member.year }}</td>
+          <td>
+            <button (click)="deleteMember(member)" class="btn btn-danger actionButton">Delete</button>
+            <br>
+            <button (click)="setupMemberUpdate(member)" class="btn btn-danger actionButton">Update</button>
+            <br>
+            <button (click)="showActionHistory(member)" class="btn btn-danger actionButton">History</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

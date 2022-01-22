@@ -1,0 +1,24 @@
+.loginFormDiv {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 80vh;
+    text-align: center;
+}
+
+.loginForm {
+    width: 35%;
+}
+
+.resetPasswordForm {
+    width: 35%;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+}
+
+.error {
+    color: red;
+}

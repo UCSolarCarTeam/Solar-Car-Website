@@ -3,8 +3,7 @@ import { NewsService } from 'src/app/services/news.service';
 import { News } from 'src/app/models/news';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from 'src/app/services/file-upload.service';
-import { UserActionService } from 'src/app/services/user-action.service';
-import { UserAction } from 'src/app/models/user-action';
+
 @Component({
   selector: 'app-edit-news',
   templateUrl: './edit-news.component.html',

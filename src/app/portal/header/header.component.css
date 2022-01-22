@@ -16,3 +16,12 @@ img {
     position: -webkit-sticky;
     position: sticky;
 }
+
+.user-btn {
+    background: none;
+    border: none;
+}
+
+.user-icon {
+    max-width: 40px;
+}

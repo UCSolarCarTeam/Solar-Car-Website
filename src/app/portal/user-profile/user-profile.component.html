@@ -1,0 +1,74 @@
+<div class="profileContainer">
+    
+    <div>
+        <h1 class="tableHeading">Profile</h1>
+        <div class="userForm">
+            <form [formGroup]="userForm" (ngSubmit)="manageUser()">
+                <div class="mb-3">
+                    <label>Display Name</label>
+                    <input type="text" placeholder="{{ getUser().displayName }}" formControlName="displayName" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="text" placeholder="{{ getUser().email }}" formControlName="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" required>
+                </div>
+                <div class="mb-3" *ngIf="userForm.get('displayName').dirty || userForm.get('email').dirty || userForm.get('password').dirty">
+                    <button type="submit" class="btn btn-danger">Update</button>
+                </div>
+            </form>
+            </div>
+        <div *ngIf="getAuth().isAdmin()">
+            <h1 class="tableHeading">Your Action History</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Entity</th>
+                        <th scope="col">Entity ID</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let action of userActions; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ action.eName }}</td>
+                        <td>{{ action.eid }}</td>
+                        <td>{{ action.action }}</td>
+                        <td>{{ action.dateTime }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="!getAuth().isAdmin()">
+        <h1 class="tableHeading">Your Action History</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Entity</th>
+                    <th scope="col">Entity ID</th>
+                    <th scope="col">Action</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let action of userActions; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ action.eName }}</td>
+                    <td>{{ action.eid }}</td>
+                    <td>{{ action.action }}</td>
+                    <td>{{ action.dateTime }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="getAuth().isAdmin()">
+        <admin-panel></admin-panel>
+    </div>
+</div>

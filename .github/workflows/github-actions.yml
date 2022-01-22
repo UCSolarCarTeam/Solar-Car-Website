@@ -1,0 +1,28 @@
+name: Angular CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo "🐧 This job is now running on a ${{ runner.os }} server."
+    - uses: actions/checkout@v2
+    - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+        cache: 'npm'
+    - run: npm install
+    - run: npm install -g @angular/cli
+    - run: echo "🖥️ Node and Angular have been installed. Ready to test workflow!"
+    - run: npm run lint
+    - run: echo "🧶 Linting passed!"
+    - run: ng build --prod
+    - run: echo "😁 Workflow test passed!"

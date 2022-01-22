@@ -20,7 +20,7 @@
     width: 85%;
     min-width: 500px;
     border: 1px solid black;
-    padding: 2em;
+    padding: 1em;
     overflow: scroll;
 }
 .itemControlModal{
@@ -34,4 +34,7 @@
     background: white;
     overflow: scroll;
     
+}
+.imageResultsPreview{
+    height: 50px;
 }

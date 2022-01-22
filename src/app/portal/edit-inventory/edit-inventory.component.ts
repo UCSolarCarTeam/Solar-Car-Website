@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Item } from 'src/app/models/item.model';
-import { UserAction } from 'src/app/models/user-action';
 import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { InventoryService } from 'src/app/services/inventory.service';
@@ -16,7 +15,7 @@ export class EditInventoryComponent implements OnInit {
   addItemForm: FormGroup;
   updateItemId: string;
   items: Item[];
-  locations: String [];
+  locations: String[];
 
   submitButtonText: string;
   checkoutButtonText: string;
@@ -74,15 +73,16 @@ export class EditInventoryComponent implements OnInit {
           const newItem = {
             id: this.updateItemId,
             name: this.addItemForm.get('name').value,
-            internalPartNumber: this.addItemForm.get('position').value,
-            manufacturerPartNumber: this.addItemForm.get('subteam').value,
-            location: this.addItemForm.get('major').value,
-            amount: this.addItemForm.get('description').value,
-            isBorrowable: this.addItemForm.get('year').value,
+            internalPartNumber: this.addItemForm.get('internalPartNumber').value,
+            manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
+            location: this.addItemForm.get('location').value,
+            amount: this.addItemForm.get('amount').value,
+            isBorrowable: this.addItemForm.get('isBorrowable').value,
             imageUrl: this.previewImgUrl,
             image: null
           };
           this.inventoryService.updateInventoryItem(newItem);
+          this.modalVisiblity(false);
         } else {
 
           this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
@@ -90,59 +90,76 @@ export class EditInventoryComponent implements OnInit {
               const newItem = {
                 id: this.updateItemId,
                 name: this.addItemForm.get('name').value,
-                internalPartNumber: this.addItemForm.get('position').value,
-                manufacturerPartNumber: this.addItemForm.get('subteam').value,
-                location: this.addItemForm.get('major').value,
-                amount: this.addItemForm.get('description').value,
-                isBorrowable: this.addItemForm.get('year').value,
+                internalPartNumber: this.addItemForm.get('internalPartNumber').value,
+                manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
+                location: this.addItemForm.get('location').value,
+                amount: this.addItemForm.get('amount').value,
+                isBorrowable: this.addItemForm.get('isBorrowable').value,
                 imageUrl: downloadUrl,
-                image: null,
+                image: null
               };
               this.inventoryService.updateInventoryItem(newItem);
             });
           });
         }
-        this.addItemForm.reset();
+        this.resetForm();
         this.modalVisiblity(false);
         return;
       }
-
+      //Adding New Item
+      if (this.image == null) {
+            const  newItem = {
+              id: this.updateItemId,
+              name: this.addItemForm.get('name').value,
+              internalPartNumber: this.addItemForm.get('internalPartNumber').value,
+              manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
+              location: this.addItemForm.get('location').value,
+              amount: this.addItemForm.get('amount').value,
+              isBorrowable: this.addItemForm.get('isBorrowable').value,
+              image: null,
+              imageUrl: "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021"
+            };
+            this.inventoryService.addInventoryItem(newItem);
+          
+      } else{
       this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
           const  newItem = {
             id: this.updateItemId,
             name: this.addItemForm.get('name').value,
-            internalPartNumber: this.addItemForm.get('position').value,
-            manufacturerPartNumber: this.addItemForm.get('subteam').value,
-            location: this.addItemForm.get('major').value,
-            amount: this.addItemForm.get('description').value,
-            isBorrowable: this.addItemForm.get('year').value,
-            imageName: this.previewImgUrl,
+            internalPartNumber: this.addItemForm.get('internalPartNumber').value,
+            manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
+            location: this.addItemForm.get('location').value,
+            amount: this.addItemForm.get('amount').value,
+            isBorrowable: this.addItemForm.get('isBorrowable').value,
             image: null,
-            imageUrl: downloadUrl,
+            imageUrl: downloadUrl
           };
           this.inventoryService.addInventoryItem(newItem);
         });
       });
-      this.addItemForm.reset();
+    }
+      this.resetForm();
+      this.modalVisiblity(false);
   }
 
   modalVisiblity(status: Boolean){
-    alert();
-    if (status == true){
-      document.getElementsByClassName("itemControlModal")[0].setAttribute("style", "block");
+
+    if (status === true){
+      document.getElementsByClassName("itemControlModal")[0].setAttribute("style", "display:block");
     } else{
-      document.getElementsByClassName("itemControlModal")[0].setAttribute("style", "none");
+      document.getElementsByClassName("itemControlModal")[0].setAttribute("style", "display:none");
     }
     
   }
   renderAddItem(){
+    this.resetForm();
     this.modalVisiblity(true);
-    this.addItemForm.reset();
     this.submitButtonText = 'Add Item';
   }
 
   renderEditItem(item: Item){
+    this.resetForm();
     this.modalVisiblity(true);
     this.updateItemId = item.id;
     this.addItemForm.get('name').setValue(item.name);
@@ -159,7 +176,15 @@ export class EditInventoryComponent implements OnInit {
 
   cancelItemForm(){
     this.modalVisiblity(false);
+    this.resetForm();
   } 
+
+  resetForm() {
+    this.addItemForm.reset();
+    this.previewImgUrl = '';
+    this.updateItemId = '';
+    this.submitButtonText = 'Add Member';
+  }
 
 }
 

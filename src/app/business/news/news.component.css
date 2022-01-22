@@ -6,6 +6,7 @@
 .newsPage {
     background-color: white;
     height: 100%;
+    min-height: 60vh;
     padding-bottom: 31.17px;
     padding-left: 95px;
     padding-right: 95px;

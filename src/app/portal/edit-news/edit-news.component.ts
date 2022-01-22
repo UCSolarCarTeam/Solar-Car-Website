@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 import { UserAction } from 'src/app/models/user-action';
-
 @Component({
   selector: 'app-edit-news',
   templateUrl: './edit-news.component.html',
@@ -49,7 +48,9 @@ Something...
           ...(e.payload.doc.data() as object)
         } as News;
       });
+      this.newsArticles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
     });
+
   }
 
   setThumbnail(files: any) {
@@ -96,12 +97,13 @@ Something...
       } else {
         const newsId = this.updateNewsId;
         const newsName = this.addNewsForm.get('name').value;
+        const newsDate = this.addNewsForm.get('date').value;
         this.uploadService.uploadFile(this.thumbnail, 'assets/thumnails/').then((snapshot) => {
           snapshot.ref.getDownloadURL().then((downloadUrl) => {
             const newNewsArticle = {
               id: newsId,
               name: newsName,
-              date: this.addNewsForm.get('date').value,
+              date: newsDate,
               markdown: readMarkdown,
               link: readLink,
               thumbnail: null,
@@ -131,11 +133,12 @@ Something...
       this.resetForm();
     } else {
       const newsName = this.addNewsForm.get('name').value;
+      const newsDate = this.addNewsForm.get('date').value;
       this.uploadService.uploadFile(this.thumbnail, 'assets/thumnails/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
           const newNewsArticle = {
             name: newsName,
-            date: this.addNewsForm.get('date').value,
+            date: newsDate,
             markdown: readMarkdown,
             link: readLink,
             thumbnail: null,

@@ -2,7 +2,7 @@
 <br>
   <form [formGroup]="addNewsForm" (ngSubmit)="manageNews()" novalidate>
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary" [disabled]="!addNewsForm.valid">{{ mainButtonText }}</button>
+      <button type="submit" class="btn btn-danger" [disabled]="!addNewsForm.valid">{{ mainButtonText }}</button>
     </div>
     <div class="row">
       <div class="col-4">
@@ -21,7 +21,7 @@
     <img [src]="previewThumbnailUrl" style="max-width: 500px;">
   </form>
   <br>
-  <button class="btn btn-primary btn-block" (click)="isLinkOnlyFormat = !isLinkOnlyFormat">Toggle format (Article or External Link)</button>
+  <button class="btn btn-danger btn-block" (click)="isLinkOnlyFormat = !isLinkOnlyFormat">Toggle format (Article or External Link)</button>
   <br>
   <div *ngIf="!isLinkOnlyFormat">
     <textarea class="variable-textarea" [(ngModel)]="markdown" style="height: 100%;"></textarea>
@@ -57,7 +57,7 @@
         </td>
         <td>
           <div *ngIf="news.link != null">
-            <a href="{{news.link}}" class="btn btn-primary" target="_blank">Link to Article</a>
+            <a href="{{news.link}}" class="btn btn-danger" target="_blank">Link to Article</a>
           </div>
           <div *ngIf="news.Link == null">
               <div class="overflow-auto" style="max-height: 300px;">
@@ -67,8 +67,8 @@
         </td>
         <td>
           <div class="btn-group">
-            <button (click)="deleteNews(news)" class="btn btn-danger actionButton">Delete</button>
-            <button (click)="setupNewsUpdate(news)" class="btn btn-primary actionButton">Update</button>
+            <button (click)="deleteNews(news)" class="btn btn-warning actionButton">Delete</button>
+            <button (click)="setupNewsUpdate(news)" class="btn btn-danger actionButton">Update</button>
           </div>
         </td>
       </tr>

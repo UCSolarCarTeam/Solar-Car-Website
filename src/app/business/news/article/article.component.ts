@@ -10,6 +10,7 @@ import { News } from 'src/app/models/news';
 })
 export class ArticleComponent implements OnInit {
   newsArticle: News;
+  markdown: string;
 
   constructor(private route: ActivatedRoute, private newsService: NewsService) { }
 
@@ -17,6 +18,7 @@ export class ArticleComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.newsService.getNews(id).subscribe(res => {
       this.newsArticle = res.data() as News;
+      this.markdown = this.newsArticle.markdown;
     });
   }
 }

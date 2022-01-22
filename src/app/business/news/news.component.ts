@@ -22,6 +22,7 @@ export class NewsComponent implements OnInit {
           ...(e.payload.doc.data() as object)
         } as News;
       });
+      this.newsArticles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
     });
     console.log(this.newsArticles);
   }

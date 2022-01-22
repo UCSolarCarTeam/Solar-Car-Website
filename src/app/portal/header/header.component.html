@@ -23,12 +23,6 @@
             </div>
               <a class="nav-link" routerLink="user"><img class="user-icon" src="../../../assets/portal/user-icon.png"></a>
           </div>
-          <div *ngIf="LoggedIn()">
-            <button class="nav-link user-btn" (click)="LogOut()">Log Out</button>
-          </div>
-          <div *ngIf="LoggedIn()">
-            <a class="nav-link" routerLink="user"><img class="user-icon" src="../../../assets/portal/user-icon.png"></a>
-          </div>
         </div>
       </ng-container>
     </nav>

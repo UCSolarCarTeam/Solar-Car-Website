@@ -29,6 +29,9 @@
         <div *ngIf="SignUpSuccess()">
             <small class="error">Sign up successfull. Please wait to be verified</small>
         </div>
+        <div *ngIf="ucalgaryEmailUsed">
+            <small class="error">UofC blocks our registration emails. Please use another email.</small>
+        </div>
         <a routerLink="/portal/login" class="error">Have an account? <strong>Login here</strong></a>
     </form>
 </div>

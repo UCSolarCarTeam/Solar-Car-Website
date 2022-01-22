@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Item } from '../models/item.model'
+import { Item } from '../models/item.model';
 import { Action } from '../models/action';
 import { UserActionService } from './user-action.service';
 
@@ -12,7 +12,7 @@ import { UserActionService } from './user-action.service';
 export class InventoryService {
 
   constructor(private firestore: AngularFirestore, private userActionService: UserActionService) {}
-    addInventoryItem(item: Item){
+    addInventoryItem(item: Item) {
       const user = JSON.parse(window.sessionStorage.getItem('User'));
       return new Promise<any>((resolve, reject) => {
         this.firestore
@@ -56,14 +56,12 @@ export class InventoryService {
         location: item.location,
         amount: item.amount,
         isBorrowable: item.isBorrowable,
-        //isBorrowed: item.isBorrowed,
-        //inputedByUser: item.inputedByUser,
-        //borrowedByUser: item.borrowedByUser,
+         // isBorrowed: item.isBorrowed,
+         // inputedByUser: item.inputedByUser,
+         // borrowedByUser: item.borrowedByUser,
         imageUrl: item.imageUrl,
         image: item.image
       });
     }
-    
 
-  
 }

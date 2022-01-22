@@ -6,9 +6,9 @@ export interface Item{
     location: string;
     amount: number;
     isBorrowable: string;
-    //isBorrowed: string,
-    //inputedByUser: string;
-    //borrowedByUser: string;
+     //isBorrowed: string,
+     //inputedByUser: string;
+     //borrowedByUser: string;
     image?: File;
     imageUrl: string;
 }

@@ -15,7 +15,7 @@ export class EditInventoryComponent implements OnInit {
   addItemForm: FormGroup;
   updateItemId: string;
   items: Item[];
-  locations: String[];
+  locations: string[];
 
   submitButtonText: string;
   checkoutButtonText: string;
@@ -25,11 +25,11 @@ export class EditInventoryComponent implements OnInit {
   previewImgUrl: string;
 
   constructor(
-    private inventoryService: InventoryService, 
-    private formBuilder: FormBuilder, 
+    private inventoryService: InventoryService,
+    private formBuilder: FormBuilder,
     private uploadService: FileUploadService,
-    private userActionService: UserActionService, 
-    private authService: AuthService) { 
+    private userActionService: UserActionService,
+    private authService: AuthService) {
 
     this.addItemForm = this.formBuilder.group({
         name: [''],
@@ -67,7 +67,7 @@ export class EditInventoryComponent implements OnInit {
     reader.readAsDataURL(this.image);
   }
 
-  manageItemForm(){
+  manageItemForm() {
     if (this.submitButtonText.startsWith('Edit Item')) {
         if (this.image == null) {
           const newItem = {
@@ -105,7 +105,7 @@ export class EditInventoryComponent implements OnInit {
         this.modalVisiblity(false);
         return;
       }
-      //Adding New Item
+      // Adding New Item
       if (this.image == null) {
             const  newItem = {
               id: this.updateItemId,
@@ -116,11 +116,11 @@ export class EditInventoryComponent implements OnInit {
               amount: this.addItemForm.get('amount').value,
               isBorrowable: this.addItemForm.get('isBorrowable').value,
               image: null,
-              imageUrl: "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021"
+              imageUrl: 'https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021'
             };
             this.inventoryService.addInventoryItem(newItem);
-          
-      } else{
+
+      } else {
       this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
           const  newItem = {
@@ -138,26 +138,26 @@ export class EditInventoryComponent implements OnInit {
         });
       });
     }
-      this.resetForm();
-      this.modalVisiblity(false);
+    this.resetForm();
+    this.modalVisiblity(false);
   }
 
-  modalVisiblity(status: Boolean){
+  modalVisiblity(status: boolean) {
 
-    if (status === true){
-      document.getElementsByClassName("itemControlModal")[0].setAttribute("style", "display:block");
-    } else{
-      document.getElementsByClassName("itemControlModal")[0].setAttribute("style", "display:none");
+    if (status === true) {
+      document.getElementsByClassName('itemControlModal')[0].setAttribute('style', 'display:block');
+    } else {
+      document.getElementsByClassName('itemControlModal')[0].setAttribute('style', 'display:none');
     }
-    
+
   }
-  renderAddItem(){
+  renderAddItem() {
     this.resetForm();
     this.modalVisiblity(true);
     this.submitButtonText = 'Add Item';
   }
 
-  renderEditItem(item: Item){
+  renderEditItem(item: Item) {
     this.resetForm();
     this.modalVisiblity(true);
     this.updateItemId = item.id;
@@ -173,10 +173,10 @@ export class EditInventoryComponent implements OnInit {
     document.documentElement.scrollTop = 0;
   }
 
-  cancelItemForm(){
+  cancelItemForm() {
     this.modalVisiblity(false);
     this.resetForm();
-  } 
+  }
 
   resetForm() {
     this.addItemForm.reset();

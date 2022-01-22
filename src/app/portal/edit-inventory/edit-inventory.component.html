@@ -4,7 +4,7 @@
         <div class="defaultActions">
             <input placeholder="Search # or name"><br>
             <button (click)="renderAddItem()" class="btn btn-success actionButton" >Add Item</button><br>
-            <button  class="btn btn-success actionButton">Check In Items</button>
+            <button  class="btn btn-success actionButton" disabled>Check In Items</button>
         </div>
     </div>
 
@@ -63,7 +63,7 @@
             </div>
             <div class="mb-3">
                 <label>Borrowable</label>
-                <input type="checkbox" formControlName="isBorrowable" class="form-control" required>
+                <input type="checkbox" formControlName="isBorrowable" class="form-control" >
             </div>
 
             <div class="mb-3">

@@ -82,7 +82,6 @@ export class EditInventoryComponent implements OnInit {
             image: null
           };
           this.inventoryService.updateInventoryItem(newItem);
-          this.modalVisiblity(false);
         } else {
 
           this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {

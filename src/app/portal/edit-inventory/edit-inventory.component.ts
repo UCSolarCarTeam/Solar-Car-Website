@@ -106,7 +106,7 @@ export class EditInventoryComponent implements OnInit {
         return;
       }
       // Adding New Item
-      if (this.image == null) {
+    if (this.image == null) {
             const  newItem = {
               id: this.updateItemId,
               name: this.addItemForm.get('name').value,

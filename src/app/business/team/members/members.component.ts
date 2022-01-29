@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { MemberService } from 'src/app/services/member.service';
-import { Member } from '../../../models/member.model';
+import { Member } from '../member.model';
+import { MembersService } from '../../services/members.service';
 
 
 @Component({
@@ -18,25 +18,15 @@ export class MembersComponent implements OnInit {
   sections: string[];
   activeSection: string;
 
-  constructor(private memberService: MemberService) { }
+  constructor(private m: MembersService) { }
 
   ngOnInit(): void {
-    this.members = [];
-    this.memberService.AllMembers().subscribe(res => {
-      res.docs.forEach(doc => {
-        this.members.push(doc.data() as Member);
-      });
-    });
-    this.memberService.AllManagers().subscribe(res => {
-      res.docs.forEach(doc => {
-        this.members.push(doc.data() as Member);
-      });
-      this.currentMemberList = this.members;
-      this.setMembersToDisplay(0);
-      this.sections =
-      [ 'All', 'Managers', 'Mechanical', 'Electrical', 'Software', 'Business'];
-      this.activeSection = this.sections[0];
-    });
+    this.members = this.m.AllMembers();
+    this.currentMemberList = this.members;
+    this.setMembersToDisplay(0);
+    this.sections =
+    [ 'All', 'Managers', 'Mechanical', 'Electrical', 'Software', 'Business'];
+    this.activeSection = this.sections[0];
   }
 
   gotoFirstPage(): void {
@@ -76,57 +66,32 @@ export class MembersComponent implements OnInit {
   }
 
   setDisplayToAllMembers(): void {
-    this.currentMemberList = this.members;
+    this.currentMemberList = this.m.AllMembers();
     this.gotoFirstPage();
   }
 
   setDisplayToSoftwareMembers(): void {
-    this.currentMemberList = [];
-    this.members.forEach(member => {
-      if (member.subteam === 'Software') {
-        this.currentMemberList.push(member);
-      }
-    });
+    this.currentMemberList =  this.m.getSoftwareMembers();
     this.gotoFirstPage();
   }
 
   setDisplayToMechanicalMembers(): void {
-    this.currentMemberList = [];
-    this.members.forEach(member => {
-      if (member.subteam === 'Mechanical') {
-        this.currentMemberList.push(member);
-      }
-    });
+    this.currentMemberList = this.m.getMechanicalMembers();
     this.gotoFirstPage();
   }
 
   setDisplayToElectricalMembers(): void {
-    this.currentMemberList = [];
-    this.members.forEach(member => {
-      if (member.subteam === 'Electrical') {
-        this.currentMemberList.push(member);
-      }
-    });
+    this.currentMemberList = this.m.getElectricalMembers();
     this.gotoFirstPage();
   }
 
   setDisplayToBusinessMembers(): void {
-    this.currentMemberList = [];
-    this.members.forEach(member => {
-      if (member.subteam === 'Business') {
-        this.currentMemberList.push(member);
-      }
-    });
+    this.currentMemberList =  this.m.getBusinessMembers();
     this.gotoFirstPage();
   }
 
   setDisplayToManagers(): void {
-    this.currentMemberList = [];
-    this.members.forEach(member => {
-      if (member.position === 'Manager') {
-        this.currentMemberList.push(member);
-      }
-    });
+    this.currentMemberList = this.m.AllManagers();
     this.gotoFirstPage();
   }
 

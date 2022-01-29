@@ -1,6 +1,6 @@
-<div *ngIf="captain !== undefined" class="captain-body">
+<div class="captain-body">
     <div class="image-container">
-        <img src={{this.captain.imageName}}>
+        <img [src]="imagePath">
     </div>
     <div class="info">
         <h3 class="name">{{this.captain.name}}</h3>

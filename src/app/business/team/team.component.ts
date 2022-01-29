@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Member } from '../../models/member.model';
-import { MemberService } from 'src/app/services/member.service';
+import { Member } from './member.model';
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'business-team',
@@ -12,18 +12,11 @@ export class TeamComponent implements OnInit {
   enggManager: Member;
   businessManager: Member;
 
-  constructor(private m: MemberService) {
-    this.m.TeamCaptain().subscribe(res => {
-      this.teamCaptain = res.docs[0].data() as Member;
-    });
-    this.m.EngineeringManager().subscribe(res => {
-      this.enggManager = res.docs[0].data() as Member;
-    });
-    this.m.BusinessManager().subscribe(res => {
-      this.businessManager = res.docs[0].data() as Member;
-    });
-  }
+  constructor(private m: MembersService) { }
 
   ngOnInit() {
+    this.teamCaptain = this.m.TeamCaptain();
+    this.enggManager = this.m.EngineeringManager();
+    this.businessManager = this.m.BusinessManager();
   }
 }

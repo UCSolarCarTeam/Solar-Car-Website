@@ -119,10 +119,6 @@
               "devServerTarget": "Solar-Car-Website:serve:production"
             }
           }
-        },
-        "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {}
         }
       }
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Member } from 'src/app/models/member.model';
+import { Member } from '../../member.model';
 
 @Component({
   selector: 'business-gallery-item',

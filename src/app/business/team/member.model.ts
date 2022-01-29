@@ -1,5 +1,6 @@
-export interface Member {
-    id?: string;
+import { Url } from 'url';
+
+export class Member {
     name: string;
     position: string;
     subteam: string;
@@ -7,5 +8,4 @@ export interface Member {
     description: string;
     year: number;
     imageName: string;
-    image?: File;
 }

@@ -24,3 +24,10 @@ p{
     font-family: "Actor";
     src: url("assets/fonts/Actor-Regular.ttf");
 }
+
+blockquote {
+  border-left: 3px solid rgba(0,0,0,0.21);
+  padding-left: 12px;
+  color: rgba(0,0,0,0.54);
+}
+

@@ -1,1 +1,78 @@
-<p>Manage news page works!</p>
+<div class="container">
+<br>
+  <form [formGroup]="addNewsForm" (ngSubmit)="manageNews()" novalidate>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-danger" [disabled]="!addNewsForm.valid">{{ mainButtonText }}</button>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" required>
+      </div>
+      <div class="col-4">
+        <label>Date</label>
+        <input type="date" formControlName="date" class="form-control" required>
+      </div>
+      <div class="col-4">
+        <label>Thumbnail</label>
+        <input type="file" formControlName="thumbnail" class="form-control" (change)="setThumbnail($event.target.files)" required>
+      </div>
+    </div>
+    <img [src]="previewThumbnailUrl" style="max-width: 500px;">
+  </form>
+  <br>
+  <button class="btn btn-danger btn-block" (click)="isLinkOnlyFormat = !isLinkOnlyFormat">Toggle format (Article or External Link)</button>
+  <br>
+  <div *ngIf="!isLinkOnlyFormat">
+    <textarea class="variable-textarea" [(ngModel)]="markdown" style="height: 100%;"></textarea>
+    <markdown class="variable-binding" [data]="markdown"></markdown>
+  </div>
+  <div *ngIf="isLinkOnlyFormat" class="col-md">
+    <label>Link</label>
+    <input type="text" class="form-control" [(ngModel)]="link">
+  </div>
+
+  <br>
+</div>
+
+<div class="resultsTable">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Logo</th>
+        <th scope="col">Article or Link</th>
+        <th scope="col">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let news of newsArticles; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ news.name}}</td>
+        <td>{{ news.date }}</td>
+        <td>
+          <img src="{{ news.thumbnailUrl }}" style="max-width: 100px;"/>
+        </td>
+        <td>
+          <div *ngIf="news.link != null">
+            <a href="{{news.link}}" class="btn btn-danger" target="_blank">Link to Article</a>
+          </div>
+          <div *ngIf="news.Link == null">
+              <div class="overflow-auto" style="max-height: 300px;">
+                <markdown [data]="news.markdown"></markdown>
+              </div>
+          </div>
+        </td>
+        <td>
+          <div class="btn-group">
+            <button (click)="deleteNews(news)" class="btn btn-warning actionButton">Delete</button>
+            <button (click)="setupNewsUpdate(news)" class="btn btn-danger actionButton">Update</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

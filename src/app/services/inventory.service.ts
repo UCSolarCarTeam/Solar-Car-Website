@@ -94,7 +94,7 @@ export class InventoryService {
       });
       return itemRef.update({
          isBorrowed: false,
-         borrowedByUser: ""
+         borrowedByUser: ''
 
       });
     }

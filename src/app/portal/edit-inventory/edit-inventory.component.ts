@@ -43,7 +43,7 @@ export class EditInventoryComponent implements OnInit {
         isBorrowable: false,
         image: ['']
     });
-    
+
     this.locations = [];
     this.checkoutButtonText = 'Borrow';
     this.editButtonText = 'Edit';
@@ -58,26 +58,24 @@ export class EditInventoryComponent implements OnInit {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as object)
         } as Item;
-        if (item.borrowedByUser === ""){
-          item.borrowedByUser = "";
+        if (item.borrowedByUser === '') {
+          item.borrowedByUser = '';
           return item;
         }
-        if (item.borrowedByUser === this.user.id){
-          item.borrowedByUser = "Borrowed by: You";
+        if (item.borrowedByUser === this.user.id) {
+          item.borrowedByUser = 'Borrowed by: You';
           return item;
         }
         this.userService.getUser(item.borrowedByUser).subscribe(usr => {
-          const item_user = usr.data() as User;
-          //borrowedUserName = item_user.displayName;
-          item.borrowedByUser = "Borrowed by: " + item_user.displayName;
-          
+          const itemUser = usr.data() as User;
+          // borrowedUserName = item_user.displayName;
+          item.borrowedByUser = 'Borrowed by: ' + itemUser.displayName;
         });
         return item;
       });
 
     });
-    
-  }
+}
 
   setImage(files: any) {
     this.image = files[0];
@@ -100,13 +98,12 @@ export class EditInventoryComponent implements OnInit {
             amount: this.addItemForm.get('amount').value,
             isBorrowable: this.addItemForm.get('isBorrowable').value,
             isBorrowed: false,
-            borrowedByUser: "",
+            borrowedByUser: '',
             image: null,
             imageUrl: this.previewImgUrl
           };
-          
+
           this.inventoryService.updateInventoryItem(newItem);
-          
         } else {
           const name = this.addItemForm.get('name').value;
           const internalPartNumber = this.addItemForm.get('internalPartNumber').value;
@@ -125,7 +122,7 @@ export class EditInventoryComponent implements OnInit {
                 amount: amount,
                 isBorrowable: isBorrowable,
                 isBorrowed: false,
-                borrowedByUser: "",
+                borrowedByUser: '',
                 image: null,
                 imageUrl: downloadUrl
               };
@@ -148,7 +145,7 @@ export class EditInventoryComponent implements OnInit {
               amount: this.addItemForm.get('amount').value,
               isBorrowable: this.addItemForm.get('isBorrowable').value,
               isBorrowed: false,
-              borrowedByUser: "",
+              borrowedByUser: '',
               image: null,
               imageUrl: 'https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021'
             };
@@ -161,7 +158,7 @@ export class EditInventoryComponent implements OnInit {
         const location = this.addItemForm.get('location').value;
         const amount = this.addItemForm.get('amount').value;
         const isBorrowable = this.addItemForm.get('isBorrowable').value;
-      this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
+        this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
           const  newItem = {
             id: this.updateItemId,
@@ -172,7 +169,7 @@ export class EditInventoryComponent implements OnInit {
             amount: amount,
             isBorrowable: isBorrowable,
             isBorrowed: false,
-            borrowedByUser: "",
+            borrowedByUser: '',
             image: null,
             imageUrl: downloadUrl
           };
@@ -209,7 +206,7 @@ export class EditInventoryComponent implements OnInit {
     this.addItemForm.get('location').setValue(item.location);
     this.addItemForm.get('amount').setValue(item.amount);
     this.addItemForm.get('isBorrowable').setValue(item.isBorrowable);
-    if (item.isBorrowed){
+    if (item.isBorrowed) {
     this.addItemForm.get('isBorrowable').disable();
     }
     this.previewImgUrl = item.imageUrl;
@@ -225,74 +222,64 @@ export class EditInventoryComponent implements OnInit {
 
   resetForm() {
     this.addItemForm.reset();
-    // this.previewImgUrl = '';
     this.updateItemId = '';
     this.addItemForm.get('isBorrowable').enable();
-    //this.submitButtonText = 'Add Item';
   }
 
-  renderBorrowModal(item: Item){
-    if(confirm("Are you sure you would like to borrow this item?")){
-      if(item.isBorrowable === true && item.isBorrowed === false){
+  renderBorrowModal(item: Item) {
+    if (confirm('Are you sure you would like to borrow this item?')) {
+      if (item.isBorrowable === true && item.isBorrowed === false) {
       this.inventoryService.borrowItem(item);
       }
     }
   }
-  renderReturnModal(item: Item){
-    if(confirm("Are you sure you would like to return this item?")){
-      if(item.isBorrowable === true && item.isBorrowed === true ){
+  renderReturnModal(item: Item) {
+    if (confirm('Are you sure you would like to return this item?')) {
+      if (item.isBorrowable === true && item.isBorrowed === true ) {
         item.borrowedByUser = this.user.id;
-      this.inventoryService.returnItem(item);
+        this.inventoryService.returnItem(item);
       }
     }
   }
 
-  getDisplayName (uid: string){
-    this.userService.getUser(uid).subscribe(usr => {
-      const item_user = usr.data() as User;
-      return item_user.displayName;
-    });
-  }
-  returnItemFilter(){
+  returnItemFilter() {
     this.runSearch(1);
   }
-  
-  runSearch(search = 0){
-    // Declare variables 
-    var input, filter, table, tr, td1, td2, td3, td4, i, 
+
+  runSearch(search = 0) {
+    // Declare variables
+    let input, filter, table, tr, td1, td2, td3, td4, i,
     txtValue1, txtValue2, txtValue3, txtValue4;
-    if (search === 0){
-      input = document.getElementsByClassName("search-field")[0];
+    if (search === 0) {
+      input = document.getElementsByClassName('search-field')[0];
       filter = input.value.toUpperCase();
     } else {
-      input = "Borrowed by: You";
+      input = 'Borrowed by: You';
       filter = input.toUpperCase();
-      document.getElementsByClassName("search-field")[0].setAttribute("value", "*return");
+      document.getElementsByClassName('search-field')[0].setAttribute('value', '*return');
     }
-    
-    
-    table = document.getElementsByClassName("inventory-table")[0];
-    tr = table.getElementsByTagName("tr");
+
+    table = document.getElementsByClassName('inventory-table')[0];
+    tr = table.getElementsByTagName('tr');
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 1; i < tr.length; i++) {
-      td1 = tr[i].getElementsByTagName("td")[1]; // Name
-      td2 = tr[i].getElementsByTagName("td")[2]; // Internal #
-      td3 = tr[i].getElementsByTagName("td")[3]; // External #
-      td4 = tr[i].getElementsByTagName("td")[6]; // External #
-        txtValue1 = td1.textContent || td1.innerText;
-        txtValue2 = td2.textContent || td2.innerText;
-        txtValue3 = td3.textContent || td3.innerText;
-        txtValue4 = td4.textContent || td4.innerText;
-        if (txtValue1.toUpperCase().indexOf(filter) > -1 ||
+      td1 = tr[i].getElementsByTagName('td')[1]; // Name
+      td2 = tr[i].getElementsByTagName('td')[2]; // Internal #
+      td3 = tr[i].getElementsByTagName('td')[3]; // External #
+      td4 = tr[i].getElementsByTagName('td')[6]; // External #
+      txtValue1 = td1.textContent || td1.innerText;
+      txtValue2 = td2.textContent || td2.innerText;
+      txtValue3 = td3.textContent || td3.innerText;
+      txtValue4 = td4.textContent || td4.innerText;
+      if (txtValue1.toUpperCase().indexOf(filter) > -1 ||
             txtValue2.toUpperCase().indexOf(filter) > -1 ||
             txtValue3.toUpperCase().indexOf(filter) > -1 ||
             txtValue4.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
+          tr[i].style.display = '';
         } else {
-          tr[i].style.display = "none";
+          tr[i].style.display = 'none';
         }
-      
     }
   }
 }

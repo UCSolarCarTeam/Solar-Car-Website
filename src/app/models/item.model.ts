@@ -5,10 +5,10 @@ export interface Item{
     manufacturerPartNumber: string;
     location: string;
     amount: number;
-    isBorrowable: string;
-    //isBorrowed: string,
-    //inputedByUser: string;
-    //borrowedByUser: string;
+    isBorrowable: boolean;
+    isBorrowed: boolean,
+    // inputedByUser: string;
+    borrowedByUser: string;
     image?: File;
     imageUrl: string;
 }

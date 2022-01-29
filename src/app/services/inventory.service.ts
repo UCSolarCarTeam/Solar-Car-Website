@@ -22,7 +22,7 @@ export class InventoryService {
             this.userActionService.addUserAction({
               uid: user.id,
               uName: user.displayName,
-              eid: item.internalPartNumber,
+              eid: item.id,
               eName: 'Item: ' + item.name,
               action: Action.ADDED,
               dateTime: new Date().toLocaleString(),
@@ -44,7 +44,7 @@ export class InventoryService {
       this.userActionService.addUserAction({
         uid: user.id,
         uName: user.displayName,
-        eid: item.internalPartNumber,
+        eid: item.id,
         eName: 'Item: ' + item.name,
         action: Action.UPDATED,
         dateTime: new Date().toLocaleString(),
@@ -56,14 +56,55 @@ export class InventoryService {
         location: item.location,
         amount: item.amount,
         isBorrowable: item.isBorrowable,
-        //isBorrowed: item.isBorrowed,
-        //inputedByUser: item.inputedByUser,
-        //borrowedByUser: item.borrowedByUser,
+        // isBorrowed: item.isBorrowed,
+        // inputedByUser: item.inputedByUser,
+        // borrowedByUser: item.borrowedByUser,
         imageUrl: item.imageUrl,
         image: item.image
       });
     }
     
 
-  
+    borrowItem(item: Item) {
+      const user = JSON.parse(window.sessionStorage.getItem('User'));
+      const itemRef = this.firestore.collection('inventory-collection').doc(item.id);
+      this.userActionService.addUserAction({
+        uid: user.id,
+        uName: user.displayName,
+        eid: item.id,
+        eName: 'Item: ' + item.name,
+        action: Action.BORROWED,
+        dateTime: new Date().toLocaleString(),
+      });
+      return itemRef.update({
+         isBorrowed: true,
+         borrowedByUser: user.id
+
+      });
+    }
+    returnItem(item: Item) {
+      const user = JSON.parse(window.sessionStorage.getItem('User'));
+      const itemRef = this.firestore.collection('inventory-collection').doc(item.id);
+      this.userActionService.addUserAction({
+        uid: user.id,
+        uName: user.displayName,
+        eid: item.id,
+        eName: 'Item: ' + item.name,
+        action: Action.RETURNED,
+        dateTime: new Date().toLocaleString(),
+      });
+      return itemRef.update({
+         isBorrowed: false,
+         borrowedByUser: ""
+
+      });
+    }
+    /*
+    searchCollection(search : string){
+      return this.firestore
+        .collection('inventory-collection')
+        .ref.where('name', '>=', search)
+        .where('name', '>=', search + '~');
+    }*/
+
 }

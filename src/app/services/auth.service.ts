@@ -96,4 +96,9 @@ export class AuthService {
     return user && (user.userPrivileges.includes(UserPrivilege.ADMIN)
       || user.userPrivileges.includes(UserPrivilege.BUSINESS));
   }
+  hasEngineeringPrivileges() {
+    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    return user && (user.userPrivileges.includes(UserPrivilege.ADMIN)
+      || user.userPrivileges.includes(UserPrivilege.ENGINEERING));
+  }
 }

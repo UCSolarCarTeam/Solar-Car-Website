@@ -12,7 +12,14 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
               <ng-container *ngIf="getAuth().hasBusinessPrivileges()">
-                <div *ngFor="let i of routeLinks">
+                <div *ngFor="let i of businessRouteLinks">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="{{i.link}}">{{ i.label }}</a>
+                  </li>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="getAuth().hasEngineeringPrivileges()">
+                <div *ngFor="let i of engineeringRouteLinks">
                   <li class="nav-item">
                     <a class="nav-link" routerLink="{{i.link}}">{{ i.label }}</a>
                   </li>

@@ -54,12 +54,29 @@ export class EditInventoryComponent implements OnInit {
   ngOnInit(): void {
     this.inventoryService.getInventoryItems().subscribe(res => {
       this.items = res.map(e => {
-        return {
+        const item = {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as object)
         } as Item;
+        if (item.borrowedByUser === ""){
+          item.borrowedByUser = "";
+          return item;
+        }
+        if (item.borrowedByUser === this.user.id){
+          item.borrowedByUser = "Borrowed by: You";
+          return item;
+        }
+        this.userService.getUser(item.borrowedByUser).subscribe(usr => {
+          const item_user = usr.data() as User;
+          //borrowedUserName = item_user.displayName;
+          item.borrowedByUser = "Borrowed by: " + item_user.displayName;
+          
+        });
+        return item;
       });
+
     });
+    
   }
 
   setImage(files: any) {
@@ -131,7 +148,7 @@ export class EditInventoryComponent implements OnInit {
               amount: this.addItemForm.get('amount').value,
               isBorrowable: this.addItemForm.get('isBorrowable').value,
               isBorrowed: false,
-              borrowedByUser: null,
+              borrowedByUser: "",
               image: null,
               imageUrl: 'https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021'
             };
@@ -155,7 +172,7 @@ export class EditInventoryComponent implements OnInit {
             amount: amount,
             isBorrowable: isBorrowable,
             isBorrowed: false,
-            borrowedByUser: null,
+            borrowedByUser: "",
             image: null,
             imageUrl: downloadUrl
           };
@@ -214,24 +231,17 @@ export class EditInventoryComponent implements OnInit {
     //this.submitButtonText = 'Add Item';
   }
 
-  borrowDisplay (item: Item) {
-    if (item.isBorrowable == true){
-      if(item.isBorrowed && item.borrowedByUser != this.user.id){
-        return "Borrowed by: ";
-      }
-    } 
-  }
-
   renderBorrowModal(item: Item){
     if(confirm("Are you sure you would like to borrow this item?")){
-      if(item.isBorrowable == true && item.isBorrowed == false){
+      if(item.isBorrowable === true && item.isBorrowed === false){
       this.inventoryService.borrowItem(item);
       }
     }
   }
   renderReturnModal(item: Item){
     if(confirm("Are you sure you would like to return this item?")){
-      if(item.isBorrowable == true && item.isBorrowed == true){
+      if(item.isBorrowable === true && item.isBorrowed === true ){
+        item.borrowedByUser = this.user.id;
       this.inventoryService.returnItem(item);
       }
     }
@@ -242,6 +252,48 @@ export class EditInventoryComponent implements OnInit {
       const item_user = usr.data() as User;
       return item_user.displayName;
     });
+  }
+  returnItemFilter(){
+    this.runSearch(1);
+  }
+  
+  runSearch(search = 0){
+    // Declare variables 
+    var input, filter, table, tr, td1, td2, td3, td4, i, 
+    txtValue1, txtValue2, txtValue3, txtValue4;
+    if (search === 0){
+      input = document.getElementsByClassName("search-field")[0];
+      filter = input.value.toUpperCase();
+    } else {
+      input = "Borrowed by: You";
+      filter = input.toUpperCase();
+      document.getElementsByClassName("search-field")[0].setAttribute("value", "*return");
+    }
+    
+    
+    table = document.getElementsByClassName("inventory-table")[0];
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+      td1 = tr[i].getElementsByTagName("td")[1]; // Name
+      td2 = tr[i].getElementsByTagName("td")[2]; // Internal #
+      td3 = tr[i].getElementsByTagName("td")[3]; // External #
+      td4 = tr[i].getElementsByTagName("td")[6]; // External #
+        txtValue1 = td1.textContent || td1.innerText;
+        txtValue2 = td2.textContent || td2.innerText;
+        txtValue3 = td3.textContent || td3.innerText;
+        txtValue4 = td4.textContent || td4.innerText;
+        if (txtValue1.toUpperCase().indexOf(filter) > -1 ||
+            txtValue2.toUpperCase().indexOf(filter) > -1 ||
+            txtValue3.toUpperCase().indexOf(filter) > -1 ||
+            txtValue4.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      
+    }
   }
 }
 

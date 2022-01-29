@@ -7,10 +7,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  routeLinks: any[];
+  businessRouteLinks: any[];
+  engineeringRouteLinks: any[];
 
   constructor(private auth: AuthService) {
-    this.routeLinks = [
+    this.businessRouteLinks = [
       {
         label: 'Team',
         link: 'manage-team',
@@ -22,7 +23,9 @@ export class HeaderComponent {
       {
         label: 'News',
         link: 'manage-news',
-      },
+      }
+    ];
+    this.engineeringRouteLinks = [
       {
         label: 'Inventory',
         link: 'manage-inventory',

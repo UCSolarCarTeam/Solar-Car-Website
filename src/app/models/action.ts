@@ -1,5 +1,7 @@
 export enum Action {
     ADDED = 'Added',
     UPDATED = 'Updated',
-    DELETED = 'Deleted'
+    DELETED = 'Deleted',
+    BORROWED = "Borrowed",
+    RETURNED = "Returned"
 }

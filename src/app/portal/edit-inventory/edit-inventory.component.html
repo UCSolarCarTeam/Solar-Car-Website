@@ -3,8 +3,8 @@
     <div class= "inventoryControls">
         <div class="defaultActions">
             <input placeholder="Search # or name"><br>
-            <button (click)="renderAddItem()" class="btn btn-success actionButton" >Add Item</button><br>
-            <button  class="btn btn-success actionButton" disabled>Check In Items</button>
+            <button (click)="renderAddItem()" class="btn btn-info actionButton" >Add Item</button><br>
+            <button  class="btn btn-info actionButton" disabled>Check In Items</button>
         </div>
     </div>
 
@@ -19,6 +19,7 @@
                         <th scope="col">Man. Part#</th>
                         <th scope="col">Location</th>
                         <th scope="col">Amount</th>
+                        <th scope="col">Borrow</th>
                         <th scope="col">Image</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -31,6 +32,16 @@
                         <td>{{ item.manufacturerPartNumber }}</td>
                         <td>{{ item.location }}</td>
                         <td>{{ item.amount }}</td>
+                        <td>{{ borrowDisplay(item) }}
+                            <button *ngIf="item.isBorrowed == false && item.isBorrowable == true" 
+                            (click)="renderBorrowModal(item)" 
+                            class="btn btn-warning actionButton">
+                            Borrow</button>
+                            <button *ngIf="item.isBorrowed == true && item.borrowedByUser == user.id" 
+                            (click)="renderReturnModal(item)" 
+                            class="btn btn-warning actionButton">
+                            Return</button>
+                        </td>
                         <td><img class="imageResultsPreview" src="{{ item.imageUrl }}" /></td>
                         <td><button (click)="renderEditItem(item)" class="btn btn-info actionButton">Edit</button></td>
                     </tr>
@@ -58,12 +69,18 @@
             </div>
 
             <div class="mb-3">
+                <label>Location:</label>
+                <input formControlName="location" class="form-control" required>  
+            </div>
+
+            <div class="mb-3">
                 <label>Amount</label>
                 <input formControlName="amount" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Borrowable</label>
+                <label>Borrowable <span *ngIf="this.addItemForm.get('isBorrowable').disabled" class="isBorrowed">(Can not be disabled if item is borrowed)</span> </label>
                 <input type="checkbox" formControlName="isBorrowable" class="form-control" >
+                
             </div>
 
             <div class="mb-3">
@@ -76,7 +93,7 @@
         
             <div class="mb-3">
               <button type="submit" class="btn btn-danger" [disabled]="!addItemForm.valid">{{ submitButtonText }}</button>
-              <button class="btn btn-secondary" (click)="cancelItemForm()">Cancel</button>
+              <button type="button" class="btn btn-secondary" (click)="cancelItemForm()">Cancel</button>
             </div>
             
           </form>

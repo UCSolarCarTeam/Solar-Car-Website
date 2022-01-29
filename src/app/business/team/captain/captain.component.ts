@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Member } from 'src/app/models/member.model';
+import { Member } from '../member.model';
 
 @Component({
   selector: 'business-captain',
@@ -12,6 +12,7 @@ export class CaptainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.imagePath = '../../assets/team-members/' + this.captain.imageName;
   }
 
 }

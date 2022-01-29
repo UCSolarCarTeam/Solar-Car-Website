@@ -6,8 +6,8 @@
 		<p>
 			A special thank you to our kind donor, the faculty and everything they've done for us!
 		</p>
-		<a target="_blank" href={{lead[0].link}}>
-			<img src='{{lead[0].logoUrl}}' width=600px alt='Schulich'>
+		<a href="https://schulich.ucalgary.ca/">
+			<img src='assets/sponsors/Schulich.png' width=600px alt='Schulich'>
 		</a>
 	</div>
 <!--
@@ -44,8 +44,8 @@
 		</p>
 		<div class="flex">
 			<div *ngFor="let sponsor of silver">
-				<a target="_blank" href={{sponsor.link}}>
-					<img src={{sponsor.logoUrl}} width=400px alt='Silver Sponsor'>
+				<a href={{sponsor[1]}}>
+					<img src={{sponsor[0]}} width=400px alt='Silver Sponsor'>
 				</a>
 			</div>
 		</div>
@@ -72,8 +72,8 @@
 		</p>
 		<div class="flex">
 			<div *ngFor="let sponsor of friends">
-				<a target="_blank" href={{sponsor.link}}>
-					<img src={{sponsor.logoUrl}} width=250px alt='Friend'>
+				<a href={{sponsor[1]}}>
+					<img src={{sponsor[0]}} width=250px alt='Friend'>
 				</a>
 			</div>
 		</div>

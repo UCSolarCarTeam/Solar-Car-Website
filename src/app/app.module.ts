@@ -5,12 +5,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule, SETTINGS as FIRESTORE_SETTINGS } from '@angular/fire/firestore';
-import { AngularFireAuthModule, SETTINGS as FIREAUTH_SETTINGS } from '@angular/fire/auth';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from 'src/environments/environment';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +13,8 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule
   ],
-  providers: [
-    { provide: FIRESTORE_SETTINGS, useValue: environment.useEmulators ? { host: 'localhost:8080', ssl: false } : undefined },
-    { provide: FIREAUTH_SETTINGS, useValue: environment.useEmulators ? { host: 'localhost:9099', ssl: false } : undefined }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

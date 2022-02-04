@@ -15,8 +15,8 @@ export class TeamComponent implements OnInit {
   constructor(private m: MembersService) { }
 
   ngOnInit() {
-    this.teamCaptain = this.m.TeamCaptain();
-    this.enggManager = this.m.EngineeringManager();
-    this.businessManager = this.m.BusinessManager();
+    this.teamCaptain = this.m.teamCaptain();
+    this.enggManager = this.m.engineeringManager();
+    this.businessManager = this.m.businessManager();
   }
 }

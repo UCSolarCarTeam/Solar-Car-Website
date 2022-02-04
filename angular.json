@@ -96,15 +96,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         },
@@ -125,6 +121,7 @@
   },
   "defaultProject": "Solar-Car-Website",
   "cli": {
-    "analytics": "08f03e6f-becb-4d86-be13-2f57806e39e1"
+    "analytics": "08f03e6f-becb-4d86-be13-2f57806e39e1",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }

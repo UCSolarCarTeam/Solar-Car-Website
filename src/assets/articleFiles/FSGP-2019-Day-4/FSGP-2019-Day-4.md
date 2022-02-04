@@ -10,7 +10,7 @@ Hello!
 July 4th was our first day of racing at the 2019 FSGP. Follow along with live race results  [here](http://racehero.io/events/formula-sun-grand-prix). We passed our MOV (multi-occupancy vehicle) scrutineering early in the morning so were ready to head to the start line when the track opened. Before racing began, all the cars and teams gathered on the track for a group photo. It was fun to see all the cars together!
 
 <img src="./assets/articleFiles/FSGP-2019-Day-4/img1562300672117.jpg" width="100%">
-A group photo before the start of racing. Spot the Elysia! 
+A group photo before the start of racing. Spot the Elysia!
 
 Once the group photo was taken we lined the Elysia up on the track and got our drivers settled in. Only cars that have completed scrutineering can start racing so we ended up at the only multi-occupancy vehicle at the start line. We had been scheduled to be the fifth car off the line but another team had technical difficulties, so we headed off fourth.
 

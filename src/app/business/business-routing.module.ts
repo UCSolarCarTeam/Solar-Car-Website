@@ -26,6 +26,7 @@ const routes: Routes = [
       { path: 'team', component: TeamComponent },
       { path: 'contact-us', component: ContactUsComponent },
       { path: 'news/:link', component: ArticleComponent },
+      { path: 'recruitment', component: RecruitmentComponent },
       { path: '', component: MainComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ]

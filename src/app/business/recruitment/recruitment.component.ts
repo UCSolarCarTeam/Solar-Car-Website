@@ -30,17 +30,17 @@ export class RecruitmentComponent implements OnInit {
       {
         name: 'Sponsorship', description: 'Our sponsorship team helps procure funding for the team by establishing and maintaining \
         relationships with sponsors and prospective donors.',
-        applicationForm: 'https://forms.gle/MpAwwUie5tCwsfUs7'
+        applicationForm: 'https://forms.gle/KF7dUYHNAmKA7nF39'
       },
       {
         name: 'Accounting', description: 'Our accounting team keeps track of our organization\'s finances by managing financial assets, \
         creating budget projections, and maintaining the team\'s accounting books.',
-        applicationForm: 'https://forms.gle/rhAgaNkForfMoV7DA'
+        applicationForm: 'https://forms.gle/daZwsGVLfTYMJ3Mo9'
       },
       {
         name: 'Communications', description: 'Our communications team is responsible for the team’s marketing, organizing events, and \
         managing public relations.',
-        applicationForm: 'https://forms.gle/w6YJ4akBfVYJ8oGs9'
+        applicationForm: 'https://forms.gle/U7WDuCZJSRP1ArQ87'
       },
       {
         name: 'Multi-team', description: 'Our multi-team is a program for first-year students to gain introductory experience with both \

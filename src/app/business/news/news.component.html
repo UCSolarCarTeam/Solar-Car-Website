@@ -4,9 +4,9 @@
     <div class="container">
         <div *ngFor="let i of postData">
             <div class="item">
-                <div *ngIf="i.author == 'University of Calgary Solar Team'; else newsPageRedirect">
+                <div *ngIf="i.author === 'University of Calgary Solar Team'; else newsPageRedirect">
                     <a [routerLink]="['/news', i.link]">
-                        <business-post 
+                        <business-post
                         title={{i.title}}
                         date={{i.date}}
                         coverPhoto={{i.coverPhoto}}
@@ -15,7 +15,7 @@
                 </div>
                 <ng-template #newsPageRedirect>
                     <a href="{{i.link}}">
-                        <business-post 
+                        <business-post
                         title={{i.title}}
                         date={{i.date}}
                         coverPhoto={{i.coverPhoto}}

@@ -21,7 +21,7 @@ export class MembersComponent implements OnInit {
   constructor(private m: MembersService) { }
 
   ngOnInit(): void {
-    this.members = this.m.AllMembers();
+    this.members = this.m.allMembers();
     this.currentMemberList = this.members;
     this.setMembersToDisplay(0);
     this.sections =
@@ -66,7 +66,7 @@ export class MembersComponent implements OnInit {
   }
 
   setDisplayToAllMembers(): void {
-    this.currentMemberList = this.m.AllMembers();
+    this.currentMemberList = this.m.allMembers();
     this.gotoFirstPage();
   }
 
@@ -91,7 +91,7 @@ export class MembersComponent implements OnInit {
   }
 
   setDisplayToManagers(): void {
-    this.currentMemberList = this.m.AllManagers();
+    this.currentMemberList = this.m.allManagers();
     this.gotoFirstPage();
   }
 

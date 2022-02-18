@@ -9,24 +9,18 @@ export class MembersService {
 
   constructor() { }
 
-  TeamCaptain(): Member {
-    const result = members.filter((member) => {
-        return member.position === 'Team Captain';
-    });
+  teamCaptain(): Member {
+    const result = members.filter((member) => member.position === 'Team Captain');
     return result[0];
   }
 
-  EngineeringManager(): Member {
-    const result = members.filter((member) => {
-      return member.position === 'Engineering Team Manager';
-    });
+  engineeringManager(): Member {
+    const result = members.filter((member) => member.position === 'Engineering Team Manager');
     return result[0];
   }
 
-  BusinessManager(): Member {
-    const result = members.filter((member) => {
-        return member.position === 'Business Team Manager';
-    });
+  businessManager(): Member {
+    const result = members.filter((member) => member.position === 'Business Team Manager');
     return result[0];
   }
 
@@ -39,28 +33,22 @@ export class MembersService {
   }
 
   // Return all non-captains
-  AllMembers(): Member[] {
-    const result = members.filter((member) => {
-      return member.position === 'Member' || member.position === 'Manager';
-    });
+  allMembers(): Member[] {
+    const result = members.filter((member) => member.position === 'Member' || member.position === 'Manager');
 
     return result.sort((a, b) => this.sort(a, b));
   }
 
   // Return all managers
-  AllManagers(): Member[] {
-    const result = members.filter((member) => {
-      return member.position === 'Manager';
-    });
+  allManagers(): Member[] {
+    const result = members.filter((member) => member.position === 'Manager');
 
     return result;
   }
 
   // Get all members of a team
   getTeamMembers(team: string): Member[] {
-    const result = members.filter((member) => {
-      return member.subteam === team;
-    });
+    const result = members.filter((member) => member.subteam === team);
 
     return result.sort((a, b) => this.sort(a, b));
   }

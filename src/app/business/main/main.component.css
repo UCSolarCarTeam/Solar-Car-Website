@@ -1,6 +1,6 @@
 .mainPage {
     min-width: 100%;
-    min-height: 100vh; 
+    min-height: 100vh;
     background-position: 50%;
     background-size: cover;
     position: relative;
@@ -12,7 +12,7 @@
 
 .background {
     min-width: 100%;
-    min-height: 100vh; 
+    min-height: 100vh;
     background: linear-gradient(0deg, #00000088 10%, #ffffff44 100%);
     position: relative;
     overflow: hidden;
@@ -60,7 +60,7 @@ h1 {
 /* phones */
 @media screen and (max-width: 540px) {
     .container {
-        min-height: 35vh; 
+        min-height: 35vh;
         padding-top: 5rem;
     }
 }
@@ -69,6 +69,6 @@ h1 {
 @media screen and (min-width: 540px) and (max-width: 1500px) {
     .container {
         padding-top: 5rem;
-        min-height: 50vh; 
+        min-height: 50vh;
     }
 }

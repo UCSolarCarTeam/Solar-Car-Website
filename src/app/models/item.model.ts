@@ -1,8 +1,10 @@
 export interface Item {
     id?: string;
     name: string;
+    type: string;
     internalPartNumber: string;
     manufacturerPartNumber: string;
+
     location: string;
     amount: number;
     isBorrowable: boolean;

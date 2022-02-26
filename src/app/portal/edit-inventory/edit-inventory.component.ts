@@ -22,6 +22,10 @@ export class EditInventoryComponent implements OnInit {
   submitButtonText: string;
   checkoutButtonText: string;
   editButtonText: string;
+  elecLocals: string[];
+  mechLocals: string[];
+  lockerLocals: string[];
+  basementLocals: string[];
 
   image: File;
   previewImgUrl: string;
@@ -36,6 +40,7 @@ export class EditInventoryComponent implements OnInit {
 
     this.addItemForm = this.formBuilder.group({
         name: [''],
+        type: [''],
         internalPartNumber: [''],
         manufacturerPartNumber: [''],
         location: [''],
@@ -43,6 +48,10 @@ export class EditInventoryComponent implements OnInit {
         isBorrowable: false,
         image: ['']
     });
+    this.elecLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.mechLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.lockerLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.basementLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
 
     this.locations = [];
     this.checkoutButtonText = 'Borrow';
@@ -92,6 +101,7 @@ export class EditInventoryComponent implements OnInit {
           const newItem = {
             id: this.updateItemId,
             name: this.addItemForm.get('name').value,
+            type: this.addItemForm.get('type').value,
             internalPartNumber: this.addItemForm.get('internalPartNumber').value,
             manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
             location: this.addItemForm.get('location').value,
@@ -102,10 +112,12 @@ export class EditInventoryComponent implements OnInit {
             image: null,
             imageUrl: this.previewImgUrl
           };
-
+          
           this.inventoryService.updateInventoryItem(newItem);
         } else {
+          const id = this.updateItemId;
           const name = this.addItemForm.get('name').value;
+          const type = this.addItemForm.get('type').value;
           const internalPartNumber = this.addItemForm.get('internalPartNumber').value;
           const manufacturerPartNumber = this.addItemForm.get('manufacturerPartNumber').value;
           const location = this.addItemForm.get('location').value;
@@ -114,8 +126,9 @@ export class EditInventoryComponent implements OnInit {
           this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
             snapshot.ref.getDownloadURL().then((downloadUrl) => {
               const  newItem = {
-                id: this.updateItemId,
+                id: id,
                 name: name,
+                type: type,
                 internalPartNumber: internalPartNumber,
                 manufacturerPartNumber: manufacturerPartNumber,
                 location: location,
@@ -139,6 +152,7 @@ export class EditInventoryComponent implements OnInit {
     if (this.image == null) {
             const  newItem = {
               name: this.addItemForm.get('name').value,
+              type: this.addItemForm.get('type').value,
               internalPartNumber: this.addItemForm.get('internalPartNumber').value,
               manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
               location: this.addItemForm.get('location').value,
@@ -153,6 +167,7 @@ export class EditInventoryComponent implements OnInit {
 
       } else {
         const name = this.addItemForm.get('name').value;
+        const type = this.addItemForm.get('type').value;
         const internalPartNumber = this.addItemForm.get('internalPartNumber').value;
         const manufacturerPartNumber = this.addItemForm.get('manufacturerPartNumber').value;
         const location = this.addItemForm.get('location').value;
@@ -161,8 +176,8 @@ export class EditInventoryComponent implements OnInit {
         this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
           const  newItem = {
-            id: this.updateItemId,
             name: name,
+            type: type,
             internalPartNumber: internalPartNumber,
             manufacturerPartNumber: manufacturerPartNumber,
             location: location,
@@ -201,6 +216,7 @@ export class EditInventoryComponent implements OnInit {
     this.modalVisiblity(true);
     this.updateItemId = item.id;
     this.addItemForm.get('name').setValue(item.name);
+    this.addItemForm.get('type').setValue(item.type);
     this.addItemForm.get('internalPartNumber').setValue(item.internalPartNumber);
     this.addItemForm.get('manufacturerPartNumber').setValue(item.manufacturerPartNumber);
     this.addItemForm.get('location').setValue(item.location);
@@ -242,6 +258,19 @@ export class EditInventoryComponent implements OnInit {
     }
   }
 
+  useItemModal(item: Item) {
+    
+      if (item.amount > 0) {
+        if (confirm('The item count will be reduced by 1.')) {
+          this.inventoryService.useItem(item);
+        }
+      } else{
+        alert("There are no more left");
+      }
+    
+  }
+  
+
   returnItemFilter() {
     this.runSearch(1);
   }
@@ -282,8 +311,27 @@ export class EditInventoryComponent implements OnInit {
         }
     }
   }
+  locationUpdate(){
+    let location = document.getElementsByClassName('location-field')[0];
+    if (this.addItemForm.get('location').value == "Custom"){
+      location.setAttribute("style", "display:block");
+    } else{
+      location.setAttribute("style", "display:none");
+    }
+    
+
+  }
+  borrowableCheck(){
+    if (this.addItemForm.get('isBorrowable').value == true && this.addItemForm.get('amount').value != 1){
+      if(confirm("The max value for an item than can be borrowed is 1. If you proceed, the item count will be changed to 1")){
+        this.addItemForm.controls['amount'].setValue(1);
+      } else{
+        this.addItemForm.controls['isBorrowable'].setValue(false);
+      }
+
+  }
 }
 
-
+}
 
 

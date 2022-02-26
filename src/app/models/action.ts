@@ -3,5 +3,6 @@ export enum Action {
     UPDATED = 'Updated',
     DELETED = 'Deleted',
     BORROWED = 'Borrowed',
-    RETURNED = 'Returned'
+    RETURNED = 'Returned',
+    USED = 'Used'
 }

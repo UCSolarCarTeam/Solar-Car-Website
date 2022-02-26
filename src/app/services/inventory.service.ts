@@ -68,9 +68,9 @@ export class InventoryService {
     borrowItem(item: Item) {
       const user = JSON.parse(window.sessionStorage.getItem('User'));
       const itemRef = this.firestore.collection('inventory-collection').doc(item.id);
-      
+
       this.userActionService.addUserAction({
-        
+
         uid: user.id,
         uName: user.displayName,
         eid: item.id,
@@ -78,7 +78,7 @@ export class InventoryService {
         action: Action.BORROWED,
         dateTime: new Date().toLocaleString(),
       });
-      
+
       return itemRef.update({
          isBorrowed: true,
          borrowedByUser: user.id

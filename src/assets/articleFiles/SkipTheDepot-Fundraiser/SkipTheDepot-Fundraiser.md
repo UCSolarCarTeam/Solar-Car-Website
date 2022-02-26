@@ -35,7 +35,7 @@ If you are using a phone you can also download SkipTheDepot from the app store (
 <br><br>
 
 
-Once you’ve created your account select the “Bottle Drive” option to donate your bottles to our team and schedule a pickup time that best suits your activities!
+Once you’ve created your account enter our promo code “UOCSCTP” in order to donate 100% of the proceeds to our team. Next, select the “Bottle Drive” option to donate your bottles to our team and schedule a pickup time that best suits your activities!
 
 
 

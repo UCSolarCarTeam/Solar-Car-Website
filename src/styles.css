@@ -44,6 +44,7 @@ button {
     src: url("assets/fonts/Actor-Regular.ttf");
 }
 
+
 @font-face {
     font-family: "SairaMedium";
     src: url("assets/fonts/Saira-Medium.ttf");
@@ -52,4 +53,10 @@ button {
 @font-face {
     font-family: "SairaLight";
     src: url("assets/fonts/Saira-Light.ttf");
+}
+
+blockquote {
+  border-left: 3px solid rgba(0,0,0,0.21);
+  padding-left: 12px;
+  color: rgba(0,0,0,0.54);
 }

@@ -26,9 +26,12 @@ export class EditInventoryComponent implements OnInit {
   mechLocals: string[];
   lockerLocals: string[];
   basementLocals: string[];
+  amountUnitOptions: string[];
 
   image: File;
   previewImgUrl: string;
+
+  borrowFilter: boolean;
 
   constructor(
     private inventoryService: InventoryService, 
@@ -43,20 +46,26 @@ export class EditInventoryComponent implements OnInit {
         type: [''],
         internalPartNumber: [''],
         manufacturerPartNumber: [''],
+        manufacturer: [''],
+        link: [''],
+        description: [''],
+        amountUnit: [''],
         location: [''],
         amount: 0,
         isBorrowable: false,
         image: ['']
     });
-    this.elecLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
-    this.mechLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
-    this.lockerLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
-    this.basementLocals= ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.elecLocals = ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.mechLocals = ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.lockerLocals = ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.basementLocals = ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
+    this.amountUnitOptions = ['Each', 'Meter', 'Feet', 'Pack', 'Pounds', 'Liter', 'Roll','Yard'];
 
     this.locations = [];
     this.checkoutButtonText = 'Borrow';
     this.editButtonText = 'Edit';
     this.submitButtonText = 'Add Item';
+    this.borrowFilter = false;
 
   }
 
@@ -106,6 +115,10 @@ export class EditInventoryComponent implements OnInit {
             type: this.addItemForm.get('type').value,
             internalPartNumber: this.addItemForm.get('internalPartNumber').value,
             manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
+            manufacturer: this.addItemForm.get('manufacturer').value,
+            link: this.addItemForm.get('link').value,
+            description: this.addItemForm.get('description').value,
+            amountUnit: this.addItemForm.get('amountUnit').value,
             location: this.addItemForm.get('location').value,
             amount: this.addItemForm.get('amount').value,
             isBorrowable: this.addItemForm.get('isBorrowable').value,
@@ -123,20 +136,28 @@ export class EditInventoryComponent implements OnInit {
           const type = this.addItemForm.get('type').value;
           const internalPartNumber = this.addItemForm.get('internalPartNumber').value;
           const manufacturerPartNumber = this.addItemForm.get('manufacturerPartNumber').value;
+          const manufacturer = this.addItemForm.get('manufacturer').value;
+          const link = this.addItemForm.get('link').value;
+          const description = this.addItemForm.get('description').value;
+          const amountUnit = this.addItemForm.get('amountUnit').value;
           const location = this.addItemForm.get('location').value;
           const amount = this.addItemForm.get('amount').value;
           const isBorrowable = this.addItemForm.get('isBorrowable').value;
           this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
             snapshot.ref.getDownloadURL().then((downloadUrl) => {
               const  newItem = {
-                id: id,
-                name: name,
-                type: type,
-                internalPartNumber: internalPartNumber,
-                manufacturerPartNumber: manufacturerPartNumber,
-                location: location,
-                amount: amount,
-                isBorrowable: isBorrowable,
+                id,
+                name,
+                type,
+                internalPartNumber,
+                manufacturerPartNumber,
+                manufacturer,
+                link,
+                description,
+                amountUnit,
+                location,
+                amount,
+                isBorrowable,
                 isBorrowed: false,
                 borrowedByUser: "",
                 image: null,
@@ -158,6 +179,10 @@ export class EditInventoryComponent implements OnInit {
               type: this.addItemForm.get('type').value,
               internalPartNumber: this.addItemForm.get('internalPartNumber').value,
               manufacturerPartNumber: this.addItemForm.get('manufacturerPartNumber').value,
+              manufacturer: this.addItemForm.get('manufacturer').value,
+              link: this.addItemForm.get('link').value,
+              description: this.addItemForm.get('description').value,
+              amountUnit: this.addItemForm.get('amountUnit').value,
               location: this.addItemForm.get('location').value,
               amount: this.addItemForm.get('amount').value,
               isBorrowable: this.addItemForm.get('isBorrowable').value,
@@ -173,19 +198,27 @@ export class EditInventoryComponent implements OnInit {
         const type = this.addItemForm.get('type').value;
         const internalPartNumber = this.addItemForm.get('internalPartNumber').value;
         const manufacturerPartNumber = this.addItemForm.get('manufacturerPartNumber').value;
+        const manufacturer = this.addItemForm.get('manufacturer').value;
+        const link = this.addItemForm.get('link').value;
+        const description = this.addItemForm.get('description').value;
+        const amountUnit = this.addItemForm.get('amountUnit').value;
         const location = this.addItemForm.get('location').value;
         const amount = this.addItemForm.get('amount').value;
         const isBorrowable = this.addItemForm.get('isBorrowable').value;
       this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
           const  newItem = {
-            name: name,
-            type: type,
-            internalPartNumber: internalPartNumber,
-            manufacturerPartNumber: manufacturerPartNumber,
-            location: location,
-            amount: amount,
-            isBorrowable: isBorrowable,
+            name,
+            type,
+            internalPartNumber,
+            manufacturerPartNumber,
+            manufacturer,
+            link,
+            description,
+            amountUnit,
+            location,
+            amount,
+            isBorrowable,
             isBorrowed: false,
             borrowedByUser: "",
             image: null,
@@ -222,6 +255,10 @@ export class EditInventoryComponent implements OnInit {
     this.addItemForm.get('type').setValue(item.type);
     this.addItemForm.get('internalPartNumber').setValue(item.internalPartNumber);
     this.addItemForm.get('manufacturerPartNumber').setValue(item.manufacturerPartNumber);
+    this.addItemForm.get('manufacturer').setValue(item.manufacturer);
+    this.addItemForm.get('description').setValue(item.description);
+    this.addItemForm.get('amountUnit').setValue(item.amountUnit);
+    this.addItemForm.get('link').setValue(item.link);
     this.addItemForm.get('location').setValue(item.location);
     this.addItemForm.get('amount').setValue(item.amount);
     this.addItemForm.get('isBorrowable').setValue(item.isBorrowable);
@@ -277,7 +314,14 @@ export class EditInventoryComponent implements OnInit {
   
 
   returnItemFilter() {
-    this.runSearch(1);
+    if(this.borrowFilter){
+      this.runSearch(2);// Clears Filter
+      this.borrowFilter = false;
+    } else{
+      this.runSearch(1); //  Enables Filter
+      this.borrowFilter = true;
+    }
+    
   }
   
   runSearch(search = 0){
@@ -287,10 +331,14 @@ export class EditInventoryComponent implements OnInit {
     if (search === 0){
       input = document.getElementsByClassName("search-field")[0];
       filter = input.value.toUpperCase();
-    } else {
-      input = "Borrowed by: You";
+    } else if(search === 2) {
+      input = '';
       filter = input.toUpperCase();
-      document.getElementsByClassName("search-field")[0].setAttribute("value", "*return");
+      document.getElementsByClassName('search-field')[0].setAttribute('value', '');
+    }else {
+      input = 'Borrowed by: You';
+      filter = input.toUpperCase();
+      document.getElementsByClassName('search-field')[0].setAttribute('value', '*Borrowed*');
     }
     
     

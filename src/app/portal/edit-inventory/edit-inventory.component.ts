@@ -59,7 +59,7 @@ export class EditInventoryComponent implements OnInit {
     this.mechLocals = ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
     this.lockerLocals = ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
     this.basementLocals = ['Cabinet - Bin 1', 'Cabinet - Bin 2', 'Cabinet - Bin 3'];
-    this.amountUnitOptions = ['Each', 'Meter', 'Feet', 'Pack', 'Pounds', 'Liter', 'Roll','Yard'];
+    this.amountUnitOptions = ['Each', 'Meter', 'Feet', 'Pack', 'Pounds', 'Liter', 'Roll', 'Yard'];
 
     this.locations = [];
     this.checkoutButtonText = 'Borrow';
@@ -309,14 +309,13 @@ export class EditInventoryComponent implements OnInit {
 
 
   returnItemFilter() {
-    if(this.borrowFilter){
-      this.runSearch(2);// Clears Filter
+    if (this.borrowFilter) {
+      this.runSearch(2); // Clears Filter
       this.borrowFilter = false;
-    } else{
-      this.runSearch(1); //  Enables Filter
+    } else {
+      this.runSearch(1); // Enables Filter
       this.borrowFilter = true;
     }
-    
   }
 
   runSearch(search = 0) {
@@ -341,11 +340,11 @@ export class EditInventoryComponent implements OnInit {
     if (search === 0) {
       input = document.getElementsByClassName('search-field')[0];
       filter = input.value.toUpperCase();
-    } else if(search === 2) {
+    } else if (search === 2) {
       input = '';
       filter = input.toUpperCase();
       document.getElementsByClassName('search-field')[0].setAttribute('value', '');
-    }else {
+    } else {
       input = 'Borrowed by: You';
       filter = input.toUpperCase();
       document.getElementsByClassName('search-field')[0].setAttribute('value', '*Borrowed*');

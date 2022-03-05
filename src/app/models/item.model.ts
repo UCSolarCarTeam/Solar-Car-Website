@@ -4,7 +4,10 @@ export interface Item {
     type: string;
     internalPartNumber: string;
     manufacturerPartNumber: string;
-
+    manufacturer: string;
+    link: string;
+    description: string;
+    amountUnit: string;
     location: string;
     amount: number;
     isBorrowable: boolean;

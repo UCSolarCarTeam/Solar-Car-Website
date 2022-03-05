@@ -4,7 +4,8 @@
         <div class="defaultActions">
             <input placeholder="Search # or name" (keyup)="runSearch()" class="search-field">
             <button (click)="renderAddItem()" class="btn btn-danger actionButton" >Add Item</button>
-            <button  (click)="returnItemFilter()" class="btn btn-danger actionButton">Borrowed Items</button>
+            <input (click)="returnItemFilter()" type="checkbox" style="display:none" class="btn-check" id="btn-borrowed" autocomplete="off">
+            <label class="btn btn-danger" for="btn-borrowed">Borrowed Items</label>
         </div>
     </div>
 
@@ -72,12 +73,22 @@
         
             <div class="mb-3">
               <label>Internal Part #</label>
-              <input formControlName="internalPartNumber" class="form-control" required>    
+              <input formControlName="internalPartNumber" class="form-control" >    
             </div>
 
             <div class="mb-3">
                 <label>Man. Part #</label>
                 <input formControlName="manufacturerPartNumber" class="form-control" required>  
+            </div>
+
+            <div class="mb-3">
+                <label>Manufacturer</label>
+                <input formControlName="manufacturer" class="form-control" >  
+            </div>
+
+            <div class="mb-3">
+                <label>Link</label>
+                <input formControlName="link" class="form-control" required>  
             </div>
 
             <div class="mb-3">
@@ -101,7 +112,19 @@
             <div class="mb-3">
                 <label>Amount</label>
                 <input formControlName="amount" class="form-control" [readonly]="addItemForm.get('isBorrowable').value == true" required>
+                    <select (change)="locationUpdate()" class="form-control" formControlName="amountUnit" [value]="amountUnitOptions[0]" required>
+
+                        <option *ngFor="let option of amountUnitOptions; let i = index" [ngValue]="option" > {{ option }}</option>
+                    </select>
+            
             </div>
+            
+
+            <div class="mb-3">
+                <label>Description</label>
+                <input type="text" formControlName="description" class="form-control" >
+              </div>
+
             <div class="mb-3">
                 <label>Borrowable <span *ngIf="this.addItemForm.get('isBorrowable').disabled" class="isBorrowed">(Can not be disabled if item is borrowed)</span> </label>
                 <input type="checkbox" (change)="borrowableCheck()" formControlName="isBorrowable" class="form-control" >

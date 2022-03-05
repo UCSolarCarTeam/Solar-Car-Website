@@ -22,7 +22,7 @@ export class InventoryService {
             this.userActionService.addUserAction({
               uid: user.id,
               uName: user.displayName,
-              eid: item.id,
+              eid: response.id,
               eName: 'Item: ' + item.name,
               action: Action.ADDED,
               dateTime: new Date().toLocaleString(),

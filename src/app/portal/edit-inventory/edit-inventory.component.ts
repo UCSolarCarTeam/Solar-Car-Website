@@ -329,29 +329,19 @@ export class EditInventoryComponent implements OnInit {
     let filter;
     let table;
     let tr;
-<<<<<<< HEAD
     let td0;
-=======
->>>>>>> b4d3c8fdac2d8884342bde768959b004d1eba033
     let td1;
     let td2;
     let td3;
     let td4;
-<<<<<<< HEAD
     let td5;
     let i;
     let txtValue0;
-=======
-    let i;
->>>>>>> b4d3c8fdac2d8884342bde768959b004d1eba033
     let txtValue1;
     let txtValue2;
     let txtValue3;
     let txtValue4;
-<<<<<<< HEAD
     let txtValue5;
-=======
->>>>>>> b4d3c8fdac2d8884342bde768959b004d1eba033
     if (search === 0) {
       input = document.getElementsByClassName('search-field')[0];
       filter = input.value.toUpperCase();
@@ -371,7 +361,6 @@ export class EditInventoryComponent implements OnInit {
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 1; i < tr.length; i++) {
-<<<<<<< HEAD
       td0 = tr[i].getElementsByTagName('td')[0]; // Name
       td1 = tr[i].getElementsByTagName('td')[1]; // Type
       td2 = tr[i].getElementsByTagName('td')[2]; // Internal #
@@ -379,12 +368,6 @@ export class EditInventoryComponent implements OnInit {
       td4 = tr[i].getElementsByTagName('td')[4]; // Location
       td5 = tr[i].getElementsByTagName('td')[6]; // Borrowed by
       txtValue0 = td0.textContent || td0.innerText;
-=======
-      td1 = tr[i].getElementsByTagName('td')[1]; // Name
-      td2 = tr[i].getElementsByTagName('td')[2]; // Internal #
-      td3 = tr[i].getElementsByTagName('td')[3]; // External #
-      td4 = tr[i].getElementsByTagName('td')[6]; // External #
->>>>>>> b4d3c8fdac2d8884342bde768959b004d1eba033
       txtValue1 = td1.textContent || td1.innerText;
       txtValue2 = td2.textContent || td2.innerText;
       txtValue3 = td3.textContent || td3.innerText;

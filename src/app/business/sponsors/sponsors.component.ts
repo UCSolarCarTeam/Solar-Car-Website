@@ -20,6 +20,8 @@ export class SponsorsComponent implements OnInit {
                     'https://www.kaizen.com/'],
                    ['assets/sponsors/Percepio.jpg',
                     'https://percepio.com/'],
+                   ['assets/sponsors/PorscheLogo.jpg',
+                    'https://dealer.porsche.com/ca/calgary/en-CA']
                   ];
     this.friends = [['assets/sponsors/PasonLogo.jpg',
                      'https://www.pason.com/'],

@@ -1,19 +1,21 @@
-export interface Item {
+export interface Item{
     id?: string;
     name: string;
-    type: string;
     internalPartNumber: string;
     manufacturerPartNumber: string;
-    manufacturer: string;
-    link: string;
-    description: string;
-    amountUnit: string;
     location: string;
     amount: number;
+<<<<<<< HEAD
+    isBorrowable: string;
+    //isBorrowed: string,
+    //inputedByUser: string;
+    //borrowedByUser: string;
+=======
     isBorrowable: boolean;
-    isBorrowed: boolean;
+    isBorrowed: boolean,
     // inputedByUser: string;
     borrowedByUser: string;
+>>>>>>> 8ee2c4e (Fix Edit item bugs, add borrow functionality and add search feature)
     image?: File;
     imageUrl: string;
 }

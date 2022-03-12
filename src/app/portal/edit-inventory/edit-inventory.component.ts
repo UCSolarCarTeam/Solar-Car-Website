@@ -34,8 +34,8 @@ export class EditInventoryComponent implements OnInit {
   borrowFilter: boolean;
 
   constructor(
-    private inventoryService: InventoryService, 
-    private formBuilder: FormBuilder, 
+    private inventoryService: InventoryService,
+    private formBuilder: FormBuilder,
     private uploadService: FileUploadService,
     private userActionService: UserActionService,
     private authService: AuthService,
@@ -76,25 +76,25 @@ export class EditInventoryComponent implements OnInit {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as object)
         } as Item;
-        if (item.borrowedByUser === ""){
-          item.borrowedByUser = "";
+        if (item.borrowedByUser === '') {
+          item.borrowedByUser = '';
           return item;
         }
-        if (item.borrowedByUser === this.user.id){
-          item.borrowedByUser = "Borrowed by: You";
+        if (item.borrowedByUser === this.user.id) {
+          item.borrowedByUser = 'Borrowed by: You';
           return item;
         }
         this.userService.getUser(item.borrowedByUser).subscribe(usr => {
-          const item_user = usr.data() as User;
-          //borrowedUserName = item_user.displayName;
-          item.borrowedByUser = "Borrowed by: " + item_user.displayName;
-          
+          const itemUser = usr.data() as User;
+          // borrowedUserName = item_user.displayName;
+          item.borrowedByUser = 'Borrowed by: ' + itemUser.displayName;
+
         });
         return item;
       });
 
     });
-    
+
   }
 
   setImage(files: any) {
@@ -106,7 +106,7 @@ export class EditInventoryComponent implements OnInit {
     reader.readAsDataURL(this.image);
   }
 
-  manageItemForm(){
+  manageItemForm() {
     if (this.submitButtonText.startsWith('Edit Item')) {
         if (this.image == null) {
           const newItem = {
@@ -123,13 +123,13 @@ export class EditInventoryComponent implements OnInit {
             amount: this.addItemForm.get('amount').value,
             isBorrowable: this.addItemForm.get('isBorrowable').value,
             isBorrowed: false,
-            borrowedByUser: "",
+            borrowedByUser: '',
             image: null,
             imageUrl: this.previewImgUrl
           };
-          
+
           this.inventoryService.updateInventoryItem(newItem);
-          
+
         } else {
           const id = this.updateItemId;
           const name = this.addItemForm.get('name').value;
@@ -159,7 +159,7 @@ export class EditInventoryComponent implements OnInit {
                 amount,
                 isBorrowable,
                 isBorrowed: false,
-                borrowedByUser: "",
+                borrowedByUser: '',
                 image: null,
                 imageUrl: downloadUrl
               };
@@ -172,8 +172,8 @@ export class EditInventoryComponent implements OnInit {
 
         return;
       }
-      //Adding New Item
-      if (this.image == null) {
+      // Adding New Item
+    if (this.image == null) {
             const  newItem = {
               name: this.addItemForm.get('name').value,
               type: this.addItemForm.get('type').value,
@@ -187,9 +187,9 @@ export class EditInventoryComponent implements OnInit {
               amount: this.addItemForm.get('amount').value,
               isBorrowable: this.addItemForm.get('isBorrowable').value,
               isBorrowed: false,
-              borrowedByUser: "",
+              borrowedByUser: '',
               image: null,
-              imageUrl: "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021"
+              imageUrl: 'https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021'
             };
             this.inventoryService.addInventoryItem(newItem);
 
@@ -205,7 +205,7 @@ export class EditInventoryComponent implements OnInit {
         const location = this.addItemForm.get('location').value;
         const amount = this.addItemForm.get('amount').value;
         const isBorrowable = this.addItemForm.get('isBorrowable').value;
-      this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
+        this.uploadService.uploadFile(this.image, 'assets/inventory_images/').then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadUrl) => {
           const  newItem = {
             name,
@@ -220,7 +220,7 @@ export class EditInventoryComponent implements OnInit {
             amount,
             isBorrowable,
             isBorrowed: false,
-            borrowedByUser: "",
+            borrowedByUser: '',
             image: null,
             imageUrl: downloadUrl
           };
@@ -228,8 +228,8 @@ export class EditInventoryComponent implements OnInit {
         });
       });
     }
-      this.resetForm();
-      this.modalVisiblity(false);
+    this.resetForm();
+    this.modalVisiblity(false);
   }
 
   modalVisiblity(status: boolean) {
@@ -247,7 +247,7 @@ export class EditInventoryComponent implements OnInit {
     this.submitButtonText = 'Add Item';
   }
 
-  renderEditItem(item: Item){
+  renderEditItem(item: Item) {
     this.resetForm();
     this.modalVisiblity(true);
     this.updateItemId = item.id;
@@ -262,7 +262,7 @@ export class EditInventoryComponent implements OnInit {
     this.addItemForm.get('location').setValue(item.location);
     this.addItemForm.get('amount').setValue(item.amount);
     this.addItemForm.get('isBorrowable').setValue(item.isBorrowable);
-    if (item.isBorrowed){
+    if (item.isBorrowed) {
     this.addItemForm.get('isBorrowable').disable();
     }
     this.previewImgUrl = item.imageUrl;
@@ -271,47 +271,47 @@ export class EditInventoryComponent implements OnInit {
     document.documentElement.scrollTop = 0;
   }
 
-  cancelItemForm(){
+  cancelItemForm() {
     this.modalVisiblity(false);
     this.resetForm();
-  } 
+  }
 
   resetForm() {
     this.addItemForm.reset();
     // this.previewImgUrl = '';
     this.updateItemId = '';
     this.addItemForm.get('isBorrowable').enable();
-    //this.submitButtonText = 'Add Item';
+    // this.submitButtonText = 'Add Item';
   }
 
-  renderBorrowModal(item: Item){
-    if(confirm("Are you sure you would like to borrow this item?")){
-      if(item.isBorrowable === true && item.isBorrowed === false){
+  renderBorrowModal(item: Item) {
+    if (confirm('Are you sure you would like to borrow this item?')) {
+      if (item.isBorrowable === true && item.isBorrowed === false) {
       this.inventoryService.borrowItem(item);
       }
     }
   }
-  renderReturnModal(item: Item){
-    if(confirm("Are you sure you would like to return this item?")){
-      if(item.isBorrowable === true && item.isBorrowed === true ){
+  renderReturnModal(item: Item) {
+    if (confirm('Are you sure you would like to return this item?')) {
+      if (item.isBorrowable === true && item.isBorrowed === true ) {
         item.borrowedByUser = this.user.id;
-      this.inventoryService.returnItem(item);
+        this.inventoryService.returnItem(item);
       }
     }
   }
 
   useItemModal(item: Item) {
-    
+
       if (item.amount > 0) {
         if (confirm('The item count will be reduced by 1.')) {
           this.inventoryService.useItem(item);
         }
-      } else{
-        alert("There are no more left");
+      } else {
+        alert('There are no more left');
       }
-    
+
   }
-  
+
 
   returnItemFilter() {
     if (this.borrowFilter) {
@@ -322,13 +322,24 @@ export class EditInventoryComponent implements OnInit {
       this.borrowFilter = true;
     }
   }
-  
-  runSearch(search = 0){
-    // Declare variables 
-    var input, filter, table, tr, td1, td2, td3, td4, i, 
-    txtValue1, txtValue2, txtValue3, txtValue4;
-    if (search === 0){
-      input = document.getElementsByClassName("search-field")[0];
+
+  runSearch(search = 0) {
+    // Declare variables
+    let input;
+    let filter;
+    let table;
+    let tr;
+    let td1;
+    let td2;
+    let td3;
+    let td4;
+    let i;
+    let txtValue1;
+    let txtValue2;
+    let txtValue3;
+    let txtValue4;
+    if (search === 0) {
+      input = document.getElementsByClassName('search-field')[0];
       filter = input.value.toUpperCase();
     } else if (search === 2) {
       input = '';
@@ -339,47 +350,46 @@ export class EditInventoryComponent implements OnInit {
       filter = input.toUpperCase();
       document.getElementsByClassName('search-field')[0].setAttribute('value', '*Borrowed*');
     }
-    
-    
-    table = document.getElementsByClassName("inventory-table")[0];
-    tr = table.getElementsByTagName("tr");
+
+
+    table = document.getElementsByClassName('inventory-table')[0];
+    tr = table.getElementsByTagName('tr');
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 1; i < tr.length; i++) {
-      td1 = tr[i].getElementsByTagName("td")[1]; // Name
-      td2 = tr[i].getElementsByTagName("td")[2]; // Internal #
-      td3 = tr[i].getElementsByTagName("td")[3]; // External #
-      td4 = tr[i].getElementsByTagName("td")[6]; // External #
-        txtValue1 = td1.textContent || td1.innerText;
-        txtValue2 = td2.textContent || td2.innerText;
-        txtValue3 = td3.textContent || td3.innerText;
-        txtValue4 = td4.textContent || td4.innerText;
-        if (txtValue1.toUpperCase().indexOf(filter) > -1 ||
+      td1 = tr[i].getElementsByTagName('td')[1]; // Name
+      td2 = tr[i].getElementsByTagName('td')[2]; // Internal #
+      td3 = tr[i].getElementsByTagName('td')[3]; // External #
+      td4 = tr[i].getElementsByTagName('td')[6]; // External #
+      txtValue1 = td1.textContent || td1.innerText;
+      txtValue2 = td2.textContent || td2.innerText;
+      txtValue3 = td3.textContent || td3.innerText;
+      txtValue4 = td4.textContent || td4.innerText;
+      if (txtValue1.toUpperCase().indexOf(filter) > -1 ||
             txtValue2.toUpperCase().indexOf(filter) > -1 ||
             txtValue3.toUpperCase().indexOf(filter) > -1 ||
             txtValue4.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
+          tr[i].style.display = '';
         } else {
-          tr[i].style.display = "none";
+          tr[i].style.display = 'none';
         }
-      
+
     }
   }
-  locationUpdate(){
-    let location = document.getElementsByClassName('location-field')[0];
-    if (this.addItemForm.get('location').value == "Custom"){
-      location.setAttribute("style", "display:block");
-    } else{
-      location.setAttribute("style", "display:none");
+  locationUpdate() {
+    const location = document.getElementsByClassName('location-field')[0];
+    if (this.addItemForm.get('location').value === 'Custom') {
+      location.setAttribute('style', 'display:block');
+    } else {
+      location.setAttribute('style', 'display:none');
     }
-    
 
   }
-  borrowableCheck(){
-    if (this.addItemForm.get('isBorrowable').value == true && this.addItemForm.get('amount').value != 1){
-      if(confirm("The max value for an item than can be borrowed is 1. If you proceed, the item count will be changed to 1")){
+  borrowableCheck() {
+    if (this.addItemForm.get('isBorrowable').value === true && this.addItemForm.get('amount').value !== 1) {
+      if (confirm('The max value for an item than can be borrowed is 1. If you proceed, the item count will be changed to 1')) {
         this.addItemForm.controls['amount'].setValue(1);
-      } else{
+      } else {
         this.addItemForm.controls['isBorrowable'].setValue(false);
       }
 

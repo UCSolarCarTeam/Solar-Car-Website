@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Item } from '../models/item.model'
+import { Item } from '../models/item.model';
 import { Action } from '../models/action';
 import { UserActionService } from './user-action.service';
 
@@ -12,7 +12,7 @@ import { UserActionService } from './user-action.service';
 export class InventoryService {
 
   constructor(private firestore: AngularFirestore, private userActionService: UserActionService) {}
-    addInventoryItem(item: Item){
+    addInventoryItem(item: Item) {
       const user = JSON.parse(window.sessionStorage.getItem('User'));
       return new Promise<any>((resolve, reject) => {
         this.firestore
@@ -64,14 +64,14 @@ export class InventoryService {
         image: item.image
       });
     }
-    
+
 
     borrowItem(item: Item) {
       const user = JSON.parse(window.sessionStorage.getItem('User'));
       const itemRef = this.firestore.collection('inventory-collection').doc(item.id);
-      
+
       this.userActionService.addUserAction({
-        
+
         uid: user.id,
         uName: user.displayName,
         eid: item.id,
@@ -79,7 +79,7 @@ export class InventoryService {
         action: Action.BORROWED,
         dateTime: new Date().toLocaleString(),
       });
-      
+
       return itemRef.update({
          isBorrowed: true,
          borrowedByUser: user.id
@@ -99,7 +99,7 @@ export class InventoryService {
       });
       return itemRef.update({
          isBorrowed: false,
-         borrowedByUser: ""
+         borrowedByUser: ''
 
       });
     }

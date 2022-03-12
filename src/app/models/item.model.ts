@@ -1,4 +1,4 @@
-export interface Item{
+export interface Item {
     id?: string;
     name: string;
     type: string;
@@ -11,7 +11,7 @@ export interface Item{
     location: string;
     amount: number;
     isBorrowable: boolean;
-    isBorrowed: boolean,
+    isBorrowed: boolean;
     // inputedByUser: string;
     borrowedByUser: string;
     image?: File;

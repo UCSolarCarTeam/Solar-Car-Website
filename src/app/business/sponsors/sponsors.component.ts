@@ -83,6 +83,8 @@ export class SponsorsComponent implements OnInit {
                      'https://locallaundry.ca'],
                     ['assets/sponsors/knibbe.png',
                      'https://www.knibbeautomotive.com'],
+                     ['assets/sponsors/notable.png',
+                      'https://www.notabletherestaurant.ca'],
                   ];
   }
 

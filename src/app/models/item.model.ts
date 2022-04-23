@@ -12,7 +12,6 @@ export interface Item {
     amount: number;
     isBorrowable: boolean;
     isBorrowed: boolean;
-    // inputedByUser: string;
     borrowedByUser: string;
     image?: File;
     imageUrl: string;

@@ -3,14 +3,12 @@
     display: inline-block;
 }
 .inventoryControls{
-    /*position: relative;*/
-    /*display: inline-block;*/
+
+
     top:0px;
     float: left;
-    /*height: 95%;*/
     width: 15%;
     min-width: 175px;
-    /*border: 1px solid black;*/
     padding: 1em;
 }
 .defaultActions *{
@@ -18,14 +16,10 @@
     max-width: 90%;
 }
 .inventoryList{
-    /*position: relative;*/
-    /*display: inline-block;*/
     float: left;
-    /*left: 15%;*/
     height: 95%;
     width: 85%;
     min-width: 500px;
-    /*border: 1px solid black;*/
     padding: 1em;
     overflow: scroll;
 }

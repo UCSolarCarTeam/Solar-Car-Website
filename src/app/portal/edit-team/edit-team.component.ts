@@ -88,7 +88,7 @@ export class EditTeamComponent implements OnInit {
   manageMember() {
     const dateTime = this.addMemberForm.get('releaseTime').value;
     let date: string = null;
-    if (dateTime != '') {
+    if (dateTime !== '') {
       date = new Date(dateTime).toUTCString();
     }
     if (this.mainButtonText.startsWith('Update')) {

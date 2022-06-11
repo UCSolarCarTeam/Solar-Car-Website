@@ -54,7 +54,7 @@ export class AuthService {
           user.sendEmailVerification();
         });
         this.userService.addUser(user);
-        alert("Succesfully signed up. Please confirm your email and ask your manager to approve your account.");
+        alert('Succesfully signed up. Please confirm your email and ask your manager to approve your account.');
         this.router.navigateByUrl('portal/login');
       }).catch(err => {
         window.alert(err.message);

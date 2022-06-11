@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Member } from 'src/app/models/member.model';
 import { UserAction } from 'src/app/models/user-action';
-import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { MemberService } from 'src/app/services/member.service';
 import { UserActionService } from 'src/app/services/user-action.service';
@@ -24,7 +23,7 @@ export class EditTeamComponent implements OnInit {
   actionHistory: UserAction[];
 
   constructor(private memberService: MemberService, private formBuilder: FormBuilder, private uploadService: FileUploadService,
-              private userActionService: UserActionService, private authService: AuthService) {
+              private userActionService: UserActionService) {
     this.addMemberForm = this.formBuilder.group({
       name: [''],
       position: [''],
@@ -32,7 +31,8 @@ export class EditTeamComponent implements OnInit {
       major: [''],
       description: [''],
       year: [''],
-      image: ['']
+      image: [''],
+      releaseTime: ['']
     });
     this.mainButtonText = 'Add Member';
     this.positions = ['Member', 'Manager', 'Team Captain', 'Engineering Team Manager', 'Business Team Manager'];
@@ -86,6 +86,11 @@ export class EditTeamComponent implements OnInit {
   }
 
   manageMember() {
+    const dateTime = this.addMemberForm.get('releaseTime').value;
+    let date: string = null;
+    if (dateTime != '') {
+      date = new Date(dateTime).toUTCString();
+    }
     if (this.mainButtonText.startsWith('Update')) {
       if (this.image == null) {
         const newMember = {
@@ -97,7 +102,8 @@ export class EditTeamComponent implements OnInit {
           description: this.addMemberForm.get('description').value,
           year: this.addMemberForm.get('year').value,
           imageName: this.previewImgUrl,
-          image: null
+          image: null,
+          releaseTime: date,
         };
         this.memberService.updateMember(newMember);
       } else {
@@ -119,7 +125,8 @@ export class EditTeamComponent implements OnInit {
               major: memberMajor,
               description: memberDescription,
               year: memberYear,
-              image: null
+              image: null,
+              releaseTime: date,
             };
             this.memberService.updateMember(newMember);
           });
@@ -144,7 +151,8 @@ export class EditTeamComponent implements OnInit {
           major: memberMajor,
           description: memberDescription,
           year: memberYear,
-          image: null
+          image: null,
+          releaseTime: date,
         };
         this.memberService.addMember(newMember);
       });

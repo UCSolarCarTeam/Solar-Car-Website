@@ -24,12 +24,22 @@ export class MembersComponent implements OnInit {
     this.members = [];
     this.memberService.AllMembers().subscribe(res => {
       res.docs.forEach(doc => {
-        this.members.push(doc.data() as Member);
+        const member = doc.data() as Member;
+        const date = new Date();
+        const releaseTime = new Date(member.releaseTime);
+        if (member.releaseTime == null || releaseTime.getTime() <= date.getTime()) {
+          this.members.push(doc.data() as Member);
+        }
       });
     });
     this.memberService.AllManagers().subscribe(res => {
       res.docs.forEach(doc => {
-        this.members.push(doc.data() as Member);
+        const member = doc.data() as Member;
+        const date = new Date();
+        const releaseTime = new Date(member.releaseTime);
+        if (member.releaseTime == null || releaseTime.getTime() <= date.getTime()) {
+          this.members.push(doc.data() as Member);
+        }
       });
       this.currentMemberList = this.members;
       this.setMembersToDisplay(0);

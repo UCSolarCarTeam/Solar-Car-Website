@@ -8,6 +8,7 @@
       <div class="mb-3">
         <label>Position</label>
         <select formControlName="position" class="form-control" required>
+          <option [ngValue]="null" disabled>---- Select an option ----</option>
           <option *ngFor="let position of positions">{{ position }}</option>
         </select>
       </div>
@@ -15,6 +16,7 @@
       <div class="mb-3">
         <label>Subteam</label>
         <select formControlName="subteam" class="form-control" required>
+          <option [ngValue]="null" disabled>---- Select an option ----</option>
           <option *ngFor="let subteam of subteams">{{ subteam }}</option>
         </select>
       </div>

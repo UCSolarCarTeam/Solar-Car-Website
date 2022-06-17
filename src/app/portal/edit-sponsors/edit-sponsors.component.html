@@ -12,7 +12,8 @@
 
     <div class="mb-3">
       <label>Tier</label>
-      <select formControlName="tier" class="form-control">
+      <select formControlName="tier" class="form-control" required>
+        <option [ngValue]="null" disabled>---- Select an option ----</option>
         <option *ngFor="let tier of tiers">{{ tier }}</option>
       </select>
     </div>

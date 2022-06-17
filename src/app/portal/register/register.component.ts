@@ -10,13 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit {
   signUpForm: FormGroup;
   passwordsDoNotMatch: boolean;
-  ucalgaryEmailUsed = false;
+  ucalgaryEmailUsed = true;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.signUpForm = this.formBuilder.group({
       displayName: [''],
       email: ['', Validators.pattern('.+@.+\.c.+')],
-      password: ['', Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
+      password: ['', Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!#%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
       passwordConfirm: [''],
     });
   }
@@ -29,8 +29,8 @@ export class RegisterComponent implements OnInit {
       this.passwordsDoNotMatch = true;
       return;
     }
-    if (this.signUpForm.get('email').value.includes('ucalgary.ca')) {
-      this.ucalgaryEmailUsed = true;
+    if (!this.signUpForm.get('email').value.includes('ucalgary.ca')) {
+      this.ucalgaryEmailUsed = false;
       return;
     }
     this.passwordsDoNotMatch = false;

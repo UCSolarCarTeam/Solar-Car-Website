@@ -27,8 +27,8 @@ export class EditTeamComponent implements OnInit {
               private userActionService: UserActionService, private authService: AuthService) {
     this.addMemberForm = this.formBuilder.group({
       name: [''],
-      position: ['default'],
-      subteam: ['default'],
+      position: [null],
+      subteam: [null],
       major: [''],
       description: [''],
       year: [''],

@@ -56,7 +56,8 @@ export class MemberService {
       description: member.description,
       year: member.year,
       imageName: member.imageName,
-      image: member.image
+      image: member.image,
+      releaseTime: member.releaseTime,
     });
   }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { PortalRoutingModule } from './portal-routing.module';
@@ -37,8 +37,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
     UserProfileComponent,
     AdminPanelComponent,
     ResetPasswordComponent,
-
-    EditInventoryComponent
+    EditInventoryComponent,
   ],
   imports: [
     CommonModule,

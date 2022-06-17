@@ -8,4 +8,5 @@ export interface Member {
     year: number;
     imageName: string;
     image?: File;
+    releaseTime?: string;
 }

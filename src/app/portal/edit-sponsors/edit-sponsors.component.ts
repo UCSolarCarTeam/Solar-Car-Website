@@ -35,7 +35,7 @@ export class EditSponsorsComponent implements OnInit {
       name: [''],
       link: [''],
       logo: [''],
-      tier: ['']
+      tier: ['default']
     });
     this.mainButtonText = 'Add Sponsor';
     this.actionHistory = [];

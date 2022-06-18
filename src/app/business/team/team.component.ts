@@ -25,5 +25,11 @@ export class TeamComponent implements OnInit {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
+=======
+    this.teamCaptain = this.m.teamCaptain();
+    this.enggManager = this.m.engineeringManager();
+    this.businessManager = this.m.businessManager();
+>>>>>>> master
   }
 }

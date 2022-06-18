@@ -50,7 +50,7 @@ The original main goal was to build a competitive car and make it across the fin
 
 As the only Computer Science student involved in the first few years, the team introduced me to a different mindset than what I was used to. The initial team was heavily an entrepreneurial group and I was introduced to business development, marketing and electrical and mechanical prototyping. I still use those skills today. I went on to apply many of the same mindsets that worked so well in the original team while working in an R&D (research and development) group of a Calgary-based aerial surveying company (LiDAR Services International). Through that role, I often would design, implement and operate (as aircraft crew) electrical and mechanical solutions to real-world problems on a tangible deadline and with a pragmatic budget, much like the first Solar Car experience went.  
 
-  
+
 I graduated 10 years ago and my time with the Solar Car team has shaped my entire career as an EIT and now as a Professional Engineer. My experiences with the team shifted my thinking and how I approach problems. I think it has substantially boosted my success in my career. Beyond typical coursework, the most career-shaping experiences I had at the University of Calgary were the Solar Car team and doing an internship, I deeply recommend both, for students of any faculty.
 
 <img src="./assets/articleFiles/An-Inside-Look-at-Soleon/DSC5192sc3-1024x681.jpg" width="100%">

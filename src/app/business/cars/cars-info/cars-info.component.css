@@ -87,20 +87,20 @@ button:focus {
   .carImage {
     height: 100px;
   }
-  
+
 }
 
 @media screen and (max-width: 400px) {
   .grid-container-specs {
     display: block;
   }
-  
+
   .specs1 {
     width: 100%;
     text-align: center;
     border-right: none;
   }
-  
+
   .specs2 {
     width: 100%;
     text-align: center;

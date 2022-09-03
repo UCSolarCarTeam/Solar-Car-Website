@@ -45,7 +45,7 @@ export class RecruitmentComponent implements OnInit {
       {
         name: 'Multi-team', description: 'Our multi-team is a program for first-year students to gain introductory experience with both \
         the mechanical and electrical teams.',
-        applicationForm: 'https://forms.gle/zwn3Tk7Pgf89648a6'
+        applicationForm: 'https://forms.gle/vPAhNnSBptU5JiuGA'
       }
     ];
   }

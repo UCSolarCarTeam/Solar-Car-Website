@@ -58,7 +58,7 @@
 }
 
 .infoText {
-  font-size: xx-large;
+  font-size: 1.3rem;
   padding-right: 1em;
   position: relative;
   top: 1em;
@@ -73,7 +73,6 @@
 }
 
 .infoTitle {
-  font-size: 5em;
   padding-right: 0.5em;
 }
 
@@ -153,13 +152,11 @@
   }
 
   .infoText {
-    font-size: 1.5em;
-    padding-top: 0em;
+    padding-left: 1rem;
   }
 
   .infoTitle {
-    font-size: 2em;
-    padding-bottom: 0em;
+    padding-left: 1rem;
   }
 
   .headerText {
@@ -220,19 +217,19 @@
     display: none;
   }
 
-  .infoText {
+  /* .infoText {
     font-size: medium;
     padding-top: 0em;
-  }
+  } */
 
   .infoLink {
     left: 0em;
   }
 
-  .infoTitle {
+  /* .infoTitle {
     font-size: 2em;
     padding-bottom: 0em;
-  }
+  } */
 
   .infoImage {
     flex-shrink: 0;

@@ -22,7 +22,7 @@ span {
     overflow: hidden;
 
     /* Expands div to fill remaining height */
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .description {

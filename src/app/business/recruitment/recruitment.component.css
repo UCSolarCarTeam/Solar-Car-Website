@@ -1,0 +1,261 @@
+.headerGrid {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.headerContainer {
+  color: #bf1c1c;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerText {
+  font-size: 7vw;
+  padding-left: 0.7em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+
+.headerImageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerImage {
+  flex-shrink: 0;
+  min-width: 80%;
+  max-width: 80%;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.infoImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.infoImage {
+  flex-shrink: 0;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.infoContainer {
+  background-color: #bf1c1c;
+  color: white;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoText {
+  font-size: 1.3rem;
+  padding-right: 1em;
+  position: relative;
+  top: 1em;
+}
+
+.infoLink {
+  padding-right: 1em;
+  position: relative;
+  left: 1em;
+  text-decoration: none;
+  color: white !important;
+}
+
+.infoTitle {
+  padding-right: 0.5em;
+}
+
+.subTeamApplicationsGridThreeRow {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  padding-left: 5%;
+}
+
+.subTeamApplicationsGridTwoRow {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  padding-left: 5%;
+}
+
+.subTeamApplicationsGridFourRow {
+  display: grid;
+  grid-template-columns: 22.5% 22.5% 22.5% 22.5% 22.5%;
+  padding-left: 5%;
+  padding-top: 5em;
+}
+
+.applicationTitle {
+  padding-top: 1em;
+  padding-bottom: 0.3em;
+  color: #bf1c1c;
+}
+
+.applications {
+  text-align: center;
+  padding-bottom: 5em;
+}
+
+.applicationFormButton {
+  background-color: #bf1c1c;
+  color: white;
+  border-radius: 1.5em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  border: none;
+}
+
+.descriptionText {
+  margin: 0 5em;
+}
+
+@media (min-width: 2000px) {
+  .headerText {
+    font-size: 7vw;
+  }
+
+  .desktop-view {
+    display: grid;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .desktop-view {
+    display: grid;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: grid;
+  }
+
+  .infoText {
+    padding-left: 1rem;
+  }
+
+  .infoTitle {
+    padding-left: 1rem;
+  }
+
+  .headerText {
+    font-size: 7vw;
+    padding-left: 0.5em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+  }
+
+  .headerImage {
+    flex-shrink: 0;
+    min-width: 80%;
+    max-width: 80%;
+  }
+
+  .subTeamApplicationsGridThreeRow {
+    padding-top: 5em;
+  }
+
+  .subTeamApplicationsGridTwoRow {
+    padding-top: 5em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .infoGrid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+
+  .infoContainer {
+    padding: 2em 0;
+    text-align: center;
+  }
+
+  .headerGrid {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .desktop-view {
+    display: none;
+  }
+
+  .headerText {
+    padding: 0;
+    font-size: 3.5em;
+  }
+
+  .headerContainer {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .headerImage {
+    display: none;
+  }
+
+  /* .infoText {
+    font-size: medium;
+    padding-top: 0em;
+  } */
+
+  .infoLink {
+    left: 0em;
+  }
+
+  /* .infoTitle {
+    font-size: 2em;
+    padding-bottom: 0em;
+  } */
+
+  .infoImage {
+    flex-shrink: 0;
+    min-height: 100%;
+    max-height: 100%;
+    min-width: 100%;
+    max-width: 200%;
+  }
+
+  .subTeamApplicationsGridThreeRow {
+    display: grid;
+    grid-template-columns: 90%;
+    padding-left: 5%;
+    padding-top: 3em;
+    row-gap: 3em;
+  }
+
+  .subTeamApplicationsGridTwoRow {
+    display: grid;
+    grid-template-columns: 90%;
+    padding-left: 5%;
+    padding-top: 3em;
+    row-gap: 3em;
+  }
+
+  .mobile-view {
+    display: grid;
+  }
+}

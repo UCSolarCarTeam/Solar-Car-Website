@@ -14,6 +14,13 @@ export class NewsComponent implements OnInit {
   constructor() {
     this.postData = [
       {
+        title: 'Racing Alongside Energy Futures Lab',
+        date: 'September 10, 2022',
+        link: 'Racing-Alongside-Energy-Futures-Lab',
+        coverPhoto: './assets/articleFiles/Racing-Alongside-Energy-Futures-Lab/C4.JPG',
+        author: 'University of Calgary Solar Team'
+      },
+      {
         title: 'SkipTheDepot Fundraiser',
         date: 'January 20, 2022',
         link: 'SkipTheDepot-Fundraiser',

@@ -36,7 +36,11 @@ export class HeaderComponent {
       {
         label: 'Contact Us',
         link: './contact-us',
-      }
+      },
+      {
+        label: 'Recruitment',
+        link: './recruitment',
+      },
     ];
   }
 }

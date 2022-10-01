@@ -21,6 +21,7 @@ export class EditTeamComponent implements OnInit {
   positions: string[];
   subteams: string[];
   actionHistory: UserAction[];
+  deleteFlag: string;
 
   constructor(private memberService: MemberService, private formBuilder: FormBuilder, private uploadService: FileUploadService,
               private userActionService: UserActionService) {
@@ -38,6 +39,7 @@ export class EditTeamComponent implements OnInit {
     this.positions = ['Member', 'Manager', 'Team Captain', 'Engineering Team Manager', 'Business Team Manager'];
     this.subteams = ['Mechanical', 'Electrical', 'Software', 'Business'];
     this.actionHistory = [];
+    this.deleteFlag = null;
   }
 
   ngOnInit(): void {
@@ -84,6 +86,14 @@ export class EditTeamComponent implements OnInit {
     this.mainButtonText = 'Update Member';
     document.documentElement.scrollTop = 0;
   }
+  
+  deleteImage(){
+    this.deleteFlag = this.previewImgUrl;
+    this.previewImgUrl = '';
+    this.image = null;
+    console.log(this.deleteFlag);
+    
+  }
 
   manageMember() {
     const dateTime = this.addMemberForm.get('releaseTime').value;
@@ -92,6 +102,9 @@ export class EditTeamComponent implements OnInit {
       date = new Date(dateTime).toUTCString();
     }
     if (this.mainButtonText.startsWith('Update')) {
+      if (this.deleteFlag){
+
+      }
       if (this.image == null) {
         const newMember = {
           id: this.updateMemberId,

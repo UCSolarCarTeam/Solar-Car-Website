@@ -48,6 +48,7 @@
       <label>Image Preview</label>
       <br>
       <img class="imagePreview" src="{{ previewImgUrl }}" />
+      <button class="btn btn-warning actionButton" *ngIf="previewImgUrl" type="button" (click)="deleteImage()">X</button>
   
       <div class="mb-3">
         <button type="submit" class="btn btn-danger" [disabled]="!addMemberForm.valid">{{ mainButtonText }}</button>

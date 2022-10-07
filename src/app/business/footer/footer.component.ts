@@ -13,13 +13,14 @@ export class FooterComponent {
 
   constructor() {
     this.menu = [
-      { label: 'Elysia', link: '/',             }, // TODO: Enter link when Elysia page is created
+      { label: 'Elysia', link: '/elysia',             },
       { label: 'Cars', link: '/cars',          },
       { label: 'Team', link: '/team',          },
       { label: 'Support', link: '/support-us', },
       { label: 'Sponsors', link: '/sponsors',  },
       { label: 'News', link: '/news',          },
       { label: 'Contact', link: '/contact-us', },
+      { label: 'Portal', link: '/portal'}
     ];
 
     this.socialMedia = [

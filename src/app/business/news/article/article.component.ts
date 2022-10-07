@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsComponent } from '../news.component';
 import { ActivatedRoute } from '@angular/router';
-import { MarkdownModule } from 'ngx-markdown';
+import { NewsService } from 'src/app/services/news.service';
+import { News } from 'src/app/models/news';
 
 @Component({
   selector: 'business-article',
@@ -9,15 +9,16 @@ import { MarkdownModule } from 'ngx-markdown';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
+  newsArticle: News;
+  markdown: string;
 
-  articleFile: string;
-
-  constructor(private route: ActivatedRoute) {   }
+  constructor(private route: ActivatedRoute, private newsService: NewsService) { }
 
   ngOnInit(): void {
-    this.articleFile = './assets/articleFiles/' +
-                       this.route.snapshot.paramMap.get('link') + '/' +
-                       this.route.snapshot.paramMap.get('link') + '.md';
-    }
-
+    const id = this.route.snapshot.paramMap.get('id');
+    this.newsService.getNews(id).subscribe(res => {
+      this.newsArticle = res.data() as News;
+      this.markdown = this.newsArticle.markdown;
+    });
+  }
 }

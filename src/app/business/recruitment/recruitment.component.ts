@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SubTeam } from 'src/app/models/subteam';
 
 @Component({
@@ -6,7 +6,7 @@ import { SubTeam } from 'src/app/models/subteam';
   templateUrl: './recruitment.component.html',
   styleUrls: ['./recruitment.component.css']
 })
-export class RecruitmentComponent implements OnInit {
+export class RecruitmentComponent {
 
   subTeams: SubTeam[];
 
@@ -48,9 +48,6 @@ export class RecruitmentComponent implements OnInit {
         applicationForm: 'https://forms.gle/vPAhNnSBptU5JiuGA'
       }
     ];
-  }
-
-  ngOnInit(): void {
   }
 
   goToApplication(subteam: SubTeam) {

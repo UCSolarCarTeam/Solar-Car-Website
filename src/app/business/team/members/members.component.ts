@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Member } from '../member.model';
-import { MembersService } from '../../services/members.service';
+import { MemberService } from 'src/app/services/member.service';
+import { Member } from '../../../models/member.model';
 
 
 @Component({
@@ -18,15 +18,35 @@ export class MembersComponent implements OnInit {
   sections: string[];
   activeSection: string;
 
-  constructor(private m: MembersService) { }
+  constructor(private memberService: MemberService) { }
 
   ngOnInit(): void {
-    this.members = this.m.allMembers();
-    this.currentMemberList = this.members;
-    this.setMembersToDisplay(0);
-    this.sections =
-    [ 'All', 'Managers', 'Mechanical', 'Electrical', 'Software', 'Business'];
-    this.activeSection = this.sections[0];
+    this.members = [];
+    this.memberService.AllMembers().subscribe(res => {
+      res.docs.forEach(doc => {
+        const member = doc.data() as Member;
+        const date = new Date();
+        const releaseTime = new Date(member.releaseTime);
+        if (member.releaseTime === null || releaseTime.getTime() <= date.getTime()) {
+          this.members.push(doc.data() as Member);
+        }
+      });
+    });
+    this.memberService.AllManagers().subscribe(res => {
+      res.docs.forEach(doc => {
+        const member = doc.data() as Member;
+        const date = new Date();
+        const releaseTime = new Date(member.releaseTime);
+        if (member.releaseTime === null || releaseTime.getTime() <= date.getTime()) {
+          this.members.push(doc.data() as Member);
+        }
+      });
+      this.currentMemberList = this.members;
+      this.setMembersToDisplay(0);
+      this.sections =
+      [ 'All', 'Managers', 'Mechanical', 'Electrical', 'Software', 'Business'];
+      this.activeSection = this.sections[0];
+    });
   }
 
   gotoFirstPage(): void {
@@ -66,32 +86,57 @@ export class MembersComponent implements OnInit {
   }
 
   setDisplayToAllMembers(): void {
-    this.currentMemberList = this.m.allMembers();
+    this.currentMemberList = this.members;
     this.gotoFirstPage();
   }
 
   setDisplayToSoftwareMembers(): void {
-    this.currentMemberList =  this.m.getSoftwareMembers();
+    this.currentMemberList = [];
+    this.members.forEach(member => {
+      if (member.subteam === 'Software') {
+        this.currentMemberList.push(member);
+      }
+    });
     this.gotoFirstPage();
   }
 
   setDisplayToMechanicalMembers(): void {
-    this.currentMemberList = this.m.getMechanicalMembers();
+    this.currentMemberList = [];
+    this.members.forEach(member => {
+      if (member.subteam === 'Mechanical') {
+        this.currentMemberList.push(member);
+      }
+    });
     this.gotoFirstPage();
   }
 
   setDisplayToElectricalMembers(): void {
-    this.currentMemberList = this.m.getElectricalMembers();
+    this.currentMemberList = [];
+    this.members.forEach(member => {
+      if (member.subteam === 'Electrical') {
+        this.currentMemberList.push(member);
+      }
+    });
     this.gotoFirstPage();
   }
 
   setDisplayToBusinessMembers(): void {
-    this.currentMemberList =  this.m.getBusinessMembers();
+    this.currentMemberList = [];
+    this.members.forEach(member => {
+      if (member.subteam === 'Business') {
+        this.currentMemberList.push(member);
+      }
+    });
     this.gotoFirstPage();
   }
 
   setDisplayToManagers(): void {
-    this.currentMemberList = this.m.allManagers();
+    this.currentMemberList = [];
+    this.members.forEach(member => {
+      if (member.position === 'Manager') {
+        this.currentMemberList.push(member);
+      }
+    });
     this.gotoFirstPage();
   }
 

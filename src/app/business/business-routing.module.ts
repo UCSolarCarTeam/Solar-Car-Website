@@ -10,7 +10,6 @@ import { MainComponent } from './main/main.component';
 import { ArticleComponent } from './news/article/article.component';
 import { ElysiaComponent } from './elysia/elysia.component';
 import { BusinessComponent } from './business.component';
-import { RecruitmentComponent } from './recruitment/recruitment.component';
 
 
 const routes: Routes = [
@@ -25,8 +24,7 @@ const routes: Routes = [
       { path: 'news', component: NewsComponent },
       { path: 'team', component: TeamComponent },
       { path: 'contact-us', component: ContactUsComponent },
-      { path: 'news/:link', component: ArticleComponent },
-      { path: 'recruitment', component: RecruitmentComponent },
+      { path: 'news/:id', component: ArticleComponent },
       { path: '', component: MainComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' },
     ]

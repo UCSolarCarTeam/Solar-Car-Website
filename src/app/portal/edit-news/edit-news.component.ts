@@ -1,7 +1,7 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { News } from 'src/app/models/news';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { FileUploadService } from 'src/app/services/file-upload.service';
 })
 export class EditNewsComponent implements OnInit {
 
-  addNewsForm: FormGroup;
+  addNewsForm: UntypedFormGroup;
   newsArticles: News[];
   thumbnail: File;
   previewThumbnailUrl: string;
@@ -21,7 +21,7 @@ export class EditNewsComponent implements OnInit {
   mainButtonText: string;
   isLinkOnlyFormat: boolean;
 
-  constructor(private newsService: NewsService, private uploadService: FileUploadService, private formBuilder: FormBuilder) {
+  constructor(private newsService: NewsService, private uploadService: FileUploadService, private formBuilder: UntypedFormBuilder) {
     this.addNewsForm = this.formBuilder.group({
       name: [''],
       date: [''],

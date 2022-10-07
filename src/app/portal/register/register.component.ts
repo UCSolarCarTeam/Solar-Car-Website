@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,11 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  signUpForm: FormGroup;
+  signUpForm: UntypedFormGroup;
   passwordsDoNotMatch: boolean;
   ucalgaryEmailUsed = true;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: UntypedFormBuilder, private authService: AuthService) {
     this.signUpForm = this.formBuilder.group({
       displayName: [''],
       email: ['', Validators.pattern('.+@.+\.c.+')],

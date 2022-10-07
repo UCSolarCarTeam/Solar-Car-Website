@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Member } from 'src/app/models/member.model';
 import { UserAction } from 'src/app/models/user-action';
 import { FileUploadService } from 'src/app/services/file-upload.service';
@@ -13,7 +13,7 @@ import { UserActionService } from 'src/app/services/user-action.service';
   styleUrls: ['./edit-team.component.css']
 })
 export class EditTeamComponent implements OnInit {
-  addMemberForm: FormGroup;
+  addMemberForm: UntypedFormGroup;
   members: Member[];
   previewImgUrl: string;
   mainButtonText: string;
@@ -24,7 +24,7 @@ export class EditTeamComponent implements OnInit {
   actionHistory: UserAction[];
   deleteFlag: string;
 
-  constructor(private memberService: MemberService, private formBuilder: FormBuilder, private uploadService: FileUploadService,
+  constructor(private memberService: MemberService, private formBuilder: UntypedFormBuilder, private uploadService: FileUploadService,
               private userActionService: UserActionService, private deleteService: FileDeleteService) {
     this.addMemberForm = this.formBuilder.group({
       name: [''],

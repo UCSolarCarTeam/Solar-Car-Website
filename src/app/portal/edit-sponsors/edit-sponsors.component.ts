@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SponsorService } from 'src/app/services/sponsor.service';
 import { Sponsor } from 'src/app/models/sponsor';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 import { UserAction } from 'src/app/models/user-action';
@@ -13,7 +13,7 @@ import { UserAction } from 'src/app/models/user-action';
   styleUrls: ['./edit-sponsors.component.css']
 })
 export class EditSponsorsComponent implements OnInit {
-  addSponsorForm: FormGroup;
+  addSponsorForm: UntypedFormGroup;
   sponsors: Sponsor[];
   previewLogoUrl: string;
   mainButtonText: string;
@@ -29,7 +29,7 @@ export class EditSponsorsComponent implements OnInit {
   ];
   actionHistory: UserAction[];
 
-  constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: FormBuilder,
+  constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: UntypedFormBuilder,
               private userActionService: UserActionService) {
     this.addSponsorForm = this.formBuilder.group({
       name: [''],

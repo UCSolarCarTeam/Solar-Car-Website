@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 import { UserAction } from 'src/app/models/user-action';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -13,12 +13,12 @@ import { User } from 'src/app/models/user';
 })
 export class UserProfileComponent implements OnInit {
 
-  userForm: FormGroup;
+  userForm: UntypedFormGroup;
   userActions: UserAction[];
   user: User;
 
   constructor(private authService: AuthService, private userService: UserService, private userActionService: UserActionService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: UntypedFormBuilder) {
     this.userForm = this.formBuilder.group({
       displayName: '',
       email: '',

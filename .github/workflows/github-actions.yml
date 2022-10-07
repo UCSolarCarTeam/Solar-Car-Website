@@ -19,10 +19,10 @@ jobs:
       with:
         node-version: '16.x'
         cache: 'npm'
-    - run: npm install
+    - run: npm install --force
     - run: npm install -g @angular/cli
     - run: echo "🖥️ Node and Angular have been installed. Ready to test workflow!"
     - run: npm run lint
     - run: echo "🧶 Linting passed!"
-    - run: ng build --prod
+    - run: ng build --configuration production
     - run: echo "😁 Workflow test passed!"

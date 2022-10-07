@@ -1,0 +1,60 @@
+<div *ngIf="userActionHistory.length !== 0">
+    <h1 class="tableHeading">Action History</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Entity</th>
+                <th scope="col">Entity ID</th>
+                <th scope="col">Action</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let action of userActionHistory; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ action.eName }}</td>
+                <td>{{ action.eid }}</td>
+                <td>{{ action.action }}</td>
+                <td>{{ action.dateTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+</div>
+<h1 class="tableHeading">Users</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Display Name</th>
+            <th scope="col">Verified</th>
+            <th scope="col">Privileges</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ user.email }}</td>
+            <td>{{ user.displayName }}</td>
+            <td>{{ user.verified }}</td>
+            <td>
+                <div *ngFor="let privilege of privileges; let i = index">
+                    <input name="i" type="checkbox" value="{{privilege}}" [checked]="userHasPrivilege(user.id, privilege)"
+                        (change)="updateUserPrivileges(user.id, privilege, $event)"> {{privilege}}
+                </div>
+            </td>
+            <td *ngIf="!user.verified">
+                <button class="btn btn-danger" (click)="verifyUser(user.id)">Verify</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="getUserActions(user.id)">History</button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -5,6 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --configuration production` for a dev server that connects to our firebase backend. Do not test portal side functionality with this.
+
+## Firebase Emulation
+
+Run `firebase emulators:start --only firestore` to start the firestore emulator. Run the development server without the --prod flag to make use of this.
 
 ## Code scaffolding
 

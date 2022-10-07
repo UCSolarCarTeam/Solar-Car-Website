@@ -6,6 +6,7 @@
 .newsPage {
     background-color: white;
     height: 100%;
+    min-height: 60vh;
     padding-bottom: 31.17px;
     padding-left: 35px;
     padding-right: 35px;
@@ -23,6 +24,42 @@ h1 {
     line-height:58px;
 
     color: black;
+}
+
+.post {
+  background-color: #E5E5E5;
+  width: 100%;
+}
+
+.title {
+  padding-top: 31.17px;
+  padding-left: 31.17px;
+  padding-right: 31.17px;
+
+  font-style: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: black;
+}
+
+.date {
+  padding-top: 31.17px;
+  padding-bottom: 31.17px;
+  padding-left: 31.17px;
+  padding-right: 31.17px;
+
+  font-style: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #898989;
+}
+
+img {
+  width: 100%;
 }
 
 @media (min-width: 0px) {

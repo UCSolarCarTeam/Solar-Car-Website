@@ -1,0 +1,30 @@
+.resultsTable {
+    max-width: 100%;
+}
+
+.logoResultsPreview {
+    min-width: 500px;
+    max-width: 500px;
+}
+
+.actionButton {
+    margin-bottom: 1em;
+}
+
+.logoPreview {
+    padding-top: 3em;
+    padding-bottom: 3em;
+    max-width: 500px;
+    min-width: 500px;
+}
+
+.formContainer {
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.tableHeading {
+    padding-left: 0.5em;
+}

@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './social-media.component.html',
   styleUrls: ['./social-media.component.css']
 })
-export class SocialMediaComponent implements OnInit {
-
+export class SocialMediaComponent {
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

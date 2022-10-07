@@ -82,7 +82,7 @@ Something...
 
     // Update
     if (this.mainButtonText.startsWith('Update')) {
-      if (this.thumbnail == null) {
+      if (this.thumbnail === null) {
         const newNewsArticle = {
           id: this.updateNewsId,
           name: this.addNewsForm.get('name').value,
@@ -117,7 +117,7 @@ Something...
     }
 
     // Add
-    if (this.thumbnail == null) {
+    if (this.thumbnail === null) {
       const newsName = this.addNewsForm.get('name').value;
       const newNewsArticle = {
         name: newsName,
@@ -165,7 +165,7 @@ Something...
     this.thumbnail = null;
     this.mainButtonText = 'Update News Article';
 
-    if (this.link != null ) {
+    if (this.link !== null ) {
       this.isLinkOnlyFormat = true;
     } else {
       this.isLinkOnlyFormat = false;

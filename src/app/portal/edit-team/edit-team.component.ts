@@ -106,7 +106,7 @@ export class EditTeamComponent implements OnInit {
       if (this.deleteFlag){
         this.deleteService.deleteFile(this.deleteFlag);
       }
-      if (this.image == null) {
+      if (this.image === null) {
         const newMember = {
           id: this.updateMemberId,
           name: this.addMemberForm.get('name').value,

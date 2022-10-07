@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   loginForm: UntypedFormGroup;
 
   constructor(private formBuilder: UntypedFormBuilder, private authService: AuthService) {
@@ -15,9 +15,6 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.pattern('.+@.+\..+')],
       password: ['']
     });
-  }
-
-  ngOnInit(): void {
   }
 
   Login() {

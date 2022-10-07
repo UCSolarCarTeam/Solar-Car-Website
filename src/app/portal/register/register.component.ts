@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   signUpForm: UntypedFormGroup;
   passwordsDoNotMatch: boolean;
   ucalgaryEmailUsed = true;
@@ -19,9 +19,6 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!#%*?&])[A-Za-z\d$@$!%*?&].{8,}')],
       passwordConfirm: [''],
     });
-  }
-
-  ngOnInit(): void {
   }
 
   SignUp() {

@@ -20,13 +20,13 @@ export class UserActionService {
   getUserActions(uid: string) {
     return this.firestore
       .collection('user-actions-collection')
-      .ref.where('uid', '==', uid).get();
+      .ref.where('uid', '===', uid).get();
   }
 
   getEntityActions(eid: string) {
     return this.firestore
       .collection('user-actions-collection')
-      .ref.where('eid', '==', eid).get();
+      .ref.where('eid', '===', eid).get();
   }
 
   updateUserAction(userAction: UserAction) {

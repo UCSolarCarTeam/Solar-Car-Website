@@ -34,15 +34,15 @@
                         <td>{{ item.location }}</td>
                         <td>{{ item.amount }}</td>
                         <td class='searchItem'>{{ item.borrowedByUser }}
-                            <button *ngIf="item.isBorrowed == false && item.isBorrowable == true" 
+                            <button *ngIf="item.isBorrowed === false && item.isBorrowable === true" 
                             (click)="renderBorrowModal(item)" 
                             class="btn btn-warning actionButton">
                             Borrow</button>
-                            <button *ngIf="item.isBorrowed == true && item.borrowedByUser == 'Borrowed by: You'" 
+                            <button *ngIf="item.isBorrowed === true && item.borrowedByUser === 'Borrowed by: You'" 
                             (click)="renderReturnModal(item)" 
                             class="btn btn-warning actionButton">
                             Return</button>
-                            <button *ngIf="item.isBorrowable != true" (click)="useItemModal(item)" class="btn btn-warning actionButton">Use 1</button>
+                            <button *ngIf="item.isBorrowable !== true" (click)="useItemModal(item)" class="btn btn-warning actionButton">Use 1</button>
                         </td>
                         <td><img class="imageResultsPreview" src="{{ item.imageUrl }}" /></td>
                         <td><button (click)="renderEditItem(item)" class="btn btn-danger actionButton">Edit</button>
@@ -111,7 +111,7 @@
 
             <div class="mb-3">
                 <label>Amount</label>
-                <input formControlName="amount" class="form-control" [readonly]="addItemForm.get('isBorrowable').value == true" required>
+                <input formControlName="amount" class="form-control" [readonly]="addItemForm.get('isBorrowable').value === true" required>
                     <select (change)="locationUpdate()" class="form-control" formControlName="amountUnit" [value]="amountUnitOptions[0]" required>
 
                         <option *ngFor="let option of amountUnitOptions; let i = index" [ngValue]="option" > {{ option }}</option>

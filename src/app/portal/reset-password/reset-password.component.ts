@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent {
 
   resetForm: UntypedFormGroup;
 
@@ -15,9 +15,6 @@ export class ResetPasswordComponent implements OnInit {
     this.resetForm =  this.formBuilder.group({
       email: ['', Validators.pattern('.+@.+\.com')]
     });
-  }
-
-  ngOnInit(): void {
   }
 
   resetPasswordSubmit() {

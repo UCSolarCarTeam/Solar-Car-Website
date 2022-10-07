@@ -7,7 +7,7 @@ import { MemberService } from 'src/app/services/member.service';
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.css']
 })
-export class TeamComponent implements OnInit {
+export class TeamComponent {
   teamCaptain: Member;
   enggManager: Member;
   businessManager: Member;
@@ -22,8 +22,5 @@ export class TeamComponent implements OnInit {
     this.m.BusinessManager().subscribe(res => {
       this.businessManager = res.docs[0].data() as Member;
     });
-  }
-
-  ngOnInit() {
   }
 }

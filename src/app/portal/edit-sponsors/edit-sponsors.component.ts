@@ -70,7 +70,7 @@ export class EditSponsorsComponent implements OnInit {
 
   manageSponsor() {
     if (this.mainButtonText.startsWith('Update')) {
-      if (this.logo == null) {
+      if (this.logo === null) {
         const newSponsor = {
           id: this.updateSponsorId,
           name: this.addSponsorForm.get('name').value,

@@ -19,8 +19,7 @@ jobs:
       with:
         node-version: '16.x'
         cache: 'npm'
-    - run: rm -r -f node_modules
-    - run: npm install
+    - run: npm install --force
     - run: npm install -g @angular/cli
     - run: echo "🖥️ Node and Angular have been installed. Ready to test workflow!"
     - run: npm run lint

@@ -27,7 +27,7 @@ export class MembersComponent implements OnInit {
         const member = doc.data() as Member;
         const date = new Date();
         const releaseTime = new Date(member.releaseTime);
-        if (member.releaseTime == null || releaseTime.getTime() <= date.getTime()) {
+        if (member.releaseTime === null || releaseTime.getTime() <= date.getTime()) {
           this.members.push(doc.data() as Member);
         }
       });
@@ -37,7 +37,7 @@ export class MembersComponent implements OnInit {
         const member = doc.data() as Member;
         const date = new Date();
         const releaseTime = new Date(member.releaseTime);
-        if (member.releaseTime == null || releaseTime.getTime() <= date.getTime()) {
+        if (member.releaseTime === null || releaseTime.getTime() <= date.getTime()) {
           this.members.push(doc.data() as Member);
         }
       });

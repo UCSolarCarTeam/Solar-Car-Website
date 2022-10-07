@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,17 +7,14 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent {
 
-  resetForm: FormGroup;
+  resetForm: UntypedFormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: UntypedFormBuilder) {
     this.resetForm =  this.formBuilder.group({
       email: ['', Validators.pattern('.+@.+\.com')]
     });
-  }
-
-  ngOnInit(): void {
   }
 
   resetPasswordSubmit() {

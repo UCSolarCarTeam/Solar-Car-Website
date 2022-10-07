@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Item } from 'src/app/models/item.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FileUploadService } from 'src/app/services/file-upload.service';
@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./edit-inventory.component.css']
 })
 export class EditInventoryComponent implements OnInit {
-  addItemForm: FormGroup;
+  addItemForm: UntypedFormGroup;
   updateItemId: string;
   items: Item[];
   locations: string[];
@@ -35,7 +35,7 @@ export class EditInventoryComponent implements OnInit {
 
   constructor(
     private inventoryService: InventoryService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private uploadService: FileUploadService,
     private userActionService: UserActionService,
     private authService: AuthService,
@@ -108,7 +108,7 @@ export class EditInventoryComponent implements OnInit {
 
   manageItemForm() {
     if (this.submitButtonText.startsWith('Edit Item')) {
-        if (this.image == null) {
+        if (this.image === null) {
           const newItem = {
             id: this.updateItemId,
             name: this.addItemForm.get('name').value,
@@ -173,7 +173,7 @@ export class EditInventoryComponent implements OnInit {
         return;
       }
       // Adding New Item
-    if (this.image == null) {
+    if (this.image === null) {
             const  newItem = {
               name: this.addItemForm.get('name').value,
               type: this.addItemForm.get('type').value,

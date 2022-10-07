@@ -6,12 +6,8 @@ import { Member } from 'src/app/models/member.model';
   templateUrl: './captain.component.html',
   styleUrls: ['./captain.component.css']
 })
-export class CaptainComponent implements OnInit {
+export class CaptainComponent {
   @Input() captain: Member;
   imagePath: string;
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Item } from '../models/item.model';
 import { Action } from '../models/action';
 import { UserActionService } from './user-action.service';

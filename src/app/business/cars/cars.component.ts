@@ -6,7 +6,7 @@ import {CarsInfoComponent} from './cars-info/cars-info.component';
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css']
 })
-export class CarsComponent implements OnInit {
+export class CarsComponent {
   descGen5: string[];
   descGen4: string[];
   descGen3: string[];
@@ -52,8 +52,5 @@ export class CarsComponent implements OnInit {
                       73:55.13. The car was then transported to Australia where it raced the 2005 World Solar Challenge,
                       completing the 2998.3 km course and finishing 10th against many more experienced teams. The Soleon was
                       retired in 2006 when building of Schulich I began.`];
-  }
-
-  ngOnInit() {
   }
 }

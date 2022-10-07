@@ -56,10 +56,10 @@
           <img src="{{ news.thumbnailUrl }}" style="max-width: 100px;"/>
         </td>
         <td>
-          <div *ngIf="news.link != null">
+          <div *ngIf="news.link !== null">
             <a href="{{news.link}}" class="btn btn-danger" target="_blank">Link to Article</a>
           </div>
-          <div *ngIf="news.Link == null">
+          <div *ngIf="news.Link === null">
               <div class="overflow-auto" style="max-height: 300px;">
                 <markdown [data]="news.markdown"></markdown>
               </div>

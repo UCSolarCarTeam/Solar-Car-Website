@@ -5,14 +5,12 @@ import { UploadTask } from '@angular/fire/compat/storage/interfaces';
 @Injectable({
   providedIn: 'root'
 })
-export class FileUploadService {
+export class FileDeleteService {
 
   constructor(private storage: AngularFireStorage) { }
 
-  uploadFile(file: File, uploadPath: string): UploadTask {
-    const path = uploadPath + file.name;
-    const storageRef = this.storage.storage.ref();
-    const imageRef = storageRef.child(path);
-    return imageRef.put(file);
+  deleteFile(path: string) {
+    const storageRef = this.storage.storage.refFromURL(path);
+    return storageRef.delete();
   }
 }

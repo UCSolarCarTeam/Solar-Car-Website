@@ -4,7 +4,7 @@
     <div class="container">
         <div *ngFor="let news of newsArticles">
           <div class="item">
-            <div *ngIf="(news.link == null) else newsPageRedirect">
+            <div *ngIf="(news.link === null) else newsPageRedirect">
               <a [routerLink]="['/news', news.id]">
                 <div class="post">
                   <img src={{news.thumbnailUrl}}>

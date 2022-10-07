@@ -6,7 +6,7 @@ import { faInstagram, faFacebook, faTwitter, faLinkedin } from '@fortawesome/fre
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css']
 })
-export class ContactUsComponent implements OnInit {
+export class ContactUsComponent {
 
   lat = 51.079383;
   lng = -114.131598;
@@ -74,8 +74,4 @@ export class ContactUsComponent implements OnInit {
       }
     ];
   }
-
-  ngOnInit() {
-  }
-
 }

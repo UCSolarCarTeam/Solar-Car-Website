@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Member } from 'src/app/models/member.model';
 import { UserAction } from 'src/app/models/user-action';
 import { FileUploadService } from 'src/app/services/file-upload.service';
+import { FileDeleteService } from 'src/app/services/file-delete.service';
 import { MemberService } from 'src/app/services/member.service';
 import { UserActionService } from 'src/app/services/user-action.service';
 
@@ -12,7 +13,7 @@ import { UserActionService } from 'src/app/services/user-action.service';
   styleUrls: ['./edit-team.component.css']
 })
 export class EditTeamComponent implements OnInit {
-  addMemberForm: FormGroup;
+  addMemberForm: UntypedFormGroup;
   members: Member[];
   previewImgUrl: string;
   mainButtonText: string;
@@ -21,9 +22,10 @@ export class EditTeamComponent implements OnInit {
   positions: string[];
   subteams: string[];
   actionHistory: UserAction[];
+  deleteFlag: string;
 
-  constructor(private memberService: MemberService, private formBuilder: FormBuilder, private uploadService: FileUploadService,
-              private userActionService: UserActionService) {
+  constructor(private memberService: MemberService, private formBuilder: UntypedFormBuilder, private uploadService: FileUploadService,
+              private userActionService: UserActionService, private deleteService: FileDeleteService) {
     this.addMemberForm = this.formBuilder.group({
       name: [''],
       position: [null],
@@ -38,6 +40,7 @@ export class EditTeamComponent implements OnInit {
     this.positions = ['Member', 'Manager', 'Team Captain', 'Engineering Team Manager', 'Business Team Manager'];
     this.subteams = ['Mechanical', 'Electrical', 'Software', 'Business'];
     this.actionHistory = [];
+    this.deleteFlag = null;
   }
 
   ngOnInit(): void {
@@ -84,6 +87,14 @@ export class EditTeamComponent implements OnInit {
     this.mainButtonText = 'Update Member';
     document.documentElement.scrollTop = 0;
   }
+  
+  deleteImage(){
+    this.deleteFlag = this.previewImgUrl;
+    this.previewImgUrl = '';
+    this.image = null;
+    console.log(this.deleteFlag);
+    
+  }
 
   manageMember() {
     const dateTime = this.addMemberForm.get('releaseTime').value;
@@ -92,7 +103,10 @@ export class EditTeamComponent implements OnInit {
       date = new Date(dateTime).toUTCString();
     }
     if (this.mainButtonText.startsWith('Update')) {
-      if (this.image == null) {
+      if (this.deleteFlag){
+        this.deleteService.deleteFile(this.deleteFlag);
+      }
+      if (this.image === null) {
         const newMember = {
           id: this.updateMemberId,
           name: this.addMemberForm.get('name').value,

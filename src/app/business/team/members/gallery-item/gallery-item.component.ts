@@ -6,11 +6,7 @@ import { Member } from 'src/app/models/member.model';
   templateUrl: './gallery-item.component.html',
   styleUrls: ['./gallery-item.component.css']
 })
-export class GalleryItemComponent implements OnInit {
+export class GalleryItemComponent {
   @Input() member: Member;
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

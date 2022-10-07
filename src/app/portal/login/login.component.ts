@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,17 +7,14 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+export class LoginComponent {
+  loginForm: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: UntypedFormBuilder, private authService: AuthService) {
     this.loginForm =  this.formBuilder.group({
       email: ['', Validators.pattern('.+@.+\..+')],
       password: ['']
     });
-  }
-
-  ngOnInit(): void {
   }
 
   Login() {

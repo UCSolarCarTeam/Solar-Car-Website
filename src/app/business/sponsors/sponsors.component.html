@@ -20,7 +20,7 @@
 		<div class="flex">
 			<div *ngFor="let sponsor of platinum">
 				<a target="_blank" href={{sponsor.link}}>
-					<img src={{sponsor.logoUrl}} width=400px alt='Silver Sponsor'>
+					<img src={{sponsor.logoUrl}} width=400px alt='Platinum Sponsor'>
 				</a>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 		<div class="flex">
 			<div *ngFor="let sponsor of gold">
 				<a target="_blank" href={{sponsor.link}}>
-					<img src={{sponsor.logoUrl}} width=400px alt='Silver Sponsor'>
+					<img src={{sponsor.logoUrl}} width=400px alt='Gold Sponsor'>
 				</a>
 			</div>
 		</div>
@@ -63,9 +63,11 @@
 		<p>
 			Thank you for giving us the ability to demonstrate that sustainable energy can be practical!
 		</p>
-		<a href="https://bluearthrenewables.com/">
-			<img src='assets/sponsors/BluEarth.png' width=400px alt='Blue Earth'>
-		</a>
+		<div *ngFor="let sponsor of bronze">
+			<a target="_blank" href={{sponsor.link}}>
+				<img src={{sponsor.logoUrl}} width=400px alt='Bronze Sponsor'>
+			</a>
+		</div>
 	</div>
 	<div *ngIf="friends.length !== 0" class="sponsorTier">
 		<h1>

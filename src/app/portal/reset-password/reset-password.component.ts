@@ -13,7 +13,7 @@ export class ResetPasswordComponent {
 
   constructor(private authService: AuthService, private formBuilder: UntypedFormBuilder) {
     this.resetForm =  this.formBuilder.group({
-      email: ['', Validators.pattern('.+@.+\.com')]
+      email: ['', Validators.pattern('.+@.+\..+')]
     });
   }
 

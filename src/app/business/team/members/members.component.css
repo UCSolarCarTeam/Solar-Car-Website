@@ -13,9 +13,9 @@
 
 .gallery-control {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    max-width: 850px;
+    max-width: 90%;
     margin: 2.5em auto 2.5em auto;
 }
 

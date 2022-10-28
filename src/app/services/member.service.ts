@@ -93,12 +93,7 @@ export class MemberService {
   }
 
   AllMembers() {
-    return this.firestore.collection('members-collection',
-      ref => ref.where('position', '==', 'Member')).get();
+    return this.firestore.collection('members-collection').get();
   }
 
-  AllManagers() {
-    return this.firestore.collection('members-collection',
-      ref => ref.where('position', '==', 'Manager')).get();
-  }
 }

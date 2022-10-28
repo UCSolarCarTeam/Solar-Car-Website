@@ -37,8 +37,8 @@ export class EditTeamComponent implements OnInit {
       releaseTime: ['']
     });
     this.mainButtonText = 'Add Member';
-    this.positions = ['Member', 'Manager', 'Team Captain', 'Engineering Team Manager', 'Business Team Manager'];
-    this.subteams = ['Mechanical', 'Electrical', 'Software', 'Business'];
+    this.positions = ['Member', 'Manager', 'Leads', 'Team Captain', 'Engineering Team Manager', 'Business Team Manager'];
+    this.subteams = ['Mechanical', 'Electrical', 'Software', 'Multi-Team', 'Business'];
     this.actionHistory = [];
     this.deleteFlag = null;
   }

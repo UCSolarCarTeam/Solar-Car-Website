@@ -23,6 +23,7 @@ import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
+import { CropImageComponent } from './crop-image/crop-image.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
     AdminPanelComponent,
     ResetPasswordComponent,
     EditInventoryComponent,
+    CropImageComponent,
   ],
   imports: [
     CommonModule,

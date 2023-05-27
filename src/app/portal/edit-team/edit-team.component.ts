@@ -114,6 +114,7 @@ export class EditTeamComponent implements OnInit {
     this.previewImgUrl = "";
     this.updateMemberId = "";
     this.mainButtonText = "Add Member";
+    this.imageChangedEvent = null;
   }
 
   deleteMember(member: Member) {
@@ -130,6 +131,7 @@ export class EditTeamComponent implements OnInit {
     this.addMemberForm.get("year").setValue(member.year);
     this.previewImgUrl = member.imageName;
     this.image = null;
+    this.imageChangedEvent = null;
     this.mainButtonText = "Update Member";
     document.documentElement.scrollTop = 0;
   }
@@ -138,6 +140,7 @@ export class EditTeamComponent implements OnInit {
     this.deleteFlag = this.previewImgUrl;
     this.previewImgUrl = "";
     this.image = null;
+    this.imageChangedEvent = null;
     console.log(this.deleteFlag);
   }
 

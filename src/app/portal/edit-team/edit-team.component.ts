@@ -28,7 +28,7 @@ export class EditTeamComponent implements OnInit {
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
-
+    // console.log(this.image);
     // Not needed because imageCropped does the same thing.
     // const reader = new FileReader();
     // reader.onload = (event: any) => {
@@ -38,7 +38,18 @@ export class EditTeamComponent implements OnInit {
   }
   imageCropped(event: ImageCroppedEvent) {
     this.previewImgUrl = event.base64;
-    console.log(event);
+    this.dataUrlToFile();
+    // console.log(this.previewImgUrl);
+  }
+
+  async dataUrlToFile(): Promise<void> {
+    const dataUrl = this.previewImgUrl;
+    const fileName = this.image.name;
+    const res: Response = await fetch(dataUrl);
+    const blob: Blob = await res.blob();
+    const myImage = new File([blob], fileName, { type: "image/webp" });
+    this.image = myImage;
+    // console.log(this.image);
   }
 
   constructor(

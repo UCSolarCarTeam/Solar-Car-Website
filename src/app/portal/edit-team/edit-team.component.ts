@@ -24,14 +24,21 @@ export class EditTeamComponent implements OnInit {
   actionHistory: UserAction[];
   deleteFlag: string;
   imageChangedEvent: any = "";
-  croppedImage: any = "";
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
+    this.image = event.target.files[0];
+
+    // Not needed because imageCropped does the same thing.
+    // const reader = new FileReader();
+    // reader.onload = (event: any) => {
+    //   this.previewImgUrl = event.target.result;
+    // };
+    // reader.readAsDataURL(this.image);
   }
   imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
-    console.log(this.croppedImage);
+    this.previewImgUrl = event.base64;
+    console.log(event);
   }
 
   constructor(
@@ -87,7 +94,6 @@ export class EditTeamComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       this.previewImgUrl = event.target.result;
-      console.log(this.previewImgUrl);
     };
     reader.readAsDataURL(this.image);
   }

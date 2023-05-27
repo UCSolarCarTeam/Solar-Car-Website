@@ -61,8 +61,17 @@
         type="file"
         formControlName="image"
         class="form-control"
-        (change)="setImage($event.target.files)"
+        (change)="fileChangeEvent($event)"
       />
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 3"
+        [cropperMinWidth]="128"
+        format="webp"
+        imageQuality="50"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
     </div>
     <label>Image Preview</label>
     <br />
@@ -86,24 +95,23 @@
       </button>
     </div>
   </form>
-  <section>
-    <input
+  <!-- <section> -->
+  <!-- <input
       type="file"
       class="form-control"
       (change)="fileChangeEvent($event)"
-    />
+    /> -->
 
-    <image-cropper
+  <!-- <image-cropper
       [imageChangedEvent]="imageChangedEvent"
       [maintainAspectRatio]="true"
       [aspectRatio]="4 / 3"
       [cropperMinWidth]="128"
-      format="png"
+      format="webp"
+      imageQuality="50"
       (imageCropped)="imageCropped($event)"
-    ></image-cropper>
-
-    <img class="imagePreview" [src]="croppedImage" />
-  </section>
+    ></image-cropper> -->
+  <!-- </section> -->
 </div>
 <div *ngIf="actionHistory.length !== 0" class="historyTable">
   <h1 class="tableHeading">Action History</h1>

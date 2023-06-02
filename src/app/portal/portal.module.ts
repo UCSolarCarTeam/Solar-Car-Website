@@ -19,6 +19,8 @@ import { AdminPanelComponent } from './user-profile/admin-panel/admin-panel.comp
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
 
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 import 'prismjs';
 import 'prismjs/components/prism-typescript.min.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
@@ -46,6 +48,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
     FormsModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
+    ImageCropperModule,
   ],
   providers: [],
   bootstrap: [PortalComponent]

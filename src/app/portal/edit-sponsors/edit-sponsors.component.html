@@ -2,12 +2,12 @@
   <form [formGroup]="addSponsorForm" (ngSubmit)="manageSponsor()" novalidate>
     <div class="mb-3">
       <label>Name</label>
-      <input type="text" formControlName="name" class="form-control" required>
+      <input type="text" formControlName="name" class="form-control" required />
     </div>
 
     <div class="mb-3">
       <label>Link</label>
-      <input type="text" formControlName="link" class="form-control" required>
+      <input type="text" formControlName="link" class="form-control" required />
     </div>
 
     <div class="mb-3">
@@ -20,42 +20,53 @@
 
     <div class="mb-3">
       <label>Logo</label>
-      <input type="file" formControlName="logo" class="form-control" (change)="setLogo($event.target.files)">
+      <input
+        type="file"
+        formControlName="logo"
+        class="form-control"
+        (change)="setLogo($event.target.files)"
+      />
     </div>
-    <label>Logo Preview</label>
-    <br>
+    <label>Logo Preview </label>
+    <br />
     <img class="logoPreview" src="{{ previewLogoUrl }}" />
 
     <div class="mb-3">
-      <button type="submit" class="btn btn-danger" [disabled]="!addSponsorForm.valid">{{ mainButtonText }}</button>
+      <button
+        type="submit"
+        class="btn btn-danger"
+        [disabled]="!addSponsorForm.valid"
+      >
+        {{ mainButtonText }}
+      </button>
     </div>
   </form>
 </div>
 <div *ngIf="actionHistory.length !== 0" class="historyTable">
   <h1 class="tableHeading">Action History</h1>
-    <table class="table">
-      <thead>
-          <tr>
-              <th scope="col">#</th>
-              <th scope="col">User ID</th>
-              <th scope="col">User</th>
-              <th scope="col">Entity</th>
-              <th scope="col">Action</th>
-              <th scope="col">Date</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let action of actionHistory; let i = index">
-              <th scope="row">{{ i + 1 }}</th>
-              <td>{{ action.uid }}</td>
-              <td>{{ action.uName }}</td>
-              <td>{{ action.eName }}</td>
-              <td>{{ action.action }}</td>
-              <td>{{ action.dateTime }}</td>
-          </tr>
-      </tbody>
-    </table>
-  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User ID</th>
+        <th scope="col">User</th>
+        <th scope="col">Entity</th>
+        <th scope="col">Action</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let action of actionHistory; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ action.uid }}</td>
+        <td>{{ action.uName }}</td>
+        <td>{{ action.eName }}</td>
+        <td>{{ action.action }}</td>
+        <td>{{ action.dateTime }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
 </div>
 <div class="resultsTable">
   <h1 class="tableHeading">Sponsors</h1>
@@ -67,7 +78,7 @@
         <th scope="col">Name</th>
         <th scope="col">Logo</th>
         <th scope="col">Tier</th>
-        <th scope="col">Action </th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -76,15 +87,32 @@
         <td>{{ sponsor.id }}</td>
         <td>{{ sponsor.name }}</td>
         <td>
-            <a target="_blank" href="{{ sponsor.link }}"><img class="logoResultsPreview" src="{{ sponsor.logoUrl }}" /></a>
+          <a target="_blank" href="{{ sponsor.link }}"
+            ><img class="logoResultsPreview" src="{{ sponsor.logoUrl }}"
+          /></a>
         </td>
         <td>{{ sponsor.tier }}</td>
         <td>
-          <button (click)="deleteSponsor(sponsor)" class="btn btn-danger actionButton">Delete</button>
-          <br>
-          <button (click)="setupSponsorUpdate(sponsor)" class="btn btn-danger actionButton">Update</button>
-          <br>
-          <button (click)="showActionHistory(sponsor)" class="btn btn-danger actionButton">History</button>
+          <button
+            (click)="deleteSponsor(sponsor)"
+            class="btn btn-danger actionButton"
+          >
+            Delete
+          </button>
+          <br />
+          <button
+            (click)="setupSponsorUpdate(sponsor)"
+            class="btn btn-danger actionButton"
+          >
+            Update
+          </button>
+          <br />
+          <button
+            (click)="showActionHistory(sponsor)"
+            class="btn btn-danger actionButton"
+          >
+            History
+          </button>
         </td>
       </tr>
     </tbody>

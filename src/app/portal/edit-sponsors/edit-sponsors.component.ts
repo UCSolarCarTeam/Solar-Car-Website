@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { SponsorService } from 'src/app/services/sponsor.service';
-import { Sponsor } from 'src/app/models/sponsor';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { FileUploadService } from 'src/app/services/file-upload.service';
-import { UserActionService } from 'src/app/services/user-action.service';
-import { UserAction } from 'src/app/models/user-action';
+import { SponsorService } from "src/app/services/sponsor.service";
+import { Sponsor } from "src/app/models/sponsor";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
+import { FileUploadService } from "src/app/services/file-upload.service";
+import { UserActionService } from "src/app/services/user-action.service";
+import { UserAction } from "src/app/models/user-action";
 
 @Component({
-  selector: 'app-edit-sponsors',
-  templateUrl: './edit-sponsors.component.html',
-  styleUrls: ['./edit-sponsors.component.css']
+  selector: "app-edit-sponsors",
+  templateUrl: "./edit-sponsors.component.html",
+  styleUrls: ["./edit-sponsors.component.css"],
 })
 export class EditSponsorsComponent implements OnInit {
   addSponsorForm: UntypedFormGroup;
@@ -19,34 +19,31 @@ export class EditSponsorsComponent implements OnInit {
   mainButtonText: string;
   logo: File;
   updateSponsorId: string;
-  tiers = [
-    'Lead',
-    'Platinum',
-    'Gold',
-    'Silver',
-    'Bronze',
-    'Friend'
-  ];
+  tiers = ["Lead", "Platinum", "Gold", "Silver", "Bronze", "Friend"];
   actionHistory: UserAction[];
 
-  constructor(private sponsorService: SponsorService, private uploadService: FileUploadService, private formBuilder: UntypedFormBuilder,
-              private userActionService: UserActionService) {
+  constructor(
+    private sponsorService: SponsorService,
+    private uploadService: FileUploadService,
+    private formBuilder: UntypedFormBuilder,
+    private userActionService: UserActionService
+  ) {
     this.addSponsorForm = this.formBuilder.group({
-      name: [''],
-      link: [''],
-      logo: [''],
-      tier: [null]
+      name: [""],
+      link: [""],
+      logo: [""],
+      tier: [null],
     });
-    this.mainButtonText = 'Add Sponsor';
+    this.mainButtonText = "Add Sponsor";
     this.actionHistory = [];
   }
 
   ngOnInit(): void {
-    this.sponsorService.getSponsors().subscribe(res => {
-      this.sponsors = res.map(e => {
+    this.sponsorService.getSponsors().subscribe((res) => {
+      this.sponsors = res.map((e) => {
         return {
           id: e.payload.doc.id,
-          ...(e.payload.doc.data() as object)
+          ...(e.payload.doc.data() as object),
         } as Sponsor;
       });
     });
@@ -63,60 +60,64 @@ export class EditSponsorsComponent implements OnInit {
 
   resetForm() {
     this.addSponsorForm.reset();
-    this.previewLogoUrl = '';
-    this.updateSponsorId = '';
-    this.mainButtonText = 'Add Sponsor';
+    this.previewLogoUrl = "";
+    this.updateSponsorId = "";
+    this.mainButtonText = "Add Sponsor";
   }
 
   manageSponsor() {
-    if (this.mainButtonText.startsWith('Update')) {
+    if (this.mainButtonText.startsWith("Update")) {
       if (this.logo === null) {
         const newSponsor = {
           id: this.updateSponsorId,
-          name: this.addSponsorForm.get('name').value,
-          link: this.addSponsorForm.get('link').value,
+          name: this.addSponsorForm.get("name").value,
+          link: this.addSponsorForm.get("link").value,
           logoUrl: this.previewLogoUrl,
-          tier: this.addSponsorForm.get('tier').value,
-          logo: null
+          tier: this.addSponsorForm.get("tier").value,
+          logo: null,
         };
         this.sponsorService.updateSponsor(newSponsor);
       } else {
         const sponsorId = this.updateSponsorId;
-        const sponsorName = this.addSponsorForm.get('name').value;
-        const sponsorLink = this.addSponsorForm.get('link').value;
-        const sponsorTier = this.addSponsorForm.get('tier').value;
-        this.uploadService.uploadFile(this.logo, 'assets/logos/').then((snapshot) => {
-          snapshot.ref.getDownloadURL().then((downloadUrl) => {
-            const newSponsor = {
-              id: sponsorId,
-              name: sponsorName,
-              link: sponsorLink,
-              logoUrl: downloadUrl,
-              tier: sponsorTier,
-              logo: null
-            };
-            this.sponsorService.updateSponsor(newSponsor);
+        const sponsorName = this.addSponsorForm.get("name").value;
+        const sponsorLink = this.addSponsorForm.get("link").value;
+        const sponsorTier = this.addSponsorForm.get("tier").value;
+        this.uploadService
+          .uploadFile(this.logo, "assets/logos/")
+          .then((snapshot) => {
+            snapshot.ref.getDownloadURL().then((downloadUrl) => {
+              const newSponsor = {
+                id: sponsorId,
+                name: sponsorName,
+                link: sponsorLink,
+                logoUrl: downloadUrl,
+                tier: sponsorTier,
+                logo: null,
+              };
+              this.sponsorService.updateSponsor(newSponsor);
+            });
           });
-        });
       }
       this.resetForm();
       return;
     }
-    const sponsorName = this.addSponsorForm.get('name').value;
-    const sponsorLink = this.addSponsorForm.get('link').value;
-    const sponsorTier = this.addSponsorForm.get('tier').value;
-    this.uploadService.uploadFile(this.logo, 'assets/logos/').then((snapshot) => {
-      snapshot.ref.getDownloadURL().then((downloadUrl) => {
-        const newSponsor = {
-          name: sponsorName,
-          link: sponsorLink,
-          logoUrl: downloadUrl,
-          tier: sponsorTier,
-          logo: null
-        };
-        this.sponsorService.addSponsor(newSponsor);
+    const sponsorName = this.addSponsorForm.get("name").value;
+    const sponsorLink = this.addSponsorForm.get("link").value;
+    const sponsorTier = this.addSponsorForm.get("tier").value;
+    this.uploadService
+      .uploadFile(this.logo, "assets/logos/")
+      .then((snapshot) => {
+        snapshot.ref.getDownloadURL().then((downloadUrl) => {
+          const newSponsor = {
+            name: sponsorName,
+            link: sponsorLink,
+            logoUrl: downloadUrl,
+            tier: sponsorTier,
+            logo: null,
+          };
+          this.sponsorService.addSponsor(newSponsor);
+        });
       });
-    });
     this.resetForm();
   }
 
@@ -126,22 +127,22 @@ export class EditSponsorsComponent implements OnInit {
 
   setupSponsorUpdate(sponsor: Sponsor) {
     this.updateSponsorId = sponsor.id;
-    this.addSponsorForm.get('name').setValue(sponsor.name);
-    this.addSponsorForm.get('link').setValue(sponsor.link);
-    this.addSponsorForm.get('tier').setValue(sponsor.tier);
+    this.addSponsorForm.get("name").setValue(sponsor.name);
+    this.addSponsorForm.get("link").setValue(sponsor.link);
+    this.addSponsorForm.get("tier").setValue(sponsor.tier);
     this.previewLogoUrl = sponsor.logoUrl;
     this.logo = null;
-    this.mainButtonText = 'Update Sponsor';
+    this.mainButtonText = "Update Sponsor";
     document.documentElement.scrollTop = 0;
   }
 
   showActionHistory(sponsor: Sponsor) {
     this.actionHistory = [];
-    this.userActionService.getEntityActions(sponsor.id).then(userActions => {
+    this.userActionService.getEntityActions(sponsor.id).then((userActions) => {
       userActions.forEach((doc) => {
         this.actionHistory.push({
           id: doc.id,
-          ...doc.data() as object
+          ...(doc.data() as object),
         } as UserAction);
       });
     });

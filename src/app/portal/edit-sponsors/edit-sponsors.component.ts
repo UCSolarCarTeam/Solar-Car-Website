@@ -6,6 +6,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { FileUploadService } from "src/app/services/file-upload.service";
 import { UserActionService } from "src/app/services/user-action.service";
 import { UserAction } from "src/app/models/user-action";
+import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
 
 @Component({
   selector: "app-edit-sponsors",
@@ -21,7 +22,26 @@ export class EditSponsorsComponent implements OnInit {
   updateSponsorId: string;
   tiers = ["Lead", "Platinum", "Gold", "Silver", "Bronze", "Friend"];
   actionHistory: UserAction[];
+  imageChangedEvent: any = "";
 
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+    this.logo = event.target.files[0];
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.previewLogoUrl = event.base64;
+    this.dataUrlToFile();
+  }
+
+  // Helper function
+  async dataUrlToFile(): Promise<void> {
+    const dataUrl = this.previewLogoUrl;
+    const fileName = this.logo.name;
+    const res: Response = await fetch(dataUrl);
+    const blob: Blob = await res.blob();
+    const myImage = new File([blob], fileName, { type: "image/webp" });
+    this.logo = myImage;
+  }
   constructor(
     private sponsorService: SponsorService,
     private uploadService: FileUploadService,
@@ -63,6 +83,7 @@ export class EditSponsorsComponent implements OnInit {
     this.previewLogoUrl = "";
     this.updateSponsorId = "";
     this.mainButtonText = "Add Sponsor";
+    this.imageChangedEvent = null;
   }
 
   manageSponsor() {

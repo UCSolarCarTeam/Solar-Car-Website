@@ -24,8 +24,17 @@
         type="file"
         formControlName="logo"
         class="form-control"
-        (change)="setLogo($event.target.files)"
+        (change)="fileChangeEvent($event)"
       />
+      <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="false"
+        [aspectRatio]="4 / 3"
+        [cropperMinWidth]="128"
+        format="webp"
+        imageQuality="90"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
     </div>
     <label>Logo Preview </label>
     <br />

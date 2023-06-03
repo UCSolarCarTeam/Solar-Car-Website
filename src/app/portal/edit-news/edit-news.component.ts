@@ -3,6 +3,7 @@ import { NewsService } from "src/app/services/news.service";
 import { News } from "src/app/models/news";
 import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { FileUploadService } from "src/app/services/file-upload.service";
+import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
 
 @Component({
   selector: "app-edit-news",
@@ -19,6 +20,26 @@ export class EditNewsComponent implements OnInit {
   updateNewsId: string;
   mainButtonText: string;
   isLinkOnlyFormat: boolean;
+  imageChangedEvent: any = "";
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+    this.thumbnail = event.target.files[0];
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.previewThumbnailUrl = event.base64;
+    this.dataUrlToFile();
+  }
+
+  // Helper function
+  async dataUrlToFile(): Promise<void> {
+    const dataUrl = this.previewThumbnailUrl;
+    const fileName = this.thumbnail.name;
+    const res: Response = await fetch(dataUrl);
+    const blob: Blob = await res.blob();
+    const myImage = new File([blob], fileName, { type: "image/webp" });
+    this.thumbnail = myImage;
+  }
 
   constructor(
     private newsService: NewsService,
@@ -67,6 +88,7 @@ Something...
     this.updateNewsId = "";
     this.mainButtonText = "Add News Article";
     this.markdown = "";
+    this.imageChangedEvent = null;
   }
 
   manageNews() {

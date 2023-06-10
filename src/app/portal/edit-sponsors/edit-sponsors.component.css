@@ -29,5 +29,10 @@
   padding-left: 0.5em;
 }
 .imageCrop {
+  padding-top: 3em;
+  padding-bottom: 3em;
   max-width: 500px;
+}
+.croppingArea {
+  display: inline-block;
 }

@@ -64,20 +64,27 @@
         class="form-control"
         (change)="fileChangeEvent($event)"
       />
-      <image-cropper
-        class="imageCrop"
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="true"
-        [aspectRatio]="4 / 3"
-        [cropperMinWidth]="128"
-        format="webp"
-        imageQuality="50"
-        (imageCropped)="imageCropped($event)"
-      ></image-cropper>
+      <span class="croppingArea">
+        <image-cropper
+          class="imageCrop"
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="4 / 3"
+          [cropperMinWidth]="128"
+          format="webp"
+          imageQuality="50"
+          (imageCropped)="imageCropped($event)"
+        ></image-cropper>
+      </span>
+      <span class="croppingArea">
+        <label>Image Preview =></label>
+      </span>
+      <span class="croppingArea">
+        <img class="imagePreview" src="{{ previewImgUrl }}" />
+      </span>
     </div>
-    <label>Image Preview</label>
     <br />
-    <img class="imagePreview" src="{{ previewImgUrl }}" />
+
     <button
       class="btn btn-warning actionButton"
       *ngIf="previewImgUrl"

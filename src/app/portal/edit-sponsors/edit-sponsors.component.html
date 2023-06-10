@@ -27,21 +27,26 @@
         class="form-control"
         (change)="fileChangeEvent($event)"
       />
-      <image-cropper
-        class="imageCrop"
-        [imageChangedEvent]="imageChangedEvent"
-        [maintainAspectRatio]="false"
-        [aspectRatio]="4 / 3"
-        [cropperMinWidth]="128"
-        format="webp"
-        imageQuality="90"
-        (imageCropped)="imageCropped($event)"
-      ></image-cropper>
+      <span class="croppingArea">
+        <image-cropper
+          class="imageCrop"
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="false"
+          [aspectRatio]="4 / 3"
+          [cropperMinWidth]="128"
+          format="webp"
+          imageQuality="90"
+          (imageCropped)="imageCropped($event)"
+        ></image-cropper>
+      </span>
+      <span class="croppingArea">
+        <label>Logo Preview =></label>
+      </span>
+      <span class="croppingArea">
+        <img class="logoPreview" src="{{ previewLogoUrl }}" />
+      </span>
     </div>
-    <label>Logo Preview </label>
     <br />
-    <img class="logoPreview" src="{{ previewLogoUrl }}" />
-
     <div class="mb-3">
       <button
         type="submit"

@@ -1,26 +1,30 @@
 .resultsTable {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .imageResultsPreview {
-    min-width: 250px;
-    max-width: 250px;
+  min-width: 250px;
+  max-width: 250px;
 }
 
 .actionButton {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .imagePreview {
-    padding-top: 3em;
-    padding-bottom: 3em;
-    max-width: 500px;
-    min-width: 500px;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  max-width: 500px;
+  min-width: 500px;
 }
 
 .formContainer {
-    padding-left: 3em;
-    padding-right: 3em;
-    padding-top: 3em;
-    padding-bottom: 3em;
+  padding-left: 3em;
+  padding-right: 3em;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.imageCrop {
+  max-width: 500px;
 }

@@ -7,6 +7,15 @@ import { FileDeleteService } from "src/app/services/file-delete.service";
 import { MemberService } from "src/app/services/member.service";
 import { UserActionService } from "src/app/services/user-action.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
+import AWN from "awesome-notifications";
+// Set global options
+let globalOptions = {};
+// Initialize instance of AWN
+let notifier = new AWN(globalOptions);
+
+// Set custom options for next call if needed, it will override globals
+let nextCallOptions = {};
+// Call one of available functions
 @Component({
   selector: "app-edit-team",
   templateUrl: "./edit-team.component.html",
@@ -24,6 +33,10 @@ export class EditTeamComponent implements OnInit {
   actionHistory: UserAction[];
   deleteFlag: string;
   imageChangedEvent: any = "";
+
+  handleClick() {
+    notifier.success("Your custom message", nextCallOptions);
+  }
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
@@ -145,87 +158,91 @@ export class EditTeamComponent implements OnInit {
   }
 
   manageMember() {
-    const dateTime = this.addMemberForm.get("releaseTime").value;
-    let date: string = null;
-    if (dateTime !== "") {
-      date = new Date(dateTime).toUTCString();
-    }
-    if (this.mainButtonText.startsWith("Update")) {
-      if (this.deleteFlag) {
-        this.deleteService.deleteFile(this.deleteFlag);
+    try {
+      const dateTime = this.addMemberForm.get("releaseTime").value;
+      let date: string = null;
+      if (dateTime !== "") {
+        date = new Date(dateTime).toUTCString();
       }
-      if (this.image === null) {
-        const newMember = {
-          id: this.updateMemberId,
-          name: this.addMemberForm.get("name").value,
-          position: this.addMemberForm.get("position").value,
-          subteam: this.addMemberForm.get("subteam").value,
-          major: this.addMemberForm.get("major").value,
-          description: this.addMemberForm.get("description").value,
-          year: this.addMemberForm.get("year").value,
-          imageName: this.previewImgUrl,
-          image: null,
-          releaseTime: date,
-        };
-        this.memberService.updateMember(newMember);
-      } else {
-        const memberId = this.updateMemberId;
-        const memberName = this.addMemberForm.get("name").value;
-        const memberPosition = this.addMemberForm.get("position").value;
-        const memberSubteam = this.addMemberForm.get("subteam").value;
-        const memberMajor = this.addMemberForm.get("major").value;
-        const memberDescription = this.addMemberForm.get("description").value;
-        const memberYear = this.addMemberForm.get("year").value;
-        this.uploadService
-          .uploadFile(this.image, "assets/member_images/")
-          .then((snapshot) => {
-            snapshot.ref.getDownloadURL().then((downloadUrl) => {
-              const newMember = {
-                id: memberId,
-                name: memberName,
-                position: memberPosition,
-                imageName: downloadUrl,
-                subteam: memberSubteam,
-                major: memberMajor,
-                description: memberDescription,
-                year: memberYear,
-                image: null,
-                releaseTime: date,
-              };
-              this.memberService.updateMember(newMember);
-            });
-          });
-      }
-      this.resetForm();
-      return;
-    }
-    const memberName = this.addMemberForm.get("name").value;
-    const memberPosition = this.addMemberForm.get("position").value;
-    const memberSubteam = this.addMemberForm.get("subteam").value;
-    const memberMajor = this.addMemberForm.get("major").value;
-    const memberDescription = this.addMemberForm.get("description").value;
-    const memberYear = this.addMemberForm.get("year").value;
-    this.uploadService
-      .uploadFile(this.image, "assets/member_images/")
-      .then((snapshot) => {
-        snapshot.ref.getDownloadURL().then((downloadUrl) => {
+      if (this.mainButtonText.startsWith("Update")) {
+        if (this.deleteFlag) {
+          this.deleteService.deleteFile(this.deleteFlag);
+        }
+        if (this.image === null) {
           const newMember = {
-            name: memberName,
-            position: memberPosition,
-            imageName: downloadUrl,
-            subteam: memberSubteam,
-            major: memberMajor,
-            description: memberDescription,
-            year: memberYear,
+            id: this.updateMemberId,
+            name: this.addMemberForm.get("name").value,
+            position: this.addMemberForm.get("position").value,
+            subteam: this.addMemberForm.get("subteam").value,
+            major: this.addMemberForm.get("major").value,
+            description: this.addMemberForm.get("description").value,
+            year: this.addMemberForm.get("year").value,
+            imageName: this.previewImgUrl,
             image: null,
             releaseTime: date,
           };
-          this.memberService.addMember(newMember);
+          this.memberService.updateMember(newMember);
+        } else {
+          const memberId = this.updateMemberId;
+          const memberName = this.addMemberForm.get("name").value;
+          const memberPosition = this.addMemberForm.get("position").value;
+          const memberSubteam = this.addMemberForm.get("subteam").value;
+          const memberMajor = this.addMemberForm.get("major").value;
+          const memberDescription = this.addMemberForm.get("description").value;
+          const memberYear = this.addMemberForm.get("year").value;
+          this.uploadService
+            .uploadFile(this.image, "assets/member_images/")
+            .then((snapshot) => {
+              snapshot.ref.getDownloadURL().then((downloadUrl) => {
+                const newMember = {
+                  id: memberId,
+                  name: memberName,
+                  position: memberPosition,
+                  imageName: downloadUrl,
+                  subteam: memberSubteam,
+                  major: memberMajor,
+                  description: memberDescription,
+                  year: memberYear,
+                  image: null,
+                  releaseTime: date,
+                };
+                this.memberService.updateMember(newMember);
+              });
+            });
+        }
+        this.resetForm();
+        return;
+      }
+      const memberName = this.addMemberForm.get("name").value;
+      const memberPosition = this.addMemberForm.get("position").value;
+      const memberSubteam = this.addMemberForm.get("subteam").value;
+      const memberMajor = this.addMemberForm.get("major").value;
+      const memberDescription = this.addMemberForm.get("description").value;
+      const memberYear = this.addMemberForm.get("year").value;
+      this.uploadService
+        .uploadFile(this.image, "assets/member_images/")
+        .then((snapshot) => {
+          snapshot.ref.getDownloadURL().then((downloadUrl) => {
+            const newMember = {
+              name: memberName,
+              position: memberPosition,
+              imageName: downloadUrl,
+              subteam: memberSubteam,
+              major: memberMajor,
+              description: memberDescription,
+              year: memberYear,
+              image: null,
+              releaseTime: date,
+            };
+            this.memberService.addMember(newMember);
+          });
         });
-      });
-    this.resetForm();
+      this.resetForm();
+      notifier.success("Your custom message", nextCallOptions);
+    } catch (err) {
+      notifier.alert("Please fill out all fields", nextCallOptions);
+    }
   }
-
   showActionHistory(member: Member) {
     this.actionHistory = [];
     this.userActionService.getEntityActions(member.id).then((userActions) => {

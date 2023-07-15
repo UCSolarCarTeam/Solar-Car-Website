@@ -8,14 +8,9 @@ import { MemberService } from "src/app/services/member.service";
 import { UserActionService } from "src/app/services/user-action.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
 import AWN from "awesome-notifications";
-// Set global options
 let globalOptions = {};
-// Initialize instance of AWN
 let notifier = new AWN(globalOptions);
-
-// Set custom options for next call if needed, it will override globals
 let nextCallOptions = {};
-// Call one of available functions
 @Component({
   selector: "app-edit-team",
   templateUrl: "./edit-team.component.html",
@@ -34,10 +29,12 @@ export class EditTeamComponent implements OnInit {
   deleteFlag: string;
   imageChangedEvent: any = "";
 
-  handleClick() {
-    notifier.success("Your custom message", nextCallOptions);
-  }
-
+  // handleClick() {
+  //   notifier.success("Your custom message", nextCallOptions);
+  // }
+  // showAlert() {
+  //   notifier.alert("An error has occured", nextCallOptions);
+  // }
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
@@ -132,6 +129,14 @@ export class EditTeamComponent implements OnInit {
 
   deleteMember(member: Member) {
     this.memberService.deleteMember(member);
+    notifier.success(
+      `${member.name} has successfully been deleted!`,
+      nextCallOptions
+    );
+    // .catch((err) => {
+    //   notifier.alert("Member deletion failed", nextCallOptions);
+    //   err;
+    // });
   }
 
   setupMemberUpdate(member: Member) {
@@ -234,13 +239,23 @@ export class EditTeamComponent implements OnInit {
               image: null,
               releaseTime: date,
             };
-            this.memberService.addMember(newMember);
+            this.memberService
+              .addMember(newMember)
+              .then((response) => {
+                notifier.success(`Member has been added!`, nextCallOptions);
+              })
+              .catch((err) => {
+                notifier.alert("Member upload failed", nextCallOptions);
+                err;
+              });
           });
+        })
+        .catch((err) => {
+          notifier.alert("Image upload failed", nextCallOptions);
         });
       this.resetForm();
-      notifier.success("Your custom message", nextCallOptions);
     } catch (err) {
-      notifier.alert("Please fill out all fields", nextCallOptions);
+      notifier.alert("Form submission failed", nextCallOptions);
     }
   }
   showActionHistory(member: Member) {

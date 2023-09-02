@@ -1,150 +1,267 @@
 <div class="inventoryContainer">
-
-    <div class= "inventoryControls">
-        <div class="defaultActions">
-            <input placeholder="Search # or name" (keyup)="runSearch()" class="search-field">
-            <button (click)="renderAddItem()" class="btn btn-danger actionButton" >Add Item</button>
-            <input (click)="returnItemFilter()" type="checkbox" style="display:none" class="btn-check" id="btn-borrowed" autocomplete="off">
-            <label class="btn btn-danger" for="btn-borrowed">Borrowed Items</label>
-        </div>
+  <div class="inventoryControls">
+    <div class="defaultActions">
+      <input
+        placeholder="Search # or name"
+        (keyup)="runSearch()"
+        class="search-field"
+      />
+      <button (click)="renderAddItem()" class="btn btn-danger actionButton">
+        Add Item
+      </button>
+      <input
+        (click)="returnItemFilter()"
+        type="checkbox"
+        style="display: none"
+        class="btn-check"
+        id="btn-borrowed"
+        autocomplete="off"
+      />
+      <label class="btn btn-danger" for="btn-borrowed">Borrowed Items</label>
     </div>
+  </div>
 
-    <div class="inventoryList">
-        <h1 class="tableHeading">Team Inventory</h1>
-            <table class="table inventory-table">
-                
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">SC Part#</th>
-                        <th scope="col">Man. Part#</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Actions</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Edit</th>
-                    </tr>
-                
-                
-                    <tr *ngFor="let item of items; let i = index">
-                        <td class='searchItem'>{{ item.name }}</td>
-                        <td class='searchItem'>{{ item.type }}</td>
-                        <td class='searchItem'>{{ item.internalPartNumber }}</td>
-                        <td class='searchItem'>{{ item.manufacturerPartNumber }}</td>
-                        <td>{{ item.location }}</td>
-                        <td>{{ item.amount }}</td>
-                        <td class='searchItem'>{{ item.borrowedByUser }}
-                            <button *ngIf="item.isBorrowed === false && item.isBorrowable === true" 
-                            (click)="renderBorrowModal(item)" 
-                            class="btn btn-warning actionButton">
-                            Borrow</button>
-                            <button *ngIf="item.isBorrowed === true && item.borrowedByUser === 'Borrowed by: You'" 
-                            (click)="renderReturnModal(item)" 
-                            class="btn btn-warning actionButton">
-                            Return</button>
-                            <button *ngIf="item.isBorrowable !== true" (click)="useItemModal(item)" class="btn btn-warning actionButton">Use 1</button>
-                        </td>
-                        <td><img class="imageResultsPreview" src="{{ item.imageUrl }}" /></td>
-                        <td><button (click)="renderEditItem(item)" class="btn btn-danger actionButton">Edit</button>
-                            
-                    </tr>
-                
-            </table>
-            <p> --- End of Items --- </p>
+  <div class="inventoryList">
+    <h1 class="tableHeading">Team Inventory</h1>
+    <table class="table inventory-table">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">SC Part#</th>
+        <th scope="col">Man. Part#</th>
+        <th scope="col">Location</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Actions</th>
+        <th scope="col">Image</th>
+        <th scope="col">Edit</th>
+      </tr>
 
-    </div>
+      <tr *ngFor="let item of items; let i = index">
+        <td class="searchItem">{{ item.name }}</td>
+        <td class="searchItem">{{ item.type }}</td>
+        <td class="searchItem">{{ item.internalPartNumber }}</td>
+        <td class="searchItem">{{ item.manufacturerPartNumber }}</td>
+        <td>{{ item.location }}</td>
+        <td>{{ item.amount }}</td>
+        <td class="searchItem">
+          {{ item.borrowedByUser }}
+          <button
+            *ngIf="item.isBorrowed === false && item.isBorrowable === true"
+            (click)="renderBorrowModal(item)"
+            class="btn btn-warning actionButton"
+          >
+            Borrow
+          </button>
+          <button
+            *ngIf="
+              item.isBorrowed === true &&
+              item.borrowedByUser === 'Borrowed by: You'
+            "
+            (click)="renderReturnModal(item)"
+            class="btn btn-warning actionButton"
+          >
+            Return
+          </button>
+          <button
+            *ngIf="item.isBorrowable !== true"
+            (click)="useItemModal(item)"
+            class="btn btn-warning actionButton"
+          >
+            Use 1
+          </button>
+        </td>
+        <td><img class="imageResultsPreview" src="{{ item.imageUrl }}" /></td>
+        <td>
+          <button
+            (click)="renderEditItem(item)"
+            class="btn btn-danger actionButton"
+          >
+            Edit
+          </button>
+        </td>
+      </tr>
+    </table>
+    <p>--- End of Items ---</p>
+  </div>
 
-    <div class="itemControlModal">
-        <form [formGroup]="addItemForm" (ngSubmit)="manageItemForm()" novalidate>
-            <h3>{{ submitButtonText }}</h3>
-            <div class="mb-3">
-              <label>Name</label>
-              <input type="text" formControlName="name" class="form-control" required>
-            </div>
+  <div class="itemControlModal">
+    <form [formGroup]="addItemForm" (ngSubmit)="manageItemForm()" novalidate>
+      <h3>{{ submitButtonText }}</h3>
+      <div class="mb-3">
+        <label>Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          required
+        />
+      </div>
 
-            <div class="mb-3">
-                <label>Type</label><br>
-                <select formControlName="type" required>
-                    <option >Part</option>
-                    <option >Tool</option>
-                </select>
+      <div class="mb-3">
+        <label>Type</label><br />
+        <select formControlName="type" required>
+          <option>Part</option>
+          <option>Tool</option>
+        </select>
+      </div>
 
-              </div>
-        
-            <div class="mb-3">
-              <label>Internal Part #</label>
-              <input formControlName="internalPartNumber" class="form-control" >    
-            </div>
+      <div class="mb-3">
+        <label>Internal Part #</label>
+        <input formControlName="internalPartNumber" class="form-control" />
+      </div>
 
-            <div class="mb-3">
-                <label>Man. Part #</label>
-                <input formControlName="manufacturerPartNumber" class="form-control" required>  
-            </div>
+      <div class="mb-3">
+        <label>Man. Part #</label>
+        <input
+          formControlName="manufacturerPartNumber"
+          class="form-control"
+          required
+        />
+      </div>
 
-            <div class="mb-3">
-                <label>Manufacturer</label>
-                <input formControlName="manufacturer" class="form-control" >  
-            </div>
+      <div class="mb-3">
+        <label>Manufacturer</label>
+        <input formControlName="manufacturer" class="form-control" />
+      </div>
 
-            <div class="mb-3">
-                <label>Link</label>
-                <input formControlName="link" class="form-control" required>  
-            </div>
+      <div class="mb-3">
+        <label>Link</label>
+        <input formControlName="link" class="form-control" required />
+      </div>
 
-            <div class="mb-3">
-                <label>Location:</label><br>
-                <select (change)="locationUpdate()" class="form-control" formControlName="location" >
-                    <option value="Custom">Custom</option>
-                    <optgroup label = "Electrical Room"></optgroup>
-                    <option *ngFor="let room of elecLocals; let i = index" [ngValue]="room"> {{ room }}</option>
-                    <optgroup label = "Mechanical Room"></optgroup>
-                    <option *ngFor="let room of mechLocals; let i = index"> {{ room }}</option>
-                    <optgroup label = "Lockers Room"></optgroup>
-                    <option *ngFor="let room of lockerLocals; let i = index"> {{ room }}</option>
-                    <optgroup label = "Basement"></optgroup>
-                    <option *ngFor="let room of basementLocals; let i = index"> {{ room }}</option>
-                    
-                </select>
-                <input formControlName="location" class="form-control location-field" required>
+      <div class="mb-3">
+        <label>Location:</label><br />
+        <select
+          (change)="locationUpdate()"
+          class="form-control"
+          formControlName="location"
+        >
+          <option value="Custom">Custom</option>
+          <optgroup label="Electrical Room"></optgroup>
+          <option
+            *ngFor="let room of elecLocals; let i = index"
+            [ngValue]="room"
+          >
+            {{ room }}
+          </option>
+          <optgroup label="Mechanical Room"></optgroup>
+          <option *ngFor="let room of mechLocals; let i = index">
+            {{ room }}
+          </option>
+          <optgroup label="Lockers Room"></optgroup>
+          <option *ngFor="let room of lockerLocals; let i = index">
+            {{ room }}
+          </option>
+          <optgroup label="Basement"></optgroup>
+          <option *ngFor="let room of basementLocals; let i = index">
+            {{ room }}
+          </option>
+        </select>
+        <input
+          formControlName="location"
+          class="form-control location-field"
+          required
+        />
+      </div>
 
-            </div>
+      <div class="mb-3">
+        <label>Amount</label>
+        <input
+          formControlName="amount"
+          class="form-control"
+          [readonly]="addItemForm.get('isBorrowable').value === true"
+          required
+        />
+        <select
+          (change)="locationUpdate()"
+          class="form-control"
+          formControlName="amountUnit"
+          [value]="amountUnitOptions[0]"
+          required
+        >
+          <option
+            *ngFor="let option of amountUnitOptions; let i = index"
+            [ngValue]="option"
+          >
+            {{ option }}
+          </option>
+        </select>
+      </div>
 
-            <div class="mb-3">
-                <label>Amount</label>
-                <input formControlName="amount" class="form-control" [readonly]="addItemForm.get('isBorrowable').value === true" required>
-                    <select (change)="locationUpdate()" class="form-control" formControlName="amountUnit" [value]="amountUnitOptions[0]" required>
+      <div class="mb-3">
+        <label>Description</label>
+        <input type="text" formControlName="description" class="form-control" />
+      </div>
 
-                        <option *ngFor="let option of amountUnitOptions; let i = index" [ngValue]="option" > {{ option }}</option>
-                    </select>
-            
-            </div>
-            
+      <div class="mb-3">
+        <label
+          >Borrowable
+          <span
+            *ngIf="this.addItemForm.get('isBorrowable').disabled"
+            class="isBorrowed"
+            >(Can not be disabled if item is borrowed)</span
+          >
+        </label>
+        <input
+          type="checkbox"
+          (change)="borrowableCheck()"
+          formControlName="isBorrowable"
+          class="form-control"
+        />
+      </div>
 
-            <div class="mb-3">
-                <label>Description</label>
-                <input type="text" formControlName="description" class="form-control" >
-              </div>
-
-            <div class="mb-3">
-                <label>Borrowable <span *ngIf="this.addItemForm.get('isBorrowable').disabled" class="isBorrowed">(Can not be disabled if item is borrowed)</span> </label>
-                <input type="checkbox" (change)="borrowableCheck()" formControlName="isBorrowable" class="form-control" >
-                
-            </div>
-
-            <div class="mb-3">
-              <label>Image</label>
-              <input type="file" formControlName="image" class="form-control" (change)="setImage($event.target.files)">
-            </div>
-            <label>Image Preview</label>
-            <br>
-            <img class="imagePreview" src="{{ previewImgUrl }}" />
-        
-            <div class="mb-3">
-              <button type="submit" class="btn btn-danger" [disabled]="!addItemForm.valid">{{ submitButtonText }}</button>
-              <button type="button" class="btn btn-secondary" (click)="cancelItemForm()">Cancel</button>
-            </div>
-            
-          </form>
-    </div>
-
+      <div class="mb-3">
+        <label>Image</label>
+        <input
+          type="file"
+          formControlName="image"
+          accept="image/*"
+          class="form-control"
+          (change)="fileChangeEvent($event)"
+        />
+        <span class="croppingArea">
+          <image-cropper
+            class="imageCrop"
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="false"
+            [cropperMinWidth]="128"
+            format="webp"
+            imageQuality="50"
+            (imageCropped)="imageCropped($event)"
+          ></image-cropper>
+        </span>
+        <span class="croppingArea">
+          <label>Image Preview =></label>
+        </span>
+        <span class="croppingArea">
+          <img class="imagePreview" src="{{ previewImgUrl }}" />
+        </span>
+      </div>
+      <br />
+      <button
+        class="btn btn-warning actionButton"
+        *ngIf="previewImgUrl"
+        type="button"
+        (click)="deleteImage()"
+      >
+        X
+      </button>
+      <div class="mb-3">
+        <button
+          type="submit"
+          class="btn btn-danger"
+          [disabled]="!addItemForm.valid"
+        >
+          {{ submitButtonText }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="cancelItemForm()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

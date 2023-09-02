@@ -1,7 +1,15 @@
 <div class="container">
   <br />
+  <br />
   <form [formGroup]="addNewsForm" (ngSubmit)="manageNews()" novalidate>
     <div class="mb-3">
+      <button
+        type="submit"
+        class="btn btn-danger"
+        [disabled]="!addNewsForm.valid"
+      >
+        {{ mainButtonText }}
+      </button>
       <button
         type="submit"
         class="btn btn-danger"

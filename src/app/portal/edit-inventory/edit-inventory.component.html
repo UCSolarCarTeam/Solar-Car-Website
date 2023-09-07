@@ -9,6 +9,7 @@
       <button (click)="renderAddItem()" class="btn btn-danger actionButton">
         Add Item
       </button>
+      <!-- <button (click)="handleClick()">Test</button> -->
       <input
         (click)="returnItemFilter()"
         type="checkbox"
@@ -255,6 +256,7 @@
           type="submit"
           class="btn btn-danger"
           [disabled]="!addItemForm.valid"
+          (click)="addItemSuccess()"
         >
           {{ submitButtonText }}
         </button>

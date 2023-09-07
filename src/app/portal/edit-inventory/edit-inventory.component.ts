@@ -8,7 +8,10 @@ import { UserActionService } from "src/app/services/user-action.service";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
-
+import AWN from "awesome-notifications";
+let globalOptions = {};
+let notifier = new AWN(globalOptions);
+let nextCallOptions = {};
 @Component({
   selector: "app-edit-inventory",
   templateUrl: "./edit-inventory.component.html",
@@ -48,6 +51,9 @@ export class EditInventoryComponent implements OnInit {
     const blob: Blob = await res.blob();
     const myImage = new File([blob], fileName, { type: "image/webp" });
     this.image = myImage;
+  }
+  addItemSuccess() {
+    notifier.success("Your item has been added", nextCallOptions);
   }
   constructor(
     private inventoryService: InventoryService,

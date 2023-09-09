@@ -54,8 +54,33 @@ export class EditInventoryComponent implements OnInit {
     const myImage = new File([blob], fileName, { type: "image/webp" });
     this.image = myImage;
   }
-  addItemSuccess() {
-    notifier.success("Your item has been added", nextCallOptions);
+  addItemNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Item has been added",
+      "Something got wrong, contact tech support"
+    );
+  }
+  updateItemNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Item has been updated",
+      "Something got wrong, contact tech support"
+    );
+  }
+  borrowItemNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Item has been borrowed",
+      "Something got wrong, contact tech support"
+    );
+  }
+  returnItemNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Item has been returned",
+      "Something got wrong, contact tech support"
+    );
   }
   constructor(
     private inventoryService: InventoryService,
@@ -166,7 +191,8 @@ export class EditInventoryComponent implements OnInit {
           imageUrl: this.previewImgUrl,
         };
 
-        this.inventoryService.updateInventoryItem(newItem);
+        let promise = this.inventoryService.updateInventoryItem(newItem);
+        this.updateItemNotification(promise);
       } else {
         const id = this.updateItemId;
         const name = this.addItemForm.get("name").value;
@@ -205,7 +231,8 @@ export class EditInventoryComponent implements OnInit {
                 image: null,
                 imageUrl: downloadUrl,
               };
-              this.inventoryService.updateInventoryItem(newItem);
+              let promise = this.inventoryService.updateInventoryItem(newItem);
+              this.updateItemNotification(promise);
             });
           });
       }
@@ -235,7 +262,8 @@ export class EditInventoryComponent implements OnInit {
         imageUrl:
           "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021",
       };
-      this.inventoryService.addInventoryItem(newItem);
+      let promise = this.inventoryService.addInventoryItem(newItem);
+      this.addItemNotification(promise);
     } else {
       const name = this.addItemForm.get("name").value;
       const type = this.addItemForm.get("type").value;
@@ -272,7 +300,8 @@ export class EditInventoryComponent implements OnInit {
               image: null,
               imageUrl: downloadUrl,
             };
-            this.inventoryService.addInventoryItem(newItem);
+            let promise = this.inventoryService.addInventoryItem(newItem);
+            this.addItemNotification(promise);
           });
         });
     }
@@ -344,11 +373,12 @@ export class EditInventoryComponent implements OnInit {
     let onOk = () => {
       if (item.isBorrowable === true && item.isBorrowed === false) {
         let promise = this.inventoryService.borrowItem(item);
-        notifier.async(
-          promise,
-          "Item has been borrowed",
-          "Something got wrong, contact tech support"
-        );
+        this.borrowItemNotification(promise);
+        // notifier.async(
+        //   promise,
+        //   "Item has been borrowed",
+        //   "Something got wrong, contact tech support"
+        // );
       }
     };
     notifier.confirm("Are you sure?", onOk, {
@@ -362,11 +392,12 @@ export class EditInventoryComponent implements OnInit {
       if (item.isBorrowable === true && item.isBorrowed === true) {
         item.borrowedByUser = this.user.id;
         let promise = this.inventoryService.returnItem(item);
-        notifier.async(
-          promise,
-          "Item has been returned",
-          "Something got wrong, contact tech support"
-        );
+        this.returnItemNotification(promise);
+        // notifier.async(
+        //   promise,
+        //   "Item has been returned",
+        //   "Something got wrong, contact tech support"
+        // );
       }
     };
 

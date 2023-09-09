@@ -8,6 +8,8 @@ import { UserActionService } from "src/app/services/user-action.service";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
+// Awesome Notifications Docs:
+// https://f3oall.github.io/awesome-notifications/docs/popups/confirmation-window
 import AWN from "awesome-notifications";
 let globalOptions = {};
 let notifier = new AWN(globalOptions);
@@ -339,19 +341,45 @@ export class EditInventoryComponent implements OnInit {
   }
 
   renderBorrowModal(item: Item) {
-    if (confirm("Are you sure you would like to borrow this item?")) {
+    let onOk = () => {
       if (item.isBorrowable === true && item.isBorrowed === false) {
-        this.inventoryService.borrowItem(item);
+        let promise = this.inventoryService.borrowItem(item);
+        notifier.async(
+          promise,
+          "Item has been borrowed",
+          "Something got wrong, contact tech support"
+        );
       }
-    }
+    };
+    notifier.confirm("Are you sure?", onOk, {
+      labels: {
+        confirm: "Dangerous action",
+      },
+    });
   }
   renderReturnModal(item: Item) {
-    if (confirm("Are you sure you would like to return this item?")) {
+    let onOk = () => {
       if (item.isBorrowable === true && item.isBorrowed === true) {
         item.borrowedByUser = this.user.id;
-        this.inventoryService.returnItem(item);
+        let promise = this.inventoryService.returnItem(item);
+        notifier.async(
+          promise,
+          "Item has been returned",
+          "Something got wrong, contact tech support"
+        );
       }
-    }
+    };
+
+    notifier.confirm(
+      "Are you sure?",
+      onOk,
+      //  onCancel,
+      {
+        labels: {
+          confirm: "Dangerous action",
+        },
+      }
+    );
   }
 
   useItemModal(item: Item) {

@@ -4,7 +4,12 @@ import { News } from "src/app/models/news";
 import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { FileUploadService } from "src/app/services/file-upload.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
-
+// Awesome Notifications Docs:
+// https://f3oall.github.io/awesome-notifications/docs/popups/confirmation-window
+import AWN from "awesome-notifications";
+let globalOptions = {};
+let notifier = new AWN(globalOptions);
+let nextCallOptions = {};
 @Component({
   selector: "app-edit-news",
   templateUrl: "./edit-news.component.html",
@@ -29,6 +34,27 @@ export class EditNewsComponent implements OnInit {
   imageCropped(event: ImageCroppedEvent) {
     this.previewThumbnailUrl = event.base64;
     this.dataUrlToFile();
+  }
+  addItemNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "News item has been added",
+      "Something got wrong, contact tech support"
+    );
+  }
+  updateNewsNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "News item has been updated",
+      "Something got wrong, contact tech support"
+    );
+  }
+  removeNewsNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "News item has been removed",
+      "Something got wrong, contact tech support"
+    );
   }
 
   // Helper function
@@ -114,7 +140,8 @@ Something...
           thumbnail: null,
           thumbnailUrl: this.previewThumbnailUrl,
         };
-        this.newsService.updateNews(newNewsArticle);
+        let promise = this.newsService.updateNews(newNewsArticle);
+        this.updateNewsNotification(promise);
       } else {
         const newsId = this.updateNewsId;
         const newsName = this.addNewsForm.get("name").value;
@@ -132,7 +159,8 @@ Something...
                 thumbnail: null,
                 thumbnailUrl: downloadUrl,
               };
-              this.newsService.updateNews(newNewsArticle);
+              let promise = this.newsService.updateNews(newNewsArticle);
+              this.updateNewsNotification(promise);
             });
           });
       }
@@ -152,7 +180,8 @@ Something...
         thumbnailUrl: "",
       };
       console.log(newNewsArticle);
-      this.newsService.addNews(newNewsArticle);
+      let promise = this.newsService.addNews(newNewsArticle);
+      this.addItemNotification(promise);
       this.resetForm();
     } else {
       const newsName = this.addNewsForm.get("name").value;
@@ -170,7 +199,8 @@ Something...
               thumbnailUrl: downloadUrl,
             };
             console.log(newNewsArticle);
-            this.newsService.addNews(newNewsArticle);
+            let promise = this.newsService.addNews(newNewsArticle);
+            this.addItemNotification(promise);
           });
         });
       this.resetForm();
@@ -178,7 +208,8 @@ Something...
   }
 
   deleteNews(news: News) {
-    this.newsService.deleteNews(news);
+    let promise = this.newsService.deleteNews(news);
+    this.removeNewsNotification(promise);
   }
 
   setupNewsUpdate(news: News) {

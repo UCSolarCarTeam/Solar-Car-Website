@@ -24,3 +24,6 @@
 .imageCrop {
   max-width: 500px;
 }
+.croppingArea {
+  display: inline-block;
+}

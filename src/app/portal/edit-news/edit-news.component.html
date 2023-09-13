@@ -10,13 +10,6 @@
       >
         {{ mainButtonText }}
       </button>
-      <button
-        type="submit"
-        class="btn btn-danger"
-        [disabled]="!addNewsForm.valid"
-      >
-        {{ mainButtonText }}
-      </button>
     </div>
     <div class="row">
       <div class="col-4">
@@ -47,19 +40,26 @@
           (change)="fileChangeEvent($event)"
           required
         />
-        <image-cropper
-          class="imageCrop"
-          [imageChangedEvent]="imageChangedEvent"
-          [maintainAspectRatio]="false"
-          [aspectRatio]="4 / 3"
-          [cropperMinWidth]="128"
-          format="webp"
-          imageQuality="90"
-          (imageCropped)="imageCropped($event)"
-        ></image-cropper>
       </div>
     </div>
-    <img [src]="previewThumbnailUrl" style="max-width: 500px" />
+    <span class="croppingArea">
+      <image-cropper
+        class="imageCrop"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="false"
+        [aspectRatio]="4 / 3"
+        [cropperMinWidth]="128"
+        format="webp"
+        imageQuality="90"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
+    </span>
+    <span class="croppingArea">
+      <label
+        >Logo Preview =>
+        <img [src]="previewThumbnailUrl" style="max-width: 500px" />
+      </label>
+    </span>
   </form>
   <br />
   <button

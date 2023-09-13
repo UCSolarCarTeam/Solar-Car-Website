@@ -7,7 +7,10 @@ import { FileUploadService } from "src/app/services/file-upload.service";
 import { UserActionService } from "src/app/services/user-action.service";
 import { UserAction } from "src/app/models/user-action";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
-
+import AWN from "awesome-notifications";
+let globalOptions = {};
+let notifier = new AWN(globalOptions);
+let nextCallOptions = {};
 @Component({
   selector: "app-edit-sponsors",
   templateUrl: "./edit-sponsors.component.html",
@@ -32,7 +35,27 @@ export class EditSponsorsComponent implements OnInit {
     this.previewLogoUrl = event.base64;
     this.dataUrlToFile();
   }
-
+  addItemNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Sponsor has been added",
+      "Something got wrong, contact tech support"
+    );
+  }
+  updateNewsNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Sponsor has been updated",
+      "Something got wrong, contact tech support"
+    );
+  }
+  removeNewsNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Sponsor has been removed",
+      "Something got wrong, contact tech support"
+    );
+  }
   // Helper function
   async dataUrlToFile(): Promise<void> {
     const dataUrl = this.previewLogoUrl;
@@ -97,7 +120,8 @@ export class EditSponsorsComponent implements OnInit {
           tier: this.addSponsorForm.get("tier").value,
           logo: null,
         };
-        this.sponsorService.updateSponsor(newSponsor);
+        let promise = this.sponsorService.updateSponsor(newSponsor);
+        this.updateNewsNotification(promise);
       } else {
         const sponsorId = this.updateSponsorId;
         const sponsorName = this.addSponsorForm.get("name").value;
@@ -115,7 +139,8 @@ export class EditSponsorsComponent implements OnInit {
                 tier: sponsorTier,
                 logo: null,
               };
-              this.sponsorService.updateSponsor(newSponsor);
+              let promise = this.sponsorService.updateSponsor(newSponsor);
+              this.updateNewsNotification(promise);
             });
           });
       }
@@ -136,14 +161,16 @@ export class EditSponsorsComponent implements OnInit {
             tier: sponsorTier,
             logo: null,
           };
-          this.sponsorService.addSponsor(newSponsor);
+          let promise = this.sponsorService.addSponsor(newSponsor);
+          this.addItemNotification(promise);
         });
       });
     this.resetForm();
   }
 
   deleteSponsor(sponsor: Sponsor) {
-    this.sponsorService.deleteSponsor(sponsor);
+    let promise = this.sponsorService.deleteSponsor(sponsor);
+    this.removeNewsNotification(promise);
   }
 
   setupSponsorUpdate(sponsor: Sponsor) {

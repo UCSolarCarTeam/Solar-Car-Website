@@ -35,21 +35,21 @@ export class EditSponsorsComponent implements OnInit {
     this.previewLogoUrl = event.base64;
     this.dataUrlToFile();
   }
-  addItemNotification(promise: Promise<any>) {
+  addSponsorNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Sponsor has been added",
       "Something got wrong, contact tech support"
     );
   }
-  updateNewsNotification(promise: Promise<any>) {
+  updateSponsorNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Sponsor has been updated",
       "Something got wrong, contact tech support"
     );
   }
-  removeNewsNotification(promise: Promise<any>) {
+  removeSponsorNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Sponsor has been removed",
@@ -121,7 +121,7 @@ export class EditSponsorsComponent implements OnInit {
           logo: null,
         };
         let promise = this.sponsorService.updateSponsor(newSponsor);
-        this.updateNewsNotification(promise);
+        this.updateSponsorNotification(promise);
       } else {
         const sponsorId = this.updateSponsorId;
         const sponsorName = this.addSponsorForm.get("name").value;
@@ -140,7 +140,7 @@ export class EditSponsorsComponent implements OnInit {
                 logo: null,
               };
               let promise = this.sponsorService.updateSponsor(newSponsor);
-              this.updateNewsNotification(promise);
+              this.updateSponsorNotification(promise);
             });
           });
       }
@@ -162,7 +162,7 @@ export class EditSponsorsComponent implements OnInit {
             logo: null,
           };
           let promise = this.sponsorService.addSponsor(newSponsor);
-          this.addItemNotification(promise);
+          this.addSponsorNotification(promise);
         });
       });
     this.resetForm();
@@ -170,7 +170,7 @@ export class EditSponsorsComponent implements OnInit {
 
   deleteSponsor(sponsor: Sponsor) {
     let promise = this.sponsorService.deleteSponsor(sponsor);
-    this.removeNewsNotification(promise);
+    this.removeSponsorNotification(promise);
   }
 
   setupSponsorUpdate(sponsor: Sponsor) {

@@ -32,24 +32,33 @@ export class SponsorsComponent implements OnInit {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as object)
         } as Sponsor;
+
         switch (sponsor.tier) {
           case 'Lead':
-            this.lead.push(sponsor);
+            // only push to array if the sponsor doesn't already exist
+            if (this.lead.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
+              this.lead.push(sponsor);
+            else
             break;
           case 'Platinum':
-            this.platinum.push(sponsor);
+            if (this.platinum.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
+              this.platinum.push(sponsor);
             break;
           case 'Gold':
-            this.gold.push(sponsor);
+            if (this.gold.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
+              this.gold.push(sponsor);
             break;
           case 'Silver':
-            this.silver.push(sponsor);
+            if (this.silver.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
+              this.silver.push(sponsor);
             break;
           case 'Bronze':
-            this.bronze.push(sponsor);
+            if (this.bronze.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
+              this.bronze.push(sponsor);
             break;
           case 'Friend':
-            this.friends.push(sponsor);
+            if (this.friends.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
+              this.friends.push(sponsor);
             break;
         }
       });

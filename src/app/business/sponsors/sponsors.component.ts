@@ -26,7 +26,15 @@ export class SponsorsComponent implements OnInit {
     this.silver = [];
     this.bronze = [];
     this.friends = [];
+
     this.sponsorService.getSponsors().subscribe(res => {
+      this.lead = [];
+      this.platinum = [];
+      this.gold = [];
+      this.silver = [];
+      this.bronze = [];
+      this.friends = [];
+
       res.forEach(e => {
         const sponsor = {
           id: e.payload.doc.id,
@@ -35,30 +43,22 @@ export class SponsorsComponent implements OnInit {
 
         switch (sponsor.tier) {
           case 'Lead':
-            // only push to array if the sponsor doesn't already exist
-            if (this.lead.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
-              this.lead.push(sponsor);
-            else
+            this.lead.push(sponsor);
             break;
           case 'Platinum':
-            if (this.platinum.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
-              this.platinum.push(sponsor);
+            this.platinum.push(sponsor);
             break;
           case 'Gold':
-            if (this.gold.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
-              this.gold.push(sponsor);
+            this.gold.push(sponsor);
             break;
           case 'Silver':
-            if (this.silver.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
-              this.silver.push(sponsor);
+            this.silver.push(sponsor);
             break;
           case 'Bronze':
-            if (this.bronze.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
-              this.bronze.push(sponsor);
+            this.bronze.push(sponsor);
             break;
           case 'Friend':
-            if (this.friends.findIndex(existingSponsor => existingSponsor.id === sponsor.id) == -1)
-              this.friends.push(sponsor);
+            this.friends.push(sponsor);
             break;
         }
       });

@@ -28,30 +28,35 @@ export class EditTeamComponent implements OnInit {
   actionHistory: UserAction[];
   deleteFlag: string;
   imageChangedEvent: any = "";
-
-  // handleClick() {
-  //   notifier.success("Your custom message", nextCallOptions);
-  // }
-  // showAlert() {
-  //   notifier.alert("An error has occured", nextCallOptions);
-  // }
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
-    // console.log(this.image);
-    // Not needed because imageCropped does the same thing.
-    // const reader = new FileReader();
-    // reader.onload = (event: any) => {
-    //   this.previewImgUrl = event.target.result;
-    // };
-    // reader.readAsDataURL(this.image);
   }
   imageCropped(event: ImageCroppedEvent) {
     this.previewImgUrl = event.base64;
     this.dataUrlToFile();
-    // console.log(this.previewImgUrl);
   }
-
+  addMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been added",
+      "Something got wrong, contact tech support"
+    );
+  }
+  updateMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been updated",
+      "Something got wrong, contact tech support"
+    );
+  }
+  removeMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been removed",
+      "Something got wrong, contact tech support"
+    );
+  }
   async dataUrlToFile(): Promise<void> {
     const dataUrl = this.previewImgUrl;
     const fileName = this.image.name;
@@ -59,7 +64,6 @@ export class EditTeamComponent implements OnInit {
     const blob: Blob = await res.blob();
     const myImage = new File([blob], fileName, { type: "image/webp" });
     this.image = myImage;
-    // console.log(this.image);
   }
 
   constructor(
@@ -128,15 +132,8 @@ export class EditTeamComponent implements OnInit {
   }
 
   deleteMember(member: Member) {
-    this.memberService.deleteMember(member);
-    notifier.success(
-      `${member.name} has successfully been deleted!`,
-      nextCallOptions
-    );
-    // .catch((err) => {
-    //   notifier.alert("Member deletion failed", nextCallOptions);
-    //   err;
-    // });
+    let promise = this.memberService.deleteMember(member);
+    this.removeMemberNotification(promise);
   }
 
   setupMemberUpdate(member: Member) {
@@ -186,7 +183,8 @@ export class EditTeamComponent implements OnInit {
             image: null,
             releaseTime: date,
           };
-          this.memberService.updateMember(newMember);
+          let promise = this.memberService.updateMember(newMember);
+          this.updateMemberNotification(promise);
         } else {
           const memberId = this.updateMemberId;
           const memberName = this.addMemberForm.get("name").value;
@@ -211,7 +209,8 @@ export class EditTeamComponent implements OnInit {
                   image: null,
                   releaseTime: date,
                 };
-                this.memberService.updateMember(newMember);
+                let promise = this.memberService.updateMember(newMember);
+                this.updateMemberNotification(promise);
               });
             });
         }
@@ -239,15 +238,8 @@ export class EditTeamComponent implements OnInit {
               image: null,
               releaseTime: date,
             };
-            this.memberService
-              .addMember(newMember)
-              .then((response) => {
-                notifier.success(`Member has been added!`, nextCallOptions);
-              })
-              .catch((err) => {
-                notifier.alert("Member upload failed", nextCallOptions);
-                err;
-              });
+            let promise = this.memberService.addMember(newMember);
+            this.addMemberNotification(promise);
           });
         })
         .catch((err) => {

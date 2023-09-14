@@ -39,21 +39,21 @@ export class EditNewsComponent implements OnInit {
     notifier.async(
       promise,
       "News item has been added",
-      "Something got wrong, contact tech support"
+      "News item failed to add, contact tech support"
     );
   }
   updateNewsNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "News item has been updated",
-      "Something got wrong, contact tech support"
+      "News item failed to update, contact tech support"
     );
   }
   removeNewsNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "News item has been removed",
-      "Something got wrong, contact tech support"
+      "News item failed to remove, contact tech support"
     );
   }
 

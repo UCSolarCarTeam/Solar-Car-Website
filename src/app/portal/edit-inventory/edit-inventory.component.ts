@@ -58,28 +58,28 @@ export class EditInventoryComponent implements OnInit {
     notifier.async(
       promise,
       "Item has been added",
-      "Something got wrong, contact tech support"
+      "Item failed to add, contact tech support"
     );
   }
   updateItemNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Item has been updated",
-      "Something got wrong, contact tech support"
+      "Item failed to update, contact tech support"
     );
   }
   borrowItemNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Item has been borrowed",
-      "Something got wrong, contact tech support"
+      "Failed to borrow item, contact tech support"
     );
   }
   returnItemNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Item has been returned",
-      "Something got wrong, contact tech support"
+      "Item failed to return, contact tech support"
     );
   }
   constructor(

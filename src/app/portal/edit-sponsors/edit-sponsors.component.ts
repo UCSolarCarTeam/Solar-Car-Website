@@ -39,21 +39,21 @@ export class EditSponsorsComponent implements OnInit {
     notifier.async(
       promise,
       "Sponsor has been added",
-      "Something got wrong, contact tech support"
+      "Sponsor failed to add, contact tech support"
     );
   }
   updateSponsorNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Sponsor has been updated",
-      "Something got wrong, contact tech support"
+      "Sponsor failed to update, contact tech support"
     );
   }
   removeSponsorNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Sponsor has been removed",
-      "Something got wrong, contact tech support"
+      "Sponsor failed to remove, contact tech support"
     );
   }
   // Helper function

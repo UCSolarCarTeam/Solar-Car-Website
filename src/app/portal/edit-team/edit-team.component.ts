@@ -40,21 +40,21 @@ export class EditTeamComponent implements OnInit {
     notifier.async(
       promise,
       "Team member has been added",
-      "Something got wrong, contact tech support"
+      "Team member failed to add, contact tech support"
     );
   }
   updateMemberNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Team member has been updated",
-      "Something got wrong, contact tech support"
+      "Team member failed to update, contact tech support"
     );
   }
   removeMemberNotification(promise: Promise<any>) {
     notifier.async(
       promise,
       "Team member has been removed",
-      "Something got wrong, contact tech support"
+      "Team member failed to remove, contact tech support"
     );
   }
   async dataUrlToFile(): Promise<void> {

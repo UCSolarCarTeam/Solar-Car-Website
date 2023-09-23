@@ -131,6 +131,7 @@ export class EditTeamComponent implements OnInit {
     this.imageChangedEvent = null;
   }
 
+  // Unused function
   deleteMember(member: Member) {
     let promise = this.memberService.deleteMember(member);
     this.removeMemberNotification(promise);
@@ -168,7 +169,8 @@ export class EditTeamComponent implements OnInit {
       }
       if (this.mainButtonText.startsWith("Update")) {
         if (this.deleteFlag) {
-          this.deleteService.deleteFile(this.deleteFlag);
+          let promise = this.deleteService.deleteFile(this.deleteFlag);
+          this.removeMemberNotification(promise);
         }
         if (this.image === null) {
           const newMember = {

@@ -7,6 +7,10 @@ import { FileDeleteService } from "src/app/services/file-delete.service";
 import { MemberService } from "src/app/services/member.service";
 import { UserActionService } from "src/app/services/user-action.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
+import AWN from "awesome-notifications";
+let globalOptions = {};
+let notifier = new AWN(globalOptions);
+let nextCallOptions = {};
 @Component({
   selector: "app-edit-team",
   templateUrl: "./edit-team.component.html",
@@ -24,24 +28,35 @@ export class EditTeamComponent implements OnInit {
   actionHistory: UserAction[];
   deleteFlag: string;
   imageChangedEvent: any = "";
-
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
-    // console.log(this.image);
-    // Not needed because imageCropped does the same thing.
-    // const reader = new FileReader();
-    // reader.onload = (event: any) => {
-    //   this.previewImgUrl = event.target.result;
-    // };
-    // reader.readAsDataURL(this.image);
   }
   imageCropped(event: ImageCroppedEvent) {
     this.previewImgUrl = event.base64;
     this.dataUrlToFile();
-    // console.log(this.previewImgUrl);
   }
-
+  addMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been added",
+      "Team member failed to add, contact tech support"
+    );
+  }
+  updateMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been updated",
+      "Team member failed to update, contact tech support"
+    );
+  }
+  removeMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been removed",
+      "Team member failed to remove, contact tech support"
+    );
+  }
   async dataUrlToFile(): Promise<void> {
     const dataUrl = this.previewImgUrl;
     const fileName = this.image.name;
@@ -49,7 +64,6 @@ export class EditTeamComponent implements OnInit {
     const blob: Blob = await res.blob();
     const myImage = new File([blob], fileName, { type: "image/webp" });
     this.image = myImage;
-    // console.log(this.image);
   }
 
   constructor(
@@ -117,8 +131,10 @@ export class EditTeamComponent implements OnInit {
     this.imageChangedEvent = null;
   }
 
+  // Unused function
   deleteMember(member: Member) {
-    this.memberService.deleteMember(member);
+    let promise = this.memberService.deleteMember(member);
+    this.removeMemberNotification(promise);
   }
 
   setupMemberUpdate(member: Member) {
@@ -145,87 +161,97 @@ export class EditTeamComponent implements OnInit {
   }
 
   manageMember() {
-    const dateTime = this.addMemberForm.get("releaseTime").value;
-    let date: string = null;
-    if (dateTime !== "") {
-      date = new Date(dateTime).toUTCString();
-    }
-    if (this.mainButtonText.startsWith("Update")) {
-      if (this.deleteFlag) {
-        this.deleteService.deleteFile(this.deleteFlag);
+    try {
+      const dateTime = this.addMemberForm.get("releaseTime").value;
+      let date: string = null;
+      if (dateTime !== "") {
+        date = new Date(dateTime).toUTCString();
       }
-      if (this.image === null) {
-        const newMember = {
-          id: this.updateMemberId,
-          name: this.addMemberForm.get("name").value,
-          position: this.addMemberForm.get("position").value,
-          subteam: this.addMemberForm.get("subteam").value,
-          major: this.addMemberForm.get("major").value,
-          description: this.addMemberForm.get("description").value,
-          year: this.addMemberForm.get("year").value,
-          imageName: this.previewImgUrl,
-          image: null,
-          releaseTime: date,
-        };
-        this.memberService.updateMember(newMember);
-      } else {
-        const memberId = this.updateMemberId;
-        const memberName = this.addMemberForm.get("name").value;
-        const memberPosition = this.addMemberForm.get("position").value;
-        const memberSubteam = this.addMemberForm.get("subteam").value;
-        const memberMajor = this.addMemberForm.get("major").value;
-        const memberDescription = this.addMemberForm.get("description").value;
-        const memberYear = this.addMemberForm.get("year").value;
-        this.uploadService
-          .uploadFile(this.image, "assets/member_images/")
-          .then((snapshot) => {
-            snapshot.ref.getDownloadURL().then((downloadUrl) => {
-              const newMember = {
-                id: memberId,
-                name: memberName,
-                position: memberPosition,
-                imageName: downloadUrl,
-                subteam: memberSubteam,
-                major: memberMajor,
-                description: memberDescription,
-                year: memberYear,
-                image: null,
-                releaseTime: date,
-              };
-              this.memberService.updateMember(newMember);
-            });
-          });
-      }
-      this.resetForm();
-      return;
-    }
-    const memberName = this.addMemberForm.get("name").value;
-    const memberPosition = this.addMemberForm.get("position").value;
-    const memberSubteam = this.addMemberForm.get("subteam").value;
-    const memberMajor = this.addMemberForm.get("major").value;
-    const memberDescription = this.addMemberForm.get("description").value;
-    const memberYear = this.addMemberForm.get("year").value;
-    this.uploadService
-      .uploadFile(this.image, "assets/member_images/")
-      .then((snapshot) => {
-        snapshot.ref.getDownloadURL().then((downloadUrl) => {
+      if (this.mainButtonText.startsWith("Update")) {
+        if (this.deleteFlag) {
+          let promise = this.deleteService.deleteFile(this.deleteFlag);
+          this.removeMemberNotification(promise);
+        }
+        if (this.image === null) {
           const newMember = {
-            name: memberName,
-            position: memberPosition,
-            imageName: downloadUrl,
-            subteam: memberSubteam,
-            major: memberMajor,
-            description: memberDescription,
-            year: memberYear,
+            id: this.updateMemberId,
+            name: this.addMemberForm.get("name").value,
+            position: this.addMemberForm.get("position").value,
+            subteam: this.addMemberForm.get("subteam").value,
+            major: this.addMemberForm.get("major").value,
+            description: this.addMemberForm.get("description").value,
+            year: this.addMemberForm.get("year").value,
+            imageName: this.previewImgUrl,
             image: null,
             releaseTime: date,
           };
-          this.memberService.addMember(newMember);
+          let promise = this.memberService.updateMember(newMember);
+          this.updateMemberNotification(promise);
+        } else {
+          const memberId = this.updateMemberId;
+          const memberName = this.addMemberForm.get("name").value;
+          const memberPosition = this.addMemberForm.get("position").value;
+          const memberSubteam = this.addMemberForm.get("subteam").value;
+          const memberMajor = this.addMemberForm.get("major").value;
+          const memberDescription = this.addMemberForm.get("description").value;
+          const memberYear = this.addMemberForm.get("year").value;
+          this.uploadService
+            .uploadFile(this.image, "assets/member_images/")
+            .then((snapshot) => {
+              snapshot.ref.getDownloadURL().then((downloadUrl) => {
+                const newMember = {
+                  id: memberId,
+                  name: memberName,
+                  position: memberPosition,
+                  imageName: downloadUrl,
+                  subteam: memberSubteam,
+                  major: memberMajor,
+                  description: memberDescription,
+                  year: memberYear,
+                  image: null,
+                  releaseTime: date,
+                };
+                let promise = this.memberService.updateMember(newMember);
+                this.updateMemberNotification(promise);
+              });
+            });
+        }
+        this.resetForm();
+        return;
+      }
+      const memberName = this.addMemberForm.get("name").value;
+      const memberPosition = this.addMemberForm.get("position").value;
+      const memberSubteam = this.addMemberForm.get("subteam").value;
+      const memberMajor = this.addMemberForm.get("major").value;
+      const memberDescription = this.addMemberForm.get("description").value;
+      const memberYear = this.addMemberForm.get("year").value;
+      this.uploadService
+        .uploadFile(this.image, "assets/member_images/")
+        .then((snapshot) => {
+          snapshot.ref.getDownloadURL().then((downloadUrl) => {
+            const newMember = {
+              name: memberName,
+              position: memberPosition,
+              imageName: downloadUrl,
+              subteam: memberSubteam,
+              major: memberMajor,
+              description: memberDescription,
+              year: memberYear,
+              image: null,
+              releaseTime: date,
+            };
+            let promise = this.memberService.addMember(newMember);
+            this.addMemberNotification(promise);
+          });
+        })
+        .catch((err) => {
+          notifier.alert("Image upload failed", nextCallOptions);
         });
-      });
-    this.resetForm();
+      this.resetForm();
+    } catch (err) {
+      notifier.alert("Form submission failed", nextCallOptions);
+    }
   }
-
   showActionHistory(member: Member) {
     this.actionHistory = [];
     this.userActionService.getEntityActions(member.id).then((userActions) => {

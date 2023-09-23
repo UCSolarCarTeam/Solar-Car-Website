@@ -39,7 +39,6 @@ export class AuthService {
       })
       .catch((err) => {
         throw err;
-        // window.alert(err.message);
       });
   }
 
@@ -79,22 +78,33 @@ export class AuthService {
 
   ChangeEmail(email) {
     return this.auth.currentUser.then((user) => {
-      user.updateEmail(email).then(() => {
-        const user = JSON.parse(window.sessionStorage.getItem("User"));
-        user.email = email;
-        this.userService.updateUser(user);
-      });
+      user
+        .updateEmail(email)
+        .then(() => {
+          const user = JSON.parse(window.sessionStorage.getItem("User"));
+          user.email = email;
+          this.userService.updateUser(user);
+        })
+        .catch((err) => {
+          throw err;
+        });
     });
   }
 
   ResetPassword(email) {
-    return this.auth.sendPasswordResetEmail(email);
+    return this.auth.sendPasswordResetEmail(email).catch((err) => {
+      throw err;
+    });
   }
 
   ChangePassword(password) {
-    return this.auth.currentUser.then((user) => {
-      user.updatePassword(password);
-    });
+    return this.auth.currentUser
+      .then((user) => {
+        return user.updatePassword(password);
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 
   isAdmin() {

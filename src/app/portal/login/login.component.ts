@@ -20,7 +20,7 @@ export class LoginComponent {
     notifier.async(
       promise,
       "User has logged in",
-      "User has failed log in, contact tech support"
+      "User has failed login. Please check your password and email or contact tech support"
     );
   }
   constructor(

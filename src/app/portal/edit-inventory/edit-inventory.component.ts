@@ -82,6 +82,101 @@ export class EditInventoryComponent implements OnInit {
       "Item failed to return, contact tech support"
     );
   }
+  useItemNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Item has been used",
+      "Item was not used. Check there are more than 1 or contact tech support"
+    );
+  }
+  async useConfirmationNotification(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      const onOk = () => {
+        resolve(true);
+      };
+
+      const onCancel = () => {
+        resolve(false);
+      };
+
+      notifier.confirm(
+        "Are you sure you would like to use? Item count will be reduced by 1.",
+        onOk,
+        onCancel,
+        {
+          labels: {
+            confirm: "Dangerous action",
+          },
+        }
+      );
+    });
+  }
+  async borrowConfirmationNotification(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      const onOk = () => {
+        resolve(true);
+      };
+
+      const onCancel = () => {
+        resolve(false);
+      };
+
+      notifier.confirm(
+        "Are you sure you would like to borrow?",
+        onOk,
+        onCancel,
+        {
+          labels: {
+            confirm: "Dangerous action",
+          },
+        }
+      );
+    });
+  }
+  async returnConfirmationNotification(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      const onOk = () => {
+        resolve(true);
+      };
+
+      const onCancel = () => {
+        resolve(false);
+      };
+
+      notifier.confirm(
+        "Are you sure you would like to return?",
+        onOk,
+        onCancel,
+        {
+          labels: {
+            confirm: "Dangerous action",
+          },
+        }
+      );
+    });
+  }
+  async borrowCheckNotification(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      const onOk = () => {
+        resolve(true);
+      };
+
+      const onCancel = () => {
+        resolve(false);
+      };
+
+      notifier.confirm(
+        "The max value for an item than can be borrowed is 1. If you proceed, the item count will be changed to 1",
+        onOk,
+        onCancel,
+        {
+          labels: {
+            confirm: "Dangerous action",
+          },
+        }
+      );
+    });
+  }
   constructor(
     private inventoryService: InventoryService,
     private formBuilder: UntypedFormBuilder,
@@ -369,57 +464,36 @@ export class EditInventoryComponent implements OnInit {
     // this.submitButtonText = 'Add Item';
   }
 
-  renderBorrowModal(item: Item) {
-    let onOk = () => {
+  async renderBorrowModal(item: Item) {
+    let confirmed = await this.borrowConfirmationNotification();
+    if (confirmed) {
       if (item.isBorrowable === true && item.isBorrowed === false) {
         let promise = this.inventoryService.borrowItem(item);
         this.borrowItemNotification(promise);
-        // notifier.async(
-        //   promise,
-        //   "Item has been borrowed",
-        //   "Something got wrong, contact tech support"
-        // );
       }
-    };
-    notifier.confirm("Are you sure?", onOk, {
-      labels: {
-        confirm: "Dangerous action",
-      },
-    });
+    }
   }
-  renderReturnModal(item: Item) {
-    let onOk = () => {
+  async renderReturnModal(item: Item) {
+    let confirmed = await this.returnConfirmationNotification();
+    if (confirmed) {
       if (item.isBorrowable === true && item.isBorrowed === true) {
         item.borrowedByUser = this.user.id;
         let promise = this.inventoryService.returnItem(item);
         this.returnItemNotification(promise);
-        // notifier.async(
-        //   promise,
-        //   "Item has been returned",
-        //   "Something got wrong, contact tech support"
-        // );
       }
-    };
-
-    notifier.confirm(
-      "Are you sure?",
-      onOk,
-      //  onCancel,
-      {
-        labels: {
-          confirm: "Dangerous action",
-        },
-      }
-    );
+    }
   }
 
-  useItemModal(item: Item) {
+  async useItemModal(item: Item) {
     if (item.amount > 0) {
-      if (confirm("The item count will be reduced by 1.")) {
-        this.inventoryService.useItem(item);
+      const confirmed = await this.useConfirmationNotification();
+      if (confirmed) {
+        let promise = this.inventoryService.useItem(item);
+        this.useItemNotification(promise);
       }
     } else {
-      alert("There are no more left");
+      let promise = Promise.reject(new Error("No items left to use"));
+      this.useItemNotification(promise);
     }
   }
 
@@ -508,15 +582,17 @@ export class EditInventoryComponent implements OnInit {
       location.setAttribute("style", "display:none");
     }
   }
-  borrowableCheck() {
+  async borrowableCheck() {
+    let confirmed = await this.borrowCheckNotification();
     if (
       this.addItemForm.get("isBorrowable").value === true &&
       this.addItemForm.get("amount").value !== 1
     ) {
       if (
-        confirm(
-          "The max value for an item than can be borrowed is 1. If you proceed, the item count will be changed to 1"
-        )
+        confirmed
+        // confirm(
+        //   "The max value for an item than can be borrowed is 1. If you proceed, the item count will be changed to 1"
+        // )
       ) {
         this.addItemForm.controls["amount"].setValue(1);
       } else {

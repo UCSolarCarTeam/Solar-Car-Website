@@ -57,13 +57,17 @@ export class SponsorService {
       action: Action.UPDATED,
       dateTime: new Date().toLocaleString(),
     });
-    return sponsorRef.update({
-      name: sponsor.name,
-      link: sponsor.link,
-      logo: sponsor.logo,
-      logoUrl: sponsor.logoUrl,
-      tier: sponsor.tier,
-    });
+    return sponsorRef
+      .update({
+        name: sponsor.name,
+        link: sponsor.link,
+        logo: sponsor.logo,
+        logoUrl: sponsor.logoUrl,
+        tier: sponsor.tier,
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 
   deleteSponsor(sponsor: Sponsor) {
@@ -80,6 +84,9 @@ export class SponsorService {
     return this.firestore
       .collection("sponsors-collection")
       .doc(sponsor.id)
-      .delete();
+      .delete()
+      .catch((error) => {
+        throw error;
+      });
   }
 }

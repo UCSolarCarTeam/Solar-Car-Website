@@ -15,6 +15,12 @@ let nextCallOptions = {};
   styleUrls: ["./reset-password.component.css"],
 })
 export class ResetPasswordComponent {
+  isMessageVisible = false;
+  message = "Please check your email to reset your password";
+  showMessage() {
+    this.isMessageVisible = true;
+  }
+
   resetForm: UntypedFormGroup;
   resetPasswordNotification(promise: Promise<any>) {
     notifier.async(

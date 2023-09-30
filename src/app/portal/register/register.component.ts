@@ -32,12 +32,7 @@ export class RegisterComponent {
     this.signUpForm = this.formBuilder.group({
       displayName: [""],
       email: ["", Validators.pattern(".+@.+.c.+")],
-      password: [
-        "",
-        Validators.pattern(
-          "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!#%*?&])[A-Za-zd$@$!%*?&].{8,}"
-        ),
-      ],
+      password: ["", Validators.pattern("^.{6,}$")],
       passwordConfirm: [""],
     });
   }
@@ -55,12 +50,11 @@ export class RegisterComponent {
       return;
     }
     this.passwordsDoNotMatch = false;
-    let promise = this.authService.SignUp(
+    this.authService.SignUp(
       this.signUpForm.get("displayName").value,
       this.signUpForm.get("email").value,
       this.signUpForm.get("password").value
     );
-    this.registerUserNotification(promise);
   }
 
   SignUpSuccess() {

@@ -34,27 +34,35 @@ export class EditTeamComponent implements OnInit {
   deleteFlag: string;
   imageChangedEvent: any = "";
 
-  handleClick() {
-    notifier.success("Your custom message", nextCallOptions);
-  }
-
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
-    // console.log(this.image);
-    // Not needed because imageCropped does the same thing.
-    // const reader = new FileReader();
-    // reader.onload = (event: any) => {
-    //   this.previewImgUrl = event.target.result;
-    // };
-    // reader.readAsDataURL(this.image);
   }
   imageCropped(event: ImageCroppedEvent) {
     this.previewImgUrl = event.base64;
     this.dataUrlToFile();
-    // console.log(this.previewImgUrl);
   }
-
+  addMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been added",
+      "Team member failed to add, contact tech support"
+    );
+  }
+  updateMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been updated",
+      "Team member failed to update, contact tech support"
+    );
+  }
+  removeMemberNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Team member has been removed",
+      "Team member failed to remove, contact tech support"
+    );
+  }
   async dataUrlToFile(): Promise<void> {
     const dataUrl = this.previewImgUrl;
     const fileName = this.image.name;
@@ -62,7 +70,6 @@ export class EditTeamComponent implements OnInit {
     const blob: Blob = await res.blob();
     const myImage = new File([blob], fileName, { type: "image/webp" });
     this.image = myImage;
-    // console.log(this.image);
   }
 
   constructor(
@@ -130,8 +137,10 @@ export class EditTeamComponent implements OnInit {
     this.imageChangedEvent = null;
   }
 
+  // Unused function
   deleteMember(member: Member) {
-    this.memberService.deleteMember(member);
+    let promise = this.memberService.deleteMember(member);
+    this.removeMemberNotification(promise);
   }
 
   setupMemberUpdate(member: Member) {
@@ -166,7 +175,8 @@ export class EditTeamComponent implements OnInit {
       }
       if (this.mainButtonText.startsWith("Update")) {
         if (this.deleteFlag) {
-          this.deleteService.deleteFile(this.deleteFlag);
+          let promise = this.deleteService.deleteFile(this.deleteFlag);
+          this.removeMemberNotification(promise);
         }
         if (this.image === null) {
           const newMember = {
@@ -181,7 +191,8 @@ export class EditTeamComponent implements OnInit {
             image: null,
             releaseTime: date,
           };
-          this.memberService.updateMember(newMember);
+          let promise = this.memberService.updateMember(newMember);
+          this.updateMemberNotification(promise);
         } else {
           const memberId = this.updateMemberId;
           const memberName = this.addMemberForm.get("name").value;
@@ -206,7 +217,8 @@ export class EditTeamComponent implements OnInit {
                   image: null,
                   releaseTime: date,
                 };
-                this.memberService.updateMember(newMember);
+                let promise = this.memberService.updateMember(newMember);
+                this.updateMemberNotification(promise);
               });
             });
         }
@@ -234,13 +246,16 @@ export class EditTeamComponent implements OnInit {
               image: null,
               releaseTime: date,
             };
-            this.memberService.addMember(newMember);
+            let promise = this.memberService.addMember(newMember);
+            this.addMemberNotification(promise);
           });
+        })
+        .catch((err) => {
+          notifier.alert("Image upload failed", nextCallOptions);
         });
       this.resetForm();
-      notifier.success("Your custom message", nextCallOptions);
     } catch (err) {
-      notifier.alert("Please fill out all fields", nextCallOptions);
+      notifier.alert("Form submission failed", nextCallOptions);
     }
   }
   showActionHistory(member: Member) {

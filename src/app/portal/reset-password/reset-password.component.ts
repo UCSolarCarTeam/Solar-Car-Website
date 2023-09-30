@@ -5,7 +5,10 @@ import {
   Validators,
 } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
-
+import AWN from "awesome-notifications";
+let globalOptions = {};
+let notifier = new AWN(globalOptions);
+let nextCallOptions = {};
 @Component({
   selector: "app-reset-password",
   templateUrl: "./reset-password.component.html",
@@ -19,7 +22,13 @@ export class ResetPasswordComponent {
   }
 
   resetForm: UntypedFormGroup;
-
+  resetPasswordNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "Password has been reset",
+      "Password has failed to reset. Please contact tech support"
+    );
+  }
   constructor(
     private authService: AuthService,
     private formBuilder: UntypedFormBuilder
@@ -30,6 +39,9 @@ export class ResetPasswordComponent {
   }
 
   resetPasswordSubmit() {
-    this.authService.ResetPassword(this.resetForm.get("email").value);
+    let promise = this.authService.ResetPassword(
+      this.resetForm.get("email").value
+    );
+    this.resetPasswordNotification(promise);
   }
 }

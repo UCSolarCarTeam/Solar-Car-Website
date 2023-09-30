@@ -1,13 +1,12 @@
 <div class="formContainer">
-  <button (click)="handleClick()">Show Success</button>
   <form [formGroup]="addMemberForm" (ngSubmit)="manageMember()" novalidate>
     <div class="mb-3">
-      <label>Name</label>
+      <label>Name*</label>
       <input type="text" formControlName="name" class="form-control" required />
     </div>
 
     <div class="mb-3">
-      <label>Position</label>
+      <label>Position*</label>
       <select formControlName="position" class="form-control" required>
         <option [ngValue]="null" disabled>---- Select an option ----</option>
         <option *ngFor="let position of positions">{{ position }}</option>
@@ -15,7 +14,7 @@
     </div>
 
     <div class="mb-3">
-      <label>Subteam</label>
+      <label>Subteam*</label>
       <select formControlName="subteam" class="form-control" required>
         <option [ngValue]="null" disabled>---- Select an option ----</option>
         <option *ngFor="let subteam of subteams">{{ subteam }}</option>
@@ -23,7 +22,7 @@
     </div>
 
     <div class="mb-3">
-      <label>Major</label>
+      <label>Major*</label>
       <input
         type="text"
         formControlName="major"
@@ -33,7 +32,7 @@
     </div>
 
     <div class="mb-3">
-      <label>Description</label>
+      <label>Description*</label>
       <input
         type="text"
         formControlName="description"
@@ -43,8 +42,13 @@
     </div>
 
     <div class="mb-3">
-      <label>Year</label>
-      <input type="text" formControlName="year" class="form-control" required />
+      <label>Year*</label>
+      <input
+        type="number"
+        formControlName="year"
+        class="form-control"
+        required
+      />
     </div>
 
     <div class="mb-3">

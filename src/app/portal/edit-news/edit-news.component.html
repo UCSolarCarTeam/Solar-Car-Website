@@ -1,5 +1,6 @@
 <div class="container">
   <br />
+  <br />
   <form [formGroup]="addNewsForm" (ngSubmit)="manageNews()" novalidate>
     <div class="mb-3">
       <button
@@ -39,19 +40,26 @@
           (change)="fileChangeEvent($event)"
           required
         />
-        <image-cropper
-          class="imageCrop"
-          [imageChangedEvent]="imageChangedEvent"
-          [maintainAspectRatio]="false"
-          [aspectRatio]="4 / 3"
-          [cropperMinWidth]="128"
-          format="webp"
-          imageQuality="90"
-          (imageCropped)="imageCropped($event)"
-        ></image-cropper>
       </div>
     </div>
-    <img [src]="previewThumbnailUrl" style="max-width: 500px" />
+    <span class="croppingArea">
+      <image-cropper
+        class="imageCrop"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="false"
+        [aspectRatio]="4 / 3"
+        [cropperMinWidth]="128"
+        format="webp"
+        imageQuality="90"
+        (imageCropped)="imageCropped($event)"
+      ></image-cropper>
+    </span>
+    <span class="croppingArea">
+      <label
+        >Logo Preview =>
+        <img [src]="previewThumbnailUrl" style="max-width: 500px" />
+      </label>
+    </span>
   </form>
   <br />
   <button

@@ -5,7 +5,10 @@ import {
   Validators,
 } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
-
+import AWN from "awesome-notifications";
+let globalOptions = {};
+let notifier = new AWN(globalOptions);
+let nextCallOptions = {};
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
@@ -15,7 +18,13 @@ export class RegisterComponent {
   signUpForm: UntypedFormGroup;
   passwordsDoNotMatch: boolean;
   ucalgaryEmailUsed = true;
-
+  registerUserNotification(promise: Promise<any>) {
+    notifier.async(
+      promise,
+      "User has been registered",
+      "User has failed to register, contact tech support"
+    );
+  }
   constructor(
     private formBuilder: UntypedFormBuilder,
     private authService: AuthService

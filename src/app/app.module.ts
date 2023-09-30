@@ -1,7 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-
+import {
+  Injectable,
+  Injector,
+  InjectionToken,
+  NgModule,
+  ErrorHandler,
+  Inject
+} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -10,6 +16,30 @@ import { AngularFirestoreModule, SETTINGS as FIRESTORE_SETTINGS } from '@angular
 import { AngularFireAuthModule, SETTINGS as FIREAUTH_SETTINGS } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
+
+import Rollbar from 'rollbar'; 
+
+
+const rollbarConfig = {
+  accessToken: 'd37728bf9a104420a3712a57d61c6c7d',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+};
+
+@Injectable()
+export class RollbarErrorHandler implements ErrorHandler {
+  constructor(@Inject(RollbarService) private rollbar: Rollbar) {}
+
+  handleError(err:any) : void {
+    this.rollbar.error(err.originalError || err);
+  }
+}
+
+export function rollbarFactory() {
+    return new Rollbar(rollbarConfig);
+}
+
+export const RollbarService = new InjectionToken<Rollbar>('rollbar');
 
 @NgModule({
   declarations: [
@@ -26,7 +56,9 @@ import { environment } from 'src/environments/environment';
   ],
   providers: [
     { provide: FIRESTORE_SETTINGS, useValue: environment.useEmulators ? { host: 'localhost:8080', ssl: false } : undefined },
-    { provide: FIREAUTH_SETTINGS, useValue: environment.useEmulators ? { host: 'localhost:9099', ssl: false } : undefined }
+    { provide: FIREAUTH_SETTINGS, useValue: environment.useEmulators ? { host: 'localhost:9099', ssl: false } : undefined },
+    { provide: ErrorHandler, useClass: RollbarErrorHandler },
+    { provide: RollbarService, useFactory: rollbarFactory }
   ],
   bootstrap: [AppComponent]
 })

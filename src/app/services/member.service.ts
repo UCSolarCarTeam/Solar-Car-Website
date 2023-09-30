@@ -1,50 +1,55 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Action } from '../models/action';
-import { Member } from '../models/member.model';
-import { UserActionService } from './user-action.service';
+import { Injectable } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { Action } from "../models/action";
+import { Member } from "../models/member.model";
+import { UserActionService } from "./user-action.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class MemberService {
-
-  constructor(private firestore: AngularFirestore, private userActionService: UserActionService) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private userActionService: UserActionService
+  ) {}
 
   addMember(member: Member) {
-    const user = JSON.parse(window.sessionStorage.getItem('User'));
+    const user = JSON.parse(window.sessionStorage.getItem("User"));
     return new Promise<any>((resolve, reject) => {
       this.firestore
-        .collection('members-collection')
+        .collection("members-collection")
         .add(member)
-        .then(response => {
-          this.userActionService.addUserAction({
-            uid: user.id,
-            uName: user.displayName,
-            eid: response.id,
-            eName: 'Member: ' + member.name,
-            action: Action.ADDED,
-            dateTime: new Date().toLocaleString(),
-          });
-          resolve(response);
-        }, error => reject(error));
+        .then(
+          (response) => {
+            this.userActionService.addUserAction({
+              uid: user.id,
+              uName: user.displayName,
+              eid: response.id,
+              eName: "Member: " + member.name,
+              action: Action.ADDED,
+              dateTime: new Date().toLocaleString(),
+            });
+            resolve(response);
+          },
+          (error) => reject(error)
+        );
     });
   }
 
   getMembers() {
-    return this.firestore
-      .collection('members-collection')
-      .snapshotChanges();
+    return this.firestore.collection("members-collection").snapshotChanges();
   }
 
   updateMember(member: Member) {
-    const user = JSON.parse(window.sessionStorage.getItem('User'));
-    const memberRef = this.firestore.collection('members-collection').doc(member.id);
+    const user = JSON.parse(window.sessionStorage.getItem("User"));
+    const memberRef = this.firestore
+      .collection("members-collection")
+      .doc(member.id);
     this.userActionService.addUserAction({
       uid: user.id,
       uName: user.displayName,
       eid: member.id,
-      eName: 'Member: ' + member.name,
+      eName: "Member: " + member.name,
       action: Action.UPDATED,
       dateTime: new Date().toLocaleString(),
     });
@@ -62,38 +67,47 @@ export class MemberService {
   }
 
   deleteMember(member: Member) {
-    const user = JSON.parse(window.sessionStorage.getItem('User'));
-    this.firestore
-      .collection('members-collection')
-      .doc(member.id)
-      .delete();
+    const user = JSON.parse(window.sessionStorage.getItem("User"));
+
     this.userActionService.addUserAction({
       uid: user.id,
       uName: user.displayName,
       eid: member.id,
-      eName: 'Member: ' + member.name,
+      eName: "Member: " + member.name,
       action: Action.DELETED,
       dateTime: new Date().toLocaleString(),
     });
+    return this.firestore
+      .collection("members-collection")
+      .doc(member.id)
+      .delete();
   }
 
   TeamCaptain() {
-    return this.firestore.collection('members-collection',
-      ref => ref.where('position', '==', 'Team Captain')).get();
+    return this.firestore
+      .collection("members-collection", (ref) =>
+        ref.where("position", "==", "Team Captain")
+      )
+      .get();
   }
 
   EngineeringManager() {
-    return this.firestore.collection('members-collection',
-      ref => ref.where('position', '==', 'Engineering Team Manager')).get();
+    return this.firestore
+      .collection("members-collection", (ref) =>
+        ref.where("position", "==", "Engineering Team Manager")
+      )
+      .get();
   }
 
   BusinessManager() {
-    return this.firestore.collection('members-collection',
-      ref => ref.where('position', '==', 'Business Team Manager')).get();
+    return this.firestore
+      .collection("members-collection", (ref) =>
+        ref.where("position", "==", "Business Team Manager")
+      )
+      .get();
   }
 
   AllMembers() {
-    return this.firestore.collection('members-collection').get();
+    return this.firestore.collection("members-collection").get();
   }
-
 }

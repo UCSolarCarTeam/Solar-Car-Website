@@ -63,13 +63,24 @@
           >
             Return
           </button>
-          <button
-            *ngIf="item.isBorrowable !== true"
-            (click)="useItemModal(item)"
-            class="btn btn-warning actionButton"
-          >
-            Use 1
-          </button>
+          <div class="buttonContainer">
+            <button
+              *ngIf="item.isBorrowable !== true"
+              (click)="useItemModal(item)"
+              class="btn btn-warning actionButton"
+              style="margin-right: 1rem"
+            >
+              Use 1
+            </button>
+
+            <button
+              *ngIf="item.isBorrowable !== true"
+              (click)="openModal(item)"
+              class="btn btn-warning actionButton"
+            >
+              Use Multiple
+            </button>
+          </div>
         </td>
         <td><img class="imageResultsPreview" src="{{ item.imageUrl }}" /></td>
         <td>
@@ -84,7 +95,21 @@
     </table>
     <p>--- End of Items ---</p>
   </div>
-
+  <dialog id="myModal">
+    <button style="color: red; font-size: larger" (click)="closeModal()">
+      &times;
+    </button>
+    <h2>Use Multiple Items</h2>
+    <p id="modalContent">Modal content goes here.</p>
+    <input
+      id="multipleItemInput"
+      type="number"
+      placeholder="0"
+      (input)="setItemAmount($event.target.value)"
+      [(ngModel)]="useItemAmount"
+    />
+    <button style="color: red" (click)="useMultipleItemModal()">Submit</button>
+  </dialog>
   <div class="itemControlModal">
     <form [formGroup]="addItemForm" (ngSubmit)="manageItemForm()" novalidate>
       <h3>{{ submitButtonText }}</h3>

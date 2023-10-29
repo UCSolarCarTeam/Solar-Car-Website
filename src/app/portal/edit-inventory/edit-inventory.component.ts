@@ -527,7 +527,7 @@ export class EditInventoryComponent implements OnInit {
   }
   async useMultipleItemModal() {
     let item = this.itemToBeEdited;
-    if (item.amount - this.useItemAmount > 0) {
+    if (item.amount >= this.useItemAmount && this.useItemAmount > 0) {
       let promise = this.inventoryService.useMultipleItem(
         item,
         this.useItemAmount

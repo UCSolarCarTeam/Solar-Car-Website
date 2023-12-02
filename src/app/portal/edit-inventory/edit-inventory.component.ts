@@ -45,7 +45,7 @@ export class EditInventoryComponent implements OnInit {
   setItemAmount(amount: number) {
     this.useItemAmount = amount;
   }
-  openModal(modalItem: Item) {
+  openMultipleItemModal(modalItem: Item) {
     this.itemToBeEdited = modalItem;
     const modal = document.getElementById("myModal") as HTMLDialogElement;
     const modalContent = document.getElementById("modalContent") as HTMLElement;
@@ -53,7 +53,7 @@ export class EditInventoryComponent implements OnInit {
     modalContent.innerHTML = `${modalItem.name} available: ${modalItem.amount}`;
     modal.showModal();
   }
-  closeModal() {
+  closeMultipleItemModal() {
     const modal = document.getElementById("myModal") as HTMLDialogElement;
     modal.close();
   }
@@ -533,7 +533,7 @@ export class EditInventoryComponent implements OnInit {
         this.useItemAmount
       );
       this.useMultipleItemNotification(promise, this.useItemAmount);
-      this.closeModal();
+      this.closeMultipleItemModal();
       this.useItemAmount = 0;
     } else {
       let promise = Promise.reject(

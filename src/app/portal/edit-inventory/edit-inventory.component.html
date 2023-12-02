@@ -75,7 +75,7 @@
 
             <button
               *ngIf="item.isBorrowable !== true"
-              (click)="openModal(item)"
+              (click)="openMultipleItemModal(item)"
               class="btn btn-warning actionButton"
             >
               Use Multiple
@@ -95,8 +95,11 @@
     </table>
     <p>--- End of Items ---</p>
   </div>
-  <dialog id="myModal">
-    <button style="color: red; font-size: larger" (click)="closeModal()">
+  <dialog id="multipleItemModal">
+    <button
+      style="color: red; font-size: larger"
+      (click)="closeMultipleItemModal()"
+    >
       &times;
     </button>
     <h2>Use Multiple Items</h2>
@@ -105,6 +108,7 @@
       id="multipleItemInput"
       type="number"
       placeholder="0"
+      min="0"
       (input)="setItemAmount($event.target.value)"
       [(ngModel)]="useItemAmount"
     />

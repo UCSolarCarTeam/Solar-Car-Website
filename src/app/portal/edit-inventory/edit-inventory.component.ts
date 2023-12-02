@@ -8,6 +8,7 @@ import { UserActionService } from "src/app/services/user-action.service";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
+// import { Observable } from "rxjs";
 // Awesome Notifications Docs:
 // https://f3oall.github.io/awesome-notifications/docs/popups/confirmation-window
 import AWN from "awesome-notifications";
@@ -38,6 +39,9 @@ export class EditInventoryComponent implements OnInit {
   previewImgUrl: string;
   imageChangedEvent: any = "";
   borrowFilter: boolean;
+  locationList: string[];
+  // locationList: ["a", "b", "c"];
+
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
@@ -250,6 +254,13 @@ export class EditInventoryComponent implements OnInit {
           item.borrowedByUser = "Borrowed by: " + itemUser.displayName;
         });
         return item;
+      });
+      this.locationList = res.map((e) => {
+        const item = {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as object),
+        } as Item;
+        return item.location;
       });
     });
   }

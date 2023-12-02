@@ -132,37 +132,24 @@
 
       <div class="mb-3">
         <label>Location:</label><br />
-        <select
-          (change)="locationUpdate()"
-          class="form-control"
-          formControlName="location"
-        >
-          <option value="Custom">Custom</option>
-          <optgroup label="Electrical Room"></optgroup>
-          <option
-            *ngFor="let room of elecLocals; let i = index"
-            [ngValue]="room"
-          >
-            {{ room }}
-          </option>
-          <optgroup label="Mechanical Room"></optgroup>
-          <option *ngFor="let room of mechLocals; let i = index">
-            {{ room }}
-          </option>
-          <optgroup label="Lockers Room"></optgroup>
-          <option *ngFor="let room of lockerLocals; let i = index">
-            {{ room }}
-          </option>
-          <optgroup label="Basement"></optgroup>
-          <option *ngFor="let room of basementLocals; let i = index">
-            {{ room }}
-          </option>
-        </select>
-        <input
-          formControlName="location *"
-          class="form-control location-field"
-          required
-        />
+        <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            placeholder="Pick one"
+            aria-label="Number"
+            matInput
+            formControlName="location"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of locationList | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
       </div>
 
       <div class="mb-3">

@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { AgmCoreModule } from "@agm/core";
 import { CommonModule } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { MatTabsModule } from "@angular/material/tabs";
@@ -57,10 +56,10 @@ import { FooterComponent } from "./footer/footer.component";
   ],
   imports: [
     CommonModule,
-    AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCHcMfciASJU5gIbUuAa2lNCekB76fbPaE",
-      libraries: ["places", "geometry"],
-    }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: "AIzaSyCHcMfciASJU5gIbUuAa2lNCekB76fbPaE",
+    //   libraries: ["places", "geometry"],
+    // }),
     BusinessRoutingModule,
     FontAwesomeModule,
     MatTabsModule,

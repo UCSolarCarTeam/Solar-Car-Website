@@ -12,6 +12,8 @@ import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
 // Awesome Notifications Docs:
 // https://f3oall.github.io/awesome-notifications/docs/popups/confirmation-window
 import AWN from "awesome-notifications";
+import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 let globalOptions = {};
 let notifier = new AWN(globalOptions);
 let nextCallOptions = {};
@@ -40,7 +42,6 @@ export class EditInventoryComponent implements OnInit {
   imageChangedEvent: any = "";
   borrowFilter: boolean;
   locationList: string[];
-  // locationList: ["a", "b", "c"];
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
@@ -255,13 +256,19 @@ export class EditInventoryComponent implements OnInit {
         });
         return item;
       });
-      this.locationList = res.map((e) => {
-        const item = {
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as object),
-        } as Item;
-        return item.location;
-      });
+      this.locationList = [
+        ...new Set(
+          res
+            .map((e) => {
+              const item = {
+                id: e.payload.doc.id,
+                ...(e.payload.doc.data() as object),
+              } as Item;
+              return item.location ? item.location : null;
+            })
+            .filter((e) => e !== null)
+        ),
+      ];
     });
   }
 

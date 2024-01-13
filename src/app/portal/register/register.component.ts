@@ -45,10 +45,10 @@ export class RegisterComponent {
       this.passwordsDoNotMatch = true;
       return;
     }
-    if (!this.signUpForm.get("email").value.includes("ucalgary.ca")) {
-      this.ucalgaryEmailUsed = false;
-      return;
-    }
+    // if (!this.signUpForm.get("email").value.includes("ucalgary.ca")) {
+    //   this.ucalgaryEmailUsed = false;
+    //   return;
+    // }
     this.passwordsDoNotMatch = false;
     this.authService.SignUp(
       this.signUpForm.get("displayName").value,

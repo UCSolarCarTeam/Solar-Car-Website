@@ -87,6 +87,11 @@ export class EditInventoryComponent implements OnInit {
       "Item failed to return, contact tech support"
     );
   }
+
+  deleteImage() {
+    this.image = null;
+    this.previewImgUrl = null;
+  }
   useItemNotification(promise: Promise<any>) {
     notifier.async(
       promise,
@@ -283,7 +288,7 @@ export class EditInventoryComponent implements OnInit {
 
   manageItemForm() {
     if (this.submitButtonText.startsWith("Edit Item")) {
-      if (this.image === null) {
+      if (this.image === null || this.image === undefined) {
         const newItem = {
           id: this.updateItemId,
           name: this.addItemForm.get("name").value,
@@ -355,7 +360,7 @@ export class EditInventoryComponent implements OnInit {
       return;
     }
     // Adding New Item
-    if (this.image === null) {
+    if (this.image === null || this.image === undefined) {
       const newItem = {
         name: this.addItemForm.get("name").value,
         type: this.addItemForm.get("type").value,

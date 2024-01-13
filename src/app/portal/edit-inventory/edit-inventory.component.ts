@@ -87,6 +87,11 @@ export class EditInventoryComponent implements OnInit {
       "Item failed to return, contact tech support"
     );
   }
+
+  deleteImage() {
+    this.image = null;
+    this.previewImgUrl = null;
+  }
   useItemNotification(promise: Promise<any>) {
     notifier.async(
       promise,

@@ -286,9 +286,10 @@ export class EditInventoryComponent implements OnInit {
     reader.readAsDataURL(this.image);
   }
 
-  // BUGS:
-  // When editing an item and deleting the image, a default image is not set
   manageItemForm() {
+    const PLACEHOLDER_IMAGE_URL =
+      "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021";
+
     let newItem: Item = {
       name: this.addItemForm.get("name").value,
       type: this.addItemForm.get("type").value,
@@ -312,7 +313,15 @@ export class EditInventoryComponent implements OnInit {
       newItem.id = this.updateItemId;
       // If the image is not changed, use the old image url
       if (this.image === null || this.image === undefined) {
+        // If the image is deleted or not set, use the placeholder image, otherwise use the old image url
         newItem.imageUrl = this.previewImgUrl;
+        if (
+          this.previewImgUrl == null ||
+          this.previewImgUrl == undefined ||
+          this.previewImgUrl == ""
+        ) {
+          newItem.imageUrl = PLACEHOLDER_IMAGE_URL;
+        }
         let promise = this.inventoryService.updateInventoryItem(newItem);
         this.updateItemNotification(promise);
         // If the image is changed, upload the new image and use the new image url
@@ -330,9 +339,7 @@ export class EditInventoryComponent implements OnInit {
     }
     // Adding New Item
     else if (this.image === null || this.image === undefined) {
-      newItem.imageUrl =
-        "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021";
-
+      newItem.imageUrl = PLACEHOLDER_IMAGE_URL;
       let promise = this.inventoryService.addInventoryItem(newItem);
       this.addItemNotification(promise);
     } else {

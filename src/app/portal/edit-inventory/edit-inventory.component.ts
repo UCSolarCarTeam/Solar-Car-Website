@@ -286,6 +286,8 @@ export class EditInventoryComponent implements OnInit {
     reader.readAsDataURL(this.image);
   }
 
+  // BUGS:
+  // When editing an item and deleting the image, a default image is not set
   manageItemForm() {
     let newItem: Item = {
       name: this.addItemForm.get("name").value,
@@ -305,6 +307,7 @@ export class EditInventoryComponent implements OnInit {
       image: null,
       imageUrl: "",
     };
+    // Editing Item
     if (this.submitButtonText.startsWith("Edit Item")) {
       newItem.id = this.updateItemId;
       // If the image is not changed, use the old image url
@@ -324,54 +327,20 @@ export class EditInventoryComponent implements OnInit {
             });
           });
       }
-      this.resetForm();
-      this.modalVisiblity(false);
-
-      return;
     }
     // Adding New Item
-    if (this.image === null || this.image === undefined) {
+    else if (this.image === null || this.image === undefined) {
       newItem.imageUrl =
         "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021";
 
       let promise = this.inventoryService.addInventoryItem(newItem);
       this.addItemNotification(promise);
     } else {
-      const name = this.addItemForm.get("name").value;
-      const type = this.addItemForm.get("type").value;
-      const internalPartNumber =
-        this.addItemForm.get("internalPartNumber").value;
-      const manufacturerPartNumber = this.addItemForm.get(
-        "manufacturerPartNumber"
-      ).value;
-      const manufacturer = this.addItemForm.get("manufacturer").value;
-      const link = this.addItemForm.get("link").value;
-      const description = this.addItemForm.get("description").value;
-      const amountUnit = this.addItemForm.get("amountUnit").value;
-      const location = this.addItemForm.get("location").value;
-      const amount = this.addItemForm.get("amount").value;
-      const isBorrowable = this.addItemForm.get("isBorrowable").value;
       this.uploadService
         .uploadFile(this.image, "assets/inventory_images/")
         .then((snapshot) => {
           snapshot.ref.getDownloadURL().then((downloadUrl) => {
-            newItem = {
-              name,
-              type,
-              internalPartNumber,
-              manufacturerPartNumber,
-              manufacturer,
-              link,
-              description,
-              amountUnit,
-              location,
-              amount,
-              isBorrowable,
-              isBorrowed: false,
-              borrowedByUser: "",
-              image: null,
-              imageUrl: downloadUrl,
-            };
+            newItem.imageUrl = downloadUrl;
             let promise = this.inventoryService.addInventoryItem(newItem);
             this.addItemNotification(promise);
           });

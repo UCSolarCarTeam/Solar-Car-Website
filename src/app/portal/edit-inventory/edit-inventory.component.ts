@@ -287,28 +287,29 @@ export class EditInventoryComponent implements OnInit {
   }
 
   manageItemForm() {
+    let newItem: Item = {
+      // id: this.updateItemId,
+      name: this.addItemForm.get("name").value,
+      type: this.addItemForm.get("type").value,
+      internalPartNumber: this.addItemForm.get("internalPartNumber").value,
+      manufacturerPartNumber: this.addItemForm.get("manufacturerPartNumber")
+        .value,
+      manufacturer: this.addItemForm.get("manufacturer").value,
+      link: this.addItemForm.get("link").value,
+      description: this.addItemForm.get("description").value,
+      amountUnit: this.addItemForm.get("amountUnit").value,
+      location: this.addItemForm.get("location").value,
+      amount: this.addItemForm.get("amount").value,
+      isBorrowable: this.addItemForm.get("isBorrowable").value,
+      isBorrowed: false,
+      borrowedByUser: "",
+      image: null,
+      imageUrl: "",
+    };
     if (this.submitButtonText.startsWith("Edit Item")) {
       if (this.image === null || this.image === undefined) {
-        const newItem = {
-          id: this.updateItemId,
-          name: this.addItemForm.get("name").value,
-          type: this.addItemForm.get("type").value,
-          internalPartNumber: this.addItemForm.get("internalPartNumber").value,
-          manufacturerPartNumber: this.addItemForm.get("manufacturerPartNumber")
-            .value,
-          manufacturer: this.addItemForm.get("manufacturer").value,
-          link: this.addItemForm.get("link").value,
-          description: this.addItemForm.get("description").value,
-          amountUnit: this.addItemForm.get("amountUnit").value,
-          location: this.addItemForm.get("location").value,
-          amount: this.addItemForm.get("amount").value,
-          isBorrowable: this.addItemForm.get("isBorrowable").value,
-          isBorrowed: false,
-          borrowedByUser: "",
-          image: null,
-          imageUrl: this.previewImgUrl,
-        };
-
+        newItem.id = this.updateItemId;
+        newItem.imageUrl = this.previewImgUrl;
         let promise = this.inventoryService.updateInventoryItem(newItem);
         this.updateItemNotification(promise);
       } else {
@@ -331,7 +332,7 @@ export class EditInventoryComponent implements OnInit {
           .uploadFile(this.image, "assets/inventory_images/")
           .then((snapshot) => {
             snapshot.ref.getDownloadURL().then((downloadUrl) => {
-              const newItem = {
+              newItem = {
                 id,
                 name,
                 type,
@@ -361,25 +362,9 @@ export class EditInventoryComponent implements OnInit {
     }
     // Adding New Item
     if (this.image === null || this.image === undefined) {
-      const newItem = {
-        name: this.addItemForm.get("name").value,
-        type: this.addItemForm.get("type").value,
-        internalPartNumber: this.addItemForm.get("internalPartNumber").value,
-        manufacturerPartNumber: this.addItemForm.get("manufacturerPartNumber")
-          .value,
-        manufacturer: this.addItemForm.get("manufacturer").value,
-        link: this.addItemForm.get("link").value,
-        description: this.addItemForm.get("description").value,
-        amountUnit: this.addItemForm.get("amountUnit").value,
-        location: this.addItemForm.get("location").value,
-        amount: this.addItemForm.get("amount").value,
-        isBorrowable: this.addItemForm.get("isBorrowable").value,
-        isBorrowed: false,
-        borrowedByUser: "",
-        image: null,
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021",
-      };
+      newItem.imageUrl =
+        "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021";
+
       let promise = this.inventoryService.addInventoryItem(newItem);
       this.addItemNotification(promise);
     } else {
@@ -401,7 +386,7 @@ export class EditInventoryComponent implements OnInit {
         .uploadFile(this.image, "assets/inventory_images/")
         .then((snapshot) => {
           snapshot.ref.getDownloadURL().then((downloadUrl) => {
-            const newItem = {
+            newItem = {
               name,
               type,
               internalPartNumber,

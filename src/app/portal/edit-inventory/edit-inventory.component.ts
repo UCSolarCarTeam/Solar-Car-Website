@@ -288,7 +288,6 @@ export class EditInventoryComponent implements OnInit {
 
   manageItemForm() {
     let newItem: Item = {
-      // id: this.updateItemId,
       name: this.addItemForm.get("name").value,
       type: this.addItemForm.get("type").value,
       internalPartNumber: this.addItemForm.get("internalPartNumber").value,
@@ -307,49 +306,19 @@ export class EditInventoryComponent implements OnInit {
       imageUrl: "",
     };
     if (this.submitButtonText.startsWith("Edit Item")) {
+      newItem.id = this.updateItemId;
+      // If the image is not changed, use the old image url
       if (this.image === null || this.image === undefined) {
-        newItem.id = this.updateItemId;
         newItem.imageUrl = this.previewImgUrl;
         let promise = this.inventoryService.updateInventoryItem(newItem);
         this.updateItemNotification(promise);
+        // If the image is changed, upload the new image and use the new image url
       } else {
-        const id = this.updateItemId;
-        const name = this.addItemForm.get("name").value;
-        const type = this.addItemForm.get("type").value;
-        const internalPartNumber =
-          this.addItemForm.get("internalPartNumber").value;
-        const manufacturerPartNumber = this.addItemForm.get(
-          "manufacturerPartNumber"
-        ).value;
-        const manufacturer = this.addItemForm.get("manufacturer").value;
-        const link = this.addItemForm.get("link").value;
-        const description = this.addItemForm.get("description").value;
-        const amountUnit = this.addItemForm.get("amountUnit").value;
-        const location = this.addItemForm.get("location").value;
-        const amount = this.addItemForm.get("amount").value;
-        const isBorrowable = this.addItemForm.get("isBorrowable").value;
         this.uploadService
           .uploadFile(this.image, "assets/inventory_images/")
           .then((snapshot) => {
             snapshot.ref.getDownloadURL().then((downloadUrl) => {
-              newItem = {
-                id,
-                name,
-                type,
-                internalPartNumber,
-                manufacturerPartNumber,
-                manufacturer,
-                link,
-                description,
-                amountUnit,
-                location,
-                amount,
-                isBorrowable,
-                isBorrowed: false,
-                borrowedByUser: "",
-                image: null,
-                imageUrl: downloadUrl,
-              };
+              newItem.imageUrl = downloadUrl;
               let promise = this.inventoryService.updateInventoryItem(newItem);
               this.updateItemNotification(promise);
             });

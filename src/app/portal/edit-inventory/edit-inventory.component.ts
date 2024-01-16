@@ -8,9 +8,12 @@ import { UserActionService } from "src/app/services/user-action.service";
 import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 import { ImageCroppedEvent, LoadedImage } from "ngx-image-cropper";
+// import { Observable } from "rxjs";
 // Awesome Notifications Docs:
 // https://f3oall.github.io/awesome-notifications/docs/popups/confirmation-window
 import AWN from "awesome-notifications";
+import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 let globalOptions = {};
 let notifier = new AWN(globalOptions);
 let nextCallOptions = {};
@@ -41,6 +44,7 @@ export class EditInventoryComponent implements OnInit {
   previewImgUrl: string;
   imageChangedEvent: any = "";
   borrowFilter: boolean;
+<<<<<<< HEAD
 
   setItemAmount(amount: number) {
     this.useItemAmount = amount;
@@ -57,6 +61,10 @@ export class EditInventoryComponent implements OnInit {
     const modal = document.getElementById("myModal") as HTMLDialogElement;
     modal.close();
   }
+=======
+  locationList: string[];
+
+>>>>>>> 3cbdf6a45364f7a5a2eecc0514542a7fda090ad2
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
@@ -100,6 +108,11 @@ export class EditInventoryComponent implements OnInit {
       "Item has been returned",
       "Item failed to return, contact tech support"
     );
+  }
+
+  deleteImage() {
+    this.image = null;
+    this.previewImgUrl = null;
   }
   useItemNotification(promise: Promise<any>) {
     notifier.async(
@@ -280,6 +293,19 @@ export class EditInventoryComponent implements OnInit {
         });
         return item;
       });
+      this.locationList = [
+        ...new Set(
+          res
+            .map((e) => {
+              const item = {
+                id: e.payload.doc.id,
+                ...(e.payload.doc.data() as object),
+              } as Item;
+              return item.location ? item.location : null;
+            })
+            .filter((e) => e !== null)
+        ),
+      ];
     });
   }
 
@@ -294,7 +320,7 @@ export class EditInventoryComponent implements OnInit {
 
   manageItemForm() {
     if (this.submitButtonText.startsWith("Edit Item")) {
-      if (this.image === null) {
+      if (this.image === null || this.image === undefined) {
         const newItem = {
           id: this.updateItemId,
           name: this.addItemForm.get("name").value,
@@ -366,7 +392,7 @@ export class EditInventoryComponent implements OnInit {
       return;
     }
     // Adding New Item
-    if (this.image === null) {
+    if (this.image === null || this.image === undefined) {
       const newItem = {
         name: this.addItemForm.get("name").value,
         type: this.addItemForm.get("type").value,

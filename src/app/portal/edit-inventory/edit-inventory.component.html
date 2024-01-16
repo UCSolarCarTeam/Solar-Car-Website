@@ -141,12 +141,8 @@
       </div>
 
       <div class="mb-3">
-        <label>Man. Part # *</label>
-        <input
-          formControlName="manufacturerPartNumber"
-          class="form-control"
-          required
-        />
+        <label>Man. Part #</label>
+        <input formControlName="manufacturerPartNumber" class="form-control" />
       </div>
 
       <div class="mb-3">
@@ -155,44 +151,41 @@
       </div>
 
       <div class="mb-3">
-        <label>Link *</label>
-        <input formControlName="link" class="form-control" required />
+        <label>Link</label>
+        <input formControlName="link" class="form-control" />
       </div>
 
       <div class="mb-3">
-        <label>Location:</label><br />
-        <select
-          (change)="locationUpdate()"
-          class="form-control"
-          formControlName="location"
-        >
-          <option value="Custom">Custom</option>
-          <optgroup label="Electrical Room"></optgroup>
-          <option
-            *ngFor="let room of elecLocals; let i = index"
-            [ngValue]="room"
-          >
-            {{ room }}
-          </option>
-          <optgroup label="Mechanical Room"></optgroup>
-          <option *ngFor="let room of mechLocals; let i = index">
-            {{ room }}
-          </option>
-          <optgroup label="Lockers Room"></optgroup>
-          <option *ngFor="let room of lockerLocals; let i = index">
-            {{ room }}
-          </option>
-          <optgroup label="Basement"></optgroup>
-          <option *ngFor="let room of basementLocals; let i = index">
-            {{ room }}
-          </option>
-        </select>
+        <label>Location: *</label><br />
         <input
-          formControlName="location *"
-          class="form-control location-field"
+          type="text"
+          aria-label="Number"
+          matInput
+          formControlName="location"
+          class="form-control"
+          [matAutocomplete]="auto"
           required
         />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of locationList | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
       </div>
+      <select
+        (change)="locationUpdate()"
+        class="form-control"
+        formControlName="location"
+      >
+        <option value="Custom">Custom</option>
+        <optgroup label="Electrical Room"></optgroup>
+        <option *ngFor="let room of locationList | async" [ngValue]="room">
+          {{ room }}
+        </option>
+      </select>
 
       <div class="mb-3">
         <label>Amount *</label>
@@ -241,7 +234,7 @@
       </div>
 
       <div class="mb-3">
-        <label>Image *</label>
+        <label>Image</label>
         <input
           type="file"
           formControlName="image"

@@ -112,12 +112,8 @@
       </div>
 
       <div class="mb-3">
-        <label>Man. Part # *</label>
-        <input
-          formControlName="manufacturerPartNumber"
-          class="form-control"
-          required
-        />
+        <label>Man. Part #</label>
+        <input formControlName="manufacturerPartNumber" class="form-control" />
       </div>
 
       <div class="mb-3">
@@ -126,12 +122,12 @@
       </div>
 
       <div class="mb-3">
-        <label>Link *</label>
-        <input formControlName="link" class="form-control" required />
+        <label>Link</label>
+        <input formControlName="link" class="form-control" />
       </div>
 
       <div class="mb-3">
-        <label>Location:</label><br />
+        <label>Location: *</label><br />
         <input
           type="text"
           aria-label="Number"
@@ -139,6 +135,7 @@
           formControlName="location"
           class="form-control"
           [matAutocomplete]="auto"
+          required
         />
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option
@@ -208,7 +205,7 @@
       </div>
 
       <div class="mb-3">
-        <label>Image *</label>
+        <label>Image</label>
         <input
           type="file"
           formControlName="image"

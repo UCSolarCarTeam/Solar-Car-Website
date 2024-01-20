@@ -230,6 +230,7 @@ export class EditInventoryComponent implements OnInit {
       "Liter",
       "Roll",
       "Yard",
+      "Grams",
     ];
 
     this.locations = [];

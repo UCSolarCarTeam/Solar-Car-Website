@@ -9,7 +9,6 @@
       <button (click)="renderAddItem()" class="btn btn-danger actionButton">
         Add Item
       </button>
-      <!-- <button (click)="handleClick()">Test</button> -->
       <input
         (click)="returnItemFilter()"
         type="checkbox"
@@ -146,18 +145,6 @@
           </mat-option>
         </mat-autocomplete>
       </div>
-      <!-- <select
-        (change)="locationUpdate()"
-        class="form-control"
-        formControlName="location"
-      >
-        <option value="Custom">Custom</option>
-        <optgroup label="Electrical Room"></optgroup>
-        <option *ngFor="let room of locationList | async" [ngValue]="room">
-          {{ room }}
-        </option>
-      </select> -->
-
       <div class="mb-3">
         <label>Amount *</label>
         <input

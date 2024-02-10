@@ -288,137 +288,67 @@ export class EditInventoryComponent implements OnInit {
   }
 
   manageItemForm() {
-    if (this.submitButtonText.startsWith("Edit Item")) {
-      if (this.image === null || this.image === undefined) {
-        const newItem = {
-          id: this.updateItemId,
-          name: this.addItemForm.get("name").value,
-          type: this.addItemForm.get("type").value,
-          internalPartNumber: this.addItemForm.get("internalPartNumber").value,
-          manufacturerPartNumber: this.addItemForm.get("manufacturerPartNumber")
-            .value,
-          manufacturer: this.addItemForm.get("manufacturer").value,
-          link: this.addItemForm.get("link").value,
-          description: this.addItemForm.get("description").value,
-          amountUnit: this.addItemForm.get("amountUnit").value,
-          location: this.addItemForm.get("location").value,
-          amount: this.addItemForm.get("amount").value,
-          isBorrowable: this.addItemForm.get("isBorrowable").value,
-          isBorrowed: false,
-          borrowedByUser: "",
-          image: null,
-          imageUrl: this.previewImgUrl,
-        };
+    const PLACEHOLDER_IMAGE_URL =
+      "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021";
 
+    let newItem: Item = {
+      name: this.addItemForm.get("name").value,
+      type: this.addItemForm.get("type").value,
+      internalPartNumber: this.addItemForm.get("internalPartNumber").value,
+      manufacturerPartNumber: this.addItemForm.get("manufacturerPartNumber")
+        .value,
+      manufacturer: this.addItemForm.get("manufacturer").value,
+      link: this.addItemForm.get("link").value,
+      description: this.addItemForm.get("description").value,
+      amountUnit: this.addItemForm.get("amountUnit").value,
+      location: this.addItemForm.get("location").value,
+      amount: this.addItemForm.get("amount").value,
+      isBorrowable: this.addItemForm.get("isBorrowable").value,
+      isBorrowed: false,
+      borrowedByUser: "",
+      image: null,
+      imageUrl: "",
+    };
+    // Editing Item
+    if (this.submitButtonText.startsWith("Edit Item")) {
+      newItem.id = this.updateItemId;
+      // If the image is not changed, use the old image url
+      if (this.image === null || this.image === undefined) {
+        // If the image is deleted or not set, use the placeholder image, otherwise use the old image url
+        newItem.imageUrl = this.previewImgUrl;
+        if (
+          this.previewImgUrl == null ||
+          this.previewImgUrl == undefined ||
+          this.previewImgUrl == ""
+        ) {
+          newItem.imageUrl = PLACEHOLDER_IMAGE_URL;
+        }
         let promise = this.inventoryService.updateInventoryItem(newItem);
         this.updateItemNotification(promise);
+        // If the image is changed, upload the new image and use the new image url
       } else {
-        const id = this.updateItemId;
-        const name = this.addItemForm.get("name").value;
-        const type = this.addItemForm.get("type").value;
-        const internalPartNumber =
-          this.addItemForm.get("internalPartNumber").value;
-        const manufacturerPartNumber = this.addItemForm.get(
-          "manufacturerPartNumber"
-        ).value;
-        const manufacturer = this.addItemForm.get("manufacturer").value;
-        const link = this.addItemForm.get("link").value;
-        const description = this.addItemForm.get("description").value;
-        const amountUnit = this.addItemForm.get("amountUnit").value;
-        const location = this.addItemForm.get("location").value;
-        const amount = this.addItemForm.get("amount").value;
-        const isBorrowable = this.addItemForm.get("isBorrowable").value;
         this.uploadService
           .uploadFile(this.image, "assets/inventory_images/")
           .then((snapshot) => {
             snapshot.ref.getDownloadURL().then((downloadUrl) => {
-              const newItem = {
-                id,
-                name,
-                type,
-                internalPartNumber,
-                manufacturerPartNumber,
-                manufacturer,
-                link,
-                description,
-                amountUnit,
-                location,
-                amount,
-                isBorrowable,
-                isBorrowed: false,
-                borrowedByUser: "",
-                image: null,
-                imageUrl: downloadUrl,
-              };
+              newItem.imageUrl = downloadUrl;
               let promise = this.inventoryService.updateInventoryItem(newItem);
               this.updateItemNotification(promise);
             });
           });
       }
-      this.resetForm();
-      this.modalVisiblity(false);
-
-      return;
     }
     // Adding New Item
-    if (this.image === null || this.image === undefined) {
-      const newItem = {
-        name: this.addItemForm.get("name").value,
-        type: this.addItemForm.get("type").value,
-        internalPartNumber: this.addItemForm.get("internalPartNumber").value,
-        manufacturerPartNumber: this.addItemForm.get("manufacturerPartNumber")
-          .value,
-        manufacturer: this.addItemForm.get("manufacturer").value,
-        link: this.addItemForm.get("link").value,
-        description: this.addItemForm.get("description").value,
-        amountUnit: this.addItemForm.get("amountUnit").value,
-        location: this.addItemForm.get("location").value,
-        amount: this.addItemForm.get("amount").value,
-        isBorrowable: this.addItemForm.get("isBorrowable").value,
-        isBorrowed: false,
-        borrowedByUser: "",
-        image: null,
-        imageUrl:
-          "https://firebasestorage.googleapis.com/v0/b/solarcardatabase.appspot.com/o/assets%2Finventory_images%2Fno_img.png?alt=media&token=47ff8883-f59c-48d9-89dd-5db91fe23021",
-      };
+    else if (this.image === null || this.image === undefined) {
+      newItem.imageUrl = PLACEHOLDER_IMAGE_URL;
       let promise = this.inventoryService.addInventoryItem(newItem);
       this.addItemNotification(promise);
     } else {
-      const name = this.addItemForm.get("name").value;
-      const type = this.addItemForm.get("type").value;
-      const internalPartNumber =
-        this.addItemForm.get("internalPartNumber").value;
-      const manufacturerPartNumber = this.addItemForm.get(
-        "manufacturerPartNumber"
-      ).value;
-      const manufacturer = this.addItemForm.get("manufacturer").value;
-      const link = this.addItemForm.get("link").value;
-      const description = this.addItemForm.get("description").value;
-      const amountUnit = this.addItemForm.get("amountUnit").value;
-      const location = this.addItemForm.get("location").value;
-      const amount = this.addItemForm.get("amount").value;
-      const isBorrowable = this.addItemForm.get("isBorrowable").value;
       this.uploadService
         .uploadFile(this.image, "assets/inventory_images/")
         .then((snapshot) => {
           snapshot.ref.getDownloadURL().then((downloadUrl) => {
-            const newItem = {
-              name,
-              type,
-              internalPartNumber,
-              manufacturerPartNumber,
-              manufacturer,
-              link,
-              description,
-              amountUnit,
-              location,
-              amount,
-              isBorrowable,
-              isBorrowed: false,
-              borrowedByUser: "",
-              image: null,
-              imageUrl: downloadUrl,
-            };
+            newItem.imageUrl = downloadUrl;
             let promise = this.inventoryService.addInventoryItem(newItem);
             this.addItemNotification(promise);
           });

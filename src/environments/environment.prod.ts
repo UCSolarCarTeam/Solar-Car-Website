@@ -2,13 +2,13 @@ export const environment = {
   production: true,
   useEmulators: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyCKXG8CCr_9nqB7Qlup5VU5HgD4niJhN9I',
+    apiKey: import.meta.env.NG_APP_FIREBASE_API_KEY, 
     authDomain: 'solarcardatabase.firebaseapp.com',
     databaseURL: 'https://solarcardatabase.firebaseio.com',
-    projectId: 'solarcardatabase',
+    projectId: import.meta.env.NG_APP_PROJECT_ID,
     storageBucket: 'solarcardatabase.appspot.com',
-    messagingSenderId: '188569717520',
-    appId: '1:188569717520:web:7891916923765620a47395',
-    measurementId: 'G-FR63XJDZHP'
+    messagingSenderId: import.meta.env.NG_APP_MESSAGING_SENDER_ID,
+    appId: import.meta.env.NG_APP_APP_ID,
+    measurementId: import.meta.env.NG_APP_MEASUREMENT_ID
   }
 };

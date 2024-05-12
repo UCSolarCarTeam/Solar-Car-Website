@@ -24,6 +24,16 @@ const rollbarConfig = {
   accessToken: 'd37728bf9a104420a3712a57d61c6c7d',
   captureUncaught: true,
   captureUnhandledRejections: true,
+  payload: {
+    environment: "angular-solar-car-site-prod",
+    client: {
+      javascript: {
+        source_map_enabled: true, // false by default
+        code_version: "1.0.0",
+        guess_uncaught_frames: true
+      }
+    }
+  }
 };
 
 @Injectable()

@@ -50,7 +50,7 @@ export class CarsComponent {
                      `Soleon was completed in time for the inaugural NASC (2005) where it became the first University of Calgary
                       car to compete, finishing 13th, an incredible finish for a first-time team, with total driving time of
                       73:55.13. The car was then transported to Australia where it raced the 2005 World Solar Challenge,
-                      completing the 2998.3 km course and finishing 10th against many more experienced teams. The Soleon was
+                      completing the 2998.3 km course while finishing 1st in our class and 10th overall when considering all the classes that competed.
                       retired in 2006 when building of Schulich I began.`];
   }
 }

@@ -68,9 +68,17 @@ export class ContactUsComponent {
       },
       {
         platform: 'Email',
+        name: 'Communications Email',
         icon: '../assets/contact-us/emailLogo.png',
         handle: 'communications@calgarysolarcar.ca',
         link: 'mailto:communications@calgarysolarcar.ca'
+      },
+      {
+        platform: 'Email',
+        name: 'Sponsorship Email',
+        icon: '../assets/contact-us/emailLogo.png',
+        handle: 'sponsorship@calgarysolarcar.ca',
+        link: 'mailto:sponsorship@calgarysolarcar.ca'
       }
     ];
   }

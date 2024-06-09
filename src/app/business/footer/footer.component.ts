@@ -31,7 +31,8 @@ export class FooterComponent {
     ];
 
     this.contact = {
-      email:    'communications@calgarysolarcar.ca',
+      communicationEmail:    'communications@calgarysolarcar.ca',
+      sponsorshipEmail: 'sponsorship@calgarysolarcar.ca',
       building: 'ENC 36, Schulich School of Engineering',
       address:  '2500 University Dr NW',
       postal:   'Calgary, AB T2N 1N4'

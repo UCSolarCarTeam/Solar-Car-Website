@@ -1,16 +1,20 @@
+/* Header Grid */
 .headerGrid {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 60% 40%;
 }
 
+/* Header Container */
 .headerContainer {
   color: #bf1c1c;
   text-align: left;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
+/* Header Text */
 .headerText {
   font-size: 7vw;
   padding-left: 0.7em;
@@ -18,23 +22,26 @@
   padding-bottom: 0.1em;
 }
 
+/* Header Image Container */
 .headerImageContainer {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Header Image */
 .headerImage {
   flex-shrink: 0;
-  min-width: 80%;
-  max-width: 80%;
+  width: 70%;
 }
 
+/* Information Grid */
 .infoGrid {
   display: grid;
   grid-template-columns: 60% 40%;
 }
 
+/* Information Image Container */
 .infoImageContainer {
   display: flex;
   justify-content: center;
@@ -42,28 +49,32 @@
   overflow: hidden;
 }
 
+/* Information Image */
 .infoImage {
   flex-shrink: 0;
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
 }
 
+/* Information Container */
 .infoContainer {
   background-color: #bf1c1c;
   color: white;
   text-align: right;
   display: flex;
+  flex-direction: column;
+  gap: 2em;
   align-items: center;
   justify-content: center;
+  padding: 1em; /* Improved spacing */
 }
 
+/* Information Text */
 .infoText {
   font-size: 1.3rem;
-  padding-right: 1em;
   position: relative;
-  top: 1em;
 }
 
+/* Information Link */
 .infoLink {
   padding-right: 1em;
   position: relative;
@@ -72,66 +83,85 @@
   color: white !important;
 }
 
+/* Information Title */
 .infoTitle {
   padding-right: 0.5em;
 }
 
+/* SubTeam Applications Grid for Three Rows */
 .subTeamApplicationsGridThreeRow {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-columns: repeat(3, 1fr);
   padding-left: 5%;
+  gap: 1em;
 }
 
+/* SubTeam Applications Grid for Two Rows */
 .subTeamApplicationsGridTwoRow {
   display: grid;
-  grid-template-columns: 45% 45%;
+  grid-template-columns: repeat(2, 1fr);
   padding-left: 5%;
+  gap: 1em;
 }
 
+/* SubTeam Applications Grid for Four Rows */
 .subTeamApplicationsGridFourRow {
   display: grid;
-  grid-template-columns: 22.5% 22.5% 22.5% 22.5% 22.5%;
+  grid-template-columns: repeat(4, 1fr);
   padding-left: 5%;
   padding-top: 5em;
+  gap: 1em;
 }
 
+/* Application Title */
 .applicationTitle {
   padding-top: 1em;
   padding-bottom: 0.3em;
   color: #bf1c1c;
 }
 
+/* Applications Section */
 .applications {
   text-align: center;
   padding-bottom: 5em;
 }
 
+/* Application Form Button */
 .applicationFormButton {
   background-color: #bf1c1c;
   color: white;
   border-radius: 1.5em;
-  padding: 0.5em 1.5em 0.5em 1.5em;
+  padding: 0.5em 1.5em;
   border: none;
 }
 
+/* Description Text */
 .descriptionText {
   margin: 0 5em;
 }
 
+/* Desktop View */
+.desktop-view {
+  display: grid;
+}
+
+/* Mobile View */
+.mobile-view {
+  display: grid;
+  grid-template-columns: 1fr; /* Full-width columns */
+  gap: 1em; /* Adjusted spacing */
+}
+
+/* Media Queries */
+
+/* Large screens */
 @media (min-width: 2000px) {
   .headerText {
     font-size: 7vw;
   }
-
-  .desktop-view {
-    display: grid;
-  }
-
-  .mobile-view {
-    display: none;
-  }
 }
 
+/* Medium to Large screens */
 @media (min-width: 900px) {
   .desktop-view {
     display: grid;
@@ -142,6 +172,7 @@
   }
 }
 
+/* Medium screens */
 @media screen and (max-width: 1024px) {
   .desktop-view {
     display: none;
@@ -167,25 +198,19 @@
   }
 
   .headerImage {
-    flex-shrink: 0;
-    min-width: 80%;
-    max-width: 80%;
+    width: 80%;
   }
 
-  .subTeamApplicationsGridThreeRow {
-    padding-top: 5em;
-  }
-
+  .subTeamApplicationsGridThreeRow,
   .subTeamApplicationsGridTwoRow {
     padding-top: 5em;
   }
 }
 
+/* Small screens */
 @media screen and (max-width: 800px) {
   .infoGrid {
-    display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto;
   }
 
   .infoContainer {
@@ -196,13 +221,13 @@
   .headerGrid {
     display: none;
   }
-}
-
-@media screen and (max-width: 500px) {
-  .desktop-view {
+  .infoImage {
     display: none;
   }
+}
 
+/* Extra Small screens */
+@media screen and (max-width: 500px) {
   .headerText {
     padding: 0;
     font-size: 3.5em;
@@ -217,45 +242,20 @@
     display: none;
   }
 
-  /* .infoText {
-    font-size: medium;
-    padding-top: 0em;
-  } */
-
   .infoLink {
-    left: 0em;
+    left: 0;
   }
-
-  /* .infoTitle {
-    font-size: 2em;
-    padding-bottom: 0em;
-  } */
 
   .infoImage {
-    flex-shrink: 0;
-    min-height: 100%;
-    max-height: 100%;
-    min-width: 100%;
-    max-width: 200%;
+    height: 100%;
+    width: 200%;
   }
 
-  .subTeamApplicationsGridThreeRow {
-    display: grid;
-    grid-template-columns: 90%;
-    padding-left: 5%;
-    padding-top: 3em;
-    row-gap: 3em;
-  }
-
+  .subTeamApplicationsGridThreeRow,
   .subTeamApplicationsGridTwoRow {
-    display: grid;
     grid-template-columns: 90%;
     padding-left: 5%;
     padding-top: 3em;
     row-gap: 3em;
-  }
-
-  .mobile-view {
-    display: grid;
   }
 }

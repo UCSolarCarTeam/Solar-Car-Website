@@ -9,6 +9,7 @@
     />
   </div>
 </div>
+
 <div class="infoGrid">
   <div class="infoImage">
     <img
@@ -17,218 +18,69 @@
     />
   </div>
   <div class="infoContainer">
-    <div>
-      <h1 class="infoTitle">Information Nights</h1>
-
-      <p class="infoText">
-        September 11th, 2023<br />
-        5:30 pm<br />
-        ENGG Lounge (ENE 134)<br />
-        <br />
-        September 14th, 2023<br />
-        5:30 pm<br />
-        ENGG Lounge (ENE 134)<br />
-      </p>
-    </div>
+    <h1 class="infoTitle">Information Nights</h1>
+    <p class="infoText">
+      <!-- Add information night details if needed -->
+      Come visit us on <br />
+      September 13th, 16th, 19th at 5:30 PM <br />
+      in ENGG Lounge (ENE 134)
+    </p>
   </div>
 </div>
+
 <div class="applications">
-  <div class="mobile-view">
-    <h1 class="applicationTitle">Application Deadline September 15th, 2023 11:59PM</h1>
-    <div class="subTeamApplicationsGridTwoRow">
-      <div>
-        <h3>{{ subTeams[0].name }}</h3>
-        <br />
-        <p>{{ subTeams[0].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[0])"
-        >
-        Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[1].name }}</h3>
-        <br />
-        <p>{{ subTeams[1].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[1])"
-        >
-        Apply Now
-        </button>
+  <ng-container *ngIf="isMobileView(); else desktopView">
+    <div class="mobile-view">
+      <h1 class="applicationTitle">
+        Application Deadline: September 20th, 2024 11:59PM
+      </h1>
+      <div class="subTeamApplicationsGridTwoRow" *ngFor="let team of subTeams">
+        <div>
+          <h3>{{ team.name }}</h3>
+          <p>{{ team.description }}</p>
+          <button
+            class="applicationFormButton"
+            type="button"
+            (click)="goToApplication(team)"
+          >
+            Apply Now
+          </button>
+        </div>
       </div>
     </div>
-    <div class="subTeamApplicationsGridTwoRow">
-      <div>
-        <h3>{{ subTeams[2].name }}</h3>
-        <br />
-        <p>{{ subTeams[2].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[2])"
-        >
-        Apply Now
-        </button>
+  </ng-container>
+
+  <ng-template #desktopView>
+    <div class="desktop-view">
+      <h1 class="applicationTitle">
+        Application Deadline: September 20th, 2024 11:59PM
+      </h1>
+      <div class="subTeamApplicationsGridFourRow">
+        <div *ngFor="let team of subTeams.slice(0, 4)">
+          <h3>{{ team.name }}</h3>
+          <p>{{ team.description }}</p>
+          <button
+            class="applicationFormButton"
+            type="button"
+            (click)="goToApplication(team)"
+          >
+            Apply Now
+          </button>
+        </div>
       </div>
-      <div>
-        <h3>{{ subTeams[3].name }}</h3>
-        <br />
-        <p>{{ subTeams[3].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[3])"
-        >
-        Apply Now
-        </button>
-      </div>
-    </div>
-    <div class="subTeamApplicationsGridThreeRow">
-      <div>
-        <h3>{{ subTeams[4].name }}</h3>
-        <br />
-        <p>{{ subTeams[4].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[4])"
-        >
-          Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[5].name }}</h3>
-        <br />
-        <p>{{ subTeams[5].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[5])"
-        >
-          Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[6].name }}</h3>
-        <br />
-        <p>{{ subTeams[6].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[6])"
-        >
-        Apply Now
-        </button>
+      <div class="subTeamApplicationsGridFourRow">
+        <div *ngFor="let team of subTeams.slice(4)">
+          <h3>{{ team.name }}</h3>
+          <p>{{ team.description }}</p>
+          <button
+            class="applicationFormButton"
+            type="button"
+            (click)="goToApplication(team)"
+          >
+            Apply Now
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="desktop-view">
-    <h1 class="applicationTitle">Application Deadline September 15th, 2023 11:59PM</h1>
-    <div class="subTeamApplicationsGridThreeRow">
-      <div>
-        <h3>{{ subTeams[0].name }}</h3>
-        <br />
-        <p>{{ subTeams[0].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[0])"
-        >
-        Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[1].name }}</h3>
-        <br />
-        <p>{{ subTeams[1].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[1])"
-        >
-        Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[2].name }}</h3>
-        <br />
-        <p>{{ subTeams[2].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[2])"
-        >
-        Apply Now
-        </button>
-      </div>
-    </div>
-    <div class="subTeamApplicationsGridFourRow">
-      <div>
-        <h3>{{ subTeams[3].name }}</h3>
-        <br />
-        <p>{{ subTeams[3].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[3])"
-        >
-        Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[4].name }}</h3>
-        <br />
-        <p>{{ subTeams[4].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[4])"
-        >
-          Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[5].name }}</h3>
-        <br />
-        <p>{{ subTeams[5].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[5])"
-        >
-          Apply Now
-        </button>
-      </div>
-      <div>
-        <h3>{{ subTeams[6].name }}</h3>
-        <br />
-        <p>{{ subTeams[6].description }}</p>
-        <br />
-        <button
-          class="applicationFormButton"
-          type="button"
-          (click)="goToApplication(subTeams[6])"
-        >
-          Apply Now
-        </button>
-      </div>
-    </div>
-  </div>
+  </ng-template>
 </div>

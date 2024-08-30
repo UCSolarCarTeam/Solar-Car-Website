@@ -29,7 +29,7 @@ import { PostComponent } from "./news/post/post.component";
 import { ArticleComponent } from "./news/article/article.component";
 import { ElysiaComponent } from "./elysia/elysia.component";
 import { FooterComponent } from "./footer/footer.component";
-// import { RecruitmentComponent } from './recruitment/recruitment.component';
+import { RecruitmentComponent } from "./recruitment/recruitment.component";
 
 @NgModule({
   declarations: [
@@ -52,7 +52,7 @@ import { FooterComponent } from "./footer/footer.component";
     ArticleComponent,
     ElysiaComponent,
     FooterComponent,
-    // RecruitmentComponent,
+    RecruitmentComponent,
   ],
   imports: [
     CommonModule,

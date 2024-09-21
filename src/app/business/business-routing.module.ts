@@ -10,7 +10,7 @@ import { MainComponent } from "./main/main.component";
 import { ArticleComponent } from "./news/article/article.component";
 import { ElysiaComponent } from "./elysia/elysia.component";
 import { BusinessComponent } from "./business.component";
-import { RecruitmentComponent } from "./recruitment/recruitment.component";
+// import { RecruitmentComponent } from "./recruitment/recruitment.component";
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
       { path: "team", component: TeamComponent },
       { path: "contact-us", component: ContactUsComponent },
       { path: "news/:id", component: ArticleComponent },
-      { path: "recruitment", component: RecruitmentComponent },
+      // { path: "recruitment", component: RecruitmentComponent },
       { path: "", component: MainComponent },
       { path: "**", redirectTo: "", pathMatch: "full" },
     ],

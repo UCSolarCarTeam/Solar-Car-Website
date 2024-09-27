@@ -23,6 +23,9 @@ let nextCallOptions = {};
   styleUrls: ["./edit-inventory.component.css"],
 })
 export class EditInventoryComponent implements OnInit {
+  useItemAmount: number = 0;
+  itemToBeEdited: Item;
+  // useItemForm: UntypedFormGroup;
   addItemForm: UntypedFormGroup;
   updateItemId: string;
   items: Item[];
@@ -41,8 +44,27 @@ export class EditInventoryComponent implements OnInit {
   previewImgUrl: string;
   imageChangedEvent: any = "";
   borrowFilter: boolean;
+<<<<<<< HEAD
+
+  setItemAmount(amount: number) {
+    this.useItemAmount = amount;
+  }
+  openMultipleItemModal(modalItem: Item) {
+    this.itemToBeEdited = modalItem;
+    const modal = document.getElementById("myModal") as HTMLDialogElement;
+    const modalContent = document.getElementById("modalContent") as HTMLElement;
+
+    modalContent.innerHTML = `${modalItem.name} available: ${modalItem.amount}`;
+    modal.showModal();
+  }
+  closeMultipleItemModal() {
+    const modal = document.getElementById("myModal") as HTMLDialogElement;
+    modal.close();
+  }
+=======
   locationList: string[];
 
+>>>>>>> 3cbdf6a45364f7a5a2eecc0514542a7fda090ad2
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     this.image = event.target.files[0];
@@ -95,8 +117,15 @@ export class EditInventoryComponent implements OnInit {
   useItemNotification(promise: Promise<any>) {
     notifier.async(
       promise,
-      "Item has been used",
+      "1 item has been used",
       "Item was not used. Check there are more than 1 or contact tech support"
+    );
+  }
+  useMultipleItemNotification(promise: Promise<any>, amount: number) {
+    notifier.async(
+      promise,
+      `${amount} items have been used`,
+      "Item was not used. Check there are enough or contact tech support."
     );
   }
   async useConfirmationNotification(): Promise<boolean> {
@@ -209,6 +238,9 @@ export class EditInventoryComponent implements OnInit {
       isBorrowable: false,
       image: [""],
     });
+    // this.useItemForm = this.formBuilder.group({
+    //   amount: 0,
+    // });
     this.elecLocals = ["Cabinet - Bin 1", "Cabinet - Bin 2", "Cabinet - Bin 3"];
     this.mechLocals = ["Cabinet - Bin 1", "Cabinet - Bin 2", "Cabinet - Bin 3"];
     this.lockerLocals = [
@@ -450,7 +482,25 @@ export class EditInventoryComponent implements OnInit {
       this.useItemNotification(promise);
     }
   }
-
+  async useMultipleItemModal() {
+    let item = this.itemToBeEdited;
+    if (item.amount >= this.useItemAmount && this.useItemAmount > 0) {
+      let promise = this.inventoryService.useMultipleItem(
+        item,
+        this.useItemAmount
+      );
+      this.useMultipleItemNotification(promise, this.useItemAmount);
+      this.closeMultipleItemModal();
+      this.useItemAmount = 0;
+    } else {
+      let promise = Promise.reject(
+        new Error(
+          `No items left to use. Maximum items to use is ${item.amount.toString()}`
+        )
+      );
+      this.useMultipleItemNotification(promise, this.useItemAmount);
+    }
+  }
   returnItemFilter() {
     if (this.borrowFilter) {
       this.runSearch(2); // Clears Filter

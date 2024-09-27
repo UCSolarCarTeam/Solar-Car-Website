@@ -141,4 +141,30 @@ export class InventoryService {
         throw err;
       });
   }
+
+  // Instead of -1, change it to the amount of items used
+  // @Parameters: Item, amount of items used
+  // @Return: Promise
+  useMultipleItem(item: Item, amount: number) {
+    const user = JSON.parse(window.sessionStorage.getItem("User"));
+    const itemRef = this.firestore
+      .collection("inventory-collection")
+      .doc(item.id);
+    this.userActionService.addUserAction({
+      uid: user.id,
+      uName: user.displayName,
+      eid: item.id,
+      eName: "Item: " + item.name,
+      action: Action.USED,
+      dateTime: new Date().toLocaleString(),
+    });
+    item.amount = item.amount - amount;
+    return itemRef
+      .update({
+        amount: item.amount,
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
 }
